@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>A4demo</title>
+  <style>
+  *{margin:0;padding:0}
+  ul li{
+    list-style: none;
+  }
+  .grids{
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: rgb(255, 255, 255);
+  }
+  .grid{
+    display:flex;
+    flex-direction:column;
+  }
+  .page{
+    height: 930px;
+    /*border:1px solid rgb(160, 148, 255);*/
+    overflow: hidden;
+    padding:8% 5%;
+  }
+  .page textarea{
+    width: 100%;
+    height: 100%;
+    line-height:50px;
+    resize:none;
+    border:1px solid rgb(99, 99, 99);
+    font-size: 40px;
+    overflow: hidden;
+  }
+  </style>
+</head>
+<body>
+  <div class="grids">
+    <ul class="grid">
+      <li class="page" id="page1">
+        <textarea></textarea>
+      </li>
+      <li class="page"  id="page2">
+        <textarea></textarea>
+      </li>
+    </ul>
+  </div>
+
+</body>
+<script src=http://code.jquery.com/jquery-1.7.2.min.js></script>
+<script>
+$('textarea').live('keyup change',function(e){
+	var i = 0,
+		of = '',
+		src = this.value;
+	while(this.clientHeight<this.scrollHeight){
+		this.value = src.slice(0,-(++i));
+	}
+	of = src.slice(-i).replace(/^[\r\n]*/,'');
+  var _thisParent = $(this).parent();
+  var _thisParentNext =_thisParent.next("li").children('textarea');
+	if(i){
+    //console.log(_thisParentNext.length);
+		if(_thisParentNext.length>0){
+			_thisParentNext.val(of+"\n"+_thisParentNext.val());
+		}else{
+      var tempCount = _thisParent.parent().children('li').length + 1;
+			_thisParent.clone().attr("id","page"+tempCount).insertAfter(_thisParent);
+      _thisParentNext = _thisParent.next("li").children('textarea');
+      _thisParentNext.val(of);
+		}
+    // _thisParent.parent().children('li').each(function(index, el) {
+    //   var __this = $(this);
+    //   __this.attr("id","page"+(index+1));
+    // });
+		_thisParentNext.change();
+	}
+});
+</script>
+</html>
