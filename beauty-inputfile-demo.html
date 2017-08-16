@@ -1,0 +1,129 @@
+<link rel="stylesheet" href=""><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <style>
+  .a-file{
+    position: relative;
+    display: inline-block;
+    background: rgba(208, 238, 255,0.5);
+    border: 1px solid #99D3F5;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+    cursor: pointer;
+  }
+  .a-file input[type="file"]{
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    cursor: pointer;
+  }
+  .a-file:hover{
+    background: rgba(208, 238, 255,1);
+    color: #0093ea;
+    text-decoration: none;
+  }
+  </style>
+</head>
+<body>
+<div class="panel panel-info">
+    <div class="panel-heading">
+    <span class="h5"> 附件信息</span>
+    </div>
+    <div class="panel-body">
+        <div class="col-xs-12"><b class="text-danger">&nbsp;&nbsp;注意：若需要上传多张图片请点击条目后的添加按钮</b></div>
+        <div id="divgroup01">
+          <p class="alert alert-info">第一部分</p>
+          <div class="form-group" id="inputgroup01">
+          	<label class="col-xs-2">tip:1</label>
+          	<a class="a-file col-xs-7 text-center">上传文件<input type="file" id="fileinput1" onchange="checkFJLX('1')"></a>
+            <button id="btnAdd" type="button" class="btn btn-info col-xs-3" onclick="AddInput(1);">添加</button>
+          </div>
+        </div>
+        <div id="divgroup02">
+          <p class="alert alert-info">第二部分</p>
+          <div class="form-group" id="inputgroup01">
+          	<label class="col-xs-2">tip:1</label>
+          	<a class="a-file col-xs-7 text-center">上传文件<input type="file" id="fileinput1" onchange="checkFJLX('1')"></a>
+            <button id="btnAdd" type="button" class="btn btn-info col-xs-3" onclick="AddInput(1);">添加</button>
+          </div>
+        </div>
+        <div id="divgroup03">
+          <p class="alert alert-info">第三部分</p>
+          <div class="form-group" id="inputgroup01">
+          	<label class="col-xs-2">tip:1</label>
+          	<a class="a-file col-xs-7 text-center">上传文件<input type="file" id="fileinput1" onchange="checkFJLX('1')"></a>
+            <button id="btnAdd" type="button" class="btn btn-info col-xs-3" onclick="AddInput(1);">添加</button>
+          </div>
+        </div>
+    </div>
+  </div>
+
+</body>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/modal.js"></script>
+<script>
+    //添加附件上传框
+    function AddInput(strXH) {
+        //var sRand = parseInt(Math.random() * 1000) + strXH;
+        var sRand = $(".panel-body .form-group").length+1;
+        var sInput = '<div class="form-group" id="inputgroup0' + sRand + '">	<label class="col-xs-2">tip:' + sRand + '</label><a class="a-file col-xs-7 text-center">上传文件<input type="file" value="上传附件" id="fileinput' + sRand + '" onchange="checkFJLX(' + sRand + ')"/></a><button class="btn btn-info col-xs-3"  onclick="deleteInput(' + sRand + ')">删除</button></div>';
+        $("#inputgroup0" + (sRand-1)).after(sInput);
+    }
+    //检查附件类型
+    function checkFJLX(objInput) {
+        var sPath = $("#fileinput"+objInput).val();
+        if (sPath!="") {
+            var arrPath = sPath.split("\\");
+            var sFileName = arrPath[arrPath.length - 1];
+            var arrFileName = sFileName.split('.');
+            var sKZM = arrFileName[arrFileName.length - 1];
+            sKZM = sKZM.toUpperCase();
+            if (sKZM != "PNG" && sKZM != "JPG" && sKZM != "PDF" && sKZM != "JPEG") {
+                showmodal({
+                    content: "请选择格式为jpg,jpeg,pdf,png附件！", //设置模态窗内容
+                    SWidth: 200,
+                    fontSize: 14,
+                    callbackHide: function () {
+                        //console.log($("#fileinput"+objInput).val());
+                        $("#fileinput"+objInput).val("");
+                        return true;
+                    }
+                });
+
+            } else {
+                var tempInput=$("#fileinput"+objInput).parent().html().replace($("#fileinput"+objInput).parent().text(), sFileName);
+                $("#fileinput"+objInput).parent().html(tempInput);
+
+            }
+        }
+
+    }
+
+    //删除附件上传
+    function deleteInput(sRand) {
+      $("#inputgroup0" + sRand).remove();
+        $(".panel-body .form-group").each(function(index,data){
+          index=index+1;
+          $(this).attr("id","inputgroup0"+index);
+          $(this).children("label").html("tip:"+index);
+          $(this).children("a").children("input").attr("id","fileinput"+ index ).attr("onchange","checkFJLX("+index+")");
+          if(index>1){
+            $(this).children("button").attr("onclick","deleteInput("+index+")");
+          }
+      });
+    }
+</script>
+</html>
