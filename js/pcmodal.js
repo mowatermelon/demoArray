@@ -43,10 +43,10 @@
         });
 
     });
-    
+
 
     使用demo--多次调用弹窗初始化
-    请注意在第一次之后 重复调用弹窗的时候 
+    请注意在第一次之后 重复调用弹窗的时候
     ！！！！！一定要设置modalIndex，这样之后绑定的样式才会正常显示
     showmodal({
     	flag: "warning",
@@ -134,25 +134,25 @@ var showmodal = function (options) {
                 if (this.contentLeft) {
                     contentdiv = "<div class='modal-body text-left h3 bg-faded'>" + this.content + "</div>\n";        //创建contentdiv
                 } else {
-                    contentdiv = "<div class='modal-body text-center h3 bg-faded'>" + this.content + "</div>\n";        //创建contentdiv                    
+                    contentdiv = "<div class='modal-body text-center h3 bg-faded'>" + this.content + "</div>\n";        //创建contentdiv
                 }
             } else {
-                contentdiv = "<div class='modal-body text-center h3 bg-faded'><iframe src='" + this.src + "' id='modalIframe' name= 'modal_Iframe'></div>\n";        //创建contentdiv  
+                contentdiv = "<div class='modal-body text-center h3 bg-faded'><iframe src='" + this.src + "' id='modalIframe' name= 'modal_Iframe'></div>\n";        //创建contentdiv
             }
 
             var footerdiv = "";
             if (this.Bclose && this.Qclose) {
                 if (this.Justify) {
-                    footerdiv = "<div class='modal-footer bg-faded'><button type='button' class='col-xs-6 r-b-1 btn btn-default' data-dismiss='modal' id='close'>" + this.BcloseText + "</button><button type='button' class='col-xs-6 btn btn-default' data-dismiss='modal' id='bcancel'>" + this.QcloseText + "</button></div>";        //创建footerdiv                   
+                    footerdiv = "<div class='modal-footer bg-faded'><button type='button' class='col-xs-6 r-b-1 btn btn-default' data-dismiss='modal' id='close'>" + this.BcloseText + "</button><button type='button' class='col-xs-6 btn btn-default' data-dismiss='modal' id='bcancel'>" + this.QcloseText + "</button></div>";        //创建footerdiv
                 } else {
                     footerdiv = "<div class='modal-footer bg-faded'><button type='button' class='btn btn-" + this.flag + "' data-dismiss='modal' id='close'>" + this.BcloseText + "</button><button type='button' class='btn btn-default' data-dismiss='modal' id='bcancel'>" + this.QcloseText + "</button></div>";        //创建footerdiv
                 }
             } else if (!this.Bclose && this.Qclose) {
-                footerdiv = "<div class='modal-footer bg-faded'><button type='button' class='btn btn-default' data-dismiss='modal' id='bcancel'>" + this.QcloseText + "</button></div>";        //创建footerdiv                
+                footerdiv = "<div class='modal-footer bg-faded'><button type='button' class='btn btn-default' data-dismiss='modal' id='bcancel'>" + this.QcloseText + "</button></div>";        //创建footerdiv
             } else if (this.Bclose && !this.Qclose) {
-                footerdiv = "<div class='modal-footer bg-faded'><button type='button' class='btn btn-block btn-link' data-dismiss='modal' id='close'>" + this.BcloseText + "</button></div>";        //创建footerdiv                
+                footerdiv = "<div class='modal-footer bg-faded'><button type='button' class='btn btn-block btn-link' data-dismiss='modal' id='close'>" + this.BcloseText + "</button></div>";        //创建footerdiv
             } else if (!this.Bclose && !this.Qclose) {
-                footerdiv = "";        //创建footerdiv                
+                footerdiv = "";        //创建footerdiv
             }
             parentdiv = parentdiv + headerdiv + contentdiv + footerdiv + "</div></div>";
             $(document.body).append(parentdiv);
@@ -210,10 +210,10 @@ var showmodal = function (options) {
             }
             //判断是否需要重新设置模态窗body字体大小
             if (this.fontSize != "") {
-                $("#showModal" + this.modalIndex + ".modal-dialog .modal-body").removeClass("h3").css({ "font-size": this.fontSize + "px" });
+                $("#showModal" + this.modalIndex + " .modal-dialog .modal-body").removeClass("h3").css({ "font-size": this.fontSize + "px" });
             } else {
-                if (!$("#showModal" + this.modalIndex + ".modal-dialog .modal-body").hasClass("h3")) {
-                    $("#showModal" + this.modalIndex + ".modal-dialog .modal-body").addClass("h3")
+                if (!$("#showModal" + this.modalIndex + " .modal-dialog .modal-body").hasClass("h3")) {
+                    $("#showModal" + this.modalIndex + " .modal-dialog .modal-body").addClass("h3")
                 }
             }
 
@@ -299,9 +299,9 @@ var showmodal = function (options) {
             });
         },
         ajustdialog: function () {
-            // 是弹出框居中。。。  
+            // 是弹出框居中。。。
             var $modal_dialog = $("#showModal" + this.modalIndex).find('.modal-dialog');
-            //获取可视窗口的高度  
+            //获取可视窗口的高度
             if ($("#showModal" + this.modalIndex).height() > window.screen.height - 355) {
                 //$("#showModal" + this.modalIndex).height(window.screen.height - 355);
             }
@@ -309,10 +309,10 @@ var showmodal = function (options) {
             var dialogHeight, m_top, isMargin;
 
             if (!this.isText) {
-                //得到dialog的高度  
+                //得到dialog的高度
                 dialogHeight = $modal_dialog.height();
                 if (clientHeight > dialogHeight) {
-                    //计算出距离顶部的高度 
+                    //计算出距离顶部的高度
                     m_top = Math.abs((clientHeight - dialogHeight) / 2);
 
                     if (clientHeight > 400) {
@@ -333,7 +333,7 @@ var showmodal = function (options) {
                 }
 
             } else {
-                //计算出距离顶部的高度 
+                //计算出距离顶部的高度
                 m_top = Math.abs((clientHeight - 116) / 2);
                 //m_top = $modal_dialog.css('margin-top');
 
@@ -351,7 +351,7 @@ var showmodal = function (options) {
                             //console.log("dialogHeight" + dialogHeight);
                             if (clientHeight > dialogHeight) {
                                 $("#showModal" + this.modalIndex).on("shown.bs.modal", function () {
-                                    //计算出距离顶部的高度 
+                                    //计算出距离顶部的高度
 
                                     //在模态框加载的同时做一些动作
                                     $modal_dialog.css({ 'margin': 'auto' });
@@ -430,7 +430,7 @@ var showmodal = function (options) {
         },
         cancelFlow: function () {
             //阻止默认事件
-            // 兼容FF和IE和Opera    
+            // 兼容FF和IE和Opera
             var Event = event || window.event|| e;
             if (Event && Event.preventDefault) {
                 //因此它支持W3C的stopPropagation()方法
@@ -439,7 +439,7 @@ var showmodal = function (options) {
 
             }
             else {
-                //否则，我们需要使用IE的方式来取消事件冒泡 
+                //否则，我们需要使用IE的方式来取消事件冒泡
                 Event.returnValue = false;
                 Event.cancelBubble = true;
 
@@ -457,5 +457,3 @@ var showmodal = function (options) {
     var opts = $.extend(defaults, options);
     opts.init();
 }
-
-
