@@ -198,14 +198,14 @@ var showmodal = function (options) {
             //判断是否需要重新设置模态窗宽度
             if (this.SMaxWidth != "") {
                 var m_top = $("#showModal" + this.modalIndex).css("margin-top");
-                $("#showModal" + this.modalIndex + " .modal-dialog").css({ "max-width": this.SWidth + "px" });
+                $("#showModal" + this.modalIndex + " .modal-dialog").css({ "max-width": this.SMaxWidth + "px" });
 
 
             }
             //判断是否需要重新设置模态窗高度
             if (this.SMaxheight != "") {
                 //$(".show_Modal.modal,.show_Modal.modal .modal-dialog").css({ "height": this.Sheight + "px" });
-                $("#showModal" + this.modalIndex + " .modal-dialog .modal-body").css({ "max-height": this.Sheight + "px" });
+                $("#showModal" + this.modalIndex + " .modal-dialog .modal-body").css({ "max-height": this.SMaxheight + "px" });
 
             }
             //判断是否需要重新设置模态窗body字体大小
