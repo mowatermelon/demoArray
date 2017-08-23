@@ -464,7 +464,7 @@ h6,
 .h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.5;
 }
 
 h1 small,
@@ -6862,11 +6862,11 @@ td.visible-print {
 /*
     design for project by WU EVA
 */
-/*Çå³ýÏà¹Øä¯ÀÀÆ÷Ä¬ÈÏÑùÊ½hacker            */
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½Ê½hacker            */
 body
 {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);/*È¡ÏûµôÊÖ»ú¶Ëwebkitä¯ÀÀÆ÷ µã»÷°´Å¥»ò³¬Á´½ÓÖ®ÀàµÄ Ä¬ÈÏ»ÒÉ«±³¾°É«*/ 
-    -webkit-user-select:none; /*¿ØÖÆÓÃ»§²»¿ÉÑ¡ÔñÎÄ×Ö*/ 
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);/*È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½webkitï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ Ä¬ï¿½Ï»ï¿½É«ï¿½ï¿½ï¿½ï¿½É«*/ 
+    -webkit-user-select:none; /*ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/ 
     font-family:"Hiragino Sans GB","Microsoft YaHei",SimSun,sans-serif;    
 }
 input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
@@ -6888,7 +6888,7 @@ ul, menu, dir {
 a:active,a:hover,a:link,a:visited {
 	text-decoration: none
 }
-/* Ã¶¾Ù±³¾°ÑÕÉ«Ê¹ÓÃÇé¿ö                  */
+/* Ã¶ï¿½Ù±ï¿½ï¿½ï¿½ï¿½ï¿½É«Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½                  */
 .bg-faded {
   background-color: #f7f7f7;
 }
@@ -6955,7 +6955,7 @@ a.bg-inverse:focus, a.bg-inverse:hover {
 {
     font-weight:bold;
 }
-/*ÎÄÕÂÖÐÐèÒªÊ¹ÓÃµ½µÄÏà¹ØÑùÊ½                     */
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÊ¹ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½                     */
 .text-i-1
 {
     text-indent:1em;
@@ -6979,7 +6979,7 @@ a.bg-inverse:focus, a.bg-inverse:hover {
 {
     font-weight:bolder;    
 }
-/*¶¥²¿´íÎóÌáÊ¾ start*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ start*/
 .weui_toptips {
   display: none;
   position: fixed;
@@ -6995,8 +6995,8 @@ a.bg-inverse:focus, a.bg-inverse:hover {
 .weui_toptips.weui_warn {
   background-color: #E64340;
 }
-/*¶¥²¿´íÎóÌáÊ¾ end*/
-/*¼ÓÔØÖÐµ¯´° start*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ end*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ start*/
 .weui_toast {
   position: fixed;
   z-index: 50000;
@@ -7145,8 +7145,8 @@ a.bg-inverse:focus, a.bg-inverse:hover {
   -webkit-transform: rotate(330deg) translate(7.92px, 0px);
           transform: rotate(330deg) translate(7.92px, 0px);
 }
-/*¼ÓÔØÖÐµ¯´° end*/
-/*Î¢ÐÅÎÄµµÏà¹ØÑùÊ½ start*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ end*/
+/*Î¢ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ start*/
 .weui_cells {
     margin-top: 1.17647059em;
     background-color: #FFFFFF;
@@ -7240,4 +7240,4 @@ a.bg-inverse:focus, a.bg-inverse:hover {
     word-wrap: break-word;
 }
 
-/*Î¢ÐÅÎÄµµÏà¹ØÑùÊ½ end*/
+/*Î¢ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ end*/
