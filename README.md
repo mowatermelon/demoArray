@@ -2,7 +2,7 @@
 这里主要集中了我平时一些小想法的单页面集合
 
 # 目录
-> ## 1 [A4demo](https://mowatermelon.github.io/demoArray/A4demo.html)
+> ## 1 [A4demo](https://mowatermelon.github.io/demoArray/a4Demo.html)
 仿造A4的动态页面效果，默认是有两页，在两页中textarea填写超过内容之后，页面会自动新增页，并将超出页面内容的文本复制到新页的textarea中
 
 > ## 2 [beauty-inputfile](https://mowatermelon.github.io/demoArray/beauty-inputfile-demo.html)
