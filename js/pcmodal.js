@@ -252,7 +252,7 @@ var showmodal = function (options) {
                     b_h = parseInt($("#showModal" + _this.modalIndex + " .modal-dialog .modal-body").attr("n-height")) + 40;
                     m_t = $("#showModal" + _this.modalIndex + " .modal-dialog").attr("n-margin");
                     $("#showModal" + _this.modalIndex + " .modal-dialog").css({ "margin-top": m_t, "width": s_w + "px" });
-                    $("#showModal" + _this.modalIndex + " .modal-dialog .modal-body").css({ "height": b_h + "px" });
+                    $("#showModal" + _this.modalIndex + " .modal-dialog .modal-body").css({ "height": b_h + "px"});
                     _this.Sheight = b_h;
                     _this.SWidth = parseInt(s_w);
                 }
