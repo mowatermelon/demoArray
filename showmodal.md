@@ -1,25 +1,29 @@
 # 第一部分 默认参数
-## 1 公共参数
-### 1.1 flag
-| dataType| parameter
+## 1.1 公共参数
+### 1.1.1 flag
+| dataType| parameter |
 | ------------- |:-------------:| 
-| string | string
+| string | string |
 
-设置弹出`modal`的主题  
-| stateName | stateMeaning
+设置弹出`modal`的主题 
+
+| stateName | stateMeaning |
 | ------------- |:-------------:| 
-| success | green modal
-| warning | yellow modal
-| info | blue modal  
-| default | blue modal  
+| success | green modal |
+| warning | yellow modal |
+| info | blue modal   |
+| default | blue modal  |
+
 > 使用案例
+
 ```javascript
 showmodal({flag:"success"})
 ```
+
 __请注意如果不需要修改该参数默认值效果，在使用`showmodal`的时候，不用写这个参数。__
 
 
-### 1.2 modalIndex
+### 1.1.2 modalIndex
 | dataType| parameter
 | ------------- |:-------------:| 
 | string | string
@@ -30,11 +34,11 @@ __请注意如果不需要修改该参数默认值效果，在使用`showmodal`�
 showmodal({modalIndex:"02"})
 ```
 
-### 1.3 hideClick
-| dataType| parameter
+### 1.1.3 hideClick
+| dataType| parameter|
 | ------------- |:-------------:| 
-| bool | true or false
-| string | static  
+| bool | true or false|
+| string | static  |
 
 设置点击`modal`遮罩层是否隐藏`modal`，默认为`true`,如果设置为`static`,则点击背景模态窗不会关闭  
 
@@ -44,10 +48,10 @@ showmodal({hideClick:"static "})
 ```
 __请注意如果不需要修改该参数默认值效果，在使用`showmodal`的时候，不用写这个参数。__
 
-### 1.4 SWidth
-| dataType| parameter
+### 1.1.4 SWidth
+| dataType| parameter|
 | ------------- |:-------------:| 
-| int | number  
+| int | number  |
 
 强制设置模态窗宽度，`分辨率`在`1024`以上的模态窗默认宽度是`580px`，`分辨率`在`1024`以下的模态窗默认宽度是当前`分辨率`的的`百分之九十五`。  
 
@@ -59,10 +63,10 @@ showmodal({isText:false, src: "XXX.html",SWidth:300})
 __请注意输入具体像素值，请注意如果不需要修改该参数默认值效果，在使用`showmodal`的时候，不用写这个参数。__
 
 
-### 1.5 SMaxWidth
-| dataType| parameter
+### 1.1.5 SMaxWidth
+| dataType| parameter|
 | ------------- |:-------------:| 
-| int | number   
+| int | number   |
 
 设置模态窗最大宽度。  
 
@@ -73,12 +77,24 @@ showmodal({isText:false, src: "XXX.html", SMaxWidth:300})
 ```
 __请注意输入具体像素值，请注意如果不需要修改该参数默认值效果，在使用`showmodal`的时候，不用写这个参数。__
 
-
-## 2 modal-header相关参数
-### 2.1 title
-| dataType| parameter
+### 1.1.6 isZoom
+| dataType| parameter|
 | ------------- |:-------------:| 
-| string | string
+| bool | true or false|
+
+设置模态窗是否能够进行全屏显示，默认为false，设置为true之后，模态窗默认可以拖动。
+
+> 使用案例
+
+```javascript
+showmodal({isZoom:true})
+```
+__请注意如果不需要修改该参数默认值效果，在使用showmodal的时候，不用写这个参数。__
+## 1.2 modal-header相关参数
+### 1.2.1 title
+| dataType| parameter|
+| ------------- |:-------------:| 
+| string | string|
 
 设置模态窗标题，默认为`提示标题` 
 
@@ -89,10 +105,10 @@ showmodal({title:"提示"})
 __请注意如果不需要修改该参数默认值效果，在使用`showmodal`的时候，不用写这个参数。__
 
 
-### 2.2 titleCenter
-| dataType| parameter
+### 1.2.2 titleCenter
+| dataType| parameter|
 | ------------- |:-------------:| 
-| bool | true or false 
+| bool | true or false |
 
 设置模态窗标题是否水平居中显示，默认为`false`,即`modal`中`header`的文字是左对齐，反之设置为`true`,即`modal`中`header`的文字是水平居中显示.
 
@@ -102,10 +118,10 @@ showmodal({titleCenter:true})
 ```
 __请注意如果不需要修改该参数默认值效果，在使用`showmodal`的时候，不用写这个参数。__
 
-### 2.3 Tclose
-| dataType| parameter
+### 1.2.3 Tclose
+| dataType| parameter|
 | ------------- |:-------------:| 
-| bool | true or false 
+| bool | true or false |
 
 设置右上角关闭按钮是否显示，默认为`true`，即`modal-header`右上角是有×关闭按钮的，如果设置为`flase`，即`modal-header`右上角是没有有`×`关闭按钮的.
 > 使用案例
@@ -114,11 +130,11 @@ showmodal({Tclose:false})
 ```
 __请注意如果不需要修改该参数默认值效果，在使用`showmodal`的时候，不用写这个参数。请注意如果页面需要多次调用`showmodal`，请不要修改此参数。__
 
-## 3 modal-body相关参数
-### 3.1 isText
-| dataType| parameter
+## 1.3 modal-body相关参数
+### 1.3.1 isText
+| dataType| parameter|
 | ------------- |:-------------:| 
-| bool | true or false 
+| bool | true or false |
 
 判断传进来`content`的是否为`Text`,默认为`true`，即默认`modal-body`中显示的是非`iframe`的文本或者标签内容，设置为false中则认为`modal-body`中显示的是`iframe`内容。
 > 使用案例
@@ -127,10 +143,10 @@ showmodal({isText:false, src: "XXX.html"})
 ```
 __请注意如果在`modal-body`中显示相关拼接的文本或者标签（非iframe）内容，在使用`showmodal`的时候，不用写这个参数，但是如果想在`modal-body`中显示`iframe`必须要设置这个参数为`false`,同时一定要设置`src`参数。__  
 
-### 3.2 content
-| dataType| parameter
+### 1.3.2 content
+| dataType| parameter|
 | ------------- |:-------------:| 
-| string | string
+| string | string|
 
 如果传进来`content`的为`Text`，通过这个参数修改`modal-body`内容，请注意如果`isText`参数值为`true`，该参数必须要进行修改。 
 > 使用案例
@@ -138,10 +154,10 @@ __请注意如果在`modal-body`中显示相关拼接的文本或者标签（非
 showmodal({content:"请确认相关信息是否都填写完成"})
 ```
 
-### 3.3 contentLeft
-| dataType| parameter
+### 1.3.3 contentLeft
+| dataType| parameter|
 | ------------- |:-------------:| 
-| bool | true or false 
+| bool | true or false |
 
 设置模态窗`modal-body `的`content`是否左对齐显示，默认为`false`，即默认`content`是居中对齐，如果设置为`true`则`content`是左对齐，并且首行缩进两字符。
 > 使用案例
@@ -150,10 +166,10 @@ eg：showmodal({content:"请确认相关信息是否都填写完成",contentLeft
 ```
 __请注意`isText`参数为`true`的时候这个参数才会起作用，必须要和`content`同时设置。请注意如果不需要修改该参数默认值效果，在使用`showmodal`的时候，不用写这个参数。__  
 
-### 3.4 fontSize
-| dataType| parameter
+### 1.3.4 fontSize
+| dataType| parameter|
 | ------------- |:-------------:| 
-| int | number   
+| int | number   |
 
 设置模态窗`modal-body` 的`content`的字体大小，默认是`24`,即`h3`字体大小。
 > 使用案例
@@ -162,10 +178,10 @@ showmodal({content:"请确认相关信息是否都填写完成",fontSize:13})
 ```
 __请输入具体像素值。请注意`isText`参数为`true`的时候，这个参数才会起作用，必须要和`content`同时设置。请注意如果不需要修改该参数默认值效果，在使用`showmodal`的时候，不用写这个参数。__
 
-### 3.5 src
-| dataType| parameter
+### 1.3.5 src
+| dataType| parameter|
 | ------------- |:-------------:| 
-| string | string
+| string | string|
 
 如果模态窗`modal-body` 的`content`的为`iframe`，修改`iframe`地址。
 > 使用案例
@@ -174,10 +190,10 @@ showmodal({isText:false, src: "XXX.html"})
 ```
 __请注意如果`isText`参数值为`false`，该参数必须要进行修改。__
 
-### 3.6 Sheight
-| dataType| parameter
+### 1.3.6 Sheight
+| dataType| parameter|
 | ------------- |:-------------:| 
-| int | number   
+| int | number  | 
 
 强制设置模态窗`modal-body`高度，模态窗默认高度是`auto`，随`modal-body`中的内容自动适应长度。
 > 使用案例
@@ -189,10 +205,10 @@ showmodal({isText:false, src: "XXX.html",Sheight:100})
 __请注意输入具体像素值，请注意如果不需要修改该参数默认值效果，在使用`showmodal`的时候，不用写这个参数。__
 
 
-### 3.7 SMaxheight
-| dataType| parameter
+### 1.3.7 SMaxheight
+| dataType| parameter|
 | ------------- |:-------------:| 
-| int | number   
+| int | number   |
 
 设置模态窗`modal-body`最大高度，模态窗默认高度是`auto`，随`modal-body`中的内容自动适应长度。
 > 使用案例
@@ -203,22 +219,24 @@ showmodal({isText:false, src: "XXX.html",SMaxheight:100})
 ```
 __请注意输入具体像素值，请注意如果不需要修改该参数默认值效果，在使用`showmodal`的时候，不用写这个参数。__
 
-## 4 modal-footer相关参数
-### 4.1 Bclose
-| dataType| parameter
+## 1.4 modal-footer相关参数
+### 1.4.1 Bclose
+| dataType| parameter|
 | ------------- |:-------------:| 
-| bool | true or false 
+| bool | true or false |
+
 设置确认按钮是否显示，默认为`true`即默认单行居中显示确定按钮，如果设置为`false`，则不显示确定按钮。
+
 > 使用案例
 ```javascript
 showmodal({Bclose:false})
 ```
 __请注意如果不需要修改该参数默认值效果，在使用`showmodal`的时候，不用写这个参数，如果需要设置确认按钮有回调函数，请勿修改，该参数值必须为`true`。__
 
-### 4.2 Qclose
-| dataType| parameter
+### 1.4.2 Qclose
+| dataType| parameter|
 | ------------- |:-------------:| 
-| bool | true or false 
+| bool | true or false |
 
 设置取消按钮是否显示，默认为`false`，即默认不显示取消按钮，如果设置为`true`，则显示取消按钮。
 > 使用案例
@@ -227,10 +245,10 @@ showmodal({Qclose: true})
 ```
 __请注意如果不需要修改该参数默认值效果，在使用`showmodal`的时候，不用写这个参数，如果需要设置取消按钮有回调函数，该参数值必须为`true`。__
 
-### 4.3 callbackB
-| dataType| parameter
+### 1.4.3 callbackB
+| dataType| parameter|
 | ------------- |:-------------:| 
-| bool | true or false 
+| bool | true or false |
 
 判断确认按钮有没有回调函数，默认为`false`，即确认按钮没有回调函数。
 > 使用案例
@@ -239,10 +257,10 @@ showmodal({callbackB:true, callbackBF: function(){ console.log("确认按钮的�
 ```
 __请注意如果不需要修改该参数默认值效果，在使用`showmodal`的时候，不用写这个参数。请注意如果该参数设置为`true`，这个时候参数`Bclose`的值必须为`true`，且必须同时写`callbackBF`方法。__
 
-### 4.4 callbackQ
-| dataType| parameter
+### 1.4.4 callbackQ
+| dataType| parameter|
 | ------------- |:-------------:| 
-| bool | true or false 
+| bool | true or false |
 
 判断取消按钮有没有回调函数，默认为`false`，即取消按钮没有回调函数.
 > 使用案例
@@ -251,10 +269,10 @@ showmodal({callbackQ:true, callbackQF: function(){ console.log("取消按钮的�
 ```
 __请注意如果不需要修改该参数默认值效果，在使用`showmodal`的时候，不用写这个参数。请注意如果该参数设置为`true`，这个时候参数`Qclose`的值必须为`true`，且必须同时写`callbackQF`方法。__
 
-### 4.5 BcloseText
-| dataType| parameter
+### 1.4.5 BcloseText
+| dataType| parameter|
 | ------------- |:-------------:| 
-| string | string 
+| string | string |
 
 设置确定按钮的文本内容，默认内容为`确定`。
 > 使用案例
@@ -263,10 +281,10 @@ showmodal({BcloseText:"我同意"})
 ```
 __请注意如果不需要修改该参数默认值效果，在使用showmodal的时候，不用写这个参数。__
 
-### 4.6 QcloseText
-| dataType| parameter
+### 1.4.6 QcloseText
+| dataType| parameter|
 | ------------- |:-------------:| 
-| string | string 
+| string | string |
 
 设置取消按钮的文本内容，默认内容为`取消`。
 > 使用案例
@@ -275,10 +293,10 @@ showmodal({QcloseText:"我不同意"})
 ```
 __请注意如果不需要修改该参数默认值效果，在使用showmodal的时候，不用写这个参数。__
 
-### 4.7 Justify
-| dataType| parameter
+### 1.4.7 Justify
+| dataType| parameter|
 | ------------- |:-------------:| 
-| bool | true or false 
+| bool | true or false |
 
 设置底部按钮是否`两端对齐`，主要使用状态在底部有两个按钮，希望一左一右的显示，默认为`false`。
 > 使用案例
@@ -287,11 +305,13 @@ showmodal({Justify:true, Qclose: true })
 ```
 __请注意如果不需要修改该参数默认值效果，在使用showmodal的时候，不用写这个参数。该参数需要在参数Bclose和Qclose值都为true的时候才会起效果__
 
-## 5 其他自定义扩展参数
-### 5.1 resetajust
-| dataType| parameter
+## 1.5 其他自定义扩展参数
+### 1.5.1 resetajust
+
+| dataType| parameter|
 | ------------- |:-------------:| 
-| bool | true or false 
+| bool | true or false| 
+
 设置是否重新计算`modal`的居中效果，默认为`true`，即在`bootstrap js`计算的基础上再重新计算一次，让模态窗更好的`居中显示`。
 > 使用案例
 ```javascript
@@ -319,13 +339,17 @@ __请注意如果不需要修改该参数默认值效果，在使用showmodal的
 在模态窗关闭之后调用的回调事件
 
 ## 2.7 cancelFlow(event)
-| dataType| parameter
+| dataType| parameter |
 | ------------- |:-------------:| 
-| event | event
+| event | event |
+
 阻止在调用此方法之前的操作
 
 ## 2.8 closeModal
 关闭当前所绑定的`modalindex`的模态窗
+
+## 2.9 zoomCallback
+触发模态窗放大缩小之后的回调函数
 
 # 第三部分 实例demo
 ## 3.1 不需要修改默认提示的标题仅做修改提示内容
@@ -541,7 +565,18 @@ showmodal({
 });
 ```
 
- 
+## 3.13	需要使用全屏显示按钮
+
+```javascript
+showmodal({
+  title: "警告",
+  content: "请确认相关信息是否都填写完成, 请确认相关信息是否都填写完成, 请确认相关信息是否都填写完成",
+  isZoom: true,
+  zoomCallback: function (){
+      console.log(this.Sheight,this.SWidth);
+  }
+});
+```
  
  
 
