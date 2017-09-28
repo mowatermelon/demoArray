@@ -197,7 +197,21 @@
                     return false;
                 }
             });
-        </pre>                     
+        </pre> 
+        
+        <li class="h3">需要使用全屏显示按钮</li>
+        <button class="btn btn-info zoomModal">尝试一下</button><br />
+        <pre class="code text-info h5">
+         showmodal({
+                title: "警告",
+                content: "请确认相关信息是否都填写完成, 请确认相关信息是否都填写完成, 请确认相关信息是否都填写完成",
+                isZoom: true,
+                zoomCallback: function (){
+                    console.log(this.Sheight,this.SWidth);
+                }
+            });
+        </pre>
+        
     </ol>
 </body>
 <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
@@ -355,7 +369,17 @@
                     return false;
                 }
             });
-        });               
+        });
+        $(".zoomModal").click(function(){
+           showmodal({
+                title: "警告",
+                content: "请确认相关信息是否都填写完成, 请确认相关信息是否都填写完成, 请确认相关信息是否都填写完成",
+                isZoom: true,
+                zoomCallback: function (){
+                    console.log(this.Sheight,this.SWidth);
+                }
+            });
+        })
     })
 </script>
 </html>
