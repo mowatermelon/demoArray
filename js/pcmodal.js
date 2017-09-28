@@ -5,93 +5,13 @@
 **/
 
 
-    //使用本插件之前需要引用jquery.js、bootstrap.css和bootstrap.js，
-    //本插件是在bootstrap modal的基础上写的一个共用模态窗插件。
-    /**
-    使用demo--modalbody为iframe
-    $("#btn").click(function() {
+//使用本插件之前需要引用jquery.js、bootstrap.css和bootstrap.js，
+//本插件是在bootstrap modal的基础上写的一个共用模态窗插件。
 
-    var sVsrc;
-    var docname = $("#txt").find("option:selected").text();
-    if (docname.length > 0) {
-    sVsrc = "../../Doc/" + docname + ".htm";
-    }
-    showmodal({
-        isText: false,
-        title: docname,
-        isIframe: true,
-        src: sVsrc,
-        Bclose: false,
-        Sheight: "300"
-
-    });
-
-    });
-
-    使用demo--modalbody为text
-
-    $("#forR").click(function() {
-        showmodal({
-            flag: "warning",
-            title: "提示信息",
-            content: "确定吗",
-            Qclose: true,
-            callbackB: true,
-            callbackBF:function(){
-            //dosomething
-        }
-        });
-
-    });
-
-
-    使用demo--多次调用弹窗初始化
-    请注意在第一次之后 重复调用弹窗的时候
-    ！！！！！一定要设置modalIndex，这样之后绑定的样式才会正常显示
-    showmodal({
-    	flag: "warning",
-    	title: "提示信息",
-    	content: "确定吗1",
-    	modalIndex: "01",
-    	Qclose: true,
-    	callbackB: true,
-    	callbackBF: function() {
-    		//dosomething
-    		//var _this=this;
-    		//_this.closeModal();
-    		showmodal({
-    			flag: "info",
-    			title: "提示信息",
-    			modalIndex: "02",
-    			content: "确定吗2",
-    			Qclose: true,
-    			SWidth: "300",
-    			hideClick: "static",
-    			fontSize: "18",
-    			callbackB: true,
-    			callbackBF: function() {
-    				showmodal({
-    					flag: "info",
-    					title: "提示信息",
-    					modalIndex: "03",
-    					content: "确定吗3",
-    					Qclose: true,
-    					SWidth: "200",
-    					hideClick: "static",
-    					fontSize: "18"
-    				});
-    				return false;
-    			}
-    		});
-    		return false;
-    	}
-    });
-
-    */
 var showmodal = function (options) {
     var defaults = {
         flag: "info", //设置弹出modal的状态 success:成功窗体,warning:警告窗体,info:信息窗体,default:默认无样式
-        title: "提示标题",    //设置模态窗标题
+        title: "提示信息",    //设置模态窗标题
         modalIndex: "01",    //设置模态窗索引值，默认只使用一次弹窗，模态窗的序号默认为01
         titleCenter: false,    //设置模态窗标题是否水平居中显示，默认为false,默认左对齐
         isText: true,  //判断传进来content的是否为Text,默认为true
@@ -113,6 +33,7 @@ var showmodal = function (options) {
         BcloseText: "确定", //设置右下角关闭按钮的文本内容，默认为确定
         QcloseText: "取消", //设置右下角关闭按钮的文本内容，默认为取消
         Justify: false, //设置底部按钮是否两端对齐，主要使用状态在底部有两个按钮，希望一左一右的显示，默认为false
+        isZoom: false, //设置头部按钮全屏按钮是否显示，默认为false
         /**
         * 初始化DOM结构
         */
@@ -120,39 +41,44 @@ var showmodal = function (options) {
             var parentdiv = "<div class='modal fade show_Modal' id='showModal" + this.modalIndex + "'><div class='modal-dialog'>";        //创建一个modaldiv
             var headerdiv;
             if (this.Tclose && this.titleCenter) {
-                headerdiv = "<div class='header text-center bg-" + this.flag + "' ><button type='button' id='Tclose' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button><span class='modal-title' id='showLabel'>" + this.title + "</span></div>\n";        //创建headerdiv
+                headerdiv = "<div class='header text-center bg-" + this.flag + "' ><button type='button' id='Tclose' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button><span class='modal-title' id='showLabel'>" + this.title + "</span>";        //创建headerdiv
             } else if (this.Tclose && !this.titleCenter) {
-                headerdiv = "<div class='header bg-" + this.flag + "'><button type='button' class='close' id='Tclose'  data-dismiss='modal' aria-hidden='true'>&times;</button><span class='modal-title' id='showLabel'>" + this.title + "</span></div>\n";
+                headerdiv = "<div class='header bg-" + this.flag + "'><button type='button' class='close' id='Tclose'  data-dismiss='modal' aria-hidden='true'>&times;</button><span class='modal-title' id='showLabel'>" + this.title + "</span>";
             } else if (!this.Tclose && this.titleCenter) {
-                headerdiv = "<div class='header text-center bg-" + this.flag + "'><span class='modal-title' id='showLabel'>" + this.title + "</span></div>\n";        //创建headerdiv
+                headerdiv = "<div class='header text-center bg-" + this.flag + "'><span class='modal-title' id='showLabel'>" + this.title + "</span>";        //创建headerdiv
             }
             else if (!this.Tclose && !this.titleCenter) {
-                headerdiv = "<div class='header bg-" + this.flag + "'><span class='modal-title' id='showLabel'>" + this.title + "</span></div>\n";        //创建headerdiv
+                headerdiv = "<div class='header bg-" + this.flag + "'><span class='modal-title' id='showLabel'>" + this.title + "</span>";        //创建headerdiv
+            }
+            if (this.isZoom) {
+                headerdiv += "<button id='btn-zoom' class='btn btn-info pull-right glyphicon glyphicon-zoom-in'></button></div>\n";
+            } else {
+                headerdiv += "</div>\n";
             }
             var contentdiv;
             if (this.isText) {
                 if (this.contentLeft) {
                     contentdiv = "<div class='modal-body text-left h3 bg-faded'>" + this.content + "</div>\n";        //创建contentdiv
                 } else {
-                    contentdiv = "<div class='modal-body text-center h3 bg-faded'>" + this.content + "</div>\n";        //创建contentdiv
+                    contentdiv = "<div class='modal-body text-center h3 bg-faded'>" + this.content + "</div>\n";        //创建contentdiv                    
                 }
             } else {
-                contentdiv = "<div class='modal-body text-center h3 bg-faded'><iframe src='" + this.src + "' id='modalIframe' name= 'modal_Iframe'></div>\n";        //创建contentdiv
+                contentdiv = "<div class='modal-body text-center h3 bg-faded'><iframe src='" + this.src + "' id='modalIframe' name= 'modal_Iframe'></div>\n";        //创建contentdiv  
             }
 
             var footerdiv = "";
             if (this.Bclose && this.Qclose) {
                 if (this.Justify) {
-                    footerdiv = "<div class='modal-footer bg-faded'><button type='button' class='col-xs-6 r-b-1 btn btn-default' data-dismiss='modal' id='close'>" + this.BcloseText + "</button><button type='button' class='col-xs-6 btn btn-default' data-dismiss='modal' id='bcancel'>" + this.QcloseText + "</button></div>";        //创建footerdiv
+                    footerdiv = "<div class='modal-footer bg-faded'><button type='button' class='col-xs-6 r-b-1 btn btn-default' data-dismiss='modal' id='close'>" + this.BcloseText + "</button><button type='button' class='col-xs-6 btn btn-default' data-dismiss='modal' id='bcancel'>" + this.QcloseText + "</button></div>";        //创建footerdiv                   
                 } else {
                     footerdiv = "<div class='modal-footer bg-faded'><button type='button' class='btn btn-" + this.flag + "' data-dismiss='modal' id='close'>" + this.BcloseText + "</button><button type='button' class='btn btn-default' data-dismiss='modal' id='bcancel'>" + this.QcloseText + "</button></div>";        //创建footerdiv
                 }
             } else if (!this.Bclose && this.Qclose) {
-                footerdiv = "<div class='modal-footer bg-faded'><button type='button' class='btn btn-default' data-dismiss='modal' id='bcancel'>" + this.QcloseText + "</button></div>";        //创建footerdiv
+                footerdiv = "<div class='modal-footer bg-faded'><button type='button' class='btn btn-default' data-dismiss='modal' id='bcancel'>" + this.QcloseText + "</button></div>";        //创建footerdiv                
             } else if (this.Bclose && !this.Qclose) {
-                footerdiv = "<div class='modal-footer bg-faded'><button type='button' class='btn btn-block btn-link' data-dismiss='modal' id='close'>" + this.BcloseText + "</button></div>";        //创建footerdiv
+                footerdiv = "<div class='modal-footer bg-faded'><button type='button' class='btn btn-block btn-link' data-dismiss='modal' id='close'>" + this.BcloseText + "</button></div>";        //创建footerdiv                
             } else if (!this.Bclose && !this.Qclose) {
-                footerdiv = "";        //创建footerdiv
+                footerdiv = "<div class='modal-footer bg-faded'></div>";        //创建footerdiv                
             }
             parentdiv = parentdiv + headerdiv + contentdiv + footerdiv + "</div></div>";
             $(document.body).append(parentdiv);
@@ -171,12 +97,13 @@ var showmodal = function (options) {
         * 绑定事件
         */
         initCss: function () {
-            $("#showModal" + this.modalIndex + " .modal-dialog .modal-body").css({ "background-color": "#fff" });
-            $("#showModal" + this.modalIndex + " .modal-dialog  .header .modal-title,.show_Modal.modal .modal-dialog .header .close").css({ "font-size": "20px", "color": "#fff", "line-height": "40px", "padding-left": "20px", "padding-right": "20px" });
-            $("#showModal" + this.modalIndex + " .modal-dialog  .header").css({ "border-radius": "15px 15px 0 0", "border-bottom": "1px solid #e5e5e5"});
-            $("#showModal" + this.modalIndex + " .modal-dialog  .header.bg-info").css({ "box-shadow": "rgb(53, 172, 197) 0px 3px 8px 1px inset" });
-            $("#showModal" + this.modalIndex + " .modal-dialog .modal-footer").css({ "margin-top": "0px", "border-radius": "0 0 15px 15px", "padding": "5px 20px 5px" });
-            $("#showModal" + this.modalIndex + " .modal-dialog .modal-footer .btn-link").css({ "font-size": "18px" });
+            $(".show_Modal.modal .modal-dialog .modal-body").css({ "background-color": "#fff" });
+            $(".show_Modal.modal .modal-dialog  .header .modal-title,.show_Modal.modal .modal-dialog .header .close").css({ "font-size": "20px", "color": "#fff", "line-height": "40px", "padding-left": "20px", "padding-right": "20px" });
+            $(".show_Modal.modal .modal-dialog .header .glyphicon").css({ "line-height": "25px" });
+            $(".show_Modal.modal .modal-dialog  .header").css({ "border-radius": "15px 15px 0 0", "border-bottom": "1px solid #e5e5e5" });
+            $(".show_Modal.modal .modal-dialog  .header.bg-info").css({ "box-shadow": "rgb(53, 172, 197) 0px 3px 8px 1px inset" });
+            $(".show_Modal.modal .modal-dialog .modal-footer").css({ "margin-top": "0px", "border-radius": "0 0 15px 15px", "padding": "5px 20px 5px" });
+            $(".show_Modal.modal .modal-dialog .modal-footer .btn-link").css({ "font-size": "18px" });
             //判断modalbody是否为文本类型
             if (!this.isText) {
                 $("#showModal" + this.modalIndex + " .modal-dialog .modal-body #modalIframe").css({ "border": "0 none #eee", "width": "100%", "margin": "0 auto", "height": "99%" });
@@ -205,7 +132,11 @@ var showmodal = function (options) {
             //判断是否需要重新设置模态窗高度
             if (this.SMaxheight != "") {
                 //$(".show_Modal.modal,.show_Modal.modal .modal-dialog").css({ "height": this.Sheight + "px" });
-                $("#showModal" + this.modalIndex + " .modal-dialog .modal-body").css({ "max-height": this.SMaxheight + "px" });
+                if (!this.isText) {
+                    $("#showModal" + this.modalIndex + " .modal-dialog .modal-body iframe").css({ "max-height": this.SMaxheight + "px" });
+                } else {
+                    $("#showModal" + this.modalIndex + " .modal-dialog .modal-body").css({ "max-height": this.SMaxheight + "px" });
+                }
 
             }
             //判断是否需要重新设置模态窗body字体大小
@@ -250,19 +181,19 @@ var showmodal = function (options) {
         },
         initFunction: function () {
             var _this = this;
-            $("#showModal" + _this.modalIndex + " #close").click(function () {
+            $("#showModal" + _this.modalIndex + " #close").click(function (event) {
                 if (_this.callbackB && _this.Bclose) {
                     if (!_this.callbackBF()) {
-                        _this.cancelFlow();
+                        _this.cancelFlow(event);
                         return;
                     }
                 }
 
             });
-            $("#showModal" + _this.modalIndex + " #bcancel").click(function () {
+            $("#showModal" + _this.modalIndex + " #bcancel").click(function (event) {
                 if (_this.callbackQ && _this.Qclose) {
                     if (!_this.callbackQF()) {
-                        _this.cancelFlow();
+                        _this.cancelFlow(event);
                         return;
                     }
                 }
@@ -278,9 +209,9 @@ var showmodal = function (options) {
                     //console.log(_this.modalIndex);
                     $("#showModal0" + (_this.modalIndex - 1) + " .modal-dialog").css({ "opacity": 0.8 });
                 }
-//                if (_this.isMain) {
-//                    //$("div#header",parent.document).css({ "margin-top": "10px" });
-//                }
+                //                if (_this.isMain) {
+                //                    //$("div#header",parent.document).css({ "margin-top": "10px" });
+                //                }
                 _this.callbackShown();
             });
             $("#showModal" + _this.modalIndex).on("hide.bs.modal", function () {
@@ -288,20 +219,50 @@ var showmodal = function (options) {
                     //console.log(_this.modalIndex+"hide");
                     $("#showModal0" + (_this.modalIndex - 1) + " .modal-dialog").css({ "opacity": 1 });
                 }
-//                if (_this.isMain) {
-//                    $("div#header", parent.document).css({ "margin-top": 0 });
-//                }
+                //                if (_this.isMain) {
+                //                    $("div#header", parent.document).css({ "margin-top": 0 });
+                //                }
                 //hide方法后调用
                 $(this).remove();
                 $(document.body).removeClass("modal-open");
                 $("#showModal" + this.modalIndex).blur();
                 _this.callbackHide();
             });
+
+            $("#btn-zoom").click(function () {
+                var _that = $(this);
+                _this.moveModal();
+                var d_h = document.body.clientHeight;
+                var d_w = document.body.clientWidth;
+                var s_h = $("#showModal" + _this.modalIndex + " .modal-dialog").height();
+                var b_h = _this.Sheight.length > 0 ? _this.Sheight : $("#showModal" + _this.modalIndex + " .modal-dialog .modal-body").height();
+                var s_w = _this.SWidth.length > 0 ? _this.SWidth : $("#showModal" + _this.modalIndex + " .modal-dialog").width();
+                var m_t = $("#showModal" + _this.modalIndex + " .modal-dialog").css('margin-top');
+
+                if (_that.hasClass("glyphicon-zoom-in")) {
+                    _that.addClass("glyphicon-zoom-out").removeClass("glyphicon-zoom-in");
+                    $("#showModal" + _this.modalIndex + " .modal-dialog").attr({ "n-height": s_h, "n-width": s_w, "n-margin": m_t }).css({ "width": d_w + "px", "margin": "0 auto", "padding": "0" });
+                    $("#showModal" + _this.modalIndex + " .modal-dialog .modal-body").attr({ "n-height": b_h }).css({ "height": (d_h - 100) + "px" });
+                    _this.Sheight = d_h - 100;
+                    _this.SWidth = d_w;
+                } else {
+                    _that.addClass("glyphicon-zoom-in").removeClass("glyphicon-zoom-out");
+                    s_h = $("#showModal" + _this.modalIndex + " .modal-dialog").attr("n-height");
+                    s_w = $("#showModal" + _this.modalIndex + " .modal-dialog").attr("n-width");
+                    b_h = parseInt($("#showModal" + _this.modalIndex + " .modal-dialog .modal-body").attr("n-height")) + 40;
+                    m_t = $("#showModal" + _this.modalIndex + " .modal-dialog").attr("n-margin");
+                    $("#showModal" + _this.modalIndex + " .modal-dialog").css({ "margin-top": m_t, "width": s_w + "px" });
+                    $("#showModal" + _this.modalIndex + " .modal-dialog .modal-body").css({ "height": b_h + "px" });
+                    _this.Sheight = b_h;
+                    _this.SWidth = parseInt(s_w);
+                }
+                _this.zoomCallback();
+            });
         },
         ajustdialog: function () {
-            // 是弹出框居中。。。
+            // 是弹出框居中。。。  
             var $modal_dialog = $("#showModal" + this.modalIndex).find('.modal-dialog');
-            //获取可视窗口的高度
+            //获取可视窗口的高度  
             if ($("#showModal" + this.modalIndex).height() > window.screen.height - 355) {
                 //$("#showModal" + this.modalIndex).height(window.screen.height - 355);
             }
@@ -309,10 +270,10 @@ var showmodal = function (options) {
             var dialogHeight, m_top, isMargin;
 
             if (!this.isText) {
-                //得到dialog的高度
+                //得到dialog的高度  
                 dialogHeight = $modal_dialog.height();
                 if (clientHeight > dialogHeight) {
-                    //计算出距离顶部的高度
+                    //计算出距离顶部的高度 
                     m_top = Math.abs((clientHeight - dialogHeight) / 2);
 
                     if (clientHeight > 400) {
@@ -333,7 +294,7 @@ var showmodal = function (options) {
                 }
 
             } else {
-                //计算出距离顶部的高度
+                //计算出距离顶部的高度 
                 m_top = Math.abs((clientHeight - 116) / 2);
                 //m_top = $modal_dialog.css('margin-top');
 
@@ -351,7 +312,7 @@ var showmodal = function (options) {
                             //console.log("dialogHeight" + dialogHeight);
                             if (clientHeight > dialogHeight) {
                                 $("#showModal" + this.modalIndex).on("shown.bs.modal", function () {
-                                    //计算出距离顶部的高度
+                                    //计算出距离顶部的高度 
 
                                     //在模态框加载的同时做一些动作
                                     $modal_dialog.css({ 'margin': 'auto' });
@@ -428,10 +389,10 @@ var showmodal = function (options) {
         callbackHide: function () {
 
         },
-        cancelFlow: function () {
+        cancelFlow: function (event) {
             //阻止默认事件
-            // 兼容FF和IE和Opera
-            var Event = event || window.event|| e;
+            // 兼容FF和IE和Opera    
+            var Event = event || window.event || e;
             if (Event && Event.preventDefault) {
                 //因此它支持W3C的stopPropagation()方法
                 Event.preventDefault();
@@ -439,7 +400,7 @@ var showmodal = function (options) {
 
             }
             else {
-                //否则，我们需要使用IE的方式来取消事件冒泡
+                //否则，我们需要使用IE的方式来取消事件冒泡 
                 Event.returnValue = false;
                 Event.cancelBubble = true;
 
@@ -452,8 +413,13 @@ var showmodal = function (options) {
             if (this.Tclose) {
                 $("#showModal" + this.modalIndex + " .modal-dialog .header #Tclose").click();
             }
+        },
+        zoomCallback: function () {
+
         }
     };
     var opts = $.extend(defaults, options);
     opts.init();
 }
+
+
