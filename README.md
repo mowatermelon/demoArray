@@ -10,3 +10,6 @@
 
 > ## 3 [pcShowModal](https://mowatermelon.github.io/demoArray/pcShowModal.html)
 基于jquery和bootstrapjs的一个模态窗插件，支持多种参数设置
+
+> ## 4 [learnObject](https://mowatermelon.github.io/demoArray/learnObject.js)
+学习和使用js中多个对象的属性和方法
