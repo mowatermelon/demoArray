@@ -245,6 +245,7 @@ function learnString(){
     console.log(oString instanceof(Object));//true
     console.log(oString instanceof(Number));//false
 
+    console.log("\n强制类型转化，将其他类型的变量转化成String类型---------------------------------------------------------------------String()");
     //强制类型转化，将其他类型的变量转化成String类型
     //对 null 和 undefined 值强制类型转换可以生成字符串而不引发错误
     // 但是 null 和 undefined 值强制使用toString()，会引发错误
@@ -255,9 +256,11 @@ function learnString(){
     console.log(String(NaN))	//NaN 
 
     //----------------------------------------------------属性
+    console.log("\n对创建对象的函数的引用（指针）。对于 String 对象，该指针指向原始的 String() 函数。---------------------------------------------------------------------constructor");    
     //对创建对象的函数的引用（指针）。对于 String 对象，该指针指向原始的 String() 函数。
     console.log(oString.constructor);   //[Function: String]
-    
+  
+    console.log("\n对象具有属性__proto__，可称为隐式原型，一个对象的隐式原型指向构造该对象的构造函数的原型---------------------------------------------------------------------__proto__");       
     //对该对象的对象原型的引用。对于 oString 对象，因为没有写原型链，所以返回未定义，不确定这个认知是否正确。
     //console.log(oString.Prototype);   //undefined
     //对象具有属性__proto__，可称为隐式原型，一个对象的隐式原型指向构造该对象的构造函数的原型
@@ -265,19 +268,76 @@ function learnString(){
     console.log(oString.__proto__); // [String: '']  
     
     //----------------------------------------------------方法
+
+    console.log("\n创建 HTML 锚。将字符串输出为有唯一标识的纯粹HTML---------------------------------------------------------------------anchor()");       
     //创建 HTML 锚。将字符串输出为有唯一标识的纯粹HTML
     //@para anchorname 必需。为锚定义名称。
     console.log(oString.anchor("anchorDemo"));//<a name="anchorDemo">hello world</a>
+    console.log("\n把字符串显示为链接。只在页面中才会有效果。---------------------------------------------------------------------link()");               
+    //把字符串显示为链接。只在页面中才会有效果。
+    //@para url	必需。规定要链接的 URL。
+    console.log(oString.link());//<a href="undefined">hello world</a> 
+    console.log(oString.link("https://mowatermelon.github.io/"));//<a href="https://mowatermelon.github.io/">hello world</a> 
 
+    console.log("\n把字符串显示为大号字体。只在页面中才会有大两个字体号效果。---------------------------------------------------------------------big()");    
     //把字符串显示为大号字体。只在页面中才会有大两个字体号效果。
     console.log(oString.big());//<big>hello world</big>
-
+    console.log("\n把字符串显示为小号字体。只在页面中才会有小两个字体号效果---------------------------------------------------------------------small()");                
+    //把字符串显示为小号字体。只在页面中才会有小两个字体号效果。
+    console.log(oString.small());//<small>hello world</small>   
+    console.log("\n把字符串显示闪动的字符串，目前没有看到有浏览器支持---------------------------------------------------------------------blink()");        
     //把字符串显示闪动的字符串，目前没有看到有浏览器支持
     console.log(oString.blink());//<blink>hello world</blink>
-
+    console.log("\n把字符串显示粗体的字符串，只在页面中才会有粗体效果，IE不兼容---------------------------------------------------------------------bold()");            
     //把字符串显示粗体的字符串，只在页面中才会有粗体效果，IE不兼容
     console.log(oString.bold());//<b>hello world</b>
+    console.log("\n以打字机文本显示字符串。只在页面中才会有效果。---------------------------------------------------------------------fixed()");                 
+    //以打字机文本显示字符串。只在页面中才会有效果。
+    console.log(oString.fixed());//<tt>hello world</tt>
+    console.log("\n返回指定的颜色的字符串。只在页面中才会有效果。---------------------------------------------------------------------fontcolor()");                 
+    //返回指定的颜色的字符串。只在页面中才会有效果。
+    //color	必需。为字符串规定 font-color。
+    //该值必须是颜色名(red)、RGB 值(rgb(255,0,0))或者十六进制数(#FF0000)。
+    console.log(oString.fontcolor("Red"));//<font color="Red">hello world</font>
+    console.log("\nsize 参数必须是从 1 至 7 的数字，数字越大字体越大。只在页面中才会有效果。---------------------------------------------------------------------fontsize()");                     
+    //size 参数必须是从 1 至 7 的数字，数字越大字体越大。
+    console.log(oString.fontsize(6));//<font size="6">hello world</font>
+    console.log("\n把字符串显示为斜体。只在页面中才会有效果。---------------------------------------------------------------------italics()");                         
+    //把字符串显示为斜体。只在页面中才会有效果。
+    console.log(oString.italics());//<i>hello world</i>    
+    console.log("\n把字符串显示为加了删除线的字符串。只在页面中才会有效果。---------------------------------------------------------------------strike()");                             
+    //把字符串显示为加了删除线的字符串。只在页面中才会有效果。
+    console.log(oString.strike());//<strike>hello world</strike> 
+    console.log("\n把字符串显示为下标。只在页面中才会有效果。---------------------------------------------------------------------sub()");                             
+    //把字符串显示为下标。只在页面中才会有效果。
+    console.log(oString.sub());//<sub>hello world</sub> 
+    console.log("\n把字符串显示为上标。只在页面中才会有效果。---------------------------------------------------------------------sup()");           
+    //把字符串显示为上标。只在页面中才会有效果。
+    console.log(oString.sup());//<sup>hello world</sup> 
 
+    console.log("\n用于把字符串转换为小写。---------------------------------------------------------------------toLocaleLowerCase()");               
+    //用于把字符串转换为小写。
+    //返回值 一个新的字符串，在其中 stringObject 的所有大写字符全部被转换为了小写字符。
+    //与 toLowerCase() 不同的是，toLocaleLowerCase() 方法按照本地方式把字符串转换为小写。
+    //---------------只有几种语言（如土耳其语）具有地方特有的大小写映射，所有该方法的返回值通常与 toLowerCase() 一样。
+    var sss ="HELLO WORLD";
+    console.log(sss.toLocaleLowerCase());//hello world
+    console.log("\n用于把字符串转换为小写。---------------------------------------------------------------------toLowerCase()");                   
+    //用于把字符串转换为小写。
+    //返回值 一个新的字符串，在其中 stringObject 的所有大写字符全部被转换为了小写字符。
+    console.log(sss.toLowerCase());//hello world
+    console.log("\n用于把字符串转换为大写。---------------------------------------------------------------------toLocaleUpperCase()");                   
+    //用于把字符串转换为大写。
+    //返回值 一个新的字符串，在其中 stringObject 的所有大写字符全部被转换为了大写字符。
+    //与 toUpperCase() 不同的是，toLocaleUpperCase() 方法按照本地方式把字符串转换为大写。
+    //---------------只有几种语言（如土耳其语）具有地方特有的大小写映射，所有该方法的返回值通常与 toLowerCase() 一样。
+    console.log(oString.toLocaleUpperCase());//HELLO WORLD
+    console.log("\n用于把字符串转换为大写。---------------------------------------------------------------------toUpperCase()");                       
+    //用于把字符串转换为大写。
+    //返回值 一个新的字符串，在其中 stringObject 的所有大写字符全部被转换为了大写字符。
+    console.log(oString.toUpperCase());//HELLO WORLD
+
+    console.log("\n返回在指定位置的字符---------------------------------------------------------------------charAt()");     
     //返回在指定位置的字符
     //不提供参数就返回第一个字符的字符
     //提供游标值，就返回指定游标的字符    
@@ -285,13 +345,20 @@ function learnString(){
     console.log(oString.charAt(1));//e
     console.log(oString.charAt(2));//l
 
+    console.log("\n返回在指定的位置的字符的 Unicode 编码---------------------------------------------------------------------charCodeAt()");         
     //返回在指定的位置的字符的 Unicode 编码
     //不提供参数就返回第一个字符的编码值
     //提供游标值，就返回指定游标的编码值
     console.log(oString.charCodeAt());//104   （h对应的编码）
     console.log(oString.charCodeAt(1));//101   （e对应的编码）
     console.log(oString.charCodeAt(2));//108   （l对应的编码）
-    
+    console.log("\n可接受一个指定的 Unicode 值，然后返回一个字符串。---------------------------------------------------------------------fromCharCode()");             
+    //可接受一个指定的 Unicode 值，然后返回一个字符串。
+    //这个方法是构造函数 String() 自身的方法，而不是单独的某个 String 对象的方法
+    //console.log(oString.fromCharCode(65,66,67));//报错 fromCharCode is not a function
+    console.log(String.fromCharCode(65,66,67));//ABC
+
+    console.log("\n连接两个或多个字符串---------------------------------------------------------------------concat()");             
     //连接两个或多个字符串
     //stringObject.concat(stringX,stringX,...,stringX)
     //concat() 方法将把它的所有参数转换成字符串
@@ -301,25 +368,7 @@ function learnString(){
     //@para stringX	必需。将被连接为一个字符串的一个或多个字符串对象。
     console.log(oString.concat(oString));//hello worldhello world
 
-    //以打字机文本显示字符串。只在页面中才会有效果。
-    console.log(oString.fixed());//<tt>hello world</tt>
-
-    //返回指定的颜色的字符串。只在页面中才会有效果。
-    //color	必需。为字符串规定 font-color。
-    //该值必须是颜色名(red)、RGB 值(rgb(255,0,0))或者十六进制数(#FF0000)。
-    console.log(oString.fontcolor("Red"));//<font color="Red">hello world</font>
-    
-    //size 参数必须是从 1 至 7 的数字，数字越大字体越大。
-    console.log(oString.fontsize(6));//<font size="6">hello world</font>
-
-    //把字符串显示为斜体。只在页面中才会有效果。
-    console.log(oString.italics());//<i>hello world</i>    
-
-    //把字符串显示为链接。只在页面中才会有效果。
-    //@para url	必需。规定要链接的 URL。
-    console.log(oString.link());//<a href="undefined">hello world</a> 
-    console.log(oString.link("https://mowatermelon.github.io/"));//<a href="https://mowatermelon.github.io/">hello world</a> 
-    
+    console.log("\n用本地特定的顺序来比较两个字符串。---------------------------------------------------------------------localeCompare()");                 
     //用本地特定的顺序来比较两个字符串。
     //@para target	要以本地特定的顺序与 stringObject 进行比较的字符串。
     //说明比较结果的数字。如果 stringObject 小于 target，则 localeCompare() 返回小于 0 的数。
@@ -329,55 +378,213 @@ function learnString(){
     //以这种方法生成的顺序不一定是正确的。
     //ECMAscript 标准并没有规定如何进行本地特定的比较操作，它只规定该函数采用底层操作系统提供的排序规则。
     //可以用于有多个字符串的数组进行排序
+
     console.log(oString.localeCompare(""));//1
     console.log(oString.localeCompare("hello"));//1
     //var str = ["99","1","7","88","30","90","444","999"];
     //str.sort (function(a,b){return a.localeCompare(b)})
     //(8) ["1", "30", "444", "7", "88", "90", "99", "999"]
 
-    //可接受一个指定的 Unicode 值，然后返回一个字符串。
-    //这个方法是构造函数 String() 自身的方法，而不是单独的某个 String 对象的方法
-    //console.log(oString.fromCharCode(65,66,67));//报错 fromCharCode is not a function
-    console.log(String.fromCharCode(65,66,67));//ABC
-    
+    console.log("\n返回某个指定的字符串值在字符串中首次出现的位置。---------------------------------------------------------------------indexOf()");                     
     //返回某个指定的字符串值在字符串中首次出现的位置。
     //stringObject.indexOf(searchvalue,fromindex)
     //searchvalue	必需。规定需检索的字符串值。
     //@para fromindex	可选的整数参数。规定在字符串中开始检索的位置。
     //它的合法取值是 0 到 stringObject.length - 1。如省略该参数，则将从字符串的首字符开始检索。
     //该方法将从头到尾地检索字符串 stringObject，看它是否含有子串 searchvalue。
-    //开始检索的位置在字符串的 fromindex 处或字符串的开头（没有指定 fromindex 时）。
-    //如果找到一个 searchvalue，则返回 searchvalue 的第一次出现的位置。
+    //---------------开始检索的位置在字符串的 fromindex 处或字符串的开头（没有指定 fromindex 时）。
+    //---------------如果找到一个 searchvalue，则返回 searchvalue 的第一次出现的位置。
     //stringObject 中的字符位置是从 0 开始的。
     //这个是做的完全匹配,对大小写敏感
     console.log(oString.indexOf("Hello"));//-1
     console.log(oString.indexOf("l",1));//2
-    
+
+    console.log("\n返回一个指定的字符串值最后出现的位置，在一个字符串中的指定位置从后向前搜索。---------------------------------------------------------------------lastIndexOf()");                     
     //返回一个指定的字符串值最后出现的位置，在一个字符串中的指定位置从后向前搜索。
     //stringObject.lastIndexOf(searchvalue,fromindex)
     //searchvalue	必需。规定需检索的字符串值。
     //@para fromindex	可选的整数参数。规定在字符串中开始检索的位置。
     //它的合法取值是 0 到 stringObject.length - 1。如省略该参数，则将从字符串的最后一个字符处开始检索。
     //该方法将从尾到头地检索字符串 stringObject，看它是否含有子串 searchvalue。
-    //开始检索的位置在字符串的 fromindex 处或字符串的结尾（没有指定 fromindex 时）。
-    //如果找到一个 searchvalue，则返回 searchvalue 的第一个字符在 stringObject 中的位置。
+    //---------------开始检索的位置在字符串的 fromindex 处或字符串的结尾（没有指定 fromindex 时）。
+    //---------------如果找到一个 searchvalue，则返回 searchvalue 的第一个字符在 stringObject 中的位置。
     //stringObject 中的字符位置是从 0 开始的。
     //这个是做的完全匹配,对大小写敏感
     console.log(oString.lastIndexOf("Hello"));//-1
     console.log(oString.lastIndexOf("l",1));//-1
 
+    console.log("\n在字符串内检索指定的值，或找到一个或多个正则表达式的匹配---------------------------------------------------------------------match()");                         
+    console.log("\n---------------------------------------------------------------------RegExp.test(stringObject)");                         
+    console.log("\n---------------------------------------------------------------------RegExp.exec(stringObject)");                         
     //在字符串内检索指定的值，或找到一个或多个正则表达式的匹配
     //存放匹配结果的数组。该数组的内容依赖于 regexp 是否具有全局标志 g。
     //searchvalue	必需。规定要检索的字符串值。
+    console.log(oString.match("Hello"));//null
+    console.log(oString.match("hello"));//[ 'hello', index: 0, input: 'hello world' ]
+    console.log(oString.match("world").index);//6
     //regexp	必需。规定要匹配的模式的 RegExp 对象。
     //如果该参数不是 RegExp 对象，则需要首先把它传递给 RegExp 构造函数，将其转换为 RegExp 对象。
+    //match() 方法将检索字符串 stringObject，以找到一个或多个与 regexp 匹配的文本。这个方法的行为在很大程度上有赖于 regexp 是否具有标志 g。
+    //如果 regexp 没有标志 g，那么 match() 方法就只能在 stringObject 中执行一次匹配。
+    //---------------如果没有找到任何匹配的文本， match() 将返回 null。
+    //---------------否则，它将返回一个数组，其中存放了与它找到的匹配文本有关的信息。
+    ///---------------该数组的第 0 个元素存放的是匹配文本，而其余的元素存放的是与正则表达式的子表达式匹配的文本。
+    //---------------除了这些常规的数组元素之外，返回的数组还含有两个对象属性。
+    //---------------index 属性声明的是匹配文本的起始字符在 stringObject 中的位置，input 属性声明的是对 stringObject 的引用。
+    
+    //如果 regexp 具有标志 g，则 match() 方法将执行全局检索，找到 stringObject 中的所有匹配子字符串。
+    //---------------若没有找到任何匹配的子串，则返回 null。
+    //---------------如果找到了一个或多个匹配子串，则返回一个数组。
+    //---------------不过全局匹配返回的数组的内容与前者大不相同，它的数组元素中存放的是 stringObject 中所有的匹配子串，而且也没有 index 属性或 input 属性。
+    //  /^[a-z0-9\.-]*$/g      正则中的$是匹配结束字符      ^ 是判断以什么开头  * 是判断字符串中是否包含某某内容
+    var charReg1 = /[a-z]/g;//验证是否全部为字符
+    var charReg2 = /[a-z]/;//验证是否全部为字符
+    var charReg3 = /[a-z]*/g;//验证是否全部为字符
+    //简而言之，就是正则中有g，能够进行匹配，则返回的数组只有一个值，就是传入的字符串值，不能匹配的话就返回空
+    //就是正则中没有g，能够进行匹配，则返回的数组有三个值，就是传入的字符串值，index属性和input属性以及对应的值，不能匹配的话就返回空
+    //如果RegExp中没有g 则  RegExp.exec(stringObject)  等价于  stringObject.match(RegExp)
+    console.log(oString.match(charReg1));//[ 'h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd' ]
+    console.log(oString.match(charReg2));//[ 'h', index: 0, input: 'hello world' ]
+    console.log(oString.match(charReg3));//[ 'hello', '', 'world', '' ]    
+    console.log(charReg1.test(oString));//true
+    console.log(charReg2.test(oString));//true
+    console.log(charReg3.test(oString));//true    
+    console.log(charReg1.exec(oString));//[ 'e', index: 1, input: 'hello world' ]
+    console.log(charReg2.exec(oString));//[ 'h', index: 0, input: 'hello world' ]
+    console.log(charReg3.exec(oString));//[ '', index: 5, input: 'hello world' ]
+    
+    console.log("\n用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串---------------------------------------------------------------------replace()");                             
+    //用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串
+    //regexp/substr 必需。规定子字符串或要替换的模式的 RegExp 对象。
+    //---------------请注意，如果该值是一个字符串，则将它作为要检索的直接量文本模式，而不是首先被转换为 RegExp 对象。
+    //replacement	必需。一个字符串值。规定了替换文本或生成替换文本的函数。
+    //返回值 一个新的字符串，是用 replacement 替换了 regexp 的第一次匹配或所有匹配之后得到的。
+    //字符串 stringObject 的 replace() 方法执行的是查找并替换的操作。
+    //---------------它将在 stringObject 中查找与 regexp 相匹配的子字符串，然后用 replacement 来替换这些子串。
+    //---------------如果 regexp 具有全局标志 g，那么 replace() 方法将替换所有匹配的子串。
+    //---------------否则，它只替换第一个匹配子串。
+    //replacement 可以是字符串，也可以是函数。如果它是字符串，那么每个匹配都将由字符串替换。
+    //---------------但是 replacement 中的 $ 字符具有特定的含义。
+    //---------------如下表所示，它说明从模式匹配得到的字符串将用于替换。
+    // |       字符      |       替换文本    |
+    // |:----------------|:-----------------|
+    // |      $1、$2、...、$99      |       与 regexp 中的第 1 到第 99 个子表达式相匹配的文本。    |
+    // |      $&      |       与 regexp 相匹配的子串。    |
+    // |      $`      |       位于匹配子串左侧的文本。    |
+    // |      $'      |       位于匹配子串右侧的文本。    |
+    // |      $$      |       直接量符号。    |
+    //ECMAScript v3 规定，replace() 方法的参数 replacement 可以是函数而不是字符串。
+    //---------------在这种情况下，每个匹配都调用该函数，它返回的字符串将作为替换文本使用。
+    //---------------该函数的第一个参数是匹配模式的字符串。接下来的参数是与模式中的子表达式匹配的字符串，可以有 0 个或多个这样的参数。
+    //---------------接下来的参数是一个整数，声明了匹配在 stringObject 中出现的位置。最后一个参数是 stringObject 本身。
+    //Flag: i-----------标识ignore忽略大小，g-----------标识global 反复检索,m-----------标识多行检索(这个暂时没试验)
+    console.log(oString.replace(/o/, "watermelon"));//hell watermelon  world  只会进行一次替换的replace
+    console.log(oString.replace(/o/g, " watermelon "));//hell watermelon  w watermelon rld   加上g之后会对所有匹配的内容进行替换
+    console.log(oString.replace(/o/g, " $` "));//hell hell  w hello w rld     原字符串中第一个匹配到o左侧文本是  hell所以 hello 变成了 hell hell   第二个匹配到o的左侧文本是 hello w ， 所以 world 变成了 w hello w rld  
+    console.log(oString.replace(/o/g, " $' "));//hell  world  w rld rld    原字符串中第一个匹配到o右侧文本是  world 所以 hello 变成了 hell world   第二个匹配到o的右侧文本是 rld ， 所以 world 变成了 w rld rld  
+    console.log(oString.replace(/o/g, "$$")); //hell$ w$rld   将所有匹配o的地方替换成 $
+    console.log(oString.replace(/o/g, " $&+$& ")); //hell o+o  w o+o rld   这里的$&指代的就是替换条件 o    所以 $&+$& 等价于 o+o
+    var ss="AaAB";
+    console.log(ss.replace(/A/ig, "RR"));//RRRRRRB     加上ig之后会对所有匹配的内容进行替换，并且忽略大小写
+    console.log(oString.replace(/(\w+)\s* \s*(\w+)/, "$2 $1"));//world hello    通过字符串中的空格，对字符串进行分割，$1是第一个匹配的文本，$2是第二个匹配的文本，然后进行反序输出
+    console.log(oString.replace(/\b\w+\b/g, function(word){
+        return word.substring(0,1).toUpperCase()+word.substring(1);}
+        ));                                                     //Hello World   所有单词的首字母都转换为大写  也就是说replace的第二个参数是可以支持函数形式
+   
+   console.log("\n用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串。 ---------------------------------------------------------------------search()");                                     
+   //用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串。   
+   //regexp	 该参数可以是需要在 stringObject 中检索的子串，也可以是需要检索的 RegExp 对象。
+   //---------------注释：要执行忽略大小写的检索，请追加标志 i。
+   //返回值 stringObject 中第一个与 regexp 相匹配的子串的起始位置。
+   //---------------注释：如果没有找到任何匹配的子串，则返回 -1。
+   //search() 方法不执行全局匹配，它将忽略标志 g。
+   //---------------它同时忽略 regexp 的 lastIndex 属性，并且总是从字符串的开始进行检索，这意味着它总是返回 stringObject 的第一个匹配的位置。
+   
+   console.log(oString.search(/o/));//4
+   console.log(oString.search(/O/));//-1   search()对大小写比较敏感
+   console.log(oString.search(/O/i));//4   对字符串忽略大小写进行匹配
+   //如果只是对一个具体字符串来查找，那么使用indexOf()的系统资源消耗更小，效率更高；
+   //---------------如果是查找具有某些特征的字符串（比如查找以a开头，后面是数字的字符串）
+   //---------------那么indexOf()就无能为力，必须要使用正则表达式和search()方法了。
+   // 很多时候用indexOf()不是为了真的想知道子字符串的位置，而是想知道长字符串中没有包含这个子字符串。
+   //---------------如果返回索引值是-1，那么说明没有：不等于-1，那么就是有。
+   //一般情况下indexOf比search更省资源。
+   
+   console.log("\n提取字符串的某个部分，并以新的字符串返回被提取的部分。 ---------------------------------------------------------------------slice()");                                        
+   //提取字符串的某个部分，并以新的字符串返回被提取的部分。
+   //start	要抽取的片断的起始下标。  必填
+   //---------------如果是负数，则该参数规定的是从字符串的尾部开始算起的位置。
+   //---------------也就是说，-1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推。
+   //end	紧接着要抽取的片段的结尾的下标。 选填
+   //---------------若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。
+   //---------------如果该参数是负数，那么它规定的是从字符串的尾部开始算起的位置。   
+   //返回值 一个新的字符串。包括字符串 stringObject 从 start 开始（包括 start）到 end 结束（不包括 end）为止的所有字符。
+   //String 对象的方法 slice()、substring() 和 substr() （不建议使用）都可返回字符串的指定部分。
+   //---------------slice() 比 substring() 要灵活一些，因为它允许使用负数作为参数。
+   //---------------slice() 与 substr() 有所不同，因为它用两个字符的位置来指定子串，而 substr() 则用字符位置和长度来指定子串。
+   //---------------还要注意的是，String.slice() 与 Array.slice() 相似。
+   console.log(oString.slice(6));//world  提取从位置 6 开始的所有字符
+   console.log(oString.slice(6,8));//wo   提取从位置 6 到位置 11 的所有字符
+   console.log(oString.slice(6,6)); //     返回值为空   slice不支持start =end
+   console.log(oString.slice(8,6)); //     返回值为空   slice不支持start >end   
+   console.log(oString.slice(-3,-1));//rl  提取从倒数的位置 3 到倒数的位置 1 的所有字符
 
+   console.log("\n在字符串中抽取从 start 下标开始的指定数目的字符。 ---------------------------------------------------------------------substr()");                                           
+   //在字符串中抽取从 start 下标开始的指定数目的字符。
+   //start	必需。要抽取的子串的起始下标。
+   //---------------必须是数值。如果是负数，那么该参数声明从字符串的尾部开始算起的位置。
+   //---------------也就是说，-1 指字符串中最后一个字符，-2 指倒数第二个字符，以此类推。
+   //length	可选。子串中的字符数。必须是数值。如果省略了该参数，那么返回从 stringObject 的开始位置到结尾的字串。
+   //返回值 一个新的字符串，包含从 stringObject 的 start（包括 start 所指的字符） 处开始的 length 个字符。
+   //---------------如果没有指定 length，那么返回的字符串包含从 start 到 stringObject 的结尾的字符。
+   //注释：substr() 的参数指定的是子串的开始位置和长度，因此它可以替代 substring() 和 slice() 来使用。
+   //ECMAscript 没有对该方法进行标准化，因此反对使用它。
+   //在 IE 4 中，参数 start 的值无效。在这个 BUG 中，start 规定的是第 0 个字符的位置。在之后的版本中，此 BUG 已被修正。
+   console.log(oString.substr(6));//world
+   console.log(oString.substr(6,8));//world 
+   console.log(oString.substr(-3));//rld
+   console.log(oString.substr(-3,-1));//     返回值为空   substr不支持第二个参数为负数
 
+   console.log("\n用于提取字符串中介于两个指定下标之间的字符。 ---------------------------------------------------------------------substring()");                                              
+   //用于提取字符串中介于两个指定下标之间的字符。
+   //start	必需。一个非负的整数，规定要提取的子串的第一个字符在 stringObject 中的位置。
+   //stop	 可选。一个非负的整数，比要提取的子串的最后一个字符在 stringObject 中的位置多 1。
+   //---------------如果省略该参数，那么返回的子串会一直到字符串的结尾。
+   //返回值 一个新的字符串，该字符串值包含 stringObject 的一个子字符串，
+   //---------------其内容是从 start 处到 stop-1 处的所有字符，其长度为 stop 减 start。
+   //substring() 方法返回的子串包括 start 处的字符，但不包括 stop 处的字符。
+   //---------------如果参数 start 与 stop 相等，那么该方法返回的就是一个空串（即长度为 0 的字符串）。
+   //---------------如果 start 比 stop 大，那么该方法在提取子串之前会先交换这两个参数。
+   //与 slice() 和 substr() 方法不同的是，substring() 不接受负的参数。
+   console.log(oString.substring(6));//world
+   console.log(oString.substring(6,8));//wo
+   console.log(oString.substring(6,6));//     返回值为空   
+   console.log(oString.substring(8,6));//wo   因为8比6大 所以替换了位置之后再请求的数据
+   console.log(oString.substring(-3,-1));//     返回值为空   substring不支持参数为负数
+
+   console.log("\n把一个字符串分割成字符串数组 ---------------------------------------------------------------------split()");                                                 
+   //把一个字符串分割成字符串数组
+   //separator	必需。字符串或正则表达式，从该参数指定的地方分割 stringObject。
+   //howmany	可选。该参数可指定返回的数组的最大长度。如果设置了该参数，返回的子串不会多于这个参数指定的数组。
+   //---------------如果没有设置该参数，整个字符串都会被分割，不考虑它的长度。
+   //返回值  一个字符串数组。该数组是通过在 separator 指定的边界处将字符串 stringObject 分割成子串创建的。
+   //---------------返回的数组中的字串不包括 separator 自身。
+   //---------------但是，如果 separator 是包含子表达式的正则表达式，那么返回的数组中包括与这些子表达式匹配的字串（但不包括与整个正则表达式匹配的文本）。
+   //如果把空字符串 ("") 用作 separator，那么 stringObject 中的每个字符之间都会被分割。
+   //String.split() 执行的操作与 Array.join 执行的操作是相反的。
+   console.log(oString.split(" "));//[ 'hello', 'world' ]
+   console.log(oString.split(/\s+/));//[ 'hello', 'world' ]
+   console.log(oString.split(""));//[ 'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd' ]   不写howmany  返回所有数据
+   console.log(oString.split("",4));//[ 'h', 'e', 'l', 'l' ] 写howmany  返回符合从1到howmany的所有数据
+   
+
+   console.log("\n返回对象的原始字符串表示。 ---------------------------------------------------------------------toString()");                                                    
     //返回对象的原始字符串表示。
     //无论它是伪对象，还是真对象都有 toString() 方法
     //对于 Object 对象，这个方法就比较多余，所以ECMA-262 没有定义这个值。
     console.log(oString.toString());//hello world    
 
+    console.log("\n返回最适合该对象的原始值。对于 Object 对象，会将object内容以键值对的形式返回。 ---------------------------------------------------------------------valueOf()");                                                        
     //返回最适合该对象的原始值。对于 Object 对象，会将object内容以键值对的形式返回。
     console.log(oString.valueOf()); //hello world
     
