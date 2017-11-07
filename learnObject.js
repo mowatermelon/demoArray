@@ -1,11 +1,11 @@
-//学习引用类型通常叫做类（class）
-//引用类型通常叫做类（class），也就是说，遇到引用值，所处理的就是对象。
-//注意：从传统意义上来说，ECMAScript 并不真正具有类。事实上，除了说明不存在类，在 ECMA-262 中根本没有出现“类”这个词。ECMAScript 定义了“对象定义”，逻辑上等价于其他程序设计语言中的类。
-//提示：本教程将使用术语“对象”。
-//对象是由 new 运算符加上要实例化的对象的名字创建的。
-//这种语法与 Java 语言的相似，不过当有不止一个参数时，ECMAScript 要求使用括号。
-//如果没有参数，括号可以省略
-//注意：尽管括号不是必需的，但是为了避免混乱，最好使用括号。
+//学习引用类型
+// 引用类型通常叫做类（class），也就是说，遇到引用值，所处理的就是对象。
+// 注意：从传统意义上来说，ECMAScript 并不真正具有类。事实上，除了说明不存在类，在 ECMA-262 中根本没有出现“类”这个词。ECMAScript 定义了“对象定义”，逻辑上等价于其他程序设计语言中的类。
+// 提示：本教程将使用术语“对象”。
+// 对象是由 new 运算符加上要实例化的对象的名字创建的。
+// 这种语法与 Java 语言的相似，不过当有不止一个参数时，ECMAScript 要求使用括号。
+// 如果没有参数，括号可以省略
+// 注意：尽管括号不是必需的，但是为了避免混乱，最好使用括号。
 
 //-------------------------------------------------------------------------------------------共有属性 __proto__ &&  constructor
 //在JavaScript中，每个具有原型的对象都会自动获得constructor属性。
@@ -23,39 +23,44 @@ function learnObject(){
     //所以理解了 Object 对象，就可以更好地理解其他对象。    
     var oo = new Object();
     oo.name = "Wu Eva";
-
+    console.log("\n 首先打印本身内容---------------------------------------------------------------------"); 
     //首先打印本身内容
     console.log(oo);//{ name: 'Wu Eva' } 
     console.log(typeof(oo));//object
     console.log(oo instanceof(Object));//true
     
     //----------------------------------------------------属性
+    console.log("\n 1.1 对创建对象的函数的引用（指针）。对于 Object 对象，该指针指向原始的 Object() 函数。---------------------------------------------------------------------constructor"); 
     //对创建对象的函数的引用（指针）。对于 Object 对象，该指针指向原始的 Object() 函数。
     console.log(oo.constructor);   //[Function: Object]
-    
-    //对该对象的对象原型的引用。对于 Object 对象，因为没有写原型链，所以返回未定义，不确定这个认知是否正确。
-    //console.log(oo.Prototype);   //undefined
+
+    console.log("\n 1.2 对象具有属性__proto__，可称为隐式原型，一个对象的隐式原型指向构造该对象的构造函数的原型。---------------------------------------------------------------------__proto__");     
     //对象具有属性__proto__，可称为隐式原型，一个对象的隐式原型指向构造该对象的构造函数的原型
     //就是这个构造体的默认值
     console.log(oo.__proto__); // {}  
     
     //----------------------------------------------------方法
+    console.log("\n 2.1 判断对象是否有某个特定的属性。必须用字符串指定该属性。 ---------------------------------------------------------------------hasOwnProperty()");     
     //判断对象是否有某个特定的属性。必须用字符串指定该属性。
     console.log(oo.hasOwnProperty("name"));//true
     console.log(oo.hasOwnProperty("age"));//false
 
+    console.log("\n 2.2 判断该对象是否为另一个对象的原型。 ---------------------------------------------------------------------isPrototypeOf()");     
     //判断该对象是否为另一个对象的原型。
     console.log(oo.isPrototypeOf(Object));//false
     console.log(oo.isPrototypeOf(String));//false
 
+    console.log("\n 2.3 判断给定的属性是否可以用 for...in 语句进行枚举。 ---------------------------------------------------------------------propertyIsEnumerable()");      
     //判断给定的属性是否可以用 for...in 语句进行枚举。
     console.log(oo.propertyIsEnumerable());//false
 
+    console.log("\n2.4 返回对象的原始字符串表示 ---------------------------------------------------------------------toString()");      
     //返回对象的原始字符串表示。
     //无论它是伪对象，还是真对象都有 toString() 方法
     //对于 Object 对象，这个方法就比较多余，所以ECMA-262 没有定义这个值。
     console.log(oo.toString());//[object Object]    
 
+    console.log("\n 2.5 返回最适合该对象的原始值。对于 Object 对象，会将object内容以键值对的形式返回。 ---------------------------------------------------------------------valueOf()");      
     //返回最适合该对象的原始值。对于 Object 对象，会将object内容以键值对的形式返回。
     console.log(oo.valueOf()); //{ name: 'Wu Eva' }
     
@@ -67,7 +72,7 @@ function learnBoolean(){
     //要创建 Boolean 对象，只需要传递 Boolean 值作为参数
     //遗憾的是，在 ECMAScript 中很少使用 Boolean 对象，即使使用，也不易理解。
     var oBool = new Boolean(true); //构造函数
-
+    console.log("\n 首先打印本身内容---------------------------------------------------------------------"); 
     //首先打印本身内容
     console.log(oBool);//[Boolean: true]
     console.log(typeof(oBool));//object 无论引用的是什么类型的对象，它都返回 "object"
@@ -75,7 +80,7 @@ function learnBoolean(){
     console.log(oBool instanceof(Object));//true
     console.log(oBool instanceof(String));//false
     
-
+    console.log("\n 1.1 强制类型转化，将其他类型的变量转化成布尔值类型---------------------------------------------------------------------Boolean()");     
     //强制类型转化，将其他类型的变量转化成布尔值类型
     //如果省略 value 参数，或者设置为 0、-0、null、""、false、undefined 或 NaN，则该对象设置为 false。
     //否则设置为 true，即使 value 参数是字符串 "false"。    
@@ -89,27 +94,31 @@ function learnBoolean(){
     console.log(Boolean(NaN))	//false 
 
     //----------------------------------------------------属性
+    console.log("\n 2.1 对创建对象的函数的引用（指针）。对于 Boolean 对象，该指针指向原始的 Boolean() 函数。---------------------------------------------------------------------constructor");     
     //对创建对象的函数的引用（指针）。对于 Boolean 对象，该指针指向原始的 Boolean() 函数。
     console.log(oBool.constructor);   //[Function: Boolean]
-    
-    //对该对象的对象原型的引用。这里对于 oBool，因为没有写原型链，所以返回未定义，不确定这个认知是否正确。
-    //console.log(oBool.Prototype);   //undefined
+
+    console.log("\n 2.2 对象具有属性__proto__，可称为隐式原型，一个对象的隐式原型指向构造该对象的构造函数的原型---------------------------------------------------------------------__proto__");
     //对象具有属性__proto__，可称为隐式原型，一个对象的隐式原型指向构造该对象的构造函数的原型
     //就是这个构造体的默认值
     console.log(oBool.__proto__); //[Boolean: false]
     
     //----------------------------------------------------方法
+    console.log("\n 3.1 返回对象的原始字符串表示，对于 Boolean 对象，返回字符串 'true' 或 'false'。---------------------------------------------------------------------toString()");    
     //返回对象的原始字符串表示，对于 Boolean 对象，返回字符串 "true" 或 "false"。
     console.log(oBool.toString()); //  true
     console.log(typeof oBool.toString()); //  string
-     
+
+    console.log("\n 3.2 返回最适合该对象的原始值，对于 Boolean 对象，返回原始值，即 true 和 false。---------------------------------------------------------------------valueOf()");        
     //返回最适合该对象的原始值，对于 Boolean 对象，返回原始值，即 true 和 false。
     console.log(oBool.valueOf()); // true   
     console.log(typeof oBool.valueOf()); // boolean   
     
+    console.log("\n 3.3 判断该对象是否为另一个对象的原型。---------------------------------------------------------------------isPrototypeOf()");  
     //判断该对象是否为另一个对象的原型。
     console.log(oBool.isPrototypeOf(Object));//false
-    
+
+    console.log("\n 3.4 判断给定的属性是否可以用 for...in 语句进行枚举。---------------------------------------------------------------------propertyIsEnumerable()"); 
     //判断给定的属性是否可以用 for...in 语句进行枚举。
     console.log(oBool.propertyIsEnumerable());//false  
 
@@ -118,6 +127,7 @@ function learnBoolean(){
     //但是在firefox 56.0（32 位）中 打印出结果(new Boolean(true))
     //console.log(oBool.toSource()); 
 
+    console.log("\n 4.1 但是注意，在 Boolean 表达式中，所有对象都会被自动转换为 true，所以 oFalseObject 的值是 true---------------------------------------------------------------------"); 
     //但是注意，在 Boolean 表达式中，所有对象都会被自动转换为 true，所以 oFalseObject 的值是 true
     var oFalse = new Boolean(false);
     console.log(oFalse);// [Boolean: false]  
@@ -132,7 +142,7 @@ function learnNumber(){
     //要创建 Number 对象，只需要传递 数值作为参数
     //不过应该少用这种对象，以避免潜在的问题。只要可能，都使用数字的原始表示法
     var oNum = new Number(68); //构造函数
-
+    console.log("\n 首先打印本身内容---------------------------------------------------------------------"); 
     //首先打印本身内容
     console.log(oNum);//[Number: 68]
     console.log(typeof(oNum));//object 无论引用的是什么类型的对象，它都返回 "object"
@@ -237,7 +247,7 @@ function learnNumber(){
 function learnString(){
     //String 原始类型的对象表示法
     var oString = new String("hello world");
-
+    console.log("\n 首先打印本身内容---------------------------------------------------------------------"); 
     //首先打印本身内容
     console.log(oString);//[String: 'hello world']
     console.log(typeof(oString));//object 无论引用的是什么类型的对象，它都返回 "object"
@@ -266,7 +276,10 @@ function learnString(){
     //对象具有属性__proto__，可称为隐式原型，一个对象的隐式原型指向构造该对象的构造函数的原型
     //就是这个构造体的默认值
     console.log(oString.__proto__); // [String: '']  
-    
+    console.log("\n返回字符串的长度---------------------------------------------------------------------length");           
+    //返回字符串的长度
+    console.log(oString.length); // 11
+
     //----------------------------------------------------方法
 
     console.log("\n创建 HTML 锚。将字符串输出为有唯一标识的纯粹HTML---------------------------------------------------------------------anchor()");       
@@ -588,10 +601,219 @@ function learnString(){
     //返回最适合该对象的原始值。对于 Object 对象，会将object内容以键值对的形式返回。
     console.log(oString.valueOf()); //hello world
     
+    // 字符串是 JavaScript 的一种基本的数据类型。
+    // String 对象的 length 属性声明了该字符串中的字符数。
+    // String 类定义了大量操作字符串的方法，例如从字符串中提取字符或子串，或者检索字符或子串。
+    // 需要注意的是，JavaScript 的字符串是不可变的（immutable），String 类定义的方法都不能改变字符串的内容。
+    // 像 String.toUpperCase() 这样的方法，返回的是全新的字符串，而不是修改原始字符串。
+    // 在较早的 Netscape 代码基的 JavaScript 实现中（例如 Firefox 实现中），字符串的行为就像只读的字符数组。
+    // 例如，从字符串 s 中提取第三个字符，可以用 s[2] 代替更加标准的 s.charAt(2)。
+    // 此外，对字符串应用 for/in 循环时，它将枚举字符串中每个字符的数组下标（但要注意，ECMAScript 标准规定，不能枚举 length 属性）。
+    // 因为字符串的数组行为不标准，所以应该避免使用它。
+}
+
+//学习数组
+function learnArray(){
+    var oArray = new Array("demo","melon","water");
+    console.log("\n 首先打印本身内容---------------------------------------------------------------------"); 
+    //首先打印本身内容
+    console.log(oArray);//[ 'demo', 'melon', 'water' ]
+    console.log(typeof(oArray));//object 无论引用的是什么类型的对象，它都返回 "object"
+    console.log(oArray instanceof(Array));//true
+    console.log(oArray instanceof(Object));//true
+    console.log(oArray instanceof(String));//false
+
+    //----------------------------------------------------属性
+    console.log("\n对创建对象的函数的引用（指针）。对于 Array 对象，该指针指向原始的 Array() 函数。---------------------------------------------------------------------constructor");               
+    //对创建对象的函数的引用（指针）。对于 Array 对象，该指针指向原始的 Array() 函数。
+    console.log(oArray.constructor);   //[Function: Array]
+    console.log("\n对象具有属性__proto__，可称为隐式原型，一个对象的隐式原型指向构造该对象的构造函数的原型---------------------------------------------------------------------__proto__");               
+    //对象具有属性__proto__，可称为隐式原型，一个对象的隐式原型指向构造该对象的构造函数的原型
+    //就是这个构造体的默认值
+    console.log(oArray.__proto__); //[]
+    console.log("\n返回数组的长度---------------------------------------------------------------------length");           
+    //返回字符串的长度
+    console.log(oArray.length); // 11
+
+    //----------------------------------------------------方法
+    console.log("\n----------------------------------------------------柔和  不会改变数组本身的");                
+    //----------------------------------------------------柔和  不会改变数组本身的
+    console.log("\n从某个已有的数组返回选定的元素---------------------------------------------------------------------slice()");            
+    //从某个已有的数组返回选定的元素
+    //@para start	必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。
+    //---------------也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。
+    //@para end	可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，
+    //---------------那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，
+    //---------------那么它规定的是从数组尾部开始算起的元素。
+    //返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。
+    //请注意，该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。
+    // 您可使用负值从数组的尾部选取元素。
+    // 如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。
+    //空数组使用这个方法不会报错
+    console.log(oArray);//[ 'demo', 'melon', 'water' ]
+    console.log(oArray.slice(1));//[ 'melon', 'water' ]
+    console.log(oArray.slice(-1));//[ 'water' ]
+    console.log(oArray.slice(-1,1));//[]
+    console.log(oArray);//[ 'demo', 'melon', 'water' ]
+    console.log([].slice(1));//[]    
+
+    console.log("\n用于对数组的元素进行排序---------------------------------------------------------------------sort()");                
+    //用于对数组的元素进行排序
+    //@para sortby	可选。规定排序顺序。必须是函数。
+    //对数组的引用。请注意，数组在原数组上进行排序，不生成副本。
+    //如果调用该方法时没有使用参数，将按字母顺序对数组中的元素进行排序，说得更精确点，
+    //---------------是按照字符编码的顺序进行排序。要实现这一点，首先应把数组的元素都转换成字符串（如有必要），以便进行比较。
+    // 如果想按照其他标准进行排序，就需要提供比较函数，该函数要比较两个值，
+    //---------------然后返回一个用于说明这两个值的相对顺序的数字。比较函数应该具有两个参数 a 和 b，其返回值如下：
+    // 若 a 小于 b，在排序后的数组中 a 应该出现在 b 之前，则返回一个小于 0 的值。
+    // 若 a 等于 b，则返回 0。
+    // 若 a 大于 b，则返回一个大于 0 的值。
+    console.log(oArray);//[ 'demo', 'melon', 'water' ]
+    console.log(oArray.sort());//[ 'demo', 'melon', 'water' ]
+    console.log([ 'water', 'melon', 'demo' ].sort()); //[ 'demo', 'melon', 'water' ]
+    [ 'water', 'melon', 'demo' ].sort (function(a,b){return a.localeCompare(b)});//[ 'demo', 'melon', 'water' ]
+    var tempstr1 = ["99","1","7","88","30","90","444","999"];
+    console.log(tempstr1.sort());//[ '1', '30', '444', '7', '88', '90', '99', '999' ] 默认是按照对应字符大小进行排序
+    console.log(tempstr1.sort(function(a,b){return a.localeCompare(b)}));//[ '1', '30', '444', '7', '88', '90', '99', '999' ]  按照对应字符大小进行排序
+    console.log(tempstr1.sort (function(a,b){return a - b}));//[ '1', '7', '30', '88', '90', '99', '444', '999' ]   按照对应数值大小进行排序
+    console.log([].sort());//[] 
+
+    console.log("\n----------------------------------------------------强硬  会改变数组本身的");    
+    //----------------------------------------------------强硬  会改变数组本身的
+    console.log("\n用于颠倒数组中元素的顺序---------------------------------------------------------------------reverse() ");            
+    //用于颠倒数组中元素的顺序
+    //该方法会改变原来的数组，而不会创建新的数组。
+    //空数组倒序就是他本身
+    console.log(oArray);//[ 'demo', 'melon', 'water' ]
+    console.log(oArray.reverse());//[ 'water', 'melon', 'demo' ]
+    console.log([].reverse());//[]   
+
+    console.log("\n连接两个或更多的数组，并返回结果。---------------------------------------------------------------------concat()");
+    //连接两个或更多的数组，并返回结果。
+    //该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。
+    //@para arrayX	必需。该参数可以是具体的值，也可以是数组对象。可以是任意多个。
+    //返回一个新的数组。该数组是通过把所有 arrayX 参数添加到 arrayObject 中生成的。
+    //---------------如果要进行 concat() 操作的参数是数组，那么添加的是数组中的元素，而不是数组。
+    console.log(oArray.concat("e")); // [ 'water', 'melon', 'demo', 'e' ]
+    console.log(oArray.concat("e","e","e","e","e")); // [ 'water', 'melon', 'demo', 'e', 'e', 'e', 'e', 'e' ]]   
+    console.log(oArray.concat(oArray)); // [ 'water', 'melon', 'demo', 'water', 'melon', 'demo' ]
+    console.log(oArray.concat(oArray,oArray,oArray));// [ 'water', 'melon', 'demo','water', 'melon', 'demo', 'water', 'melon', 'demo', 'water', 'melon', 'demo' ]
+
+    console.log("\n数组中的所有元素放入一个字符串。---------------------------------------------------------------------join()");
+    //数组中的所有元素放入一个字符串。
+    //元素是通过指定的分隔符进行分隔的。
+    //@para separator	可选。指定要使用的分隔符。如果省略该参数，则使用逗号作为分隔符。
+    //返回一个字符串。该字符串是通过把 arrayObject 的每个元素转换为字符串，
+    //---------------然后把这些字符串连接起来，在两个元素之间插入 separator 字符串而生成的。
+    //如果不传入参数，调用这个函数和调用toString结果一样
+    console.log(oArray.join());//water,melon,demo
+    console.log(oArray.join()==oArray.toString());//true
+    console.log(oArray.join('-'));//water-melon-demo 
+
+    console.log("\n用于把数组的第一个元素从其中删除，并返回第一个元素的值。---------------------------------------------------------------------shift()");            
+    //用于把数组的第一个元素从其中删除，并返回第一个元素的值。
+    //数组原来的第一个元素的值。
+    //如果数组是空的，那么 shift() 方法将不进行任何操作，返回 undefined 值。
+    //请注意，该方法不创建新数组，而是直接修改原有的 arrayObject。
+    console.log(oArray);//[ 'water', 'melon', 'demo' ]
+    console.log(oArray.shift());//water
+    console.log(oArray);//[ 'melon', 'demo' ]
+    console.log([].shift());//undefined    
+
+    console.log("\n用于删除并返回数组的最后一个元素---------------------------------------------------------------------pop()");    
+    //用于删除并返回数组的最后一个元素
+    //arrayObject 的最后一个元素。
+    //pop() 方法将删除 arrayObject 的最后一个元素，
+    //---------------把数组长度减 1，并且返回它删除的元素的值。
+    //---------------如果数组已经为空，则 pop() 不改变数组，并返回 undefined 值。
+    //注释：该方法会改变数组的长度。
+    console.log(oArray);//[ 'melon', 'demo' ]
+    console.log(oArray.pop());//demo
+    console.log(oArray);//[ 'melon' ]
+    console.log([].pop());//undefined
+
+    console.log("\n可向数组的开头添加一个或更多元素，并返回新的长度。---------------------------------------------------------------------push()");            
+    //可向数组的开头添加一个或更多元素，并返回新的长度。
+    //@para newelement1,newelement2,....,newelementX  要添加到数组的第一个元素，至少要传入一个参数
+    //把指定的值添加到数组后的新长度。
+    //unshift() 方法将把它的参数插入 arrayObject 的头部，
+    //---------------并将已经存在的元素顺次地移到较高的下标处，以便留出空间。
+    //该方法的第一个参数将成为数组的新元素 0，如果还有第二个参数，它将成为新的元素 1，以此类推。
+    //请注意，unshift() 方法不创建新的创建，而是直接修改原有的数组。
+    //unshift() 方法无法在 Internet Explorer 中正确地工作
+    console.log(oArray);//[ 'melon' ]
+    console.log(oArray.unshift(oArray));//2
+    console.log(oArray);//[ [Circular], 'melon' ]
+    console.log([].unshift(oArray));//1    
+
+    console.log("\n向数组的末尾添加一个或多个元素，并返回新的长度。---------------------------------------------------------------------push()");        
+    //向数组的末尾添加一个或多个元素，并返回新的长度。
+    //@para newelement1,newelement2,....,newelementX  要添加到数组的第一个元素，至少要传入一个参数
+    //把指定的值添加到数组后的新长度。
+    //push() 方法可把它的参数顺序添加到 arrayObject 的尾部。
+    //---------------它直接修改 arrayObject，而不是创建一个新的数组。
+    //---------------push() 方法和 pop() 方法使用数组提供的先进后出栈的功能。
+    //注释：该方法会改变数组的长度。
+    console.log(oArray);//[ [Circular], 'melon' ]
+    console.log(oArray.push(oArray));//3
+    console.log(oArray);//[ 'demo', 'melon', [Circular] ]
+    console.log([].push(oArray));//1     
+
+    console.log("\n向/从数组中添加/删除项目，然后返回被删除的项目。---------------------------------------------------------------------splice() ");            
+    //向/从数组中添加/删除项目，然后返回被删除的项目。
+    //@para index	必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置。
+    //@para howmany	必需。要删除的项目数量。如果设置为 0，则不会删除项目。
+    //@para item1, ..., itemX	可选。向数组添加的新项目。
+    //返回  Array	包含被删除项目的新数组，如果有的话。
+    //splice() 方法可删除从 index 处开始的零个或多个元素，并且用参数列表中声明的一个或多个值来替换那些被删除的元素。
+    //如果从 arrayObject 中删除了元素，则返回的是含有被删除的元素的数组。
+    //请注意，splice() 方法与 slice() 方法的作用是不同的，splice() 方法会直接对数组进行修改。
+    console.log(oArray+"\n");//,melon,
+    console.log(oArray.splice(2,0,"mmmelon")+"\n");//  返回值为空   从 index 2 添加一个新元素 ("melon")  不删除任何数据
+    console.log(oArray+"\n");//,melon,mmmelon,
+    console.log(oArray.splice(2,1,"mmelon")+"\n");//mmmelon 删除从 index 2 开始的第一个元素（mmmelon），并添加一个新元素 ("mmelon") 来替代被删除的元素
+    console.log(oArray+"\n");//,melon,mmelon,
+    console.log(oArray.splice(0,1,"mmmmmelon")+"\n");//mmmmmelon,melon,mmelon, 删除从 index 0 开始的第一个元素（mmmelon），并添加一个新元素 (mmmmmelon") 来替代被删除的元素
+    console.log(oArray+"\n");//mmmmmelon,melon,mmelon,
+    console.log(oArray.splice(2,1,oArray)+"\n");//mmelon
+    console.log(oArray+"\n");//mmmmmelon,melon,,
+    console.log(oArray.splice(0,oArray.length,"mmmmmelonnnnn")+"\n");//mmmmmelon,melon,mmmmmelonnnnn,mmmmmelonnnnn
+    console.log(oArray+"\n");//mmmmmelonnnnn
+}
+
+//学习日期
+function learnDate(){
+    var oDate = new Date();
+    console.log("\n 首先打印本身内容---------------------------------------------------------------------"); 
+    //首先打印本身内容
+    console.log(oDate);//2017-11-07T09:51:08.076Z
+    console.log(typeof(oDate));//object 无论引用的是什么类型的对象，它都返回 "object"
+    console.log(oDate instanceof(Date));//true
+    console.log(oDate instanceof(Object));//true
+    console.log(oDate instanceof(String));//false
+
+    //强制类型转化，将其他类型的变量转化成Date类型
+    //false,true,undefined,null值,字符串值和object对象不能转换成Date类型
+    console.log(Date(false))	//Tue Nov 07 2017 17:51:08 GMT+0800 (中国标准时间)
+    console.log(Date(true))	//Tue Nov 07 2017 17:51:08 GMT+0800 (中国标准时间)
+    console.log(Date(undefined))	//Tue Nov 07 2017 17:51:08 GMT+0800 (中国标准时间)
+    console.log(Date(null))	//Tue Nov 07 2017 17:51:08 GMT+0800 (中国标准时间)
+    console.log(Date("1.2.3"))	//Tue Nov 07 2017 17:51:08 GMT+0800 (中国标准时间)
+    console.log(Date(new Object()))	//Tue Nov 07 2017 17:51:08 GMT+0800 (中国标准时间)
+
+    //----------------------------------------------------属性
+    //对创建对象的函数的引用（指针）。对于 Date 对象，该指针指向原始的 Date() 函数。
+    console.log(oDate.constructor);   //[Function: Date]
+
+    //对象具有属性__proto__，可称为隐式原型，一个对象的隐式原型指向构造该对象的构造函数的原型
+    //就是这个构造体的默认值
+    console.log(oDate.__proto__); //Date {}
 
 }
 
 //learnObject();
 //learnBoolean();
 //learnNumber();
-learnString();
+//learnString();
+learnArray();
+//learnDate();
