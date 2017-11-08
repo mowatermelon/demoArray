@@ -678,15 +678,26 @@ function learnArray(){
     console.log(tempstr1.sort (function(a,b){return a - b}));//[ '1', '7', '30', '88', '90', '99', '444', '999' ]   按照对应数值大小进行排序
     console.log([].sort());//[] 
 
+    console.log("\n数组中的所有元素放入一个字符串。---------------------------------------------------------------------join()");
+    //数组中的所有元素放入一个字符串。
+    //元素是通过指定的分隔符进行分隔的。
+    //@para separator	可选。指定要使用的分隔符。如果省略该参数，则使用逗号作为分隔符。
+    //返回一个字符串。该字符串是通过把 arrayObject 的每个元素转换为字符串，
+    //---------------然后把这些字符串连接起来，在两个元素之间插入 separator 字符串而生成的。
+    //如果不传入参数，调用这个函数和调用toString结果一样
+    console.log(oArray.join());//water,melon,demo
+    console.log(oArray.join()==oArray.toString());//true
+    console.log(oArray.join('-'));//water-melon-demo 
+
     console.log("\n----------------------------------------------------强硬  会改变数组本身的");    
     //----------------------------------------------------强硬  会改变数组本身的
     console.log("\n用于颠倒数组中元素的顺序---------------------------------------------------------------------reverse() ");            
     //用于颠倒数组中元素的顺序
     //该方法会改变原来的数组，而不会创建新的数组。
     //空数组倒序就是他本身
-    console.log(oArray);//[ 'demo', 'melon', 'water' ]
-    console.log(oArray.reverse());//[ 'water', 'melon', 'demo' ]
-    console.log([].reverse());//[]   
+    // console.log(oArray);//[ 'demo', 'melon', 'water' ]
+    // console.log(oArray.reverse());//[ 'water', 'melon', 'demo' ]
+    // console.log([].reverse());//[]   
 
     console.log("\n连接两个或更多的数组，并返回结果。---------------------------------------------------------------------concat()");
     //连接两个或更多的数组，并返回结果。
@@ -698,17 +709,6 @@ function learnArray(){
     console.log(oArray.concat("e","e","e","e","e")); // [ 'water', 'melon', 'demo', 'e', 'e', 'e', 'e', 'e' ]]   
     console.log(oArray.concat(oArray)); // [ 'water', 'melon', 'demo', 'water', 'melon', 'demo' ]
     console.log(oArray.concat(oArray,oArray,oArray));// [ 'water', 'melon', 'demo','water', 'melon', 'demo', 'water', 'melon', 'demo', 'water', 'melon', 'demo' ]
-
-    console.log("\n数组中的所有元素放入一个字符串。---------------------------------------------------------------------join()");
-    //数组中的所有元素放入一个字符串。
-    //元素是通过指定的分隔符进行分隔的。
-    //@para separator	可选。指定要使用的分隔符。如果省略该参数，则使用逗号作为分隔符。
-    //返回一个字符串。该字符串是通过把 arrayObject 的每个元素转换为字符串，
-    //---------------然后把这些字符串连接起来，在两个元素之间插入 separator 字符串而生成的。
-    //如果不传入参数，调用这个函数和调用toString结果一样
-    console.log(oArray.join());//water,melon,demo
-    console.log(oArray.join()==oArray.toString());//true
-    console.log(oArray.join('-'));//water-melon-demo 
 
     console.log("\n用于把数组的第一个元素从其中删除，并返回第一个元素的值。---------------------------------------------------------------------shift()");            
     //用于把数组的第一个元素从其中删除，并返回第一个元素的值。
@@ -742,8 +742,10 @@ function learnArray(){
     //请注意，unshift() 方法不创建新的创建，而是直接修改原有的数组。
     //unshift() 方法无法在 Internet Explorer 中正确地工作
     console.log(oArray);//[ 'melon' ]
-    console.log(oArray.unshift(oArray));//2
-    console.log(oArray);//[ [Circular], 'melon' ]
+    console.log(oArray.unshift('oArray'));//2
+    console.log(oArray);//[ 'oArray', 'melon' ]
+    console.log(oArray.unshift(oArray));//3
+    console.log(oArray);//[ [Circular], 'oArray', 'melon' ]
     console.log([].unshift(oArray));//1    
 
     console.log("\n向数组的末尾添加一个或多个元素，并返回新的长度。---------------------------------------------------------------------push()");        
@@ -754,9 +756,11 @@ function learnArray(){
     //---------------它直接修改 arrayObject，而不是创建一个新的数组。
     //---------------push() 方法和 pop() 方法使用数组提供的先进后出栈的功能。
     //注释：该方法会改变数组的长度。
-    console.log(oArray);//[ [Circular], 'melon' ]
-    console.log(oArray.push(oArray));//3
-    console.log(oArray);//[ 'demo', 'melon', [Circular] ]
+    console.log(oArray);//[ [Circular], 'oArray', 'melon' ]
+    console.log(oArray.push('oooArray'));//4
+    console.log(oArray);//[ [Circular], 'oArray', 'melon', 'oooArray' ]
+    console.log(oArray.push(oArray));//5
+    console.log(oArray);//[ [Circular], 'oArray', 'melon', 'oooArray', [Circular] ]
     console.log([].push(oArray));//1     
 
     console.log("\n向/从数组中添加/删除项目，然后返回被删除的项目。---------------------------------------------------------------------splice() ");            
@@ -768,17 +772,77 @@ function learnArray(){
     //splice() 方法可删除从 index 处开始的零个或多个元素，并且用参数列表中声明的一个或多个值来替换那些被删除的元素。
     //如果从 arrayObject 中删除了元素，则返回的是含有被删除的元素的数组。
     //请注意，splice() 方法与 slice() 方法的作用是不同的，splice() 方法会直接对数组进行修改。
-    console.log(oArray+"\n");//,melon,
-    console.log(oArray.splice(2,0,"mmmelon")+"\n");//  返回值为空   从 index 2 添加一个新元素 ("melon")  不删除任何数据
-    console.log(oArray+"\n");//,melon,mmmelon,
-    console.log(oArray.splice(2,1,"mmelon")+"\n");//mmmelon 删除从 index 2 开始的第一个元素（mmmelon），并添加一个新元素 ("mmelon") 来替代被删除的元素
-    console.log(oArray+"\n");//,melon,mmelon,
-    console.log(oArray.splice(0,1,"mmmmmelon")+"\n");//mmmmmelon,melon,mmelon, 删除从 index 0 开始的第一个元素（mmmelon），并添加一个新元素 (mmmmmelon") 来替代被删除的元素
-    console.log(oArray+"\n");//mmmmmelon,melon,mmelon,
-    console.log(oArray.splice(2,1,oArray)+"\n");//mmelon
-    console.log(oArray+"\n");//mmmmmelon,melon,,
-    console.log(oArray.splice(0,oArray.length,"mmmmmelonnnnn")+"\n");//mmmmmelon,melon,mmmmmelonnnnn,mmmmmelonnnnn
-    console.log(oArray+"\n");//mmmmmelonnnnn
+    // console.log(oArray);//,melon,
+    // console.log(oArray.splice(2,0,"mmmelon")+"\n");//  返回值为空   从 index 2 添加一个新元素 ("melon")  不删除任何数据
+    // console.log(oArray+"\n");//,melon,mmmelon,
+    // console.log(oArray.splice(2,1,"mmelon")+"\n");//mmmelon 删除从 index 2 开始的第一个元素（mmmelon），并添加一个新元素 ("mmelon") 来替代被删除的元素
+    // console.log(oArray+"\n");//,melon,mmelon,
+    // console.log(oArray.splice(0,1,"mmmmmelon")+"\n");//mmmmmelon,melon,mmelon, 删除从 index 0 开始的第一个元素（mmmelon），并添加一个新元素 (mmmmmelon") 来替代被删除的元素
+    // console.log(oArray+"\n");//mmmmmelon,melon,mmelon,
+    // console.log(oArray.splice(2,1,oArray)+"\n");//mmelon
+    // console.log(oArray+"\n");//mmmmmelon,melon,,
+    // console.log(oArray.splice(0,oArray.length,"mmmmmelonnnnn")+"\n");//mmmmmelon,melon,mmmmmelonnnnn,mmmmmelonnnnn
+    // console.log(oArray+"\n");//mmmmmelonnnnn
+
+    console.log(oArray);//[ [Circular], 'oArray', 'melon', 'oooArray', [Circular] ]
+    console.log("1 手动分割线\n");
+    console.log(oArray.splice(2,0,"mmmelon"));//[]  返回值为空   从 索引为2(melon) 添加一个新元素 ("mmmelon") ，原有的元素顺势后移， 不删除任何数据
+    console.log("2 手动分割线\n");
+    console.log(oArray);//[ [Circular], 'oArray', 'mmmelon', 'melon', 'oooArray', [Circular] ]
+    console.log("3 手动分割线\n");
+    console.log(oArray.splice(2,1,"mmelon"));//[ 'mmmelon' ] 删除从 索引为2(mmmelon) 开始的第一个元素（mmmelon），并添加一个新元素 ("mmelon") 来替代被删除的元素
+    console.log("4 手动分割线\n");
+    console.log(oArray);//[ [Circular], 'oArray', 'mmelon', 'melon', 'oooArray', [Circular] ]
+    console.log("5 手动分割线\n");
+    console.log(oArray.splice(0,1,"mmmmmelon"));//[ [ 'mmmmmelon', 'oArray', 'mmelon', 'melon', 'oooArray', [Circular] ] ] 删除从 index 0 开始的第一个元素（[ 'mmmmmelon', 'oArray', 'mmelon', 'melon', 'oooArray', [Circular] ]），并添加一个新元素 (mmmmmelon") 来替代被删除的元素
+    console.log("6 手动分割线\n");
+    console.log(oArray);//[ 'mmmmmelon', 'oArray', 'mmelon', 'melon', 'oooArray', [Circular] ]
+    console.log("7 手动分割线\n");
+    // console.log(oArray.splice(2,1,oArray));//[ 'mmelon' ]
+    // console.log("8 手动分割线\n");
+    // console.log(oArray);//[ 'mmmmmelon','oArray',[Circular],'melon','oooArray',[Circular] ]
+    // console.log("9 手动分割线\n");
+    // console.log(oArray.splice(0,oArray.length,"mmmmmelonnnnn"));//[ 'mmmmmelon','oArray',[ 'mmmmmelonnnnn' ],'melon','oooArray',[ 'mmmmmelonnnnn' ] ]
+    // console.log("10 手动分割线\n");
+    // console.log(oArray);//[ 'mmmmmelonnnnn' ]    
+
+    console.log("\n浅复制数组的一部分到同一数组中的另一个位置，并返回它，而不修改其大小。 es6---------------------------------------------------------------------copyWithin()");    
+    //浅复制数组的一部分到同一数组中的另一个位置，并返回它，而不修改其大小。
+    //@para target 目标索引 必填 0 为基底的索引，复制序列到该位置。如果是负数，target 将从末尾开始计算。
+    //---------------如果 target 大于等于 arr.length，将会不发生拷贝。
+    //---------------如果 target 在 start 之后，复制的序列将被修改以符合 arr.length。
+    //@para start 源开始索引 非必填
+    //0 为基底的索引，开始复制元素的起始位置。如果是负数，start 将从末尾开始计算。
+    //---------------如果 start 被忽略，copyWithin 将会从0开始复制。
+    //@para end 结束源索引 非必填
+    //0 为基底的索引，开始复制元素的结束位置。copyWithin 将会拷贝到该位置，
+    //---------------但不包括 end 这个位置的元素。如果是负数， end 将从末尾开始计算。
+    //改变了的数组。
+    //参数target,start和end 必须为整数。
+    // 如果start为负，则其指定的索引位置等同于length+start，length为数组的长度。
+    // end也是如此。
+    // copyWithin方法不要求其this值必须是一个数组对象；
+    // 除此之外，copyWithin是一个可变方法，它可以改变this对象本身，并且返回它，而不仅仅是它的拷贝。
+    // copyWithin 就像 C 和 C++ 的 memcpy 函数一样，且它是用来移动 Array 或者 
+    // The copyWithin 是一个可变方法，它不会改变 this 的 length，但是会改变 this 本身的内容，且需要时会创建新的属性。 
+    console.log(oArray);//[ 'mmmmmelon', 'oArray', 'mmelon', 'melon', 'oooArray', [Circular] ]
+    console.log(oArray.copyWithin(1));//[ 'mmmmmelon','mmmmmelon','oArray','mmelon','melon','oooArray' ]     将原数组中索引0到oArray.length的内容（'mmmmmelon', 'oArray', 'mmelon', 'melon', 'oooArray', [Circular]） 从 索引为1(mmmmmelon)开始覆盖原数组内容，超出数组长度的[Circular]被舍弃
+    //console.log(oArray);//[ 'mmmmmelon','mmmmmelon','oArray','mmelon','melon','oooArray' ]    
+    console.log(oArray.copyWithin(1,2));//[ 'mmmmmelon', 'oArray', 'mmelon', 'melon', 'oooArray', 'oooArray' ] 
+    //将原数组中索引2到oArray.length的内容（'oArray','mmelon','melon','oooArray'） 从 索引为1(mmmmmelon)开始覆盖原数组内容 
+    //---------------因为从索引2到oArray.length的长度 小于target 到oArray.length，所以原数组中的最后一个元素(oooArray)，没有被修改
+    //console.log(oArray);//[ 'mmmmmelon', 'oArray', 'mmelon', 'melon', 'oooArray', 'oooArray' ]
+    console.log(oArray.copyWithin(1,2,3));//[ 'mmmmmelon', 'mmelon', 'mmelon', 'melon', 'oooArray', 'oooArray' ]
+    //因为不包含 索引为end的值 所以将原数组中索引2的内容（'mmelon'） 从 原索引为1(mmmmmelon)开始覆盖原数组内容 
+    //---------------因为从索引2的长度 小于target(1) 到oArray.length，所以原数组中的最后四个元素('mmelon', 'melon', 'oooArray', 'oooArray')，没有被修改    
+    //console.log(oArray);//  [ 'mmmmmelon', 'mmelon', 'mmelon', 'melon', 'oooArray', 'oooArray' ]
+    console.log(oArray.copyWithin(oArray.length));//[ 'mmmmmelon', 'mmelon', 'mmelon', 'melon', 'oooArray', 'oooArray' ] 因为target 等于 arr.length，没有发生任何拷贝
+    console.log(oArray.copyWithin(oArray.length+1));//[ 'mmmmmelon', 'mmelon', 'mmelon', 'melon', 'oooArray', 'oooArray' ] 因为target 大于 arr.length，没有发生任何拷贝
+    console.log(oArray.copyWithin(1,0,3));  //[ 'mmmmmelon','mmmmmelon','mmelon','mmelon','oooArray','oooArray' ]  
+    //因为target 大于 start 将两个数据对调
+    //所以将原数组中索引0的内容(mmmmmelon) 从 原索引为1(mmmmmelon)开始覆盖原数组内容 
+
+  
 }
 
 //学习日期
