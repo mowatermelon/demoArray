@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+	<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1.0, maximum-scale=1, user-scalable=no" />
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>  
+	<meta name="author" content="WU EVA" />
+	<title>panel折叠动画</title>
+	<style>
+			*{margin:0; padding:0}
+			body{overflow-x: hidden}
+			*, *:before, *:after {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+			.clearfix:after,.clearfix:before{display:table;content:" "}.clearfix:after{clear:both}
+			.panel-head{height:40px; width:100%; background-color:#d9edf7; line-height:40px; color:#3a87ad;cursor:pointer;border-bottom: 1px solid #FFF; }
+			.panel-head h5{text-align: left;display: inline-block;line-height: 16px;font-size: 16px;text-indent: 1em;}
+			.panel-head icon{margin-right:20px;font-size:20px;font-weight:bolder;float: right;}
+			.panel-body{padding: 15px;display: inline-table;width: 100%;}
+			.input-group-addon, .input-group-btn { width: 1%; white-space: nowrap; vertical-align: middle; }
+			.input-group-addon:first-child{border-right: 0;}
+			.input-group {position: relative;display: table;border-collapse: separate;margin-bottom:1em;}
+			.input-group label{word-spacing:0.8em;background-color:rgb(217, 237, 247);border: solid 1px RGB(160, 200, 250);display: table-cell;}
+			.input-group-addon {padding: 6px 12px;font-size: 14px;font-weight: normal;line-height: 1;text-align: center;background-color: #eeeeee;border: 1px solid #cccccc;border-radius: 4px;}
+			.input-group-addon:first-child{border-top-right-radius: 0;border-bottom-right-radius: 0;}
+			.input-group .form-control:last-child{border-bottom-left-radius: 0;border-top-left-radius: 0;}
+			.form-control {width: 100%;padding: 6px 0 6px 6px;font-size: 14px;line-height: 1.428571429;color: #555;vertical-align: middle;background-color: #ffffff;border: 1px solid RGB(160, 200, 250);border-radius: 4px;-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;display: table-cell;}
+			.form-control:focus {border-color: #66afe9; outline: 0; -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);}
+			.m-l-r-0{margin:0;}
+			.text-danger {color:Red;}
+			.hide { display: none !important; }
+			.show { display: block !important; }
+			.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9{position:relative;padding-right:1.6%;min-height:1px}
+			.col-xs-12 {width: 98%;}
+			@media (min-width: 768px) {.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9{float:left}.col-sm-6 {width: 48.25%;}.col-sm-4 {width: 31.65%;}}   
+			.form-control[disabled],.form-control[readonly],fieldset[disabled] .form-control{background-color:#eee;cursor:not-allowed}
+	</style>
+</head>
+<body>
+	<div class="panel-group">
+			<div class="panel">
+					<div class="panel-head">
+							<h5>面板01</h5><icon>一</icon>
+					</div>
+					<div class="panel-body">
+							<div class="input-group col-xs-12 col-sm-6">
+									<label for="txtTXT1" class="input-group-addon"><b class='text-danger'>*</b>文本框一</label>
+									<input type="text" class="form-control" id="txtTXT1" />
+							</div>
+							<div class="input-group col-xs-12 col-sm-6">
+									<label for="txtTXT2"  class="input-group-addon"><b class='text-danger'>*</b>文本框二</label>
+									<input type="text" class="form-control" id="txtTXT2" />
+							</div>
+							<div class="input-group col-xs-12 col-sm-6">
+									<label for="txtTXT3"  class="input-group-addon"><b class='text-danger'>*</b>文本框三</label>
+									<input type="text" class="form-control" id="txtTXT3"/>
+							</div>
+							<div class="input-group col-xs-12 col-sm-6">
+									<label for="txtTXT4"  class="input-group-addon"><b class='text-danger'>*</b>文本框四</label>
+									<input type="text" class="form-control" id="txtTXT4" />
+							</div>
+					</div>
+			</div> 
+			<div class="panel">
+					<div class="panel-head">
+							<h5>面板02</h5><icon>一</icon>
+					</div>
+					<div class="panel-body">
+							<div class="input-group col-xs-12 col-sm-6">
+									<label for="txtTXT21" class="input-group-addon"><b class='text-danger'>*</b>文本框一</label>
+									<input type="text" class="form-control" id="txtTXT21" />
+							</div>
+							<div class="input-group col-xs-12 col-sm-6">
+									<label for="txtTXT22"  class="input-group-addon"><b class='text-danger'>*</b>文本框二</label>
+									<input type="text" class="form-control" id="txtTXT22" />
+							</div>
+							<div class="input-group col-xs-12 col-sm-6">
+									<label for="txtTXT23"  class="input-group-addon"><b class='text-danger'>*</b>文本框三</label>
+									<input type="text" class="form-control" id="txtTXT23"/>
+							</div>
+							<div class="input-group col-xs-12 col-sm-6">
+									<label for="txtTXT24"  class="input-group-addon"><b class='text-danger'>*</b>文本框四</label>
+									<input type="text" class="form-control" id="txtTXT24" />
+							</div>
+					</div>
+			</div> 
+			<div class="panel">
+					<div class="panel-head">
+							<h5>面板03</h5><icon>一</icon>
+					</div>
+					<div class="panel-body">
+							<div class="input-group col-xs-12 col-sm-6">
+									<label for="txtTXT31" class="input-group-addon"><b class='text-danger'>*</b>文本框一</label>
+									<input type="text" class="form-control" id="txtTXT31" />
+							</div>
+							<div class="input-group col-xs-12 col-sm-6">
+									<label for="txtTXT32"  class="input-group-addon"><b class='text-danger'>*</b>文本框二</label>
+									<input type="text" class="form-control" id="txtTXT32" />
+							</div>
+							<div class="input-group col-xs-12 col-sm-6">
+									<label for="txtTXT33"  class="input-group-addon"><b class='text-danger'>*</b>文本框三</label>
+									<input type="text" class="form-control" id="txtTXT33"/>
+							</div>
+							<div class="input-group col-xs-12 col-sm-6">
+									<label for="txtTXT34"  class="input-group-addon"><b class='text-danger'>*</b>文本框四</label>
+									<input type="text" class="form-control" id="txtTXT34" />
+							</div>
+					</div>
+			</div> 						
+	</div>
+ 
+</body>
+<script type="text/javascript" src="../../js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        LoadPanel();
+    });
+
+    //加载面板动画
+    function LoadPanel() {
+        $(".panel-head").click(function () {
+            var _this = $(this);
+            if (_this.siblings(".panel-body").hasClass('hide')) {
+                _this.siblings(".panel-body").animate({ "height": _this.attr("cheight"), "padding": "15px" }, 200).removeClass("hide").children("div").removeClass("hide");
+                _this.children("icon").html("一");
+            } else {
+                var tempH = _this.siblings(".panel-body").height()
+                _this.attr("cheight", tempH);
+                _this.siblings(".panel-body").animate({ "height": "0", "padding": "0" }, 200).addClass("hide").children("div").addClass("hide");
+                _this.children("icon").html("十");
+            }
+        });
+    }
+</script>
+</html>

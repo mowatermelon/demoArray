@@ -13,6 +13,13 @@
 //其他所有的JavaScript内置对象都具备constructor属性。
 //例如：Array、Boolean、Date、Function、Number、Object、String等。所有主流浏览器均支持该属性。
 
+//learnObject();
+//learnBoolean();
+//learnNumber();
+//learnString();
+learnArray();
+//learnDate();
+
 
 //学习Object对象
 function learnObject(){
@@ -875,9 +882,3 @@ function learnDate(){
 
 }
 
-//learnObject();
-//learnBoolean();
-//learnNumber();
-//learnString();
-learnArray();
-//learnDate();

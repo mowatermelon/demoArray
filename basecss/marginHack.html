@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+	<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1.0, maximum-scale=1, user-scalable=no" />
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>  
+	<meta name="author" content="WU EVA" />
+    <title>margin负值的小妙用</title>
+    <style>
+			/*先放上共有样式*/
+			html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, address, big, cite, code, del, em, font, img, ins, small, strong, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend {
+				margin: 0;
+				padding: 0;
+			}
+			dl,p,ul{
+				-webkit-margin-before: 0;
+				-webkit-margin-after: 0;
+				-webkit-margin-start: 0;
+				-webkit-margin-end: 0;
+			}
+			dl{
+				display: inline-block;
+			}
+
+			a img {
+					border: 0 none;
+					vertical-align: middle;
+			}
+			dt {
+					height: 150px;
+					padding: 0 15px;
+					margin:50px;								
+			}
+			.p-img {
+					margin: 5px 0;
+			}
+			.b-price{
+				background: none repeat scroll 0 0 #4ad5ff;
+				color: #fff;
+				font-family: arial;
+				font-weight: bold;
+				line-height: 1.5;
+				padding: 2px 5px;				
+			}
+			.demo-absolute dt,.demo-margin dt{
+				border:1px dotted #ccc;
+			}
+      .title{
+        font-weight: bolder;        
+        border-left:5px solid #4ad5ff;
+        text-indent:1em;
+				line-height: 1.5;
+      }			
+			.demo-margin dl{
+				vertical-align: middle;
+			}
+			/*absolute 解决方案*/
+			.demo-absolute dt {
+					position: relative; 
+					width: 300px;						
+			}
+			.demo-absolute .b-price{
+				position: absolute;
+			}	
+			.demo-absolute .t-l .b-price {
+					top: 5px;
+					left: 20px;
+			}					
+			.demo-absolute .t-r .b-price {
+					top: 5px;
+					right: 20px;
+			}
+			.demo-absolute .b-l .b-price {
+					bottom: 10px;
+					left: 20px;
+			}			
+			.demo-absolute .b-r .b-price {
+					bottom: 10px;
+					right: 20px;
+			}
+			/*margin 解决方案*/
+			.demo-margin{
+				overflow: hidden;
+		  }							
+			.demo-margin .t-l .price-box{
+				margin: -145px 0 0 5px;
+			}	
+			.demo-margin .t-r .price-box{
+				margin: -145px 0 0 221px;
+			}	
+			.demo-margin .b-l .price-box{
+				margin:-30px 0 0 5px;
+			}	
+			.demo-margin .b-r .price-box{
+				margin: -30px 0 0 221px;
+			}								
+			.demo-margin .top img{
+				z-index: 1;
+		  }						
+		</style>
+</head>
+<body>
+	<div class="demo-absolute">	
+		<dl class="t-l">
+			<dt class="p-img">
+					<div class="b-price">￥666.00</div>
+					<a href="javascript:void(0)"><img src="https://static.bootcss.com/www/assets/img/jqueryapi.png?1510078115427"></a>
+			</dt>						
+		</dl>
+		<dl>
+			<p class="title">position的解决方案--左上的图标</p>
+			<p>
+			.demo-absolute dt {
+				position: relative; 
+				width: 300px;							
+			}
+			</p>
+			<p>
+			.demo-absolute .t-l .b-price {
+				position: absolute;
+				top: 5px;
+				left: 20px;
+			}
+			</p>			
+		</dl>
+		<br/>				
+		<dl class="t-r">
+			<dt class="p-img">
+					<div class="b-price">￥666.00</div>
+					<a href="javascript:void(0)"><img src="https://static.bootcss.com/www/assets/img/jqueryapi.png?1510078115427"></a>
+			</dt>						
+		</dl>
+		<dl>
+			<p class="title">position的解决方案--右上的图标</p>
+			<p>
+			.demo-absolute dt {
+				position: relative; 
+				width: 300px;							
+			}
+			</p>
+			<p>
+			.demo-absolute .t-r .b-price {
+				position: absolute;
+				top: 5px;
+				right: 20px;
+			}
+			</p>			
+		</dl>
+		<br/>				
+		<dl class="b-l">
+			<dt class="p-img">
+					<a href="javascript:void(0)"><img src="https://static.bootcss.com/www/assets/img/jqueryapi.png?1510078115427"></a>
+					<div class="b-price">￥666.00</div>
+			</dt>						
+		</dl>
+		<dl>
+			<p class="title">position的解决方案--左下的图标</p>
+			<p>
+			.demo-absolute dt {
+				position: relative; 
+				width: 300px;							
+			}
+			</p>
+			<p>
+			.demo-absolute .b-l .b-price {
+				position: absolute;
+				bottom: 10px;
+				left: 20px;
+			}
+			</p>
+		</dl>
+		<br/>		
+		<dl class="b-r">
+			<dt class="p-img">
+					<a href="javascript:void(0)"><img src="https://static.bootcss.com/www/assets/img/jqueryapi.png?1510078115427"></a>
+					<div class="b-price">￥666.00</div>
+			</dt>						
+		</dl>
+		<dl>
+			<p class="title">position的解决方案--右下的图标</p>
+			<p>
+			.demo-absolute dt {
+				position: relative; 
+				width: 300px;							
+			}
+			</p>
+			<p>
+			.demo-absolute .b-r .b-price {
+				position: absolute;
+				bottom: 10px;
+				right: 20px;
+			}
+			</p>
+		</dl>			
+	</div>
+	<div class="demo-margin">
+		<dl class="t-l">
+			<dt class="p-img">
+					<a href="javascript:void(0)"><img src="https://static.bootcss.com/www/assets/img/jqueryapi.png?1510078115427"></a>
+					<div class="price-box"><span class="b-price">￥666.00</span></div>
+			</dt>
+		</dl>	
+		<dl>
+			<p class="title">margin的解决方案--左上的图标</p>		
+			<p>
+				.demo-margin .t-l .price-box{
+					margin: -145px 0 0 5px;
+				}					
+			</p>
+		</dl>
+		<br/>		
+		<dl class="t-r">
+			<dt class="p-img">
+					<a href="javascript:void(0)"><img src="https://static.bootcss.com/www/assets/img/jqueryapi.png?1510078115427"></a>
+					<div class="price-box"><span class="b-price">￥666.00</span></div>
+			</dt>
+		</dl>	
+		<dl>
+			<p class="title">margin的解决方案--右上的图标</p>		
+			<p>
+			.demo-margin .t-r .price-box{
+				margin: -145px 0 0 221px;
+			}					
+			</p>
+		</dl>
+		<br/>	
+		<dl class="b-l">
+			<dt class="p-img">
+					<a href="javascript:void(0)"><img src="https://static.bootcss.com/www/assets/img/jqueryapi.png?1510078115427"></a>
+					<div class="price-box"><span class="b-price">￥666.00</span></div>
+			</dt>
+		</dl>	
+		<dl>
+			<p class="title">margin的解决方案--左下的图标</p>		
+			<p>
+				.demo-margin .b-l .price-box{
+					margin: -30px 0 0 5px;
+				}					
+			</p>
+		</dl>
+		<br/>										
+		<dl class="b-r">
+			<dt class="p-img">
+					<a href="javascript:void(0)"><img src="https://static.bootcss.com/www/assets/img/jqueryapi.png?1510078115427"></a>
+					<div class="price-box"><span class="b-price">￥666.00</span></div>
+			</dt>
+		</dl>	
+		<dl>
+			<p class="title">margin的解决方案--右下的图标</p>		
+			<p>
+				.demo-margin .b-r .price-box{
+					margin: -30px 0 0 221px;
+				}					
+			</p>
+		</dl>						
+	</div>
+</body>
+</html>

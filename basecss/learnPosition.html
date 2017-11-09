@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+	<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1.0, maximum-scale=1, user-scalable=no" />
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>  
+	<meta name="author" content="WU EVA" />
+  <title>base_position_demo</title>
+  <style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			*,
+			*:before,
+			*:after {
+			-webkit-box-sizing: border-box;
+					-moz-box-sizing: border-box;
+							box-sizing: border-box;
+			}
+			html{
+				font-size: 15px;
+			}
+			ol {
+				display: block;
+				list-style-type: decimal;
+				-webkit-margin-before: 0;
+				-webkit-margin-after: 0;
+				-webkit-margin-start: 0;
+				-webkit-margin-end: 0;
+				-webkit-padding-start: 2em;
+			}			
+			p {
+				display: block;
+				-webkit-margin-before: 0;
+				-webkit-margin-after: 0;
+				-webkit-margin-start: 0;
+				-webkit-margin-end: 0;
+			}			
+			.hide{
+				display: none !important;
+			}
+      .position-r{
+        position: relative;
+      }
+      .position-f{
+        position: fixed;
+      }
+      .position-a{
+        position: absolute;
+      }
+      .position-s{
+        position: static;
+			}
+			.width-100{
+				width:100px;
+			} 
+			.height-100{
+				height:100px;
+			}
+			.m-a-50{
+				margin: 50px;
+			}      
+			.m-a-100{
+				margin: 100px;
+			}
+      .summary,.title{
+        line-height: 1.5;     
+      }
+      .title{
+        font-weight: bolder;        
+        border-left:5px solid skyblue;
+        text-indent:1em;
+      }
+      li.title,li.summary,ul.title,ul.summary,li.panel-header{
+        list-style: none;
+      }
+      ol li.title{
+        margin-left:-1em;
+      }             
+      .pull-left{
+        float: left;
+      } 
+      .pull-right{
+        float: right;
+      }
+      .fix-r-b{
+        right:0;
+        bottom:0;
+      }
+      .text-center{
+        text-align: center;
+      } 
+      .text-left{
+        text-align: left;
+      }
+      .text-right{
+        text-align: right;
+      }
+      .panel{
+        border: 1px solid skyblue;
+        border-radius: 15px;
+      }
+      .panel .panel-header{
+        text-align: center;
+        line-height: 2.5;
+        background-color: skyblue;
+        color:#fff;
+        font-weight: bolder;
+        border-radius: 15px 15px 0 0 ;
+      }
+      .panel .panel-body,.panel .panel-footer{
+        padding: 15px;
+      }  
+      .panel .panel-body{
+        color:#383636;
+      } 
+      .panel .panel-footer{
+        background-color: #f3f3f3;
+        text-indent:2em;
+        border-radius: 0 0 15px 15px;
+      }                              			                 
+  </style>
+</head>
+<body>
+<div>
+  <div class="tip">
+    <div class="panel position-f fix-r-b">
+      <div class="panel-header">父级默认定位顺序</div>
+      <div class="panel-body">
+          <ol class="summary">
+              <li>父级没有设置样式</li>
+              <li>父级为static</li>
+              <li>父级为absolute</li>
+              <li>父级为relative</li>					
+              <li>父级为fixed</li>
+          </ol>	        
+      </div>
+    </div>
+    <div class="panel m-a-50">
+        <div class="panel-header">position相关参数的含义</div>
+        <div class="panel-body">
+            <ul>
+                <li class="title">static:</li>
+                <li class="summary">默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。<br/></li>
+                <li class="title">absolute:</li>
+                <li class="summary">生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。会使dom元素产生一定包裹性，有点类似设置元素样式为display:inline-block，会变成自适应内部元素的宽度，如果内部元素没有设置宽高，会产生父级高度坍塌<br/></li>
+                <li class="title">relative:</li>
+                <li class="summary">生成相对定位的元素，相对于其正常位置进行定位。<br/></li>					
+                <li class="title">fixed:</li>
+                <li class="summary">生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。<br/></li>
+            </ul>	
+        </div>
+      </div>    
+  </div>
+
+  <div class="info">
+
+    <div class="panel  m-a-50 hide">
+      <div class="panel-header">自身position为static案例集合</div>
+      <div class="panel-body">
+        <ol>
+          <li>
+            <p class="position-s">这是一个自身position为static，父级没有设置样式，查看我的定位</p>
+          </li>          
+          <li class="position-s">
+            <p class="position-s">这是一个自身position为static，父级为static，查看我的定位</p>
+          </li>
+          <li class="position-a">
+              <p class="position-s">这是一个自身position为static，父级为absolute，查看我的定位</p>
+          </li>
+          <li class="position-r">
+              <p class="position-s">这是一个自身position为static，父级为relative，查看我的定位</p>
+          </li>					
+          <li class="position-f">
+              <p class="position-s">这是一个自身position为static，父级为fixed，查看我的定位</p>
+          </li>
+        </ol>	        
+      </div>
+      <div class="panel-footer">
+          <p>自身position为static的时候</p>
+          <p>父级为absolute会靠近最近relative定位的，所以二和三的序号在一起，内容也在一起</p>
+          <p>父级为fixed的时候，不配置top，bottom，left，right的话，会自动固定在自身页面初始加载的位置，不会随着页面的滚动而滚动，
+              但是请注意，如果不配置相关参数 ，页面在初始加载这个dom元素不在浏览器的可视区域内，那这个元素会一直固定在那个你看不到的区域内，你再也看不到了。</p>         
+          <p>这个时候整个ol的高度是两个li高度</p>
+      </div>
+    </div>
+
+    <div class="panel m-a-50 hide">
+      <div class="panel-header">自身position为relative案例集合</div>
+      <div class="panel-body">
+        <ol>
+            <li>
+              <p class="position-r">这是一个自身position为relative，父级没有设置样式，查看我的定位</p>
+            </li>           
+            <li class="position-s">
+              <p class="position-r">这是一个自身position为relative，父级为static，查看我的定位</p>
+            </li>
+            <li class="position-a">
+                <p class="position-r">这是一个自身position为relative，父级为absolute，查看我的定位</p>
+            </li>
+            <li class="position-r">
+                <p class="position-r">这是一个自身position为relative，父级为relative，查看我的定位</p>
+            </li>					
+            <li class="position-f">
+                <p class="position-r">这是一个自身position为relative，父级为fixed，查看我的定位</p>
+            </li>
+        </ol>        
+      </div>
+      <div class="panel-footer">
+          <p>自身position为relative的时候</p>
+          <p>父级为absolute会靠近最近relative定位的，所以二和三的序号在一起，内容也在一起</p>
+          <p>父级为fixed的时候，不配置top，bottom，left，right的话，会自动固定在自身页面初始加载的位置，不会随着页面的滚动而滚动，
+              但是请注意，如果不配置相关参数 ，页面在初始加载这个dom元素不在浏览器的可视区域内，那这个元素会一直固定在那个你看不到的区域内，你再也看不到了。</p> 
+          <p>这个时候整个ol的高度是两个li高度</p> 
+      </div>
+    </div>
+
+    <div class="panel m-a-50">
+      <div class="panel-header">自身position为absolute案例集合</div>
+      <div class="panel-body">
+          <ol>
+              <li>
+                <p class="position-a">这是一个自身position为absolute，父级没有设置样式，查看我的定位</p>
+              </li>              
+              <li class="position-s">
+                  <p class="position-a">这是一个自身position为absolute，父级为static，查看我的定位</p>
+              </li>
+              <li class="position-a">
+                  <p class="position-a">这是一个自身position为absolute，父级为absolute，查看我的定位</p>
+              </li>
+              <li class="position-r">
+                  <p class="position-a">这是一个自身position为absolute，父级为relative，查看我的定位</p>
+              </li>						
+              <li class="position-f">
+                  <p class="position-a">这是一个自身position为absolute，父级为fixed，查看我的定位</p>
+              </li>
+              
+            </ol>        
+      </div>
+      <div class="panel-footer">
+          <p>自身position为absolute的时候，自身的权重会高一些，它希望所有的按照他的思路来，在布局上会有一个包裹性</p>
+          <p>换种说法就是让元素inline-block化，例如一个元素默认宽度是100%显示的，设置为absolute属性缠上，则100%默认宽度就会变成自适应内部元素的宽度。</p>
+          <p>父级为static，所以它就不管父级定位，他就去找最近的一个定位为非static的元素，所以序号为一的内容显示在序号为二的旁边，但是在显示上还是要听父级的话没有变成inline-block的效果，继承了父级的</p>
+          <p>父级为absolute会靠近最近relative定位的，所以二和三的序号在一起，但是由于自身是absolute，他就去找最近的一个定位为非static的元素，</p>
+          <p>父级为fixed的时候，不用设置top，bottom，left，right，会自动固定在自身页面初始加载的位置，不会随着页面的滚动而滚动</p> 
+          <p>这个时候整个ol的高度是两个li高度</p>
+      </div>
+    </div>
+
+    <div class="panel m-a-50">
+      <div class="panel-header">自身position为fixed案例集合</div>
+      <div class="panel-body">
+        <ol>
+          <li>
+            <p class="position-a">这是一个自身position为absolute，父级没有设置样式，查看我的定位</p>
+          </li>           
+          <li class="position-s">
+              <p class="position-f">这是一个自身position为fixed，父级为static，查看我的定位</p>
+          </li>
+          <li class="position-a">
+              <p class="position-f">这是一个自身position为fixed，父级为absolute，查看我的定位</p>
+          </li>
+          <li class="position-r">
+              <p class="position-f">这是一个自身position为fixed，父级为relative，查看我的定位</p>
+          </li>				
+          <li class="position-f">
+              <p class="position-f">这是一个自身position为fixed，父级为fixed，查看我的定位</p>
+          </li>
+          				
+        </ol>	         
+      </div>
+      <div class="panel-footer">
+          <p>自身position为fixed的时候</p>
+          <p>父级为absolute会靠近最近relative定位的</p>
+          <p>父级为fixed的时候，不配置top，bottom，left，right的话，会自动固定在自身页面初始加载的位置，不会随着页面的滚动而滚动，
+          但是请注意，如果不配置相关参数 ，页面在初始加载这个dom元素不在浏览器的可视区域内，那这个元素会一直固定在那个你看不到的区域内，你再也看不到了。</p> 
+          <p>这个时候整个ol的高度是两个li高度</p>
+      </div>
+    </div>
+      
+ 
+  </div>
+			
+</div>
+</body>
+</html>
