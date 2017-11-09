@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+	<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1.0, maximum-scale=1, user-scalable=no" />
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>  
+	<meta name="author" content="WU EVA" />
+  <title>base_css_demo</title>
+  <style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			*,
+			*:before,
+			*:after {
+			-webkit-box-sizing: border-box;
+					-moz-box-sizing: border-box;
+							box-sizing: border-box;
+			}
+			html{
+				font-size: 20px;
+			}
+			ol {
+				display: block;
+				list-style-type: decimal;
+				-webkit-margin-before: 0;
+				-webkit-margin-after: 0;
+				-webkit-margin-start: 0;
+				-webkit-margin-end: 0;
+				-webkit-padding-start: 2em;
+			}			
+			p {
+				display: block;
+				-webkit-margin-before: 0;
+				-webkit-margin-after: 0;
+				-webkit-margin-start: 0;
+				-webkit-margin-end: 0;
+			}			
+			.hide{
+				display: none !important;
+			}
+      .position-r{
+        position: relative;
+      }
+      .position-f{
+        position: fixed;
+      }
+      .position-a{
+        position: absolute;
+      }
+      .position-s{
+        position: static;
+			}
+			.width-100{
+				width:100px;
+			} 
+			.height-100{
+				height:100px;
+			}
+			.b-a-1{
+				border:1px solid slategrey;
+			}
+			.m-a-100{
+				margin: 100px;
+			} 			                 
+  </style>
+</head>
+<body>
+<div>
+	<ul class="b-a-1">
+			<li>父级默认定位顺序</li>
+			<li>父级为static</li>
+			<li>父级为absolute</li>
+			<li>父级为relative</li>					
+			<li>父级为fixed</li>
+	</ul>	
+	<p class="m-a-100"></p>			
+	<ol class="b-a-1">
+		<li>自身position为static案例集合</li>
+		<li class="position-s">
+			<p class="position-s">这是一个自身position为static，父级为static，查看我的定位</p>
+		</li>
+		<li class="position-a">
+				<p class="position-s">这是一个自身position为static，父级为absolute，查看我的定位</p>
+		</li>
+		<li class="position-r">
+				<p class="position-s">这是一个自身position为static，父级为relative，查看我的定位</p>
+		</li>					
+		<li class="position-f">
+				<p class="position-s">这是一个自身position为static，父级为fixed，查看我的定位</p>
+		</li>
+	</ol>	
+	<p class="m-a-100"></p>		
+	<ol class="b-a-1">
+		<li>自身position为relative案例集合</li>
+		<li class="position-s">
+			<p class="position-r">这是一个自身position为relative，父级为static，查看我的定位</p>
+		</li>
+		<li class="position-a">
+				<p class="position-r">这是一个自身position为relative，父级为absolute，查看我的定位</p>
+		</li>
+		<li class="position-r">
+				<p class="position-r">这是一个自身position为relative，父级为relative，查看我的定位</p>
+		</li>					
+		<li class="position-f">
+				<p class="position-r">这是一个自身position为relative，父级为fixed，查看我的定位</p>
+		</li>
+	</ol>
+	<p class="m-a-100"></p>
+	<ol class="b-a-1">
+			<li>自身position为absolute案例集合</li>
+			<li class="position-s">
+					<p class="position-a">这是一个自身position为absolute，父级为static，查看我的定位</p>
+			</li>
+			<li class="position-a">
+					<p class="position-a">这是一个自身position为absolute，父级为absolute，查看我的定位</p>
+			</li>
+			<li class="position-r">
+					<p class="position-a">这是一个自身position为absolute，父级为relative，查看我的定位</p>
+			</li>						
+			<li class="position-f">
+					<p class="position-a">这是一个自身position为absolute，父级为fixed，查看我的定位</p>
+			</li>
+		</ol>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		
+		<ol class="b-a-1">
+				<li>自身position为fixed案例集合</li>
+				<li class="position-s">
+						<p class="position-f">这是一个自身position为fixed，父级为static，查看我的定位</p>
+				</li>
+				<li class="position-a">
+						<p class="position-f">这是一个自身position为fixed，父级为absolute，查看我的定位</p>
+				</li>
+				<li class="position-r">
+						<p class="position-f">这是一个自身position为fixed，父级为relative，查看我的定位</p>
+				</li>				
+				<li class="position-f">
+						<p class="position-f">这是一个自身position为fixed，父级为fixed，查看我的定位</p>
+				</li>				
+			</ol>	
+			<p class="m-a-100"></p>					
+</div>
+</body>
+</html>
