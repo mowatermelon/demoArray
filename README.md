@@ -6,17 +6,22 @@
 
 ## 一 learnBaseCss
 
-> 1 [learnPosition](https://mowatermelon.github.io/demoArray/basecss/learnPosition.html)
+> 1 [beauty-inputfile](https://mowatermelon.github.io/demoArray/basecss/beauty-inputfile-demo.html)
+
+网页中需要用到上传按钮对文件进行上传，但是默认的样式有点丑，我这边重写了一个，然后限制的是只能上传jpg,jpeg,pdf,png格式，如果格式正确，文件名会自动显示在a标签中。处理了多个板块附件分别上传处理，并且判断当前浏览器状态，加载对应的modaljs效果，在移动端和pc端看的错误弹窗提示有一定不同。
+
+> 2 [learnPosition](https://mowatermelon.github.io/demoArray/basecss/learnPosition.html)
 
 枚举`css`中`position`的使用情况，更好的理解`position`
 
-> 2 [marginHack](https://mowatermelon.github.io/demoArray/basecss/marginHack.html)
+> 3 [marginHack](https://mowatermelon.github.io/demoArray/basecss/marginHack.html)
 
 absolute的破坏性太大，有些情况可以使用margin代码会更简洁，主要是margin负值的妙用
 
-> 3 [beauty-inputfile](https://mowatermelon.github.io/demoArray/basecss/beauty-inputfile-demo.html)
+> 4 [learnmargin&padding](https://mowatermelon.github.io/demoArray/basecss/learnm-p.html)
 
-网页中需要用到上传按钮对文件进行上传，但是默认的样式有点丑，我这边重写了一个，然后限制的是只能上传jpg,jpeg,pdf,png格式，如果格式正确，文件名会自动显示在a标签中。处理了多个板块附件分别上传处理，并且判断当前浏览器状态，加载对应的modaljs效果，在移动端和pc端看的错误弹窗提示有一定不同。
+absolute的破坏性太大，有些情况可以使用margin代码会更简洁，主要是margin负值的妙用
+
 
 ## 二 learnBasejs
 

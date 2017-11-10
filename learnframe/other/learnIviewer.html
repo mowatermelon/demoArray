@@ -11,54 +11,61 @@
 	<meta name="author" content="WU EVA" />
 	<title>iviewer动画</title>
 	<style>
-		.iviewer_box{
-			border: 1px solid;
-			width: 600px;
-			height: 500px;	
-		}
-		.iviewer_img{
-			width: 100%;
-			height: 500px;
-			position: relative;
-		}
-		.AM_QH{
-			cursor:pointer;
-		}
-		.btn-group.btn-group-lg{
-			margin-left:auto; 
-			margin-right:auto; 
-		}
+	    .iviewer_img{
+		    width: 100%;
+		    height: 500px;
+		    position: relative;
+	    }
+	    .imgList
+	    {
+	        list-style:none;
+	    }
+	    .AM_QH{
+		    cursor:pointer;
+		    line-height:2;
+		    word-spacing:1em;
+		    color:#313131; 
+		    border-bottom:1px solid #ccc;
+		    margin-bottom:-1px;
+		    font-size:15px;
+	    }
+	    .AM_QH.check{
+				color:#199de1;
+				font-weight: bolder; 
+	    }
 	</style>
-  <link type="text/css" href="../../css/bootstrap.css" rel="stylesheet" type="text/css"/>	
+	<link type="text/css" href="../../css/bootstrap.css" rel="stylesheet" type="text/css"/>	
+  <link type="text/css" href="../../css/jquery.iviewer.css" rel="stylesheet" type="text/css"/>	
+	
 	</head>
 	<body>
 		<div class="container">
 			<div class="col-xs-3">
 				<div class="panel panel-info">
 					<div class="panel-heading">
+						文字列表
+					</div>
+					<div class="panel-body">
+							<ul class="imgList">
+							</ul>						
+					</div>						
+				</div>					
+			</div>
+			<div class="col-xs-9">
+				<div class="panel panel-info">
+					<div class="panel-heading">
 						图片列表
 					</div>
 					<div class="panel-body">
-							<ul class="imgList list-group">
-							</ul>								
+							<div class="iviewer_img"></div>							
 					</div>						
-				</div>
-
-			</div>
-			<div class="col-xs-9">
-					<div class="iviewer_img"></div>
-					<div class="btn-group btn-group-lg">
-							<button class="btn btn-info AM_ZXZ">左旋转</button>
-							<button class="btn btn-info AM_YXZ">右旋转</button>
-							<button class="btn btn-info AM_FD">放大</button>
-							<button class="btn btn-info AM_SX">缩小</button>
-							<button class="btn btn-info AM_SK">适宽</button>
-							<button class="btn btn-info AM_SK">适宽</button>
-					</div>				
+				</div>						
 			</div>
 		</div>
 	</body>
 	<script type="text/javascript" src="../../js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="../../js/iviewer-fix/jquery-ui.js"></script>	
+	<script type="text/javascript" src="../../js/iviewer-fix/jquery.mousewheel.min.js"></script>
 	<script type="text/javascript" src="../../js/iviewer-fix/jquery.iviewer.js"></script>
 	<script>
 		var g_src,ImageArray,viewer;
@@ -78,11 +85,10 @@
 
 	//初始化viewer事件
 	function initViewer(imgBox){
-		viewer = imgBox.iviewer({
-					src: g_src+ImageArray[0].url,
-					update_on_resize: false,
-					onMouseMove: function (ev, coords) { }
+		viewer =imgBox.iviewer({
+					src: g_src+ImageArray[0].url
 			});
+			$(".AM_QH").eq(0).addClass("check");
 	}
 
 	//加载图片列表
@@ -90,7 +96,7 @@
 		var imgVar = "";
 		if(imageArray.length>0){
 			imageArray.forEach(function(element) {
-				imgVar += "<li class='list-group-item AM_QH' img='"+element.url+"'>"+element.name+"</li>\n";				
+				imgVar += "<li class='AM_QH' img='"+element.url+"'><i class='glyphicon glyphicon-picture'></i>" + " " + element.name + "</li>\n";			
 			});
 		}
 		$(".imgList").html(imgVar);
@@ -105,44 +111,11 @@
 	//给按钮绑定相关事件
 	function setBtnFuc(){
 		$(".AM_QH").click(function(){
-				var _this_url =$(this).attr("img");
+			var _this = $(this);
+      _this.addClass("check").siblings().removeClass("check");			
+			var _this_url =$(this).attr("img");
 					viewer.iviewer("loadImage",  g_src+_this_url);
 			});
-			//左旋转
-			$(".AM_ZXZ").click(function () {
-					if (viewer != null) {
-							viewer.iviewer("angle", -90);
-					}
-			});
-
-			//右旋转
-			$(".AM_YXZ").click(function () {
-					if (viewer != null) {
-							viewer.iviewer("angle", 90);
-					}
-			});
-
-			//放大
-			$(".AM_FD").click(function () {
-					if (viewer != null) {
-							viewer.iviewer("zoom_by", 1);
-					}
-			});
-
-			//缩小
-			$(".AM_SX").click(function () {
-					if (viewer != null) {
-							viewer.iviewer("zoom_by", -1);
-					}
-			});
-
-			//适宽
-			$(".AM_SK").click(function () {
-					if (viewer != null) {
-							viewer.iviewer("set_zoom", 100);
-					}
-			});			
-
 	}
 	</script>
 	</html>

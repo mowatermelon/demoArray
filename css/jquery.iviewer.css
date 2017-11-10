@@ -1,0 +1,78 @@
+.viewer {
+    -ms-touch-action: none;
+}
+
+.iviewer_common {
+    position:absolute;
+    bottom:2px;
+    height: 28px;
+    z-index: 5000;
+}
+
+.iviewer_button {
+    width: 28px;
+    cursor: pointer;
+    background-position: center center;
+    background-repeat: no-repeat;
+    font-size: 20px;
+    color:#199de1; 
+    font-family: 'Glyphicons Halflings';
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;       
+}
+
+.iviewer_zoom_in {
+    left: 20px;
+}
+.iviewer_zoom_in:before {
+    content: "\e015";
+}
+.iviewer_zoom_out {
+    left: 55px;
+}
+.iviewer_zoom_out:before {
+    content: "\e016";
+}
+
+.iviewer_zoom_zero {
+    left: 195px;
+}
+.iviewer_zoom_zero:before {
+    content: "\e190";
+}
+
+.iviewer_zoom_fit {
+    left: 160px;
+}
+.iviewer_zoom_fit:before {
+    content: "\e140";
+}
+.iviewer_zoom_status {
+    right: 5px;
+    font: 1em/28px Sans;
+    text-align: center;
+    width: 60px;
+}
+
+.iviewer_rotate_left {
+    left: 84px;
+    transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);     
+}
+.iviewer_rotate_left:before ,.iviewer_rotate_right:before{
+    content: "\e030";
+}
+.iviewer_rotate_right {
+    left: 125px;
+    bottom: 5px;
+    transform: rotate(-61deg);
+    -ms-transform: rotate(-61deg);
+    -moz-transform: rotate(-61deg);
+    -webkit-transform: rotate(-61deg);
+    -o-transform: rotate(-61deg);    
+}

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+	<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1.0, maximum-scale=1, user-scalable=no" />
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>  
+	<meta name="author" content="WU EVA" />
+  <title>base_position_demo</title>
+  <style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			*,
+			*:before,
+			*:after {
+			-webkit-box-sizing: border-box;
+					-moz-box-sizing: border-box;
+							box-sizing: border-box;
+			}
+			html{
+				font-size: 15px;
+			}
+			ol {
+				display: block;
+				list-style-type: decimal;
+				-webkit-margin-before: 0;
+				-webkit-margin-after: 0;
+				-webkit-margin-start: 0;
+				-webkit-margin-end: 0;
+				-webkit-padding-start: 2em;
+			}			
+			p {
+				display: block;
+				-webkit-margin-before: 0;
+				-webkit-margin-after: 0;
+				-webkit-margin-start: 0;
+				-webkit-margin-end: 0;
+			}			
+			.hide{
+				display: none !important;
+			}
+      .position-r{
+        position: relative;
+      }
+      .position-f{
+        position: fixed;
+      }
+      .position-a{
+        position: absolute;
+      }
+      .position-s{
+        position: static;
+			}
+			.width-100{
+					width:100px;
+			} 
+			.height-100{
+					height:100px;
+			}
+			.m-a-50{
+					margin: 50px;
+			}      
+			.m-a-100{
+					margin: 100px;
+			}
+      .summary,.title{
+        line-height: 1.5;     
+      }
+      .title{
+        font-weight: bolder;        
+        border-left:5px solid skyblue;
+        text-indent:1em;
+      }
+      li.title,li.summary,ul.title,ul.summary,li.panel-header{
+        list-style: none;
+      }
+      ol li.title{
+        margin-left:-1em;
+      }             
+      .pull-left{
+        float: left;
+      } 
+      .pull-right{
+        float: right;
+      }
+      .fix-r-b{
+        right:0;
+        bottom:0;
+      }
+      .text-center{
+        text-align: center;
+      } 
+      .text-left{
+        text-align: left;
+      }
+      .text-right{
+        text-align: right;
+      }
+      .panel{
+        border: 1px solid skyblue;
+        border-radius: 15px;
+      }
+      .panel .panel-header{
+        text-align: center;
+        line-height: 2.5;
+        background-color: skyblue;
+        color:#fff;
+        font-weight: bolder;
+        border-radius: 15px 15px 0 0 ;
+      }
+      .panel .panel-body,.panel .panel-footer{
+        padding: 15px;
+      }  
+      .panel .panel-body{
+        color:#383636;
+      } 
+      .panel .panel-footer{
+        background-color: #f3f3f3;
+        text-indent:2em;
+        border-radius: 0 0 15px 15px;
+      } 
+			.padding-a{
+				padding: 50%;
+			}
+			.margin-a{
+				margin: 50%;
+			}
+			.d-inline-b{
+				display: inline-block;
+			}
+			.b-a-d{
+				border:1px dotted #ccc;
+			} 			                             			                 
+  </style>
+</head>
+<body>
+<div class="tip">
+	<div class="panel position-f fix-r-b">
+		<div class="panel-header">默认展示顺序</div>
+		<div class="panel-body">
+			<ol>
+				<li>left</li>
+				<li>right</li>
+				<li>top</li>
+				<li>bottom</li>
+			</ol>
+		</div>
+		<div class="panel-footer">
+			<p>padding值都为50%</p>
+		</div>
+	</div>
+</div>
+
+<div class="info">
+		<div class="width-100 padding-a b-a-d"></div>
+		<p class="width-100 padding-a b-a-d"></p>
+	<div class="panel m-a-50">
+		<div class="panel-header">宽度为100，高度为0</div>
+		<div class="panel-body">
+			<p class="width-100 padding-a margin-a b-a-d"></p>
+			<ol>
+				<li>
+					<p>panel-left:</p>
+				</li>              
+				<li>
+					<p>panel-right:</p>
+				</li> 
+				<li>
+					<p>panel-top:</p>
+				</li> 
+				<li>
+					<p>panel-bottom:</p>
+				</li> 					
+			</ol>  
+			<ol>
+				<li>
+					<p>margin-left:</p>
+				</li>              
+				<li>
+					<p>margin-right:</p>
+				</li> 
+				<li>
+					<p>margin-top:</p>
+				</li> 
+				<li>
+					<p>margin-bottom:</p>
+				</li> 					
+			</ol>	
+			<span class="width-100 d-inline-b padding-a margin-a b-a-d"></span>
+			<ol>
+				<li>
+					<p>panel-left:</p>
+				</li>              
+				<li>
+					<p>panel-right:</p>
+				</li> 
+				<li>
+					<p>panel-top:</p>
+				</li> 
+				<li>
+					<p>panel-bottom:</p>
+				</li> 					
+			</ol>  
+			<ol>
+				<li>
+					<p>margin-left:</p>
+				</li>              
+				<li>
+					<p>margin-right:</p>
+				</li> 
+				<li>
+					<p>margin-top:</p>
+				</li> 
+				<li>
+					<p>margin-bottom:</p>
+				</li> 					
+			</ol>				
+			
+		</div>
+		<div class="panel-footer"></div>
+	</div>
+	<div class="panel m-a-50">
+		<div class="panel-header"></div>
+		<div class="panel-body"></div>
+		<div class="panel-footer"></div>
+	</div>
+	<div class="panel m-a-50">
+		<div class="panel-header"></div>
+		<div class="panel-body"></div>
+		<div class="panel-footer"></div>
+	</div>
+	<div class="panel m-a-50">
+		<div class="panel-header"></div>
+		<div class="panel-body"></div>
+		<div class="panel-footer"></div>
+	</div>			
+</div>
+</body>
+</html>
