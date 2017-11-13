@@ -116,6 +116,20 @@
 			var _this_url =$(this).attr("img");
 					viewer.iviewer("loadImage",  g_src+_this_url);
 			});
+		$(".iviewer_zoom_in").attr({  "title": "放大" });
+        $(".iviewer_zoom_out").attr({  "title": "缩小" });
+        $(".iviewer_zoom_zero").attr({  "title": "原图大小" });
+        $(".iviewer_zoom_fit").attr({  "title": "适应屏幕大小" });
+        $(".iviewer_rotate_left").attr({  "title": "左旋转" });
+        $(".iviewer_rotate_right").attr({ "title": "右旋转" });
+        $(".iviewer_img img").hover(function () {
+			var tool_hide =$(".iviewer_tool_box").hasClass("hide");
+			if(tool_hide){
+				$(".iviewer_tool_box").removeClass("hide");
+			}else{
+				$(".iviewer_tool_box").addClass("hide");
+			}
+        });			
 	}
 	</script>
 	</html>
