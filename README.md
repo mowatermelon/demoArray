@@ -29,26 +29,9 @@ absolute的破坏性太大，有些情况可以使用margin代码会更简洁，
 
 仿造A4的动态页面效果，默认是有两页，在两页中textarea填写超过内容之后，页面会自动新增页，并将超出页面内容的文本复制到新页的textarea中
 
-> 2 [learnObject](https://mowatermelon.github.io/demoArray/basejs/learnObject.js)
+> 2 [learnString](https://mowatermelon.github.io/demoArray/basejs/learnString.js)
 
-学习和使用js中对象的属性和方法，使用方法`clone`到本地，如果你想学习某个类直接把这个类前面的注释放开，然后在命令行中输入`node learnObject.js`就可以看到相关对象属性和对象的使用结果。
-
-```javascript
-//learnObject();
-//learnBoolean();
-//learnNumber();
-//learnString();
-//learnArray();
-//learnDate();
-
-//举个栗子 你想看String的属性和方法就把learnString();前面的注释去掉就好。去掉之后的结果应该是
-//learnObject();
-//learnBoolean();
-//learnNumber();
-learnString();
-//learnArray();
-//learnDate();
-```
+学习和使用js中字符串对象的属性和方法，使用方法`clone`到本地，在命令行中输入`node learnString.js`就可以看到相关对象属性和对象的使用结果。
 
 > 3 [learnPromt](https://mowatermelon.github.io/demoArray/basejs/learnPromt.html)
 
@@ -72,6 +55,11 @@ learnString();
 
 ### 2 frameByother
 
-> 1.1 [learnIviewer](https://mowatermelon.github.io/demoArray/learnframe/other/learnIviewer.html)
+> 2.1 [learnIviewer](https://mowatermelon.github.io/demoArray/learnframe/other/learnIviewer.html)
 
 学习Iviewer的使用
+
+> 2.2 learnMUI
+- [tab-webview](https://mowatermelon.github.io/demoArray/learnframe/other/mui/muiTab/unpackage/release/H5281C1FC_1114164528.apk)
+
+学习`mui`中使用`webview`做`tab`切换，效果只能在真机上查看，因为`mui.plusReady`只有在真机环境中才会执行。
