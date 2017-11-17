@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pcshowmodal</title>
+    <link type="text/css" href="../../css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <style>
+        .m-b-1pc{
+            margin-bottom:1pc;
+        }
+    </style>
+</head>
+<body>
+    <ol class="list-unstyle">
+        <li class="h3">不需要修改默认提示的标题仅做修改提示内容</li>
+        <button class="btn btn-info m-b-1pc changeContent">尝试一下</button><br />
+        <pre class="code text-info h5">
+            showmodal({content:"请确认相关信息是否都填写完成"}); 
+        </pre> 
+        <li class="h3">需要修改默认提示的标题并修改提示内容相关样式</li>
+        <button class="btn btn-info m-b-1pc changeTitleContent">尝试一下</button><br />
+        <pre class="code text-info h5">
+            showmodal({
+                title: "警告",
+                content: "请确认相关信息是否都填写完成",
+                SWidth: 200,
+                fontSize: 14
+            });
+        </pre>       
+        <li class="h3">模态窗body内容左对齐，标题居中对齐显示</li>
+        <button class="btn btn-info m-b-1pc changeBodyAlign">尝试一下</button><br />
+        <pre class="code text-info h5">
+            showmodal({
+                title: "警告",
+                content: "请确认相关信息是否都填写完成, 请确认相关信息是否都填写完成, 请确认相关信息是否都填写完成",
+                SWidth: 400,
+                fontSize: 14,
+                titleCenter:true,
+                contentLeft:true
+            });
+        </pre>        
+        <li class="h3"> 点击模态窗灰色背景处模态窗不会消失</li>
+        <button class="btn btn-info m-b-1pc clickBg">尝试一下</button><br />
+        <pre class="code text-info h5">
+            showmodal({content:"请确认相关信息是否都填写完成",hideClick:"static "});
+        </pre>        
+        <li class="h3">modal-body内容为iframe</li>
+        <button class="btn btn-info m-b-1pc BodyIframe">尝试一下</button><br />
+        <pre class="code text-info h5">
+            showmodal({
+                isText: false,//该参数一定要设置为false，src相关参数才会起作用
+                title: "打开西瓜博客",
+                src: "https://mowatermelon.github.io/",//该参数用于绑定iframe的地址，也可通过地址传参
+                Bclose: false
+            });
+        </pre>       
+        <li class="h3">modal-body内容为iframe，且iframe中使用到input</li>
+        <button class="btn btn-info m-b-1pc bodyIframeInput">尝试一下</button><br />
+        <pre class="code text-info h5">
+            //在父级页面中
+                showmodal({
+                    isText: false, //该参数一定要设置为false，src相关参数才会起作用
+                    title: "打开xxx ",
+                    src: "xxx.aspx?key=demo ",//该参数用于绑定iframe的地址，也可通过地址传参
+                    Bclose: false
+                });
+            //在子级页面中添加以下语句            
+            $(function () {
+                $(document).off('focusin.bs.modal');//避免bootstrap 的input内部聚焦错乱，导致iframe中的input不能正常聚焦，这句话在子页面一定要写。
+                $("#txtXXX").focus();
+            })
+        </pre>      
+        <li class="h3">确认按钮有回调事件（非异步）</li>
+        <button class="btn btn-info m-b-1pc Bcallback">尝试一下</button><br />
+        <pre class="code text-info h5">
+            showmodal({
+                title: "警告",
+                content: "请确认相关信息是否都填写完成",
+                callbackB: true,
+                callbackBF:function(){
+                //dosomething
+                    console.log("确认按钮的非异步回调事件");
+                return true;
+                /*
+                请注意一定要写返回值，
+                不需要阻断模态窗关闭事件，则直接返回true
+                需要阻断模态窗关闭事件，则直接返回false
+                */
+                }
+            });
+        </pre>        
+        <li class="h3">确认按钮有回调事件（异步）</li>
+        <button class="btn btn-info m-b-1pc BcallbackSync">尝试一下</button><br />
+        <pre class="code text-info h5">
+            showmodal({
+                title: "警告",
+                content: "请确认相关信息是否都填写完成",
+                callbackB: true,
+                callbackBF:function(){
+                var _this=this; // 请注意一定要先在ajax外部指明需要需要使用到的this，这个this即showmodal，这样在ajax内部才能调用到showmodal默认的相关方法
+                    //如果是谷歌浏览器，需要在启动项中设置--allow-file-access-from-files才能进行跨域
+                    $.ajax({
+                        type: "POST",
+                        url: "demo.json? &T=" + Math.random(),
+                        dataType: 'text',
+                        async: false,
+                        success: function (t) {
+                            var data = window.eval('(' + t + ')');
+                            if (t.length > 0) {
+                                console.log("确认按钮的异步回调事件完成");
+                                console.log("请求到的参数是"+data.news);  
+                                _this.closeModal();
+                                //请注意在异步事件状态为完成的时候再调用关闭模态窗事件
+
+                            }
+                        }
+                    });
+
+                        return false;// 请注意异步执行的回调方法一定要返回false
+                }
+            });
+        </pre>       
+        <li class="h3">取消按钮有回调事件（非异步）需要两个按钮两端对齐</li>
+        <button class="btn btn-info m-b-1pc Qcallback">尝试一下</button><br />
+        <pre class="code text-info h5">
+            showmodal({
+                title: "警告",
+                content: "请确认相关信息是否都填写完成",
+                Qclose: true,
+                callbackQ: true,
+                callbackQF:function(){
+                //dosomething
+                    console.log("取消按钮的非异步回调事件");
+                 return true;
+                 /*
+                 请注意一定要写返回值，
+                 不需要阻断模态窗关闭事件，则直接返回true
+                 需要阻断模态窗关闭事件，则直接返回false
+                 */
+                }
+            });
+        </pre>    
+        <li class="h3">取消按钮有回调事件（非异步）不需要两个按钮两端对齐</li>
+        <button class="btn btn-info m-b-1pc justifyQcallback">尝试一下</button><br />
+        <pre class="code text-info h5">
+            showmodal({
+                title: "警告",
+                content: "请确认相关信息是否都填写完成",
+                Qclose: true,
+                Justify:true,
+                callbackQ: true,
+                callbackQF:function(){
+                //dosomething
+                    console.log("取消按钮的非异步回调事件");
+                 return true;
+                }
+            });
+        </pre>   
+        <li class="h3">需要多次嵌套调用模态窗</li>
+        <button class="btn btn-info m-b-1pc manyModal">尝试一下</button><br />
+        <pre class="code text-info h5">
+            showmodal({
+                title: "提示信息",
+                content: "确定吗1",
+                modalIndex: "01",
+                Qclose: true,
+                callbackB: true,
+                callbackBF: function() {
+                    showmodal({
+                        title: "提示信息",
+                        modalIndex: "02",
+                        content: "确定吗2",
+                        Qclose: true,
+                        SWidth: "300",
+                        hideClick: "static",
+                        fontSize: "18",
+                        callbackB: true,
+                        callbackBF: function() {
+                            showmodal({
+                                title: "提示信息",
+                                modalIndex: "03",
+                                content: "确定吗3",
+                                Qclose: true,
+                                SWidth: "200",
+                                hideClick: "static",
+                                fontSize: "18"
+                            });
+                            return false;
+                        }
+                    });
+                    return false;
+                }
+            });
+        </pre> 
+        
+        <li class="h3">需要使用全屏显示按钮</li>
+        <button class="btn btn-info m-b-1pc zoomModal">尝试一下</button><br />
+        <pre class="code text-info h5">
+         showmodal({
+                title: "警告",
+                content: "请确认相关信息是否都填写完成, 请确认相关信息是否都填写完成, 请确认相关信息是否都填写完成",
+                isZoom: true,
+                zoomCallback: function (){
+                    console.log(this.Sheight,this.SWidth);
+                }
+            });
+        </pre>
+        
+    </ol>
+</body>
+<script type="text/javascript" src="../../js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../js/pcmodal.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $(".changeContent").click(function(){
+            showmodal({content:"请确认相关信息是否都填写完成"}); 
+        });
+        $(".changeTitleContent").click(function(){
+            showmodal({
+                title: "警告",
+                content: "请确认相关信息是否都填写完成",
+                SWidth: 200,
+                fontSize: 14
+            });
+        });
+        $(".changeBodyAlign").click(function(){
+            showmodal({
+            title: "警告",
+            content: "请确认相关信息是否都填写完成, 请确认相关信息是否都填写完成, 请确认相关信息是否都填写完成",
+            SWidth: 400,
+            fontSize: 14,
+            titleCenter:true,
+            contentLeft:true
+        });
+        });
+        $(".clickBg").click(function(){
+            showmodal({content:"请确认相关信息是否都填写完成",hideClick:"static"});
+        });
+        $(".BodyIframe").click(function(){
+            showmodal({
+                isText: false,//该参数一定要设置为false，src相关参数才会起作用
+                title: "打开西瓜博客",
+                src: "https://mowatermelon.github.io/",//该参数用于绑定iframe的地址，也可通过地址传参
+                Bclose: false
+            });
+        });
+        $(".bodyIframeInput").click(function(){
+            showmodal({
+                isText: false,//该参数一定要设置为false，src相关参数才会起作用
+                title: "打开西瓜博客",
+                src: "https://mowatermelon.github.io/",//该参数用于绑定iframe的地址，也可通过地址传参
+                Bclose: false
+            });
+        });
+        $(".Bcallback").click(function(){
+            showmodal({
+                title: "警告",
+                content: "请确认相关信息是否都填写完成",
+                callbackB: true,
+                callbackBF:function(){
+                //dosomething
+                    console.log("确认按钮的非异步回调事件");
+                return true;
+                /*
+                请注意一定要写返回值，
+                不需要阻断模态窗关闭事件，则直接返回true
+                需要阻断模态窗关闭事件，则直接返回false
+                */
+                }
+            });
+        });
+        $(".BcallbackSync").click(function(){
+            showmodal({
+                title: "警告",
+                content: "请确认相关信息是否都填写完成",
+                callbackB: true,
+                callbackBF:function(){
+                var _this=this; // 请注意一定要先在ajax外部指明需要需要使用到的this，这个this即showmodal，这样在ajax内部才能调用到showmodal默认的相关方法
+                    $.ajax({
+                        type: "POST",
+                        url: "demo.json? &T=" + Math.random(),
+                        dataType: 'text',
+                        async: false,
+                        success: function (t) {
+                            var data = window.eval('(' + t + ')');
+                            if (t.length > 0) {
+                                console.log("确认按钮的异步回调事件完成");
+                                console.log("请求到的参数是"+data.news);                                
+                                _this.closeModal();
+                                //请注意在异步事件状态为完成的时候再调用关闭模态窗事件
+
+                            }
+                        }
+                    });
+
+                        return false;// 请注意异步执行的回调方法一定要返回false
+                }
+            });
+        });  
+        $(".Qcallback").click(function(){
+            showmodal({
+                title: "警告",
+                content: "请确认相关信息是否都填写完成",
+                Qclose: true,
+                callbackQ: true,
+                callbackQF:function(){
+                //dosomething
+                    console.log("取消按钮的非异步回调事件");
+                return true;
+                /*
+                请注意一定要写返回值，
+                不需要阻断模态窗关闭事件，则直接返回true
+                需要阻断模态窗关闭事件，则直接返回false
+                */
+                }
+            });
+        });
+        $(".justifyQcallback").click(function(){
+            showmodal({
+                title: "警告",
+                content: "请确认相关信息是否都填写完成",
+                Qclose: true,
+                Justify:true,
+                callbackQ: true,
+                callbackQF:function(){
+                //dosomething
+                    console.log("取消按钮的非异步回调事件");
+                return true;
+                }
+            });
+        });
+        $(".manyModal").click(function(){
+            showmodal({
+                title: "提示信息",
+                content: "确定吗1",
+                modalIndex: "01",
+                Qclose: true,
+                callbackB: true,
+                callbackBF: function() {
+                    showmodal({
+                        title: "提示信息",
+                        modalIndex: "02",
+                        content: "确定吗2",
+                        Qclose: true,
+                        SWidth: "300",
+                        hideClick: "static",
+                        fontSize: "18",
+                        callbackB: true,
+                        callbackBF: function() {
+                            showmodal({
+                                title: "提示信息",
+                                modalIndex: "03",
+                                content: "确定吗3",
+                                Qclose: true,
+                                SWidth: "200",
+                                hideClick: "static",
+                                fontSize: "18"
+                            });
+                            return false;
+                        }
+                    });
+                    return false;
+                }
+            });
+        });
+        $(".zoomModal").click(function(){
+           showmodal({
+                title: "警告",
+                content: "请确认相关信息是否都填写完成, 请确认相关信息是否都填写完成, 请确认相关信息是否都填写完成",
+                isZoom: true,
+                zoomCallback: function (){
+                    console.log(this.Sheight,this.SWidth);
+                }
+            });
+        })
+    })
+</script>
+</html>

@@ -1,0 +1,94 @@
+.viewer {
+    -ms-touch-action: none;
+}
+
+.iviewer_common,.iviewer_tool_box {
+    height: 28px;
+    z-index: 5000;
+}
+.iviewer_common{
+    position:absolute;    
+    bottom:2px;
+}
+.iviewer_tool_box
+{
+    bottom:0;
+    padding: 20px;
+    width: 275px;
+    margin: 0 auto;
+    background-color:rgba(107, 107, 107, 0.46);
+    color:#f1f1f1;
+    position:relative;
+    top: 460px; 
+}
+.iviewer_button {
+    width: 28px;
+    cursor: pointer;
+    background-position: center center;
+    background-repeat: no-repeat;
+    font-size: 20px;
+    font-family: 'Glyphicons Halflings';
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;       
+}
+
+.iviewer_rotate_left {
+    left: 20px;
+    /*left: 84px;*/
+    transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);     
+}
+.iviewer_rotate_left:before ,.iviewer_rotate_right:before{
+    content: "\e030";
+}
+.iviewer_rotate_right {
+    left: 55px;
+    /* left: 125px; */
+    bottom: 5px;
+    transform: rotate(-61deg);
+    -ms-transform: rotate(-61deg);
+    -moz-transform: rotate(-61deg);
+    -webkit-transform: rotate(-61deg);
+    -o-transform: rotate(-61deg);    
+}
+.iviewer_zoom_in {
+    left: 84px;
+}
+.iviewer_zoom_in:before {
+    content: "\e015";
+}
+
+.iviewer_zoom_status {
+    right: 5px;
+    font: 1em/28px Sans;
+    text-align: center;
+    width: 60px;
+    left: 103px;
+}
+.iviewer_zoom_out {
+    left: 160px;
+}
+.iviewer_zoom_out:before {
+    content: "\e016";
+}
+
+.iviewer_zoom_zero {
+    left: 195px;
+}
+.iviewer_zoom_zero:before {
+    content: "\e190";
+}
+
+.iviewer_zoom_fit {
+    left: 224px;
+}
+.iviewer_zoom_fit:before {
+    content: "\e140";
+}
+
+

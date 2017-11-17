@@ -1,0 +1,74 @@
+<!DOCTYPE html>  
+<html>  
+    <head>  
+        <meta charset="UTF-8">  
+        <title>底部导航菜单切换(专业写法)</title>  
+        <link href="../../../css/mui.min.css" rel="stylesheet" />  
+          
+    </head>  
+    <body>  
+        <nav class="mui-bar mui-bar-tab " id="nav">  
+              
+        </nav>  
+        <script src="js/jquery.js"></script>  
+        <script src="js/mui.min.js"></script>  
+          
+        <script type="text/javascript" charset="utf-8">  
+            var hrefArr=[  
+                            {"title":"首页","id":"a1","href":"1.html","icon":"mui-icon-home"},  
+                            {"title":"消息也","id":"a2","href":"2.html","icon":"mui-icon-email"},  
+                            {"title":"个人中心","id":"a3","href":"3.html","icon":"mui-icon-contact"}  
+                        ]//要跳转的  页面跟他的ID要先写好  
+            var navFirst=[],navOther=[],viewObj=[]//第一个页面数据  其他页面数据 窗体对象  
+              
+            mui.plusReady(function(){   
+                navInit()  
+                clickFun(navFirst[0].id,plus.webview.getWebviewById(navFirst[0].id))  
+                mui("#nav").on("tap","a",function(e){  
+                    var id=$(this).attr("id")  
+                    var obj=plus.webview.getWebviewById(id)  
+                    clickFun(id,obj)  
+                })  
+            });  
+            function clickFun(id,obj){  
+                if(id==navFirst[0].id){  
+                        $.each(navOther,function(i,v){  
+                            var otherObj=plus.webview.getWebviewById(v.id)  
+                            otherObj.hide()  
+                        })  
+                    }  
+                obj.show()  
+            }  
+            //初始化html  
+            function navInit(){  
+                var html=""  
+                $.each(hrefArr,function(i,v){  
+                    if(i==0){  
+                          
+                    }  
+                    html+='<a class="mui-tab-item'+((i==0)?" mui-active":"")+' " id="'+v.id+'">'+  
+                            '<span class="mui-icon '+v.icon+'"></span>'+  
+                            '<span class="mui-tab-label">'+v.title+'</span>'+  
+                          '</a>'  
+                })  
+                $("#nav").html(html)  
+                $.each(hrefArr,function(i,v){   
+                    var arrI={"url":v.href,"id":v.id,styles:{top:'0px',bottom:'60px' }}  
+                    if(i==0){//第一个页面  
+                        navFirst.push(arrI)  
+                    }else{//缓存住的页面  
+                        navOther.push(arrI)  
+                    }  
+                })  
+                mui.init({  
+                    subpages:navFirst,//先加载首页  
+                    preloadPages:navOther//缓存其他页面  
+                });  
+                  
+            }  
+            //点击事件初始化  
+              
+        </script>  
+          
+    </body>  
+</html> 
