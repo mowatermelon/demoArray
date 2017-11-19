@@ -37,6 +37,10 @@ absolute的破坏性太大，有些情况可以使用margin代码会更简洁，
 
 学习和使用js中Promt的使用
 
+> 4 [learnInstanceof](https://mowatermelon.github.io/demoArray/basejs/learnInstanceof.js)
+
+学习和使用js中`强制类型转换`和`instanceof`的用法
+
 ## 三 learnframe
 
 ### 1 frameByMe
