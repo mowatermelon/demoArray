@@ -406,7 +406,9 @@ function showTranNumberData(){
     console.log(noNum);//68
     console.log(noString);//NaN
     console.log(noArray);//NaN
-    console.log(noDate);//1511022672428
+    console.log(noDate);//1511022672428  当前日期对应的时间戳，当前日期距离 1970年1月1日的毫秒数 
+    console.log(noDate/(1000*60*60*24));//17489.65486390046 当前日期距离 1970年1月1日的天数
+    console.log(noDate/(1000*60*60*24*365));//47.916865279807205 当前日期距离 1970年1月1日的大致年数
     console.log("\n");
 
   console.log("\t打印其他类对象转化成Number类型的原型");

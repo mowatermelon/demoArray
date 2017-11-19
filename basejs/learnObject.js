@@ -17,8 +17,8 @@
 //learnBoolean();
 //learnNumber();
 //learnString();
-learnArray();
-//learnDate();
+//learnArray();
+learnDate();
 
 
 //学习Object对象
@@ -879,6 +879,41 @@ function learnDate(){
     //对象具有属性__proto__，可称为隐式原型，一个对象的隐式原型指向构造该对象的构造函数的原型
     //就是这个构造体的默认值
     console.log(oDate.__proto__); //Date {}
+
+    
+    var timestamp = Date.parse(oDate);
+    console.log("当前时间戳为：" + timestamp);//当前时间戳为：1511107852000  会把最后三位改成000显示
+    console.log(Number(oDate));//1511108209860    
+    console.log(oDate.valueOf());//1511108209860
+    console.log(oDate.getTime());//1511108209860
+    console.log(Number(oDate)==oDate.getTime());//true   
+    console.log(timestamp==Number(oDate));//false
+    console.log(timestamp-Number(oDate));//-860
+
+    console.log("将当前时间换成时间格式字符串");
+    // 将当前时间换成时间格式字符串
+    var timestamp3 = 1511022672428;//2017-11-18号
+    oDate.setTime(timestamp3);
+    console.log("\n"); 
+    console.log(oDate.toDateString());//Sun Nov 19 2017
+    console.log("\n"); 
+    console.log(oDate.toGMTString());//Sat, 18 Nov 2017 16:31:12 GMT    
+    console.log("\n"); 
+    console.log(oDate.toISOString());//2017-11-18T16:31:12.428Z
+    console.log("\n"); 
+    console.log(oDate.toJSON());// 2017-11-18T16:31:12.428Z
+    console.log("\n");    
+    console.log(oDate.toLocaleDateString());// 2017/11/19
+    console.log("\n");    
+    console.log(oDate.toLocaleString());//2017/11/19 上午12:31:12
+    console.log("\n");    
+    console.log(oDate.toLocaleTimeString());//上午12:31:12
+    console.log("\n");    
+    console.log(oDate.toString());//Sun Nov 19 2017 00:31:12 GMT+0800 (CST)
+    console.log("\n");    
+    console.log(oDate.toTimeString());//00:31:12 GMT+0800 (CST)
+    console.log("\n");
+    console.log(oDate.toUTCString());//Sat, 18 Nov 2017 16:31:12 GMT
 
 }
 
