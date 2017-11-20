@@ -22,7 +22,6 @@ absolute的破坏性太大，有些情况可以使用margin代码会更简洁，
 
 absolute的破坏性太大，有些情况可以使用margin代码会更简洁，主要是margin负值的妙用
 
-
 ## 二 learnBasejs
 
 > 1 [A4demo](https://mowatermelon.github.io/demoArray/basejs/a4Demo.html)

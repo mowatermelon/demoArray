@@ -350,7 +350,7 @@ function learnString(){
     //用于把字符串转换为大写。
     //返回值 一个新的字符串，在其中 stringObject 的所有大写字符全部被转换为了大写字符。
     //与 toUpperCase() 不同的是，toLocaleUpperCase() 方法按照本地方式把字符串转换为大写。
-    //---------------只有几种语言（如土耳其语）具有地方特有的大小写映射，所有该方法的返回值通常与 toLowerCase() 一样。
+    //---------------只有几种语言（如土耳其语）具有地方特有的大小写映射，所有该方法的返回值通常与 toUpperCase() 一样。
     console.log(oString.toLocaleUpperCase());//HELLO WORLD
     console.log("\n用于把字符串转换为大写。---------------------------------------------------------------------toUpperCase()");                       
     //用于把字符串转换为大写。

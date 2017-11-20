@@ -52,6 +52,76 @@ function showInitData(){
 
 function learnStringProp(){
 	console.log("\n ------------------------------------------------------------------------------------------------------------------------------------------打印字符串对象属性"); 
+	learnInheritFunProp();
+	//learnInheritObjectProp();
+	//learnStringCommonProp();
+}
+learnStringProp();
+
+function learnInheritFunProp(){
+	console.log("\n ------------------------------------------------------------------------------------------------------------------------------------------打印String对象继承funciton的属性");	
+		// console.log(oString.arguments);//undefined
+		// console.log(oString.arity);//undefined
+		// console.log(oString.caller);//undefined
+		// console.log(oString.callee);//undefined
+		// console.log(oString.displayName);//undefined
+		// console.log(oString.length);//11
+		// console.log(oString.name);//undefined
+		// console.log(oString.prototype);//undefined
+		
+		// //在浏览器控制台会报错'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
+		// //但是在js文件以node的形式运行的时候，可以打印相关结果
+		// console.log(String.arguments);//null
+		// console.log(String.arity);//undefined
+		// console.log(String.caller);//null
+		// console.log(String.callee);//undefined
+		// console.log(String.displayName);//undefined
+		// console.log(String.length);//1
+		// console.log(String.name);//String
+		// console.log(String.prototype);//[String: '']
+
+		var a = function() {  
+			console.log("arguments.callee"); //  arguments.callee 
+			
+			console.log(arguments.callee);
+			//在浏览器控制台 打印效果
+			// ƒ () {  
+			// 	console.log("arguments.callee"); 
+			// 	console.log(arguments.callee);
+			// 	console.log("arguments.callee.length"); 
+			// 	console.log(arguments.callee.length);   
+			// 	}
+
+			//在js文件以node的形式运行  打印效果
+			//[Function: a]
+
+			console.log("arguments.callee.length"); //arguments.callee.length
+			console.log(arguments.callee.length);   // 0
+		}   
+		var b = function() {   
+			a();   
+		}   
+		b();  
+}
+
+function learnInheritObjectProp(){
+	console.log("\n ------------------------------------------------------------------------------------------------------------------------------------------打印String对象继承object的属性");	
+		console.log(oString.__count__);//
+		console.log(oString.__noSuchMethod__);//
+		console.log(oString.__parent__);//
+		console.log(oString.__proto__);//
+		console.log(oString.constructor);//
+
+		//报错'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
+		console.log(String.__count__);//
+		console.log(String.__noSuchMethod__);//
+		console.log(String.__parent__);//
+		console.log(String.__proto__);//
+		console.log(String.constructor);//
+}
+
+function learnStringCommonProp(){
+	console.log("\n ------------------------------------------------------------------------------------------------------------------------------------------打印String对象常用的属性");
 	console.log("\n 打印本身constructor属性------------------------------------------------------------------------------------------------------------------------------------------"); 
 		console.log(strString.constructor);//[Function: String]
 		console.log(oString.constructor);//[Function: String]
@@ -59,7 +129,6 @@ function learnStringProp(){
 		console.log(tString_2.constructor);//[Function: String]
 		console.log(tString_3.constructor);//[Function: String]
 		console.log(tString_4.constructor);//[Function: String]
-
 
 	console.log("\n 打印本身__proto__属性------------------------------------------------------------------------------------------------------------------------------------------"); 
 		console.log(strString.__proto__);//[String: '']
@@ -76,10 +145,7 @@ function learnStringProp(){
 		console.log(tString_2.length);//41 18个字母加两个数字加四个空格加四个缩进符（一个占四个）加上一个换行符（一个占一个）
 		console.log(tString_3.length);//25 15个字母加四个数字加四个空格加一个符号加上一个换行符（一个占一个）
 		console.log(tString_4.length);//10 9个汉字加一个符号
-
-
 }
-//learnStringProp();
 
 function LearnStringTran(){
 	console.log("\n强制类型转化，将其他类型的变量转化成String类型------------------------------------------------------------------------------------------------------------------------------------------String()");
@@ -157,7 +223,7 @@ function LearnStringTran(){
 }
 //LearnStringTran();
 	
-learnStringFun();
+//learnStringFun();
 
 function learnStringFun(){
 	console.log("\n ------------------------------------------------------------------------------------------------------------------------------------------打印字符串对象方法");    
