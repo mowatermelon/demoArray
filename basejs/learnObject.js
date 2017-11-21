@@ -516,10 +516,9 @@ function learnString(){
     console.log(str.replace(regP,'($1)'));    
     str = str.replace(reg,"\(").replace(reg2,"\)");
 
-    var regPP =/\（+\）/g;
+    var regPP =/\（|\）/g;
     var strd = "ddf（ddd）";    
     strd = strd.replace(regPP, function(MatchStr) { 
-        console.log(MatchStr);
         switch (MatchStr) { 
         case "（": 
             return "("; 
