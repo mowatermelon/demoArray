@@ -506,10 +506,36 @@ function learnString(){
     console.log(oString.replace(/o/g, " $&+$& ")); //hell o+o  w o+o rld   这里的$&指代的就是替换条件 o    所以 $&+$& 等价于 o+o
     var ss="AaAB";
     console.log(ss.replace(/A/ig, "RR"));//RRRRRRB     加上ig之后会对所有匹配的内容进行替换，并且忽略大小写
+    var sDate ="2017/11/21"; 
+    console.log(sDate.replace(/(\w+)\/*\/*(\w+)\/*(\w+)/g, "$1-$2-$3"));
+    console.log(sDate.replace(/\//g, "-"));
+
+    var reg = /[（]/g,reg2 = /[）]/g;
+    var regP =/\（+(\w+)\）/g;
+    var str = "（ddd）";
+    console.log(str.replace(regP,'($1)'));    
+    str = str.replace(reg,"\(").replace(reg2,"\)");
+
+    var regPP =/\（+\）/g;
+    var strd = "ddf（ddd）";    
+    strd = strd.replace(regPP, function(MatchStr) { 
+        console.log(MatchStr);
+        switch (MatchStr) { 
+        case "（": 
+            return "("; 
+            break; 
+        case "）": 
+            return ")"; 
+            break; 
+        } 
+    }) 
+    console.log(strd);
+    
+
     console.log(oString.replace(/(\w+)\s* \s*(\w+)/, "$2 $1"));//world hello    通过字符串中的空格，对字符串进行分割，$1是第一个匹配的文本，$2是第二个匹配的文本，然后进行反序输出
     console.log(oString.replace(/\b\w+\b/g, function(word){
         return word.substring(0,1).toUpperCase()+word.substring(1);}
-        ));                                                     //Hello World   所有单词的首字母都转换为大写  也就是说replace的第二个参数是可以支持函数形式
+        )); //Hello World   所有单词的首字母都转换为大写  也就是说replace的第二个参数是可以支持函数形式
    
    console.log("\n用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串。 ---------------------------------------------------------------------search()");                                     
    //用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串。   
