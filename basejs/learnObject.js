@@ -529,7 +529,11 @@ function learnString(){
         } 
     }) 
     console.log(strd);
-    
+
+    var str ="d（dddsdfsdfs）";
+    m=str.replace(/(?=.*\w)+\（+(\w+)\）+/g,'($1)');
+    console.log(m);
+
 
     console.log(oString.replace(/(\w+)\s* \s*(\w+)/, "$2 $1"));//world hello    通过字符串中的空格，对字符串进行分割，$1是第一个匹配的文本，$2是第二个匹配的文本，然后进行反序输出
     console.log(oString.replace(/\b\w+\b/g, function(word){
