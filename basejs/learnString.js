@@ -392,3 +392,8 @@ function learnStringHFontsize(){
 	console.log(tString_3.fontsize(4))//<font size="4">Fifteen is 12 and \n  not 16.</font>
 	console.log(tString_4.fontsize(4))//<font size="4">大吉大利今晚吃西瓜!</font>
 }   
+
+function testSSH(){
+
+	console.log("测试深度系统的ssh是否正确配置");
+}
