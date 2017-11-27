@@ -22,6 +22,190 @@ var oNum = new Number(68);
 var oArray = new Array("demo","melon","water");
 var oDate = new Date();
 
+function learnCon(){
+  console.log("\t打印默认六个对象类型构造体之间的关系");
+    console.log("\t打印默认六个对象类型构造体");
+      console.log(Object().constructor);//[Function: Object]   
+      console.log(String().constructor);//[Function: String]
+      console.log(Boolean().constructor);//[Function: Boolean]
+      console.log(Number().constructor);//[Function: Number]
+      console.log(Array().constructor);//[Function: Array]
+      console.log(Date().constructor);//[Function: String]
+      console.log("\n");  
+
+    console.log("\t打印默认object与其他五个对象类型构造体之间的关系");
+      console.log(Object().constructor===String().constructor);//false
+      console.log(Object().constructor===Boolean().constructor);//false
+      console.log(Object().constructor==Number().constructor);//false
+      console.log(Object().constructor===Array().constructor);//false
+      console.log(Object().constructor===Date().constructor);//false
+      console.log("\n");
+
+    console.log("\t打印默认String与其他五个对象类型构造体之间的关系");
+      console.log(String().constructor===Object().constructor);//false
+      console.log(String().constructor===Boolean().constructor);//false
+      console.log(String().constructor===Number().constructor);//false
+      console.log(String().constructor===Array().constructor);//false
+      console.log(String().constructor===Date().constructor);//true
+      console.log("\n");  
+
+    console.log("\t打印默认Boolean与其他五个对象类型构造体之间的关系");
+      console.log(Boolean().constructor===String().constructor);//false
+      console.log(Boolean().constructor===Object().constructor);//false
+      console.log(Boolean().constructor===Number().constructor);//false
+      console.log(Boolean().constructor===Array().constructor);//false
+      console.log(Boolean().constructor===Date().constructor);//false
+      console.log("\n");
+
+    console.log("\t打印默认Number与其他五个对象类型构造体之间的关系");
+      console.log(Number().constructor===String().constructor);//false
+      console.log(Number().constructor===Boolean().constructor);//false
+      console.log(Number().constructor==Object().constructor);//false
+      console.log(Number().constructor===Array().constructor);//false
+      console.log(Number().constructor===Date().constructor);//false
+      console.log("\n");  
+
+    console.log("\t打印默认Array与其他五个对象类型构造体之间的关系");
+      console.log(Array().constructor===String().constructor);//false
+      console.log(Array().constructor===Boolean().constructor);//false
+      console.log(Array().constructor===Number().constructor);//false
+      console.log(Array().constructor===Object().constructor);//false
+      console.log(Array().constructor===Date().constructor);//false
+      console.log("\n"); 
+
+    console.log("\t打印默认Date与其他五个对象类型构造体之间的关系");
+      console.log(Date().constructor===String().constructor);//true
+      console.log(Date().constructor===Boolean().constructor);//false
+      console.log(Date().constructor===Number().constructor);//false
+      console.log(Date().constructor===Array().constructor);//false
+      console.log(Date().constructor===Object().constructor);//false
+      console.log("\n");
+}
+
+//learnCon();
+
+function learn_proto_(){
+  console.log("\t打印默认六个对象类型原型链之间的关系");  
+    console.log("\t打印默认六个对象类型自身原型链");
+      console.log(Object().__proto__);//{}  
+      console.log(String().__proto__);//[String: '']
+      console.log(Boolean().__proto__);//[Boolean: false]
+      console.log(Number().__proto__);//[Number: 0]
+      console.log(Array().__proto__);//[]
+      console.log(Date().__proto__);//[String: '']
+      console.log("\n");  
+    console.log("\t打印默认object与其他五个对象类型原型链之间的关系");
+      console.log(Object().__proto__===String().__proto__);//false
+      console.log(Object().__proto__===Boolean().__proto__);//false
+      console.log(Object().__proto__===Number().__proto__);//false
+      console.log(Object().__proto__===Array().__proto__);//false
+      console.log(Object().__proto__===Date().__proto__);//false
+      console.log("\n");
+
+    console.log("\t打印默认String与其他五个对象类型原型链之间的关系");
+      console.log(String().__proto__===Object().__proto__);//false
+      console.log(String().__proto__===Boolean().__proto__);//false
+      console.log(String().__proto__===Number().__proto__);//false
+      console.log(String().__proto__===Array().__proto__);//false
+      console.log(String().__proto__===Date().__proto__);//true
+      console.log("\n");  
+
+    console.log("\t打印默认Boolean与其他五个对象类型原型链之间的关系");
+      console.log(Boolean().__proto__===String().__proto__);//false
+      console.log(Boolean().__proto__===Object().__proto__);//false
+      console.log(Boolean().__proto__===Number().__proto__);//false
+      console.log(Boolean().__proto__===Array().__proto__);//false
+      console.log(Boolean().__proto__===Date().__proto__);//false
+      console.log("\n");
+
+    console.log("\t打印默认Number与其他五个对象类型原型链之间的关系");
+      console.log(Number().__proto__===String().__proto__);//false
+      console.log(Number().__proto__===Boolean().__proto__);//false
+      console.log(Number().__proto__===Object().__proto__);//false
+      console.log(Number().__proto__===Array().__proto__);//false
+      console.log(Number().__proto__===Date().__proto__);//false
+      console.log("\n");  
+
+    console.log("\t打印默认Array与其他五个对象类型原型链之间的关系");
+      console.log(Array().__proto__===String().__proto__);//false
+      console.log(Array().__proto__===Boolean().__proto__);//false
+      console.log(Array().__proto__===Number().__proto__);//false
+      console.log(Array().__proto__===Object().__proto__);//false
+      console.log(Array().__proto__===Date().__proto__);//false
+      console.log("\n"); 
+
+    console.log("\t打印默认Date与其他五个对象类型原型链之间的关系");
+      console.log(Date().__proto__===String().__proto__);//true
+      console.log(Date().__proto__===Boolean().__proto__);//false
+      console.log(Date().__proto__===Number().__proto__);//false
+      console.log(Date().__proto__===Array().__proto__);//false
+      console.log(Date().__proto__===Object().__proto__);//false
+      console.log("\n");
+}
+
+//learn_proto_();
+
+function learnInstan_proto_(){
+  console.log("\t打印默认六个对象类型原型链之间的关系");  
+    console.log("\t打印默认六个对象类型自身原型链");
+      console.log(Object().__proto__);//{}  
+      console.log(String().__proto__);//[String: '']
+      console.log(Boolean().__proto__);//[Boolean: false]
+      console.log(Number().__proto__);//[Number: 0]
+      console.log(Array().__proto__);//[]
+      console.log(Date().__proto__);//[String: '']
+      console.log("\n");  
+    console.log("\t打印默认object与其他五个对象类型原型链之间的关系");
+      console.log(Object instanceof String);//false
+      console.log(Object instanceof Boolean);//false
+      console.log(Object instanceof Number);//false
+      console.log(Object instanceof Array);//false
+      console.log(Object instanceof Date);//false
+      console.log("\n");
+
+    console.log("\t打印默认String与其他五个对象类型原型链之间的关系");
+      console.log(String instanceof Object);//true
+      console.log(String instanceof Boolean);//false
+      console.log(String instanceof Number);//false
+      console.log(String instanceof Array);//false
+      console.log(String instanceof Date);//false
+      console.log("\n");  
+
+    console.log("\t打印默认Boolean与其他五个对象类型原型链之间的关系");
+      console.log(Boolean instanceof String);//false
+      console.log(Boolean instanceof Object);//true
+      console.log(Boolean instanceof Number);//false
+      console.log(Boolean instanceof Array);//false
+      console.log(Boolean instanceof Date);//false
+      console.log("\n");
+
+    console.log("\t打印默认Number与其他五个对象类型原型链之间的关系");
+      console.log(Number instanceof String);//false
+      console.log(Number instanceof Boolean);//false
+      console.log(Number instanceof Object);//true
+      console.log(Number instanceof Array);//false
+      console.log(Number instanceof Date);//false
+      console.log("\n");  
+
+    console.log("\t打印默认Array与其他五个对象类型原型链之间的关系");
+      console.log(Array instanceof String);//false
+      console.log(Array instanceof Boolean);//false
+      console.log(Array instanceof Number);//false
+      console.log(Array instanceof Object);//true
+      console.log(Array instanceof Date);//false
+      console.log("\n"); 
+
+    console.log("\t打印默认Date与其他五个对象类型原型链之间的关系");
+      console.log(Date instanceof String);//false
+      console.log(Date instanceof Boolean);//false
+      console.log(Date instanceof Number);//false
+      console.log(Date instanceof Array);//false
+      console.log(Date instanceof Object);//true
+      console.log("\n");
+}
+
+//learnInstan_proto_();
+
 function showInitData(){
   console.log("打印默认六个对象类型相关数据");
   console.log("\t打印默认六个对象类型相关数据本身");
@@ -777,4 +961,4 @@ function showGen(){
   // console.log(mycar2.model);//报错 Cannot read property 'model' of undefined
   // console.log(mycar2.year); // 报错 Cannot read property 'year' of undefined
 }
-showGen();
+//showGen();
