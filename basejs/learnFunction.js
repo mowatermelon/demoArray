@@ -196,3 +196,19 @@ function learnFunCommonProp(){
 	// 	console.log(tString_4.length);//10 9个汉字加一个符号
 }
 
+function learnFunArgument(){
+    learnSameArgument();
+}
+
+function learnSameArgument(){
+    console.log("\t打印如果形参名全部相同的结果");
+	var mm = function(c,c,c) {
+		console.log("第一个c-----------");
+		console.log(c);//6
+		console.log("第二个c-----------");
+		console.log(c);//6
+		console.log("第三个c-----------");
+		console.log(c);	//6			
+	}
+	mm(4,5,6);
+}
