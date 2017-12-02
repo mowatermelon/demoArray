@@ -1,7 +1,13 @@
 var a = 4;
 var b = 8;
 var strString = "hello watermelon";
+var oo = new Object();
 var oString = new String("hello world");
+var oBool = new Boolean(true);
+var oNum = new Number(68);
+var oArray = new Array("demo","melon","water");
+var oDate = new Date();
+var oString_1 = 'A \uD87E\uDC04 Z';
 var tString_1 =`hello Template`;
 var tString_2 =`hello line 1
 				hello line 2`;
@@ -32,7 +38,7 @@ function learnString(){
 	//学习string的方法
 	learnStringFun();	
 	//学习和使用模版字面量
-	learnTemplateLiteral();
+	//learnTemplateLiteral();
 }
 
 function showInitData(){
@@ -40,6 +46,7 @@ function showInitData(){
 	console.log("\n 打印本身内容------------------------------------------------------------------------------------------------------------------------------------------"); 
 	console.log(strString);//hello watermelon
 	console.log(oString);//[String: 'hello world']
+	console.log(oString_1);//A 你 Z   中间不在BMP中的字符，会显示乱码
 	console.log(tString_1);//hello Template
 	//打印出来会保留原格式 比如原有的换行和缩进
 	console.log(tString_2);//hello line 1 \n \t hello line 2  
@@ -54,6 +61,7 @@ function showInitData(){
 
 	console.log(strString instanceof(String))//false
 	console.log(oString instanceof(String))//true
+	console.log(oString_1 instanceof(String));//false
 	console.log(tString_1 instanceof(String))//false
 	console.log(tString_2 instanceof(String))//false
 	console.log(tString_3 instanceof(String))//false
@@ -161,6 +169,7 @@ function learnStringCommonProp(){
 	console.log("\n 打印本身constructor属性------------------------------------------------------------------------------------------------------------------------------------------"); 
 		console.log(strString.constructor);//[Function: String]
 		console.log(oString.constructor);//[Function: String]
+		console.log(oString_1.constructor);//[Function: String]
 		console.log(tString_1.constructor);//[Function: String]
 		console.log(tString_2.constructor);//[Function: String]
 		console.log(tString_3.constructor);//[Function: String]
@@ -169,6 +178,7 @@ function learnStringCommonProp(){
 	console.log("\n 打印本身__proto__属性------------------------------------------------------------------------------------------------------------------------------------------"); 
 		console.log(strString.__proto__);//[String: '']
 		console.log(oString.__proto__);//[String: '']
+		console.log(oString_1.__proto__);//[String: '']
 		console.log(tString_1.__proto__);//[String: '']
 		console.log(tString_2.__proto__);//[String: '']
 		console.log(tString_3.__proto__);//[String: '']
@@ -177,6 +187,7 @@ function learnStringCommonProp(){
 	console.log("\n 打印本身length属性------------------------------------------------------------------------------------------------------------------------------------------");
 		console.log(strString.length);//16 15个字母加一个空格
 		console.log(oString.length);//11 10个字母加一个空格
+		console.log(oString_1.length);//6 两个字母加两个空格加一个个识别出来的非BMP的字符	（一个占两个）	
 		console.log(tString_1.length);//14 13个字母加一个空格
 		console.log(tString_2.length);//41 18个字母加两个数字加四个空格加四个缩进符（一个占四个）加上一个换行符（一个占一个）
 		console.log(tString_3.length);//25 15个字母加四个数字加四个空格加一个符号加上一个换行符（一个占一个）
@@ -208,7 +219,7 @@ function learnStringSoftFun(){
 
 function learnStringToughFun(){
 	console.log("\n 会改变字符串原始值的强硬方法------------------------------------------------------------------------------------------------------------------------------------------"); 
-	//LearnStringTTranInstanceof();
+	LearnStringTTranInstanceof();
 	LearnStringTReplacement();
 	LearnStringTDivision();
 	LearnStringTFormat();
@@ -241,6 +252,7 @@ function learnStringToughFun(){
 			console.log("\n 打印big()函数的用法---------------------------------------------------------------------------------------------------------------------1"); 
 			console.log(strString.big())//<big>hello watermelon</big>
 			console.log(oString.big())//<big>hello world</big>
+			console.log(oString_1.big())//<big>A 你 Z</big>
 			console.log(tString_1.big())//<big>hello Template</big>
 			console.log(tString_2.big())//<big>hello line 1 \n \t hello line 2</big>
 			console.log(tString_3.big())//<big>Fifteen is 12 and \n  not 16.</big>
@@ -251,6 +263,7 @@ function learnStringToughFun(){
 			console.log("\n 打印small()函数的用法---------------------------------------------------------------------------------------------------------------------2"); 
 			console.log(strString.small())//<small>hello watermelon</small>
 			console.log(oString.small())//<small>hello world</small>
+			console.log(oString_1.small())//<small>A 你 Z</small>			
 			console.log(tString_1.small())//<small>hello Template</small>
 			console.log(tString_2.small())//<small>hello line 1 \n \t hello line 2</small>
 			console.log(tString_3.small())//<small>Fifteen is 12 and \n  not 16.</small>
@@ -261,6 +274,7 @@ function learnStringToughFun(){
 			console.log("\n 打印blink()函数的用法---------------------------------------------------------------------------------------------------------------------3"); 
 			console.log(strString.blink())//<blink>hello watermelon</blink>
 			console.log(oString.blink())//<blink>hello world</blink>
+			console.log(oString_1.blink())//<blink>A 你 Z</blink>			
 			console.log(tString_1.blink())//<blink>hello Template</blink>
 			console.log(tString_2.blink())//<blink>hello line 1 \n \t hello line 2</blink>
 			console.log(tString_3.blink())//<blink>Fifteen is 12 and \n  not 16.</blink>
@@ -271,6 +285,7 @@ function learnStringToughFun(){
 			console.log("\n 打印bold()函数的用法---------------------------------------------------------------------------------------------------------------------4"); 
 			console.log(strString.bold())//<b>hello watermelon</b>
 			console.log(oString.bold())//<b>hello world</b>
+			console.log(oString_1.bold())//<b>A 你 Z</b>
 			console.log(tString_1.bold())//<b>hello Template</b>
 			console.log(tString_2.bold())//<b>hello line 1 \n \t hello line 2</b>
 			console.log(tString_3.bold())//<b>Fifteen is 12 and \n  not 16.</b>
@@ -281,6 +296,7 @@ function learnStringToughFun(){
 			console.log("\n 打印italics()函数的用法---------------------------------------------------------------------------------------------------------------------5"); 
 			console.log(strString.italics())//<i>hello watermelon</i>
 			console.log(oString.italics())//<i>hello world</i>
+			console.log(oString_1.italics())//<i>A 你 Z</i>
 			console.log(tString_1.italics())//<i>hello Template</i>
 			console.log(tString_2.italics())//<i>hello line 1 \n \t hello line 2</i>
 			console.log(tString_3.italics())//<i>Fifteen is 12 and \n  not 16.</i>
@@ -288,9 +304,10 @@ function learnStringToughFun(){
 		}
 
 		function learnStringHStrike(){
-			console.log("\n 打印big()函数的用法---------------------------------------------------------------------------------------------------------------------6"); 
+			console.log("\n 打印strike()函数的用法---------------------------------------------------------------------------------------------------------------------6"); 
 			console.log(strString.strike())//<strike>hello watermelon</strike>
 			console.log(oString.strike())//<strike>hello world</strike>
+			console.log(oString_1.strike())//<i>A 你 Z</i>
 			console.log(tString_1.strike())//<strike>hello Template</strike>
 			console.log(tString_2.strike())//<strike>hello line 1 \n \t hello line 2</strike>
 			console.log(tString_3.strike())//<strike>Fifteen is 12 and \n  not 16.</strike>
@@ -298,9 +315,10 @@ function learnStringToughFun(){
 		}
 
 		function learnStringHFixed(){
-			console.log("\n 打印big()函数的用法---------------------------------------------------------------------------------------------------------------------7"); 
+			console.log("\n 打印fixed()函数的用法---------------------------------------------------------------------------------------------------------------------7"); 
 			console.log(strString.fixed())//<tt>hello watermelon</tt>
 			console.log(oString.fixed())//<tt>hello world</tt>
+			console.log(oString_1.fixed())//<i>A 你 Z</i>
 			console.log(tString_1.fixed())//<tt>hello Template</tt>
 			console.log(tString_2.fixed())//<tt>hello line 1 \n \t hello line 2</tt>
 			console.log(tString_3.fixed())//<tt>Fifteen is 12 and \n  not 16.</tt>
@@ -311,6 +329,7 @@ function learnStringToughFun(){
 			console.log("\n 打印sub()函数的用法---------------------------------------------------------------------------------------------------------------------8"); 
 			console.log(strString.sub())//<sub>hello watermelon</sub>
 			console.log(oString.sub())//<sub>hello world</sub>
+			console.log(oString_1.sub())//<i>A 你 Z</i>
 			console.log(tString_1.sub())//<sub>hello Template</sub>
 			console.log(tString_2.sub())//<sub>hello line 1 \n \t hello line 2</sub>
 			console.log(tString_3.sub())//<sub>Fifteen is 12 and \n  not 16.</sub>
@@ -321,6 +340,7 @@ function learnStringToughFun(){
 			console.log("\n 打印sup()函数的用法---------------------------------------------------------------------------------------------------------------------9"); 
 			console.log(strString.sup())//<sup>hello watermelon</sup>
 			console.log(oString.sup())//<sup>hello world</sup>
+			console.log(oString_1.sup())//<sup>A 你 Z</sup>
 			console.log(tString_1.sup())//<sup>hello Template</sup>
 			console.log(tString_2.sup())//<sup>hello line 1 \n \t hello line 2</sup>
 			console.log(tString_3.sup())//<sup>Fifteen is 12 and \n  not 16.</sup>
@@ -331,6 +351,7 @@ function learnStringToughFun(){
 			console.log("\n 打印anchor()函数的用法---------------------------------------------------------------------------------------------------------------------10"); 
 			console.log(strString.anchor("watermelon"))//<a name="watermelon">hello watermelon</a>
 			console.log(oString.anchor("watermelon"))//<a name="watermelon">hello world</a>
+			console.log(oString_1.anchor("watermelon"))//<a name="watermelon">A 你 Z</a>
 			console.log(tString_1.anchor("watermelon"))//<a name="watermelon">hello Template</a>
 			console.log(tString_2.anchor("watermelon"))//<a name="watermelon">hello line 1 \n \t hello line 2</a>
 			console.log(tString_3.anchor("watermelon"))//<a name="watermelon">Fifteen is 12 and \n  not 16.</a>
@@ -341,6 +362,7 @@ function learnStringToughFun(){
 			console.log("\n 打印link()函数的用法---------------------------------------------------------------------------------------------------------------------11"); 
 			console.log(strString.link("https://mowatermelon.github.io/"))//<a href="https://mowatermelon.github.io/">hello watermelon</a>
 			console.log(oString.link("https://mowatermelon.github.io/"))//<a href="https://mowatermelon.github.io/">hello world</a>
+			console.log(oString_1.link("https://mowatermelon.github.io/"))//<a href="https://mowatermelon.github.io/">A 你 Z</a>
 			console.log(tString_1.link("https://mowatermelon.github.io/"))//<a href="https://mowatermelon.github.io/">hello Template</a>
 			console.log(tString_2.link("https://mowatermelon.github.io/"))//<a href="https://mowatermelon.github.io/">hello line 1 \n \t hello line 2</a>
 			console.log(tString_3.link("https://mowatermelon.github.io/"))//<a href="https://mowatermelon.github.io/">Fifteen is 12 and \n  not 16.</a>
@@ -351,6 +373,7 @@ function learnStringToughFun(){
 			console.log("\n 打印fontcolor()函数的用法---------------------------------------------------------------------------------------------------------------------12"); 
 			console.log(strString.fontcolor("#e9e9e9"))//<font color="#e9e9e9">hello watermelon</font>
 			console.log(oString.fontcolor("#e9e9e9"))//<font color="#e9e9e9">hello world</font>
+			console.log(oString_1.fontcolor("#e9e9e9"))//<font color="#e9e9e9">A 你 Z</font>
 			console.log(tString_1.fontcolor("#e9e9e9"))//<font color="#e9e9e9">hello Template</font>
 			console.log(tString_2.fontcolor("#e9e9e9"))//<font color="#e9e9e9">hello line 1 \n \t hello line 2</font>
 			console.log(tString_3.fontcolor("#e9e9e9"))//<font color="#e9e9e9">Fifteen is 12 and \n  not 16.</font>
@@ -361,6 +384,7 @@ function learnStringToughFun(){
 			console.log("\n 打印fontsize()函数的用法---------------------------------------------------------------------------------------------------------------------13"); 
 			console.log(strString.fontsize(4))//<font size="4">hello watermelon</font>
 			console.log(oString.fontsize(4))//<font size="4">hello world</font>
+			console.log(oString_1.fontsize(4))//<font size="4">A 你 Z</font>
 			console.log(tString_1.fontsize(4))//<font size="4">hello Template</font>
 			console.log(tString_2.fontsize(4))//<font size="4">hello line 1 \n \t hello line 2</font>
 			console.log(tString_3.fontsize(4))//<font size="4">Fifteen is 12 and \n  not 16.</font>
@@ -377,16 +401,69 @@ function learnStringToughFun(){
 			// learnStringSNormalize();
 			// learnStringSFromCharCode();
 			// learnStringSFromCodePoint();
+			//learnBMPChar();
 		}
 
 		function learnStringSCharAt(){
 			console.log("\n 打印charAt()函数的用法---------------------------------------------------------------------------------------------------------------------1"); 
-			console.log(strString.charAt())//<big>hello watermelon</big>
-			console.log(oString.charAt())//<big>hello world</big>
-			console.log(tString_1.charAt())//<big>hello Template</big>
-			console.log(tString_2.charAt())//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.charAt())//<big>Fifteen is 12 and \n  not 16.</big>
-			console.log(tString_4.charAt())//<big>大吉大利今晚吃西瓜!</big>
+			//返回在指定位置的字符
+			//不提供参数就返回第一个字符的字符
+			//提供游标值，就返回指定游标的字符    			
+			console.log(strString.charAt())//h
+			console.log(strString.charAt(3))//l	
+			console.log(strString.charAt(1,2))//e	
+			console.log(strString.charAt(1,2,3))//e	
+			console.log(strString.charAt(1.2,3))//e				
+			console.log(strString.charAt(1.6,3))//e
+			console.log(strString.charAt(1.9,3))//e						
+			console.log(strString.charAt(strString.length-1))//n
+
+			console.log(strString.charAt(-2))//''  因为不接受负值，所以返回值为空							
+			console.log(strString.charAt(oString))//h	
+			console.log(strString.charAt(true))//e	
+			console.log(strString.charAt(false))//h	
+			console.log(strString.charAt(null))//h	
+			console.log(strString.charAt(undefined))//h	
+			console.log(strString.charAt(oArray))//h	
+			console.log(strString.charAt(oo))//h
+			console.log(strString.charAt(oNum))//''  因为超过字符串长度，所以返回值为空
+			console.log(strString.charAt(oDate))//''  因为超过字符串长度，所以返回值为空			
+			console.log(strString.charAt(strString.length))//''  因为超过字符串长度，所以返回值为空
+			
+			console.log(oString.charAt())//h
+			console.log(oString.charAt(5))//''  因为对应位置的字符是空格，所以返回值为空			
+			console.log(oString.charAt(oString.length-1))//d
+			console.log(oString.charAt(oString.length))//''  因为超过字符串长度，所以返回值为空
+
+			console.log(oString_1.charAt())//A
+			console.log(oString_1.charAt(3))//�			
+			console.log(oString_1.charAt(oString_1.length-1))//Z			
+			console.log(oString_1.charAt(oString_1.length))//''  因为超过字符串长度，所以返回值为空
+
+			console.log(tString_1.charAt())//h
+			console.log(tString_1.charAt(5))//''  因为对应位置的字符是空格，所以返回值为空					
+			console.log(tString_1.charAt(tString_1.length-1))//e
+			console.log(tString_1.charAt(tString_1.length))//''  因为超过字符串长度，所以返回值为空
+
+			console.log(tString_2.charAt())//<big>hello line 1 \n \t hello line 2</big> h
+			console.log(tString_2.charAt(12))//''  因为对应位置的字符是换行符，所以返回值为空	
+			console.log(tString_2.charAt(13))//''  因为对应位置的字符是缩进符第一个位置，所以返回值为空			
+			console.log(tString_2.charAt(14))//''  因为对应位置的字符是缩进符第二个位置，所以返回值为空			
+			console.log(tString_2.charAt(15))//''  因为对应位置的字符是缩进符第三个位置，所以返回值为空			
+			console.log(tString_2.charAt(16))//''  因为对应位置的字符是缩进符第四个位置，所以返回值为空
+			console.log(tString_2.charAt(17))//h  			
+			console.log(tString_2.charAt(tString_2.length-1))//2
+			console.log(tString_2.charAt(tString_2.length))//''  因为超过字符串长度，所以返回值为空
+
+			console.log(tString_3.charAt())//F
+			console.log(tString_3.charAt(17))//n			
+			console.log(tString_3.charAt(tString_3.length-1))//.
+			console.log(tString_3.charAt(tString_3.length))//''  因为超过字符串长度，所以返回值为空
+
+			console.log(tString_4.charAt())//大
+			console.log(tString_4.charAt(3))//利			
+			console.log(tString_4.charAt(tString_4.length-1))//!
+			console.log(tString_4.charAt(tString_4.length))//''  因为超过字符串长度，所以返回值为空	
 		}
 
 		function learnStringSCharCodeAt(){
@@ -447,7 +524,156 @@ function learnStringToughFun(){
 			console.log(String.fromCodePoint(0x2F804)); // or 194564 in decimal			
 		}
 
+		function learnBMPChar(){
+			for (var i=0, chr; i < oString_1.length; i++) {
+				if ((chr = getWholeChar(oString_1, i)) === false) {
+					continue;
+				} // Adapt this line at the top of each loop, passing in the whole string and
+					// the current iteration and returning a variable to represent the 
+					// individual character
+			
+				console.log(chr);
+				//会执行5次
+				//第一次   A
+				//第二次   空字符串
+				//第三次   你 在浏览器中显示为  你
+				//第四次   空字符串
+				//第五次   Z
+				
+			}
+			var str = 'A\uD87E\uDC04Z';
+			for (var i=0, chr; i < str.length; i++) {
+				[chr, i] = getWholeCharAndI(str, i);
+				// Adapt this line at the top of each loop, passing in the whole string and
+				// the current iteration and returning an array with the individual character
+				// and 'i' value (only changed if a surrogate pair)
+			
+				console.log(chr);
+				//会执行3次
+				//第一次   A
+				//第三次   你 在谷歌中显示为  你
+				//第五次   Z
+			}
+			for (var i=0, chr; i < oString_1.length; i++) {
+				if ((chr = fixedCharAt(oString_1, i)) === false) {
+					continue;
+				} // Adapt this line at the top of each loop, passing in the whole string and
+					// the current iteration and returning a variable to represent the 
+					// individual character
+			
+				console.log(chr);
+				//会执行5次
+				//第一次   A
+				//第二次   空字符串
+				//第三次   你 在谷歌中显示为  你
+				//第四次   空字符串
+				//第五次   Z
+				
+			}
+		}
 
+		function getWholeChar (str, i) {
+			var code = str.charCodeAt(i);     
+		 
+			if (isNaN(code)) {
+				return ''; // Position not found
+			}
+			if (code < 0xD800 || code > 0xDFFF) {
+				return str.charAt(i);
+			}
+		
+			// High surrogate (could change last hex to 0xDB7F to treat high private
+			// surrogates as single characters)
+			if (0xD800 <= code && code <= 0xDBFF) { 
+				if (str.length <= (i+1))  {
+					throw 'High surrogate without following low surrogate';
+				}
+				var next = str.charCodeAt(i+1);
+					if (0xDC00 > next || next > 0xDFFF) {
+						throw 'High surrogate without following low surrogate';
+					}
+					return str.charAt(i)+str.charAt(i+1);
+			}
+			// Low surrogate (0xDC00 <= code && code <= 0xDFFF)
+			if (i === 0) {
+				throw 'Low surrogate without preceding high surrogate';
+			}
+			var prev = str.charCodeAt(i-1);
+			
+			// (could change last hex to 0xDB7F to treat high private
+			// surrogates as single characters)
+			if (0xD800 > prev || prev > 0xDBFF) { 
+				throw 'Low surrogate without preceding high surrogate';
+			}
+			// We can pass over low surrogates now as the second component
+			// in a pair which we have already processed
+			return false; 
+		}
+
+		function getWholeCharAndI (str, i) {
+			var code = str.charCodeAt(i);
+		
+			if (isNaN(code)) {
+				return ''; // Position not found
+			}
+			if (code < 0xD800 || code > 0xDFFF) {
+				return [str.charAt(i), i]; // Normal character, keeping 'i' the same
+			}
+		
+			// High surrogate (could change last hex to 0xDB7F to treat high private
+			// surrogates as single characters)
+			if (0xD800 <= code && code <= 0xDBFF) { 
+				if (str.length <= (i+1))  {
+					throw 'High surrogate without following low surrogate';
+				}
+				var next = str.charCodeAt(i+1);
+					if (0xDC00 > next || next > 0xDFFF) {
+						throw 'High surrogate without following low surrogate';
+					}
+					return [str.charAt(i)+str.charAt(i+1), i+1];
+			}
+			// Low surrogate (0xDC00 <= code && code <= 0xDFFF)
+			if (i === 0) {
+				throw 'Low surrogate without preceding high surrogate';
+			}
+			var prev = str.charCodeAt(i-1);
+		
+			// (could change last hex to 0xDB7F to treat high private surrogates
+			// as single characters)
+			if (0xD800 > prev || prev > 0xDBFF) { 
+				throw 'Low surrogate without preceding high surrogate';
+			}
+			// Return the next character instead (and increment)
+			return [str.charAt(i+1), i+1]; 
+		}
+
+		function fixedCharAt (str, idx) {
+			var ret = '';
+			str += '';
+			var end = str.length;
+		
+			var surrogatePairs = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
+			while ((surrogatePairs.exec(str)) != null) {
+				var li = surrogatePairs.lastIndex;
+				if (li - 2 < idx) {
+					idx++;
+				} else {
+					break;
+				}
+			}
+		
+			if (idx >= end || idx < 0) {
+				return '';
+			}
+		
+			ret += str.charAt(idx);
+		
+			if (/[\uD800-\uDBFF]/.test(ret) && /[\uDC00-\uDFFF]/.test(str.charAt(idx+1))) {
+				// Go one further, since one of the "characters" is part of a surrogate pair
+				ret += str.charAt(idx+1); 
+			}
+			return ret;
+		}		
 	//Soft-打印编码方法-----------------------------------------------------END
 
 	//Soft-打印检索方法-----------------------------------------------------START
