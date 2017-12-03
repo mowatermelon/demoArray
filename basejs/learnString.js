@@ -395,13 +395,13 @@ function learnStringToughFun(){
 
 	//Soft-打印编码方法-----------------------------------------------------START
 		function LearnStringSTranCoding(){
-			learnStringSCharAt();
+			// learnStringSCharAt();
 			// learnStringSCharCodeAt();
-			// learnStringSCodePointAt();
+			learnStringSCodePointAt();
 			// learnStringSNormalize();
 			// learnStringSFromCharCode();
 			// learnStringSFromCodePoint();
-			//learnBMPChar();
+			// learnBMPChar();
 		}
 
 		function learnStringSCharAt(){
@@ -424,6 +424,7 @@ function learnStringToughFun(){
 			console.log(strString.charAt(false))//h	
 			console.log(strString.charAt(null))//h	
 			console.log(strString.charAt(undefined))//h	
+			console.log(strString.charAt(NaN))//h				
 			console.log(strString.charAt(oArray))//h	
 			console.log(strString.charAt(oo))//h
 			console.log(strString.charAt(oNum))//''  因为超过字符串长度，所以返回值为空
@@ -445,7 +446,7 @@ function learnStringToughFun(){
 			console.log(tString_1.charAt(tString_1.length-1))//e
 			console.log(tString_1.charAt(tString_1.length))//''  因为超过字符串长度，所以返回值为空
 
-			console.log(tString_2.charAt())//<big>hello line 1 \n \t hello line 2</big> h
+			console.log(tString_2.charAt())//h
 			console.log(tString_2.charAt(12))//''  因为对应位置的字符是换行符，所以返回值为空	
 			console.log(tString_2.charAt(13))//''  因为对应位置的字符是缩进符第一个位置，所以返回值为空			
 			console.log(tString_2.charAt(14))//''  因为对应位置的字符是缩进符第二个位置，所以返回值为空			
@@ -456,7 +457,7 @@ function learnStringToughFun(){
 			console.log(tString_2.charAt(tString_2.length))//''  因为超过字符串长度，所以返回值为空
 
 			console.log(tString_3.charAt())//F
-			console.log(tString_3.charAt(17))//n			
+			console.log(tString_3.charAt(17))//''  因为对应位置的字符是换行符，所以返回值为空			
 			console.log(tString_3.charAt(tString_3.length-1))//.
 			console.log(tString_3.charAt(tString_3.length))//''  因为超过字符串长度，所以返回值为空
 
@@ -468,12 +469,82 @@ function learnStringToughFun(){
 
 		function learnStringSCharCodeAt(){
 			console.log("\n 打印charCodeAt()函数的用法---------------------------------------------------------------------------------------------------------------------2"); 
-			console.log(strString.charCodeAt())//<big>hello watermelon</big>
-			console.log(oString.charCodeAt())//<big>hello world</big>
-			console.log(tString_1.charCodeAt())//<big>hello Template</big>
-			console.log(tString_2.charCodeAt())//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.charCodeAt())//<big>Fifteen is 12 and \n  not 16.</big>
-			console.log(tString_4.charCodeAt())//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.charCodeAt())//104  h
+			console.log(strString.charCodeAt(3))//108 l	 
+			console.log(strString.charCodeAt(1,2))//101 e	
+			console.log(strString.charCodeAt(1,2,3))//101 e
+			console.log(strString.charCodeAt(1.2,3))//101 e				
+			console.log(strString.charCodeAt(1.6,3))//101 e
+			console.log(strString.charCodeAt(1.9,3))//101 e					
+			console.log(strString.charCodeAt(strString.length-1))//110 n
+
+			console.log(strString.charCodeAt(-2))//NaN  因为不接受负值，所以返回值为NaN							
+			console.log(strString.charCodeAt(oString))//104 h	
+			console.log(strString.charCodeAt(true))//101 e	
+			console.log(strString.charCodeAt(false))//104 h	
+			console.log(strString.charCodeAt(null))//104 h	
+			console.log(strString.charCodeAt(undefined))//104 h	
+			console.log(strString.charCodeAt(NaN))//104 h				
+			console.log(strString.charCodeAt(oArray))//104 h	
+			console.log(strString.charCodeAt(oo))//104 h
+			console.log(strString.charCodeAt(oNum))//NaN ''  因为超过字符串长度，所以返回值为NaN
+			console.log(strString.charCodeAt(oDate))//NaN ''  因为超过字符串长度，所以返回值为NaN		
+			console.log(strString.charCodeAt(strString.length))//''  因为超过字符串长度，所以返回值为NaN
+			
+			console.log(oString.charCodeAt())//104 h
+			console.log(oString.charCodeAt(5))//32 ''  因为对应位置的字符是空格，所以返回值为32		
+			console.log(oString.charCodeAt(oString.length-1))//100 d
+			console.log(oString.charCodeAt(oString.length))//NaN ''  因为超过字符串长度，所以返回值为NaN
+
+			console.log(oString_1.charCodeAt())//65 A
+			console.log(oString_1.charCodeAt(3))//56324 �			
+			console.log(oString_1.charCodeAt(oString_1.length-1))//90 Z			
+			console.log(oString_1.charCodeAt(oString_1.length))//NaN ''  因为超过字符串长度，所以返回值为NaN
+
+			console.log(tString_1.charCodeAt())//104 h
+			console.log(tString_1.charCodeAt(5))//32 ''  因为对应位置的字符是空格，所以返回值为32					
+			console.log(tString_1.charCodeAt(tString_1.length-1))//101 e
+			console.log(tString_1.charCodeAt(tString_1.length))//NaN ''  因为超过字符串长度，所以返回值为NaN
+
+			console.log(tString_2.charCodeAt())//104 h
+			console.log(tString_2.charCodeAt(12))//10 ''  因为对应位置的字符是换行符，所以返回值为10	
+			console.log(tString_2.charCodeAt(13))//9 ''  因为对应位置的字符是缩进符第一个位置，所以返回值为9			
+			console.log(tString_2.charCodeAt(14))//9 ''  因为对应位置的字符是缩进符第二个位置，所以返回值为9			
+			console.log(tString_2.charCodeAt(15))//9 ''  因为对应位置的字符是缩进符第三个位置，所以返回值为9			
+			console.log(tString_2.charCodeAt(16))//9 ''  因为对应位置的字符是缩进符第四个位置，所以返回值为9
+			console.log(tString_2.charCodeAt(17))//104 h  			
+			console.log(tString_2.charCodeAt(tString_2.length-1))//50 2
+			console.log(tString_2.charCodeAt(tString_2.length))//NaN ''  因为超过字符串长度，所以返回值为NaN
+
+			console.log(tString_3.charCodeAt())//70 F
+			console.log(tString_3.charCodeAt(17))//10 ''  因为对应位置的字符是换行符，所以返回值为10			
+			console.log(tString_3.charCodeAt(tString_3.length-1))//46 .
+			console.log(tString_3.charCodeAt(tString_3.length))//NaN ''  因为超过字符串长度，所以返回值为空
+
+			console.log(tString_4.charCodeAt())//22823 大
+			console.log(tString_4.charCodeAt(3))//21033 利			
+			console.log(tString_4.charCodeAt(tString_4.length-1))//33 !
+			console.log(tString_4.charCodeAt(tString_4.length))//NaN ''  因为超过字符串长度，所以返回值为空	
+
+			// |字符|对应的unicode值|														// |字符|对应的unicode值|
+			// |:---|:---|														// |:---|:---|
+			// |\t(缩进符)|9|														// |\!|33|			
+			// |\n(换行符)|10|														// |\"|34|
+			// |\s(空格)|32|														// |\#|35|
+			// |\!(感叹号)|33|														// |\$|36|
+			// |\.(英文句号)|46|														// |\%|37|
+			// |2|50|														// |\&|38| 
+			// |A|65|														// |\'|39|															
+			// |F|70|														// |\(|40|
+			// |Z|90|														// |\)|41|
+			// |a|97|														// |\*|42|
+			// |e|101|														// |+|43|			 	  
+			// |h|104|														// |,|44|
+			// |l|108|														// |-|45|
+			// |n|110|														// |.|46|
+			// |你|56324|														// |/|47|
+			// |大|22823|														// |0|48|
+			// |利|21033|														// |1|49|			
 		}
 
 		function learnStringSCodePointAt(){
@@ -570,6 +641,42 @@ function learnStringToughFun(){
 				//第五次   Z
 				
 			}
+			console.log(oString_1.length);//6
+			for (var i=0, chr; i < oString_1.length; i++) {
+				if ((chr = knownCharCodeAt(oString_1, i)) === false) {
+					continue;
+				} // Adapt this line at the top of each loop, passing in the whole string and
+					// the current iteration and returning a variable to represent the 
+					// individual character
+			
+				console.log(chr);
+				console.log(i);
+				//会执行6次
+				//第一次   65
+				//第二次   32
+				//第三次   194564
+				//第四次   32
+				//第五次   90
+				//第六次   NaN
+			}
+
+			for (var i=0, chr; i < oString_1.length; i++) {
+				if ((chr = fixedCharCodeAt(oString_1, i)) === false) {
+					continue;
+				} // Adapt this line at the top of each loop, passing in the whole string and
+					// the current iteration and returning a variable to represent the 
+					// individual character
+			
+				console.log(chr);
+				//会执行5次
+				//第一次   65
+				//第二次   32
+				//第三次   194564
+				//第四次   32
+				//第五次   90
+				
+			}			
+			 
 		}
 
 		function getWholeChar (str, i) {
@@ -646,7 +753,67 @@ function learnStringToughFun(){
 			// Return the next character instead (and increment)
 			return [str.charAt(i+1), i+1]; 
 		}
+		
+		function fixedCharCodeAt (str, idx) {
+			// ex. fixedCharCodeAt ('\uD800\uDC00', 0); // 65536
+			// ex. fixedCharCodeAt ('\uD800\uDC00', 1); // false
+			idx = idx || 0;
+			var code = str.charCodeAt(idx);
+			var hi, low;
+			
+			// High surrogate (could change last hex to 0xDB7F to treat high
+			// private surrogates as single characters)
+			if (0xD800 <= code && code <= 0xDBFF) {
+					hi = code;
+					low = str.charCodeAt(idx+1);
+					if (isNaN(low)) {
+							throw 'High surrogate not followed by low surrogate in fixedCharCodeAt()';
+					}
+					return ((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000;
+			}
+			if (0xDC00 <= code && code <= 0xDFFF) { // Low surrogate
+					// We return false to allow loops to skip this iteration since should have
+					// already handled high surrogate above in the previous iteration
+					return false;
+					/*hi = str.charCodeAt(idx-1);
+					low = code;
+					return ((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000;*/
+			}
+			return code;
+		}		
 
+		function knownCharCodeAt (str, idx) {
+			//使用 charCodeAt()修复字符串中出现的已知的非BMP字符
+			str += '';
+			var code,
+					end = str.length;
+	
+			var surrogatePairs = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
+			while ((surrogatePairs.exec(str)) != null) {
+					var li = surrogatePairs.lastIndex;
+					if (li - 2 < idx) {
+							idx++;
+					}
+					else {
+							break;
+					}
+			}
+	
+			if (idx >= end || idx < 0) {
+					return NaN;
+			}
+	
+			code = str.charCodeAt(idx);
+	
+			var hi, low;
+			if (0xD800 <= code && code <= 0xDBFF) {
+					hi = code;
+					low = str.charCodeAt(idx+1);
+					// Go one further, since one of the "characters" is part of a surrogate pair
+					return ((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000;
+			}
+			return code;
+	  }		
 		function fixedCharAt (str, idx) {
 			var ret = '';
 			str += '';
