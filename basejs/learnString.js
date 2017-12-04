@@ -497,6 +497,7 @@ function learnStringToughFun(){
 			console.log(oString.charCodeAt(oString.length))//NaN ''  因为超过字符串长度，所以返回值为NaN
 
 			console.log(oString_1.charCodeAt())//65 A
+			console.log(oString_1.charCodeAt(2))//55422 �	仅仅返回位置2处的第一个编码单元					
 			console.log(oString_1.charCodeAt(3))//56324 �			
 			console.log(oString_1.charCodeAt(oString_1.length-1))//90 Z			
 			console.log(oString_1.charCodeAt(oString_1.length))//NaN ''  因为超过字符串长度，所以返回值为NaN
@@ -519,12 +520,12 @@ function learnStringToughFun(){
 			console.log(tString_3.charCodeAt())//70 F
 			console.log(tString_3.charCodeAt(17))//10 ''  因为对应位置的字符是换行符，所以返回值为10			
 			console.log(tString_3.charCodeAt(tString_3.length-1))//46 .
-			console.log(tString_3.charCodeAt(tString_3.length))//NaN ''  因为超过字符串长度，所以返回值为空
+			console.log(tString_3.charCodeAt(tString_3.length))//NaN ''  因为超过字符串长度，所以返回值为NaN
 
 			console.log(tString_4.charCodeAt())//22823 大
 			console.log(tString_4.charCodeAt(3))//21033 利			
 			console.log(tString_4.charCodeAt(tString_4.length-1))//33 !
-			console.log(tString_4.charCodeAt(tString_4.length))//NaN ''  因为超过字符串长度，所以返回值为空	
+			console.log(tString_4.charCodeAt(tString_4.length))//NaN ''  因为超过字符串长度，所以返回值为NaN	
 
 			// |字符|对应的unicode值|														// |字符|对应的unicode值|
 			// |:---|:---|														// |:---|:---|
@@ -549,12 +550,63 @@ function learnStringToughFun(){
 
 		function learnStringSCodePointAt(){
 			console.log("\n 打印codePointAt()函数的用法---------------------------------------------------------------------------------------------------------------------3"); 
-			console.log(strString.codePointAt());//<big>hello watermelon</big>
-			console.log(oString.codePointAt());//<big>hello world</big>
-			console.log(tString_1.codePointAt());//<big>hello Template</big>
-			console.log(tString_2.codePointAt());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.codePointAt());//<big>Fifteen is 12 and \n  not 16.</big>
-			console.log(tString_4.codePointAt());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.codePointAt())//104  h
+			console.log(strString.codePointAt(3))//108 l	 
+			console.log(strString.codePointAt(1,2))//101 e	
+			console.log(strString.codePointAt(1,2,3))//101 e
+			console.log(strString.codePointAt(1.2,3))//101 e				
+			console.log(strString.codePointAt(1.6,3))//101 e
+			console.log(strString.codePointAt(1.9,3))//101 e					
+			console.log(strString.codePointAt(strString.length-1))//110 n
+
+			console.log(strString.codePointAt(-2))//undefined  因为不接受负值，所以返回值为undefined							
+			console.log(strString.codePointAt(oString))//104 h	
+			console.log(strString.codePointAt(true))//101 e	
+			console.log(strString.codePointAt(false))//104 h	
+			console.log(strString.codePointAt(null))//104 h	
+			console.log(strString.codePointAt(undefined))//104 h	
+			console.log(strString.codePointAt(NaN))//104 h				
+			console.log(strString.codePointAt(oArray))//104 h	
+			console.log(strString.codePointAt(oo))//104 h
+			console.log(strString.codePointAt(oNum))//undefined ''  因为超过字符串长度，所以返回值为undefined
+			console.log(strString.codePointAt(oDate))//undefined ''  因为超过字符串长度，所以返回值为undefined		
+			console.log(strString.codePointAt(strString.length))//undefined ''  因为超过字符串长度，所以返回值为undefined
+			
+			console.log(oString.codePointAt())//104 h
+			console.log(oString.codePointAt(5))//32 ''  因为对应位置的字符是空格，所以返回值为32		
+			console.log(oString.codePointAt(oString.length-1))//100 d
+			console.log(oString.codePointAt(oString.length))//undefined ''  因为超过字符串长度，所以返回值为undefined
+
+			console.log(oString_1.codePointAt())//65 A
+			console.log(oString_1.codePointAt(2))//194564 你	返回完整的码位，即使这个码位包含多个编码单元					
+			console.log(oString_1.codePointAt(3))//56324 你			
+			console.log(oString_1.codePointAt(oString_1.length-1))//90 Z			
+			console.log(oString_1.codePointAt(oString_1.length))//undefined ''  因为超过字符串长度，所以返回值为undefined
+
+			console.log(tString_1.codePointAt())//104 h
+			console.log(tString_1.codePointAt(5))//32 ''  因为对应位置的字符是空格，所以返回值为32					
+			console.log(tString_1.codePointAt(tString_1.length-1))//101 e
+			console.log(tString_1.codePointAt(tString_1.length))//undefined ''  因为超过字符串长度，所以返回值为undefined
+
+			console.log(tString_2.codePointAt())//104 h
+			console.log(tString_2.codePointAt(12))//10 ''  因为对应位置的字符是换行符，所以返回值为10	
+			console.log(tString_2.codePointAt(13))//9 ''  因为对应位置的字符是缩进符第一个位置，所以返回值为9			
+			console.log(tString_2.codePointAt(14))//9 ''  因为对应位置的字符是缩进符第二个位置，所以返回值为9			
+			console.log(tString_2.codePointAt(15))//9 ''  因为对应位置的字符是缩进符第三个位置，所以返回值为9			
+			console.log(tString_2.codePointAt(16))//9 ''  因为对应位置的字符是缩进符第四个位置，所以返回值为9
+			console.log(tString_2.codePointAt(17))//104 h  			
+			console.log(tString_2.codePointAt(tString_2.length-1))//50 2
+			console.log(tString_2.codePointAt(tString_2.length))//undefined ''  因为超过字符串长度，所以返回值为undefined
+
+			console.log(tString_3.codePointAt())//70 F
+			console.log(tString_3.codePointAt(17))//10 ''  因为对应位置的字符是换行符，所以返回值为10			
+			console.log(tString_3.codePointAt(tString_3.length-1))//46 .
+			console.log(tString_3.codePointAt(tString_3.length))//undefined ''  因为超过字符串长度，所以返回值为undefined
+
+			console.log(tString_4.codePointAt())//22823 大
+			console.log(tString_4.codePointAt(3))//21033 利			
+			console.log(tString_4.codePointAt(tString_4.length-1))//33 !
+			console.log(tString_4.codePointAt(tString_4.length))//undefined ''  因为超过字符串长度，所以返回值为undefined
 		}
 		
 		function learnStringSNormalize(){
@@ -595,6 +647,54 @@ function learnStringToughFun(){
 			console.log(String.fromCodePoint(0x2F804)); // or 194564 in decimal			
 		}
 
+		function setCodePointAt(){
+			/*! http://mths.be/codepointat v0.1.0 by @mathias */
+			if (!String.prototype.codePointAt) {
+				(function() {
+					'use strict'; // 严格模式，needed to support `apply`/`call` with `undefined`/`null`
+					var codePointAt = function(position) {
+						if (this == null) {
+							throw TypeError();
+						}
+						var string = String(this);
+						var size = string.length;
+						// 变成整数
+						var index = position ? Number(position) : 0;
+						if (index != index) { // better `isNaN`
+							index = 0;
+						}
+						// 边界
+						if (index < 0 || index >= size) {
+							return undefined;
+						}
+						// 第一个编码单元
+						var first = string.charCodeAt(index);
+						var second;
+						if ( // 检查是否开始 surrogate pair
+							first >= 0xD800 && first <= 0xDBFF && // high surrogate
+							size > index + 1 // 下一个编码单元
+						) {
+							second = string.charCodeAt(index + 1);
+							if (second >= 0xDC00 && second <= 0xDFFF) { // low surrogate
+								// http://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
+								return (first - 0xD800) * 0x400 + second - 0xDC00 + 0x10000;
+							}
+						}
+						return first;
+					};
+					if (Object.defineProperty) {
+						Object.defineProperty(String.prototype, 'codePointAt', {
+							'value': codePointAt,
+							'configurable': true,
+							'writable': true
+						});
+					} else {
+						String.prototype.codePointAt = codePointAt;
+					}
+				}());
+			}			
+		}
+		
 		function learnBMPChar(){
 			for (var i=0, chr; i < oString_1.length; i++) {
 				if ((chr = getWholeChar(oString_1, i)) === false) {
