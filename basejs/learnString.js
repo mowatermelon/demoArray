@@ -209,8 +209,8 @@ function learnStringFun(){
 function learnStringSoftFun(){
 	console.log("\n 不会改变字符串原始值的柔和方法------------------------------------------------------------------------------------------------------------------------------------------"); 
 	//learnStringHtmlFun();
-	LearnStringSTranCoding();
-	// LearnStringSRetrieval();
+	// LearnStringSTranCoding();
+	LearnStringSRetrieval();
 	// LearnStringSCompare();
 	// LearnStringSSplicing();
 	// LearnStringSToggleCase();
@@ -395,13 +395,13 @@ function learnStringToughFun(){
 
 	//Soft-打印编码方法-----------------------------------------------------START
 		function LearnStringSTranCoding(){
-			// learnStringSCharAt();
-			// learnStringSCharCodeAt();
+			learnStringSCharAt();
+			learnStringSCharCodeAt();
 			learnStringSCodePointAt();
-			// learnStringSNormalize();
-			// learnStringSFromCharCode();
-			// learnStringSFromCodePoint();
-			// learnBMPChar();
+			learnStringSNormalize();
+			learnStringSFromCharCode();
+			learnStringSFromCodePoint();
+			learnBMPChar();
 		}
 
 		function learnStringSCharAt(){
@@ -611,18 +611,114 @@ function learnStringToughFun(){
 		
 		function learnStringSNormalize(){
 			console.log("\n 打印normalize()函数的用法---------------------------------------------------------------------------------------------------------------------4"); 
-			console.log(strString.normalize())//<big>hello watermelon</big>
-			console.log(oString.normalize())//<big>hello world</big>
-			console.log(tString_1.normalize())//<big>hello Template</big>
-			console.log(tString_2.normalize())//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.normalize())//<big>Fifteen is 12 and \n  not 16.</big>
-			console.log(tString_4.normalize())//<big>大吉大利今晚吃西瓜!</big>
+
+			console.log(strString.normalize())//hello watermelon
+			console.log(strString.normalize("NFC"))//hello watermelon	 
+			console.log(strString.normalize("NFD"))//hello watermelon	
+			console.log(strString.normalize("NFKC"))//hello watermelon
+			console.log(strString.normalize("NFKD"))//hello watermelon				
+
+			console.log(oString.normalize())//hello world
+			console.log(oString.normalize("NFC"))//hello world		
+			console.log(oString.normalize("NFD"))//hello world
+			console.log(oString.normalize("NFKC"))//hello world
+			console.log(oString.normalize("NFKD"))//hello world
+			
+			console.log(oString_1.normalize())//A 你 Z
+			console.log(oString_1.normalize("NFC"))//A 你 Z					
+			console.log(oString_1.normalize("NFD"))//A 你 Z			
+			console.log(oString_1.normalize("NFKC"))//A 你 Z			
+			console.log(oString_1.normalize("NFKD"))//A 你 Z
+
+			console.log(tString_1.normalize())//hello Template
+			console.log(tString_1.normalize("NFC"))//hello Template					
+			console.log(tString_1.normalize("NFD"))//hello Template
+			console.log(tString_1.normalize("NFKC"))//hello Template
+			console.log(tString_1.normalize("NFKD"))//hello Template
+			
+			console.log(tString_2.normalize())//hello line 1 \n \t hello line 2  
+			console.log(tString_2.normalize("NFC"))//hello line 1 \n \t hello line 2  	
+			console.log(tString_2.normalize("NFD"))//hello line 1 \n \t hello line 2  		
+			console.log(tString_2.normalize("NFKC"))//hello line 1 \n \t hello line 2  			
+			console.log(tString_2.normalize("NFKD"))//hello line 1 \n \t hello line 2  			
+
+			console.log(tString_3.normalize())//Fifteen is 12 and \n  not 16.
+			console.log(tString_3.normalize("NFC"))//Fifteen is 12 and \n  not 16.			
+			console.log(tString_3.normalize("NFD"))//Fifteen is 12 and \n  not 16.
+			console.log(tString_3.normalize("NFKC"))//Fifteen is 12 and \n  not 16.
+			console.log(tString_3.normalize("NFKD"))//Fifteen is 12 and \n  not 16.
+			
+			console.log(tString_4.normalize())//大吉大利今晚吃西瓜!
+			console.log(tString_4.normalize("NFC"))//大吉大利今晚吃西瓜!		
+			console.log(tString_4.normalize("NFD"))//大吉大利今晚吃西瓜!
+			console.log(tString_4.normalize("NFKC"))//大吉大利今晚吃西瓜!
+			console.log(tString_4.normalize("NFKD"))//大吉大利今晚吃西瓜!
+
 		}
 		
+		function learnDomNormalize(){
+			var tempText ="上面的段落有<span  class='count'>1</span>个子节点";
+			tempText +="<p class='demo'>你好啊，你好啊</p>";
+			document.write(tempText);
+		}
+
+		function addTextNode()
+		{
+			var y=document.createTextNode("请再次点击。");
+			var x=document.getElementsByClassName("demo")[0];
+			x.appendChild(y);
+			var z=document.getElementsByClassName("count")[0];
+			z.innerHTML=x.childNodes.length;
+		}
+		
+		function normPara()
+		{
+			var x=document.getElementsByClassName("demo")[0];
+			//想要调用append，normalize等等方法都要用唯一标识，才可以用，不能直接用getElementsByClassName("demo")后面一定要加个[0]
+			//通过getElementsByClassName()实例的对象，拥有的贼少，自己就一个方法，其他的全是继承的
+			//拥有的属性 -------constructor,length,nameItem
+			//拥有的方法 -------item,（length,hasOwnProperty,isPrototypeof,propertyIsEnumerable,toLocaleString,toString,valueOf	）继承的		
+			//normalize() 方法移除空的文本节点，并连接相邻的文本节点。
+			// -------------执行learnDomNormalize()之后，页面上的初始内容
+			// 上面的段落有1个子节点
+			// 你好啊，你好啊
+			// <body>"上面的段落有"<span class="count">1</span>"个子节点"<p class="demo">"你好啊，你好啊"</p></body>
+
+			// -------------执行addTextNode() 五次之后，页面上的内容
+			// 上面的段落有6个子节点
+			// 你好啊，你好啊请再次点击。请再次点击。请再次点击。请再次点击。请再次点击。
+			// <body>"上面的段落有"<span class="count">6</span>"个子节点"<p class="demo">"你好啊，你好啊""请再次点击。""请再次点击。""请再次点击。""请再次点击。""请再次点击。"</p></body>
+			//这个时候获取x.childNodes.length值为6
+			x.normalize();			
+			// -------------执行x.normalize()之后，页面上的内容
+			// <body>"上面的段落有"<span class="count">6</span>"个子节点"<p class="demo">"你好啊，你好啊请再次点击。请再次点击。请再次点击。请再次点击。请再次点击。"</p></body>
+			var z=document.getElementsByClassName("count")[0];
+			//这个时候获取x.childNodes.length值为1
+			z.innerHTML=x.childNodes.length;
+		}
+
 		function learnStringSFromCharCode(){
 			console.log("\n 打印fromCharCode()函数的用法---------------------------------------------------------------------------------------------------------------------4"); 			
-			console.log(String.fromCharCode(65,66,67));
+			console.log(String.fromCharCode())//' '  因为没有传入参数值，所以返回值为空字符串
+			console.log(String.fromCharCode(65))//A 
+			console.log(String.fromCharCode(65,66))//AB	
+			console.log(String.fromCharCode(65,66,67))//ABC
+			console.log(String.fromCharCode(65.2,66,67))//ABC			
+			console.log(String.fromCharCode(65.8,66,67))//ABC
+			console.log(String.fromCharCode(65.9,66,67))//ABC					
 
+			console.log(String.fromCharCode(-2))//￾  不知道打印的是什么							
+			console.log(String.fromCharCode(oString))//�   不知道打印的是什么	
+			console.log(String.fromCharCode(true))//   不知道打印的是什么
+			console.log(String.fromCharCode(false))//�	   不知道打印的是什么
+			console.log(String.fromCharCode(null))//�	   不知道打印的是什么
+			console.log(String.fromCharCode(undefined))//�	   不知道打印的是什么
+			console.log(String.fromCharCode(NaN))//�		  不知道打印的是什么		
+			console.log(String.fromCharCode(oArray))//�   不知道打印的是什么
+			console.log(String.fromCharCode(oo))//�  不知道打印的是什么
+			console.log(String.fromCharCode(oNum))//D
+			console.log(String.fromCharCode(oDate))//䂌	  不知道打印的是什么	
+			console.log(String.fromCharCode(strString.length))//   不知道打印的是什么
 		}
 
 
@@ -630,21 +726,44 @@ function learnStringToughFun(){
 			console.log("\n 打印fromCodePoint()函数的用法---------------------------------------------------------------------------------------------------------------------4"); 			
 			console.log(String.fromCodePoint(42));        // "*"
 			console.log(String.fromCodePoint(65, 90));      // "AZ"
-			console.log(String.fromCodePoint(0x404));       // "\u0404"
-			console.log(String.fromCodePoint(0x2F804));     // "\uD87E\uDC04"
-			console.log(String.fromCodePoint(194564));      // "\uD87E\uDC04"
-			console.log(String.fromCodePoint(0x1D306, 0x61, 0x1D307));          // "\uD834\uDF06a\uD834\uDF07"
-			
-			console.log(String.fromCodePoint('_'));      // RangeError
-			console.log(String.fromCodePoint(Infinity));    // RangeError
-			console.log(String.fromCodePoint(-1));          // RangeError
-			console.log(String.fromCodePoint(3.14));        // RangeError
-			console.log(String.fromCodePoint(3e-2));        // RangeError
-			console.log(String.fromCodePoint(NaN));         // RangeError
+			console.log(String.fromCodePoint(0x404));       // Є "\u0404"
+
+			console.log(String.fromCodePoint(strString.length))// 		
 			// String.fromCharCode() 方法不能单独获取在高代码点位上的字符
 			// 另一方面，下列的示例中，可以返回 4 字节，也可以返回 2 字节的字符
 			// (即，它可以返回单独的字符，使用长度 2 代替 1!） 
-			console.log(String.fromCodePoint(0x2F804)); // or 194564 in decimal			
+			console.log(String.fromCodePoint(0x2F804)); //你 "\uD87E\uDC04"			
+			console.log(String.fromCodePoint(194564));      // 你 "\uD87E\uDC04"
+			
+			console.log(String.fromCodePoint(0x1D306, 0x61, 0x1D307));          // 𝌆a𝌇 "\uD834\uDF06a\uD834\uDF07"
+			console.log(String.fromCodePoint())//' '  因为没有传入参数值，所以返回值为空字符串
+			console.log(String.fromCodePoint(65))//A 
+			console.log(String.fromCodePoint(65,66))//AB	
+			console.log(String.fromCodePoint(65,66,67))//ABC			
+			console.log(String.fromCodePoint(oNum))//D			
+			console.log(String.fromCodePoint(true))//￾  不知道打印的是什么	
+			console.log(String.fromCodePoint(false))//�  不知道打印的是什么
+			console.log(String.fromCodePoint(null))//�  不知道打印的是什么
+
+			// console.log(String.fromCodePoint('_'));      // RangeError Invalid code point _
+			// console.log(String.fromCodePoint(Infinity));    // RangeError Invalid code point Infinity
+			// console.log(String.fromCodePoint(3.14));        // RangeError Invalid code point 3.14
+			// console.log(String.fromCodePoint(3e-2));        // RangeError Invalid code point 0.03
+
+			// console.log(String.fromCodePoint(65.2,66,67))//RangeError Invalid code point 65.2			
+			// console.log(String.fromCodePoint(65.8,66,67))//RangeError Invalid code point 65.8
+			// console.log(String.fromCodePoint(65.9,66,67))//RangeError Invalid code point 65.9		
+			// console.log(String.fromCodePoint(-2))//RangeError Invalid code point -2					
+			// console.log(String.fromCodePoint(oString))//RangeError Invalid code point oString
+
+			// console.log(String.fromCodePoint(undefined))//RangeError Invalid code point undefined
+			// console.log(String.fromCodePoint(NaN))//RangeError Invalid code point NaN
+			// console.log(String.fromCodePoint(oArray))//RangeError Invalid code point oArray
+			// console.log(String.fromCodePoint(oo))//RangeError Invalid code point oo
+			// console.log(String.fromCodePoint(oDate))
+			//oDate会直接转为对应的时间戳，举个栗子，我执行的时候的时间戳是1512495032970 
+			//这个时间戳没有对应的code所以point 1512495032970	会说不可用
+			// Invalid code point 1512495032970	
 		}
 
 		function setCodePointAt(){
@@ -913,7 +1032,8 @@ function learnStringToughFun(){
 					return ((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000;
 			}
 			return code;
-	  }		
+		}		
+		
 		function fixedCharAt (str, idx) {
 			var ret = '';
 			str += '';
@@ -940,25 +1060,90 @@ function learnStringToughFun(){
 				ret += str.charAt(idx+1); 
 			}
 			return ret;
-		}		
+		}	
+		
+		function setFromCodePoint(){
+			/*! http://mths.be/fromcodepoint v0.1.0 by @mathias */
+			if (!String.fromCodePoint) {
+				(function() {
+					var defineProperty = (function() {
+						// IE 8 only supports `Object.defineProperty` on DOM elements
+						try {
+							var object = {};
+							var $defineProperty = Object.defineProperty;
+							var result = $defineProperty(object, object, object) && $defineProperty;
+						} catch(error) {}
+						return result;
+					}());
+					var stringFromCharCode = String.fromCharCode;
+					var floor = Math.floor;
+					var fromCodePoint = function() {
+						var MAX_SIZE = 0x4000;
+						var codeUnits = [];
+						var highSurrogate;
+						var lowSurrogate;
+						var index = -1;
+						var length = arguments.length;
+						if (!length) {
+							return '';
+						}
+						var result = '';
+						while (++index < length) {
+							var codePoint = Number(arguments[index]);
+							if (
+								!isFinite(codePoint) ||       // `NaN`, `+Infinity`, or `-Infinity`
+								codePoint < 0 ||              // not a valid Unicode code point
+								codePoint > 0x10FFFF ||       // not a valid Unicode code point
+								floor(codePoint) != codePoint // not an integer
+							) {
+								throw RangeError('Invalid code point: ' + codePoint);
+							}
+							if (codePoint <= 0xFFFF) { // BMP code point
+								codeUnits.push(codePoint);
+							} else { // Astral code point; split in surrogate halves
+								// http://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
+								codePoint -= 0x10000;
+								highSurrogate = (codePoint >> 10) + 0xD800;
+								lowSurrogate = (codePoint % 0x400) + 0xDC00;
+								codeUnits.push(highSurrogate, lowSurrogate);
+							}
+							if (index + 1 == length || codeUnits.length > MAX_SIZE) {
+								result += stringFromCharCode.apply(null, codeUnits);
+								codeUnits.length = 0;
+							}
+						}
+						return result;
+					};
+					if (defineProperty) {
+						defineProperty(String, 'fromCodePoint', {
+							'value': fromCodePoint,
+							'configurable': true,
+							'writable': true
+						});
+					} else {
+						String.fromCodePoint = fromCodePoint;
+					}
+				}());
+			}			
+		}
 	//Soft-打印编码方法-----------------------------------------------------END
 
 	//Soft-打印检索方法-----------------------------------------------------START
 		function LearnStringSRetrieval(){
 			learnStringSIncludes();
-			learnStringSEndsWith();
-			learnStringSIndexOf();
-			learnStringSLastIndexOf();
-			learnStringSStartsWith();
+			// learnStringSEndsWith();
+			// learnStringSIndexOf();
+			// learnStringSLastIndexOf();
+			// learnStringSStartsWith();
 		}
 		function learnStringSIncludes(){
 			console.log("\n 打印includes()函数的用法---------------------------------------------------------------------------------------------------------------------1"); 
-			console.log(strString.includes())//<big>hello watermelon</big>
-			console.log(oString.includes())//<big>hello world</big>
-			console.log(tString_1.includes())//<big>hello Template</big>
-			console.log(tString_2.includes())//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.includes())//<big>Fifteen is 12 and \n  not 16.</big>
-			console.log(tString_4.includes())//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.includes())//false
+			console.log(oString.includes())//false
+			console.log(tString_1.includes())//false
+			console.log(tString_2.includes())//false
+			console.log(tString_3.includes())//false
+			console.log(tString_4.includes())//false
 		}
 
 		function learnStringSEndsWith(){
@@ -1469,20 +1654,20 @@ function learnStringToughFun(){
 
 //学习string-模版字符量--------------------------------------------------------------------------------------------------START
 
-function learnTemplateLiteral(){
-	console.log("\n 打印模版字面量的使用---------------------------------------------------------------------------------------------------------------------4"); 
-	learnTemplateLiteralProp();	
-	learnTemplateLiteralFun();
-	
-}	
+	function learnTemplateLiteral(){
+		console.log("\n 打印模版字面量的使用---------------------------------------------------------------------------------------------------------------------4"); 
+		learnTemplateLiteralProp();	
+		learnTemplateLiteralFun();
+		
+	}	
 
-function learnTemplateLiteralProp(){
+	function learnTemplateLiteralProp(){
 
-}	
+	}	
 
-function learnTemplateLiteralFun(){
-	
-}
+	function learnTemplateLiteralFun(){
+		
+	}
 
 //学习string-模版字符量--------------------------------------------------------------------------------------------------END
 
