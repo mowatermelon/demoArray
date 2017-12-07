@@ -34,6 +34,7 @@ var showmodal = function (options) {
         QcloseText: "取消", //设置右下角关闭按钮的文本内容，默认为取消
         Justify: false, //设置底部按钮是否两端对齐，主要使用状态在底部有两个按钮，希望一左一右的显示，默认为false
         isZoom: false, //设置头部按钮全屏按钮是否显示，默认为false
+        isIE:false, //判断浏览器是否为ie，默认为false
         /**
         * 初始化DOM结构
         */
@@ -180,7 +181,13 @@ var showmodal = function (options) {
 
         },
         initFunction: function () {
-            var _this = this;
+						var _this = this;
+						this.isIE = this.isTypeBrowser("IE");
+
+						if(this.isIE){
+							console.log(this.isIE);
+							this.callbackShown();
+						}
             $("#showModal" + _this.modalIndex + " #close").click(function (event) {
                 if (_this.callbackB && _this.Bclose) {
                     if (!_this.callbackBF()) {
@@ -199,21 +206,32 @@ var showmodal = function (options) {
                 }
 
             });
-
-            $("#showModal" + _this.modalIndex).off('shown.bs.modal').on("shown.bs.modal", function () {
-                //在模态框完全展示出来做一些动作
-                $(document).off('focusin.bs.modal');
-                //$(document.body).blur();
-                //$("#showModal" + this.modalIndex).on('focusin.bs.modal');
-                if (_this.modalIndex > 1) {
-                    //console.log(_this.modalIndex);
-                    $("#showModal0" + (_this.modalIndex - 1) + " .modal-dialog").css({ "opacity": 0.8 });
-                }
-                //                if (_this.isMain) {
-                //                    //$("div#header",parent.document).css({ "margin-top": "10px" });
-                //                }
-                _this.callbackShown();
-            });
+            $("#showModal" + _this.modalIndex).on("shown.bs.modal", function () {
+							//在模态框完全展示出来做一些动作
+							$(document).off('focusin.bs.modal');
+							//$(document.body).blur();
+							//$("#showModal" + this.modalIndex).on('focusin.bs.modal');
+							if (_this.modalIndex > 1) {
+									//console.log(_this.modalIndex);
+									$("#showModal0" + (_this.modalIndex - 1) + " .modal-dialog").css({ "opacity": 0.8 });
+							}
+							if(!_this.isIE){
+								_this.callbackShown();
+							}								
+					});
+            // $("#showModal" + _this.modalIndex).off('show.bs.modal').on("show.bs.modal", function () {
+            //     //在模态框完全展示出来做一些动作
+            //     $(document).off('focusin.bs.modal');
+            //     //$(document.body).blur();
+            //     //$("#showModal" + this.modalIndex).on('focusin.bs.modal');
+            //     if (_this.modalIndex > 1) {
+            //         //console.log(_this.modalIndex);
+            //         $("#showModal0" + (_this.modalIndex - 1) + " .modal-dialog").css({ "opacity": 0.8 });
+            //     }
+						// 		if(!_this.isIE){
+						// 			_this.callbackShown();
+						// 		}								
+            // });
             $("#showModal" + _this.modalIndex).on("hide.bs.modal", function () {
                 if (_this.modalIndex > 1) {
                     //console.log(_this.modalIndex+"hide");
@@ -364,6 +382,34 @@ var showmodal = function (options) {
             });
 
 
+        },
+        /**
+				*判断浏览器是否是对应浏览器的方法，
+				* @param type  浏览器类型
+				* 可选值 IE，Safari，Chrome，Firefox，Opera
+        */
+        isTypeBrowser:function(type){
+					var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+					var isRight = false;
+					// console.log(type);
+					if(type.indexOf("Opera")>-1){
+						if (userAgent.indexOf(type) > -1) {
+								isRight = true;
+						} //判断是否Opera浏览器
+					}else{				
+						if(type.indexOf("IE")>-1){
+							if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1) {
+									isRight = true;
+							} //判断是否IE低版本浏览器，ie11和之前的版本的内核不一样
+						}else{
+							if (userAgent.indexOf(type) > -1) {
+								isRight = true;
+							}//判断是否Firefox，Chrome，Safari浏览器 							
+						}
+					}
+					return isRight;
+					// console.log(isRight);
+					
         },
         /**
         *在有确认按钮和确认有回调函数情况下的，绑定模态框点击确认之后的回调事件，
