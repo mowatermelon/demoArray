@@ -472,7 +472,18 @@ function learnString(){
     console.log(charReg1.exec(oString));//[ 'e', index: 1, input: 'hello world' ]
     console.log(charReg2.exec(oString));//[ 'h', index: 0, input: 'hello world' ]
     console.log(charReg3.exec(oString));//[ '', index: 5, input: 'hello world' ]
+
+    var str='zhou ming 文件 （周明）';
+    var patt=/\（[\u4e00-\u9fa5]+）/g;
+    var s=str.match(patt);
+    console.log(s);
     
+    var m=str.substring(str.lastIndexOf("（"),str.lastIndexOf("）"));
+    var k=m.substring(1,m.length);
+    console.info(k);
+    
+    console.log(str.split('（')[1].replace('）',''));    
+
     console.log("\n用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串---------------------------------------------------------------------replace()");                             
     //用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串
     //regexp/substr 必需。规定子字符串或要替换的模式的 RegExp 对象。
