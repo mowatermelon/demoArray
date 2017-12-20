@@ -1133,8 +1133,8 @@ function showInitData(){
 			// learnStringSIncludes();
 			// learnStringSIndexOf();
 			// learnStringSLastIndexOf();
-			// learnStringSStartsWith();
-			learnStringSEndsWith();
+			learnStringSStartsWith();
+			// learnStringSEndsWith();
 		}
 
 		function learnStringSIncludes(){
@@ -1363,14 +1363,150 @@ function showInitData(){
 		
 		function learnStringSStartsWith(){
 			console.log("\n 打印startsWith()函数的用法---------------------------------------------------------------------------------------------------------------------5"); 
-			console.log(strString.startsWith());//<big>hello watermelon</big>
-			console.log(oString.startsWith());//<big>hello world</big>
-			console.log(tString_1.startsWith());//<big>hello Template</big>
-			console.log(tString_2.startsWith());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.startsWith());//<big>Fifteen is 12 and \n  not 16.</big>
-			console.log(tString_4.startsWith());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString);//hello watermelon
+			console.log(strString.startsWith("hello"));//true
+			console.log(strString.startsWith("el",1));//true
+			
+			console.log(oString);//[String: 'hello world']
+			console.log(oString.startsWith("hello"));//true
+
+			console.log(oString_1);//A 你 Z   中间不在BMP中的字符，会显示乱码
+			console.log(oString_1.startsWith("A"));//true 
+
+			console.log(tString_1);//hello Template
+			console.log(tString_1.startsWith("hell"));//true
+			
+			//打印出来会保留原格式 比如原有的换行和缩进
+			console.log(tString_2);//hello line 1 \n \t hello line 2
+			console.log(tString_2.startsWith("hell"));//true
+			  
+			console.log(tString_3);//Fifteen is 12 and \n  not 16.  
+			console.log(tString_3.startsWith("Fift"));//true
+
+			console.log(tString_4);//大吉大利今晚吃西瓜!			
+			console.log(tString_4.startsWith("大吉大利"));//true
+
+			//先试一下第一个参数的检索正确性，比如对几个特殊字符的检查正确性
+			console.log("-------------------测试");
+			console.log("true".startsWith(true));//true  进行匹配的时候不一定他要添加双引号
+			console.log("false".startsWith(false));//true			
+			console.log("null".startsWith(null));//true	
+			console.log("undefined".startsWith(undefined));//true	
+			console.log("NaN".startsWith(NaN));//true
+
+			console.log("-------------------测试");			
+			console.log("true".startsWith("true"));//true  进行匹配的时候，只要原始值是定义好的，加没加双引号都可以被正常检测出来
+			console.log("false".startsWith("false"));//true			
+			console.log("null".startsWith("null"));//true	
+			console.log("undefined".startsWith("undefined"));//true	
+			console.log("NaN".startsWith("NaN"));//true
+			
+			console.log("-------------------测试");			
+			console.log(oString.startsWith(true));//false  
+			console.log(oString.startsWith(false));//false			
+			console.log(oString.startsWith(null));//false	
+			console.log(oString.startsWith(undefined));//false
+			console.log(oString.startsWith(NaN));//false
+
+			console.log("-------------------测试");						
+			console.log(oString.startsWith(""));//true
+			console.log(oString.startsWith(oString));//true 自己是绝对以自己开始的
+
+			//先试一下第二个参数的检索正确性，对于负数，非整数，或者非数值的
+			console.log("-------------------测试");
+			console.log(oString.startsWith("hell",1));//false
+			console.log(oString.startsWith("hell",1.1));//false
+			console.log(oString.startsWith("hell",1.5));//false
+			console.log(oString.startsWith("hell",1.8));//false
+			console.log(oString.startsWith("hell",-1));//true
+
+			console.log("-------------------测试");
+
+			console.log(oString.startsWith("hell",0.0));//true
+			console.log(oString.startsWith("hell",0.1));//true
+			console.log(oString.startsWith("hell",0.5));//true
+			console.log(oString.startsWith("hell",0.8));//true
+			console.log(oString.startsWith("hell",-0));//true	
+			
+			
+			console.log("-------------------测试");
+
+			console.log(oString.startsWith("hell",true));//false
+			console.log(oString.startsWith("hell",false));//true
+			console.log(oString.startsWith("hell","true"));//true
+			console.log(oString.startsWith("hell","false"));//true		
+			console.log(oString.startsWith("hell",oo));//true
+			console.log(oString.startsWith("hell",oBool));//false
+			console.log(oString.startsWith("hell",oArray));//true
+			console.log(oString.startsWith("hell",oDate));//false 						
+				 
+			console.log("-------------------测试");
+
+			console.log(oString.startsWith("hell",Number.MAX_VALUE));//false 
+			console.log(oString.startsWith("hell",Number.MIN_VALUE));//true
+			console.log(oString.startsWith("hell",Number.NaN));//true
+			console.log(oString.startsWith("hell",Number.NEGATIVE_INFINITY));//true		
+			console.log(oString.startsWith("hell",Number.POSITIVE_INFINITY));//false
 		}	
 	
+		function initStartsWith(){
+			/*! http://mths.be/startswith v0.2.0 by @mathias */
+			if (!String.prototype.startsWith) {
+				(function() {
+				'use strict'; // needed to support `apply`/`call` with `undefined`/`null`
+				var defineProperty = (function() {
+					// IE 8 only supports `Object.defineProperty` on DOM elements
+					try {
+					var object = {};
+					var $defineProperty = Object.defineProperty;
+					var result = $defineProperty(object, object, object) && $defineProperty;
+					} catch(error) {}
+					return result;
+				}());
+				var toString = {}.toString;
+				var startsWith = function(search) {
+					if (this == null) {
+						throw TypeError();
+					}
+					var string = String(this);
+					if (search && toString.call(search) == '[object RegExp]') {
+						throw TypeError();
+					}
+					var stringLength = string.length;
+					var searchString = String(search);
+					var searchLength = searchString.length;
+					var position = arguments.length > 1 ? arguments[1] : undefined;
+					// `ToInteger`
+					var pos = position ? Number(position) : 0;
+					if (pos != pos) { // better `isNaN`
+						pos = 0;
+					}
+					var start = Math.min(Math.max(pos, 0), stringLength);
+					// Avoid the `indexOf` call if no match is possible
+					if (searchLength + start > stringLength) {
+						return false;
+					}
+					var index = -1;
+					while (++index < searchLength) {
+					if (string.charCodeAt(start + index) != searchString.charCodeAt(index)) {
+						return false;
+					}
+					}
+					return true;
+				};
+				if (defineProperty) {
+					defineProperty(String.prototype, 'startsWith', {
+					'value': startsWith,
+					'configurable': true,
+					'writable': true
+					});
+				} else {
+					String.prototype.startsWith = startsWith;
+				}
+				}());
+			}
+		}
+
 		function learnStringSEndsWith(){
 			console.log("\n 打印endsWith()函数的用法---------------------------------------------------------------------------------------------------------------------2"); 
 			console.log(strString);//hello watermelon
@@ -1412,7 +1548,7 @@ function showInitData(){
 			console.log("NaN".endsWith("NaN"));//true
 			
 			// console.log("-------------------测试");			
-			console.log(oString.endsWith(true));//false  进行匹配的时候不一定他要添加双引号
+			console.log(oString.endsWith(true));//false 
 			console.log(oString.endsWith(false));//false			
 			console.log(oString.endsWith(null));//false	
 			console.log(oString.endsWith(undefined));//false
@@ -1458,6 +1594,69 @@ function showInitData(){
 			console.log(oString.endsWith("world",Number.NaN));//false
 			console.log(oString.endsWith("world",Number.NEGATIVE_INFINITY));//false		
 			console.log(oString.endsWith("world",Number.POSITIVE_INFINITY));//true
+		}
+
+		function initEndsWith(){
+			/*! http://mths.be/endswith v0.2.0 by @mathias */
+			if (!String.prototype.endsWith) {
+				(function() {
+				'use strict'; // needed to support `apply`/`call` with `undefined`/`null`
+				var defineProperty = (function() {
+					// IE 8 only supports `Object.defineProperty` on DOM elements
+					try {
+					var object = {};
+					var $defineProperty = Object.defineProperty;
+					var result = $defineProperty(object, object, object) && $defineProperty;
+					} catch(error) {}
+					return result;
+				}());
+				var toString = {}.toString;
+				var endsWith = function(search) {
+					if (this == null) {
+						throw TypeError();
+					}
+					var string = String(this);
+					if (search && toString.call(search) == '[object RegExp]') {
+						throw TypeError();
+					}
+					var stringLength = string.length;
+					var searchString = String(search);
+					var searchLength = searchString.length;
+					var pos = stringLength;
+					if (arguments.length > 1) {
+					var position = arguments[1];
+					if (position !== undefined) {
+						// `ToInteger`
+						pos = position ? Number(position) : 0;
+						if (pos != pos) { // better `isNaN`
+						pos = 0;
+						}
+					}
+					}
+					var end = Math.min(Math.max(pos, 0), stringLength);
+					var start = end - searchLength;
+					if (start < 0) {
+						return false;
+					}
+					var index = -1;
+					while (++index < searchLength) {
+					if (string.charCodeAt(start + index) != searchString.charCodeAt(index)) {
+						return false;
+					}
+					}
+					return true;
+				};
+				if (defineProperty) {
+					defineProperty(String.prototype, 'endsWith', {
+					'value': endsWith,
+					'configurable': true,
+					'writable': true
+					});
+				} else {
+					String.prototype.endsWith = endsWith;
+				}
+				}());
+			}
 		}	
 	//Soft-打印检索方法-----------------------------------------------------END
 
