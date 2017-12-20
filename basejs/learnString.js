@@ -69,163 +69,163 @@ function showInitData(){
 }
 
 //学习string的属性-----------------------------------------------------------------------------------------------------------------------------------------------------------------------START
-function learnStringProp(){
-	console.log("\n ------------------------------------------------------------------------------------------------------------------------------------------打印字符串对象属性"); 
-	learnInheritFunProp();
-	learnInheritObjectProp();
-	learnStringCommonProp();
-}
+	function learnStringProp(){
+		console.log("\n ------------------------------------------------------------------------------------------------------------------------------------------打印字符串对象属性"); 
+		learnInheritFunProp();
+		learnInheritObjectProp();
+		learnStringCommonProp();
+	}
 
-function learnInheritFunProp(){
-	console.log("\n ------------------------------------------------------------------------------------------------------------------------------------------打印String对象继承funciton的属性");	
-		console.log(oString.arguments);//undefined
-		console.log(oString.arity);//undefined
-		console.log(oString.caller);//undefined
-		console.log(oString.callee);//undefined
-		console.log(oString.displayName);//undefined
-		console.log(oString.length);//11
-		console.log(oString.name);//undefined
-		console.log(oString.prototype);//undefined
+	function learnInheritFunProp(){
+		console.log("\n ------------------------------------------------------------------------------------------------------------------------------------------打印String对象继承funciton的属性");	
+			console.log(oString.arguments);//undefined
+			console.log(oString.arity);//undefined
+			console.log(oString.caller);//undefined
+			console.log(oString.callee);//undefined
+			console.log(oString.displayName);//undefined
+			console.log(oString.length);//11
+			console.log(oString.name);//undefined
+			console.log(oString.prototype);//undefined
+			
+			//在浏览器控制台会报错'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
+			//但是在js文件以node的形式运行的时候，可以打印相关结果
+			console.log(String.arguments);//null
+			console.log(String.arity);//undefined
+			console.log(String.caller);//null
+			console.log(String.callee);//undefined
+			console.log(String.displayName);//undefined
+			console.log(String.length);//1
+			console.log(String.name);//String
+			console.log(String.prototype);//[String: '']
+			learnFunCalleeProp();
 		
-		//在浏览器控制台会报错'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
-		//但是在js文件以node的形式运行的时候，可以打印相关结果
-		console.log(String.arguments);//null
-		console.log(String.arity);//undefined
-		console.log(String.caller);//null
-		console.log(String.callee);//undefined
-		console.log(String.displayName);//undefined
-		console.log(String.length);//1
-		console.log(String.name);//String
-		console.log(String.prototype);//[String: '']
-		learnFunCalleeProp();
-  
-}
+	}
 
-function learnFunCalleeProp(){
-	console.log("\t打印arguments.callee的相关用法");
-	var a = function() {  
-		console.log("arguments.callee-----------a"); //  arguments.callee 
-		console.log(arguments);		//{}
-		console.log(arguments.callee);
-		//在浏览器控制台 打印效果
-		// ƒ () {  
-		// 	console.log("arguments.callee"); 
-		// 	console.log(arguments.callee);
-		// 	console.log("arguments.callee.length"); 
-		// 	console.log(arguments.callee.length);   
-		// 	}
+	function learnFunCalleeProp(){
+		console.log("\t打印arguments.callee的相关用法");
+		var a = function() {  
+			console.log("arguments.callee-----------a"); //  arguments.callee 
+			console.log(arguments);		//{}
+			console.log(arguments.callee);
+			//在浏览器控制台 打印效果
+			// ƒ () {  
+			// 	console.log("arguments.callee"); 
+			// 	console.log(arguments.callee);
+			// 	console.log("arguments.callee.length"); 
+			// 	console.log(arguments.callee.length);   
+			// 	}
 
-		//在js文件以node的形式运行  打印效果
-		//[Function: a]
+			//在js文件以node的形式运行  打印效果
+			//[Function: a]
 
-		console.log("arguments.callee.length-----------a"); //arguments.callee.length
-		console.log(arguments.callee.length);   // 0
-	}   
-	var b = function(c,s,d) {   
-		a();//请注意在当前函数体调用的方法名不要和形参的名字一样 要不然会报这个方法没有哦
-		console.log("arguments.callee-----------b"); //  arguments.callee 
-		console.log(arguments);		//{}
-		console.log(arguments.callee);
-		//在浏览器控制台 打印效果
-		// ƒ () {  
-		// 	a();//请注意在当前函数体调用的方法名不要和形参的名字一样 要不然会报这个方法没有哦
-		// 	console.log("arguments.callee-----------b"); //  arguments.callee 
-		// 	console.log(arguments);		//{}
-		// 	console.log(arguments.callee);
-	
-	
-		// 	console.log("arguments.callee.length-----------b"); //arguments.callee.length
-		// 	console.log(arguments.callee.length);   // 3		   
-		// }   
+			console.log("arguments.callee.length-----------a"); //arguments.callee.length
+			console.log(arguments.callee.length);   // 0
+		}   
+		var b = function(c,s,d) {   
+			a();//请注意在当前函数体调用的方法名不要和形参的名字一样 要不然会报这个方法没有哦
+			console.log("arguments.callee-----------b"); //  arguments.callee 
+			console.log(arguments);		//{}
+			console.log(arguments.callee);
+			//在浏览器控制台 打印效果
+			// ƒ () {  
+			// 	a();//请注意在当前函数体调用的方法名不要和形参的名字一样 要不然会报这个方法没有哦
+			// 	console.log("arguments.callee-----------b"); //  arguments.callee 
+			// 	console.log(arguments);		//{}
+			// 	console.log(arguments.callee);
+		
+		
+			// 	console.log("arguments.callee.length-----------b"); //arguments.callee.length
+			// 	console.log(arguments.callee.length);   // 3		   
+			// }   
 
 
-		//在js文件以node的形式运行  打印效果
-		//[Function: b]		
-		console.log("arguments.callee.length-----------b"); //arguments.callee.length
-		console.log(arguments.callee.length);   // 3		   
-	}   
-	b(); 
+			//在js文件以node的形式运行  打印效果
+			//[Function: b]		
+			console.log("arguments.callee.length-----------b"); //arguments.callee.length
+			console.log(arguments.callee.length);   // 3		   
+		}   
+		b(); 
 
-}	
+	}	
 
-function learnInheritObjectProp(){
-	console.log("\n ------------------------------------------------------------------------------------------------------------------------------------------打印String对象继承object的属性");	
-		console.log(oString.__count__);//undefined
-		console.log(oString.__noSuchMethod__);//undefined
-		console.log(oString.__parent__);//undefined
-		console.log(oString.__proto__);//[String: '']
-		console.log(oString.constructor);//[Function: String]
+	function learnInheritObjectProp(){
+		console.log("\n ------------------------------------------------------------------------------------------------------------------------------------------打印String对象继承object的属性");	
+			console.log(oString.__count__);//undefined
+			console.log(oString.__noSuchMethod__);//undefined
+			console.log(oString.__parent__);//undefined
+			console.log(oString.__proto__);//[String: '']
+			console.log(oString.constructor);//[Function: String]
 
-		//报错'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
-		console.log(String.__count__);//undefined
-		console.log(String.__noSuchMethod__);//undefined
-		console.log(String.__parent__);//undefined
-		console.log(String.__proto__);//[Function]
-		console.log(String.constructor);//[Function: Function]
-}
+			//报错'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
+			console.log(String.__count__);//undefined
+			console.log(String.__noSuchMethod__);//undefined
+			console.log(String.__parent__);//undefined
+			console.log(String.__proto__);//[Function]
+			console.log(String.constructor);//[Function: Function]
+	}
 
-function learnStringCommonProp(){
-	console.log("\n ------------------------------------------------------------------------------------------------------------------------------------------打印String对象常用的属性");
-	console.log("\n 打印本身constructor属性------------------------------------------------------------------------------------------------------------------------------------------"); 
-		console.log(strString.constructor);//[Function: String]
-		console.log(oString.constructor);//[Function: String]
-		console.log(oString_1.constructor);//[Function: String]
-		console.log(tString_1.constructor);//[Function: String]
-		console.log(tString_2.constructor);//[Function: String]
-		console.log(tString_3.constructor);//[Function: String]
-		console.log(tString_4.constructor);//[Function: String]
+	function learnStringCommonProp(){
+		console.log("\n ------------------------------------------------------------------------------------------------------------------------------------------打印String对象常用的属性");
+		console.log("\n 打印本身constructor属性------------------------------------------------------------------------------------------------------------------------------------------"); 
+			console.log(strString.constructor);//[Function: String]
+			console.log(oString.constructor);//[Function: String]
+			console.log(oString_1.constructor);//[Function: String]
+			console.log(tString_1.constructor);//[Function: String]
+			console.log(tString_2.constructor);//[Function: String]
+			console.log(tString_3.constructor);//[Function: String]
+			console.log(tString_4.constructor);//[Function: String]
 
-	console.log("\n 打印本身__proto__属性------------------------------------------------------------------------------------------------------------------------------------------"); 
-		console.log(strString.__proto__);//[String: '']
-		console.log(oString.__proto__);//[String: '']
-		console.log(oString_1.__proto__);//[String: '']
-		console.log(tString_1.__proto__);//[String: '']
-		console.log(tString_2.__proto__);//[String: '']
-		console.log(tString_3.__proto__);//[String: '']
-		console.log(tString_4.__proto__);//[String: '']
+		console.log("\n 打印本身__proto__属性------------------------------------------------------------------------------------------------------------------------------------------"); 
+			console.log(strString.__proto__);//[String: '']
+			console.log(oString.__proto__);//[String: '']
+			console.log(oString_1.__proto__);//[String: '']
+			console.log(tString_1.__proto__);//[String: '']
+			console.log(tString_2.__proto__);//[String: '']
+			console.log(tString_3.__proto__);//[String: '']
+			console.log(tString_4.__proto__);//[String: '']
 
-	console.log("\n 打印本身length属性------------------------------------------------------------------------------------------------------------------------------------------");
-		console.log(strString.length);//16 15个字母加一个空格
-		console.log(oString.length);//11 10个字母加一个空格
-		console.log(oString_1.length);//6 两个字母加两个空格加一个个识别出来的非BMP的字符	（一个占两个）	
-		console.log(tString_1.length);//14 13个字母加一个空格
-		console.log(tString_2.length);//41 18个字母加两个数字加四个空格加四个缩进符（一个占四个）加上一个换行符（一个占一个）
-		console.log(tString_3.length);//25 15个字母加四个数字加四个空格加一个符号加上一个换行符（一个占一个）
-		console.log(tString_4.length);//10 9个汉字加一个符号
-} 
+		console.log("\n 打印本身length属性------------------------------------------------------------------------------------------------------------------------------------------");
+			console.log(strString.length);//16 15个字母加一个空格
+			console.log(oString.length);//11 10个字母加一个空格
+			console.log(oString_1.length);//6 两个字母加两个空格加一个个识别出来的非BMP的字符	（一个占两个）	
+			console.log(tString_1.length);//14 13个字母加一个空格
+			console.log(tString_2.length);//41 18个字母加两个数字加四个空格加四个缩进符（一个占四个）加上一个换行符（一个占一个）
+			console.log(tString_3.length);//25 15个字母加四个数字加四个空格加一个符号加上一个换行符（一个占一个）
+			console.log(tString_4.length);//10 9个汉字加一个符号
+	} 
 
 //学习string的属性-----------------------------------------------------------------------------------------------------------------------------------------------------------------------END
 
 
 //学习string的方法-----------------------------------------------------------------------------------------------------------------------------------------------------------------------START
 
-function learnStringFun(){
-	console.log("\n ------------------------------------------------------------------------------------------------------------------------------------------打印字符串对象方法");    
-	learnStringSoftFun();
-	//learnStringToughFun();
-}	
+	function learnStringFun(){
+		console.log("\n ------------------------------------------------------------------------------------------------------------------------------------------打印字符串对象方法");    
+		learnStringSoftFun();
+		//learnStringToughFun();
+	}	
 
 
-function learnStringSoftFun(){
-	console.log("\n 不会改变字符串原始值的柔和方法------------------------------------------------------------------------------------------------------------------------------------------"); 
-	//learnStringHtmlFun();
-	// LearnStringSTranCoding();
-	LearnStringSRetrieval();
-	// LearnStringSCompare();
-	// LearnStringSSplicing();
-	// LearnStringSToggleCase();
-}
+	function learnStringSoftFun(){
+		console.log("\n 不会改变字符串原始值的柔和方法------------------------------------------------------------------------------------------------------------------------------------------"); 
+		//learnStringHtmlFun();
+		// LearnStringSTranCoding();
+		LearnStringSRetrieval();
+		// LearnStringSCompare();
+		// LearnStringSSplicing();
+		// LearnStringSToggleCase();
+	}
 
 
-function learnStringToughFun(){
-	console.log("\n 会改变字符串原始值的强硬方法------------------------------------------------------------------------------------------------------------------------------------------"); 
-	LearnStringTTranInstanceof();
-	LearnStringTReplacement();
-	LearnStringTDivision();
-	LearnStringTFormat();
-	LearnStringTReplacement();
-	LearnStringTObjectGeneral();
-}
+	function learnStringToughFun(){
+		console.log("\n 会改变字符串原始值的强硬方法------------------------------------------------------------------------------------------------------------------------------------------"); 
+		LearnStringTTranInstanceof();
+		LearnStringTReplacement();
+		LearnStringTDivision();
+		LearnStringTFormat();
+		LearnStringTReplacement();
+		LearnStringTObjectGeneral();
+	}
 
 //学习string的方法-----------------------------------------------------------------------------------------------------------------------------------------------------------------------START
 //学习string-不会改变字符串原始值的柔和方法--------------------------------------------------------------------------------------------------START
@@ -1138,12 +1138,121 @@ function learnStringToughFun(){
 		}
 		function learnStringSIncludes(){
 			console.log("\n 打印includes()函数的用法---------------------------------------------------------------------------------------------------------------------1"); 
-			console.log(strString.includes())//false
-			console.log(oString.includes())//false
-			console.log(tString_1.includes())//false
-			console.log(tString_2.includes())//false
-			console.log(tString_3.includes())//false
-			console.log(tString_4.includes())//false
+			//@para searchString 要在此字符串中搜索的字符串。
+			//@para position 可选。从当前字符串的哪个索引位置开始搜寻子字符串；默认值为0。
+			//在进行内容匹配的时候，这个方法是区分大小写的。 
+
+			//尝试正常的情况检测
+			console.log(strString);//hello watermelon
+			console.log(strString.includes(" "));//true
+			console.log(strString.includes("llo"));//true
+			console.log(strString.includes("lLo"));//false 因为区分大小写，所以返回false
+			console.log(strString.includes("llo",3));//false 因为string中从下标3开始的内容是 lo watermelon ，检测不到llo，所以返回false
+
+			console.log(oString)//[String: 'hello world']
+			console.log(oString.includes(" "));//true
+			console.log(oString.includes("llo"));//true
+			console.log(oString.includes("lLo"));//false 因为区分大小写，所以返回false
+			console.log(oString.includes("llo",3));//false 因为string中从下标3开始的内容是 lo watermelon ，检测不到llo，所以返回false
+			
+			console.log(oString_1);//A 你 Z   中间不在BMP中的字符，会显示乱码
+			console.log(oString_1.includes("A"));//true
+			// console.log(oString_1.includes(A));//A is not defined
+			console.log(oString_1.includes("\uD87E\uDC04"));//true 因为内容检测会从原有内容进行完全匹配，所以返回true
+			console.log(oString_1.includes("你"));//false  因为内容检测不会检测转译之后的内容，所以返回false
+			
+			console.log(tString_1);//hello Template
+			console.log(tString_1.includes("Tem"));//true
+			console.log(tString_1.includes("Tem",7));//false 因为string中从下标3开始的内容是 emplate ，检测不到Tem，所以返回false
+			
+			console.log(tString_2);//hello line 1 \n \t hello line 2  
+			console.log(tString_2.includes("  "));//false  因为检测不到两个空格，所以返回false
+			console.log(tString_2.includes("line"));//true
+			console.log(tString_2.includes("    "));//false  因为检测不到四个空格，所以返回false
+			console.log(tString_2.includes("     "));//false  因为检测不到五个空格，所以返回false
+			console.log(tString_2.includes("	"));//true  因为能够检测到一个tab缩进，所以返回true
+			console.log(tString_2.includes("		"));//true  因为能够检测到两个tab缩进，所以返回true	
+
+			console.log(tString_3);//Fifteen is 12 and \n  not 16. 
+			console.log(tString_3.includes(" "));//true  因为能够检测到一个空格，所以返回true
+			console.log(tString_3.includes(""));//true  不清楚这个检测的是什么 
+			console.log(tString_3.includes("Fifteen"));//true
+			
+			console.log(tString_4);//大吉大利今晚吃西瓜!		
+			console.log(tString_4.includes("sss"));//false 因为检测不到sss，所以返回false
+			console.log(tString_4.includes("吃西瓜",tString_4.length));//false 因为已经超过字符串的长度，检测不到吃西瓜，所以返回false
+
+			//先试一下第一个参数的检索正确性，比如对几个特殊字符的检查正确性
+			// console.log("-------------------测试");
+			console.log("true".includes(true));//true  进行匹配的时候不一定他要添加双引号
+			console.log("false".includes(false));//true			
+			console.log("null".includes(null));//true	
+			console.log("undefined".includes(undefined));//true	
+			console.log("NaN".includes(NaN));//true
+
+			console.log("true".includes("true"));//true  进行匹配的时候，只要原始值是定义好的，加没加双引号都可以被正常检测出来
+			console.log("false".includes("false"));//true			
+			console.log("null".includes("null"));//true	
+			console.log("undefined".includes("undefined"));//true	
+			console.log("NaN".includes("NaN"));//true
+
+			console.log("true".includes("ue"));//true  加上引号，可以检测单个字母的是否存在
+			console.log("false".includes("fal"));//true			
+			console.log("null".includes("nu"));//true	
+			console.log("undefined".includes("un"));//true	
+			console.log("NaN".includes("a"));//true
+
+			// console.log("-------------------测试");
+			console.log("true".includes(oBool));//true 布尔值字符串可以判断是否包含布尔值对象
+			console.log(strString.includes(strString));//true 自己判断是否包含自己是可以正常检测的 
+			// console.log(oo.includes(oo));//oo.includes is not a function
+			console.log(oString.includes(oString));//true自己判断是否包含自己是可以正常检测的 	
+
+			// console.log("true".contains(true));//已经废弃
+			// console.log("false".contains(false));//已经废弃		
+			// console.log("null".contains(null));//已经废弃	
+			// console.log("undefined".contains(undefined));//已经废弃	
+			// console.log("NaN".contains(NaN));//已经废弃
+
+
+
+			//先试一下第二个参数的检索正确性，对于负数，非整数，或者非数值的
+			// console.log("-------------------测试");
+
+			console.log(oString.includes("llo",2));//true
+			console.log(oString.includes("llo",2.1));//true
+			console.log(oString.includes("llo",2.5));//true
+			console.log(oString.includes("llo",2.8));//true
+			console.log(oString.includes("llo",-2));//true
+
+			// console.log("-------------------测试");
+
+			console.log(oString.includes("llo",3.0));//false 
+			console.log(oString.includes("llo",3.1));//false 
+			console.log(oString.includes("llo",3.5));//false
+			console.log(oString.includes("llo",3.8));//false
+			console.log(oString.includes("llo",-3));//true	
+			
+			
+			// console.log("-------------------测试");
+
+			console.log(oString.includes("llo",true));//true
+			console.log(oString.includes("llo",false));//true
+			console.log(oString.includes("llo","true"));//true
+			console.log(oString.includes("llo","false"));//true		
+			console.log(oString.includes("llo",oo));//true
+			console.log(oString.includes("llo",oBool));//true
+			console.log(oString.includes("llo",oArray));//true
+			console.log(oString.includes("llo",oDate));//false						
+				 
+			console.log("-------------------测试");
+
+			console.log(oString.includes("llo",Number.MAX_VALUE));//false
+			console.log(oString.includes("llo",Number.MIN_VALUE));//true
+			console.log(oString.includes("llo",Number.NaN));//true
+			console.log(oString.includes("llo",Number.NEGATIVE_INFINITY));//true		
+			console.log(oString.includes("llo",Number.POSITIVE_INFINITY));//false
+
 		}
 
 		function learnStringSEndsWith(){
@@ -1158,6 +1267,11 @@ function learnStringToughFun(){
 
 		function learnStringSIndexOf(){
 			console.log("\n 打印indexOf()函数的用法---------------------------------------------------------------------------------------------------------------------3"); 
+			// console.log("true".indexOf(true));//0
+			// console.log("null".indexOf(null));//0
+			// console.log("undefined".indexOf(undefined));//0
+			// console.log("NaN".indexOf(NaN));//0
+
 			console.log(strString.indexOf())//<big>hello watermelon</big>
 			console.log(oString.indexOf())//<big>hello world</big>
 			console.log(tString_1.indexOf())//<big>hello Template</big>
