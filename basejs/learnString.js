@@ -1130,15 +1130,248 @@ function showInitData(){
 
 	//Soft-打印检索方法-----------------------------------------------------START
 		function LearnStringSRetrieval(){
-			// learnStringSIncludes();
 			// learnStringSIndexOf();
 			// learnStringSLastIndexOf();
-			learnStringSStartsWith();
+			// learnStringSIncludes();			
+			// learnStringSStartsWith();
 			// learnStringSEndsWith();
+			learnStringSSearch();			
+		}
+
+		function learnStringSIndexOf(){
+			console.log("\n 打印indexOf()函数的用法---------------------------------------------------------------------------------------------------------------------1"); 
+			//尝试正常的情况检测
+			console.log(strString);//hello watermelon
+			console.log(strString.indexOf(" "));//5
+			console.log(strString.indexOf("llo"));//2
+			console.log(strString.indexOf("lLo"));//-1 因为区分大小写，所以返回-1
+			console.log(strString.indexOf("llo",3));//-1 因为string中从下标3开始的内容是 lo watermelon ，检测不到llo，所以返回-1
+
+			console.log(oString)//[String: 'hello world']
+			console.log(oString.indexOf(" "));//5
+			console.log(oString.indexOf("llo"));//2
+			console.log(oString.indexOf("lLo"));//-1 因为区分大小写，所以返回-1
+			console.log(oString.indexOf("llo",3));//-1 因为string中从下标3开始的内容是 lo watermelon ，检测不到llo，所以返回-1
+			
+			console.log(oString_1);//A 你 Z   中间不在BMP中的字符，会显示乱码
+			console.log(oString_1.indexOf("A"));//0
+			console.log(oString_1.indexOf("\uD87E\uDC04"));//2 因为内容检测会从原有内容进行完全匹配，所以返回检索到的下标
+			console.log(oString_1.indexOf("你"));//-1  因为内容检测不会检测转译之后的内容，所以返回-1
+			
+			console.log(tString_1);//hello Template
+			console.log(tString_1.indexOf("Tem"));//6
+			console.log(tString_1.indexOf("Tem",7));//-1 因为string中从下标3开始的内容是 emplate ，检测不到Tem，所以返回-1
+			
+			console.log(tString_2);//hello line 1 \n \t hello line 2  
+			console.log(tString_2.indexOf("  "));//-1  因为检测不到两个空格，所以返回-1
+			console.log(tString_2.indexOf("line"));//6
+			console.log(tString_2.indexOf("    "));//-1  因为检测不到四个空格，所以返回-1
+			console.log(tString_2.indexOf("     "));//-1  因为检测不到五个空格，所以返回-1
+			console.log(tString_2.indexOf("	"));//13  因为能够检测到一个tab缩进，所以返回检索到的下标
+			console.log(tString_2.indexOf("		"));//13  因为能够检测到两个tab缩进，所以返回检索到的下标
+
+			console.log(tString_3);//Fifteen is 12 and \n  not 16. 
+			console.log(tString_3.indexOf(" "));//7  因为能够检测到一个空格，所以返回检索到的下标
+			console.log(tString_3.indexOf("Fifteen"));//0
+			
+			console.log(tString_4);//大吉大利今晚吃西瓜!		
+			console.log(tString_4.indexOf("sss"));//-1 因为检测不到sss，所以返回-1
+			console.log(tString_4.indexOf("吃西瓜",tString_4.length));//-1 因为已经超过字符串的长度，检测不到吃西瓜，所以返回-1
+
+			//先试一下第一个参数的检索正确性，比如对几个特殊字符的检查正确性
+			console.log("-------------------测试");
+			console.log("true".indexOf(true));//0  进行匹配的时候不一定他要添加双引号
+			console.log("false".indexOf(false));//0			
+			console.log("null".indexOf(null));//0	
+			console.log("undefined".indexOf(undefined));//0	
+			console.log("NaN".indexOf(NaN));//0
+
+			console.log("-------------------测试");			
+			console.log("true".indexOf("true"));//0  进行匹配的时候，只要原始值是定义好的，加没加双引号都可以被正常检测出来
+			console.log("false".indexOf("false"));//0			
+			console.log("null".indexOf("null"));//0	
+			console.log("undefined".indexOf("undefined"));//0	
+			console.log("NaN".indexOf("NaN"));//0
+			
+			console.log("-------------------测试");			
+			console.log(oString.indexOf(true));//-1
+			console.log(oString.indexOf(false));//-1		
+			console.log(oString.indexOf(null));//-1	
+			console.log(oString.indexOf(undefined));//-1
+			console.log(oString.indexOf(NaN));//-1
+
+			console.log("-------------------测试");						
+			console.log(oString.indexOf(""));//0 
+			console.log(oString.indexOf(oString));//0 自己是绝对以自己开始的
+
+			//先试一下第二个参数的检索正确性，对于负数，非整数，或者非数值的
+			console.log("-------------------测试");
+			console.log(oString.indexOf("hell",1));//-1
+			console.log(oString.indexOf("hell",1.1));//-1
+			console.log(oString.indexOf("hell",1.5));//-1
+			console.log(oString.indexOf("hell",1.8));//-1
+			console.log(oString.indexOf("hell",-1));//0
+
+			console.log("-------------------测试");
+
+			console.log(oString.indexOf("hell",0.0));//0
+			console.log(oString.indexOf("hell",0.1));//0
+			console.log(oString.indexOf("hell",0.5));//0
+			console.log(oString.indexOf("hell",0.8));//0
+			console.log(oString.indexOf("hell",-0));//0	
+			console.log(oString.indexOf("hell",-2));//0	
+			console.log(oString.indexOf("hell",-3));//0	
+
+			console.log("-------------------测试");
+
+			console.log(oString.indexOf("hell",true));//-1
+			console.log(oString.indexOf("hell",false));//0
+			console.log(oString.indexOf("hell","true"));//0
+			console.log(oString.indexOf("hell","false"));//0		
+			console.log(oString.indexOf("hell",oo));//0
+			console.log(oString.indexOf("hell",oBool));//-1
+			console.log(oString.indexOf("hell",oArray));//0
+			console.log(oString.indexOf("hell",oDate));//-1 						
+				 
+			console.log("-------------------测试");
+
+			console.log(oString.indexOf("hell",Number.MAX_VALUE));//-1 
+			console.log(oString.indexOf("hell",Number.MIN_VALUE));//0
+			console.log(oString.indexOf("hell",Number.NaN));//0
+			console.log(oString.indexOf("hell",Number.NEGATIVE_INFINITY));//0		
+			console.log(oString.indexOf("hell",Number.POSITIVE_INFINITY));//-1
+		}
+		
+		function indexCountStrChar(str,char){
+			var count = 0;
+			var pos = str.indexOf(char);
+			
+			while (pos !== -1) {
+				count++;
+				pos = str.indexOf(char, pos + 1);
+			}
+			
+			return count;
+		}
+
+		function learnStringSLastIndexOf(){
+			console.log("\n 打印lastIndexOf()函数的用法---------------------------------------------------------------------------------------------------------------------2"); 
+			//尝试正常的情况检测
+			console.log(strString);//hello watermelon
+			console.log(strString.lastIndexOf(" "));//5
+			console.log(strString.lastIndexOf("llo"));//2
+			console.log(strString.lastIndexOf("lLo"));//-1 因为区分大小写，所以返回-1
+			console.log(strString.lastIndexOf("llo",3));//2 因为string中从下标3开始的内容是 lo watermelon ，所以返回检索到的下标
+
+			console.log(oString)//[String: 'hello world']
+			console.log(oString.lastIndexOf(" "));//5
+			console.log(oString.lastIndexOf("llo"));//2
+			console.log(oString.lastIndexOf("lLo"));//-1 因为区分大小写，所以返回-1
+			console.log(oString.lastIndexOf("llo",3));//2 因为string中从下标3开始的内容是 lo watermelon，所以返回检索到的下标
+			
+			console.log(oString_1);//A 你 Z   中间不在BMP中的字符，会显示乱码
+			console.log(oString_1.lastIndexOf("A"));//0
+			console.log(oString_1.lastIndexOf("\uD87E\uDC04"));//2 因为内容检测会从原有内容进行完全匹配，所以返回检索到的下标
+			console.log(oString_1.lastIndexOf("你"));//-1  因为内容检测不会检测转译之后的内容，所以返回-1
+			
+			console.log(tString_1);//hello Template
+			console.log(tString_1.lastIndexOf("Tem"));//6
+			console.log(tString_1.lastIndexOf("Tem",7));//6 因为string中从下标3开始的内容是 emplate ，所以返回检索到的下标
+			
+			console.log(tString_2);//hello line 1 \n \t hello line 2  
+			console.log(tString_2.lastIndexOf("  "));//-1  因为检测不到两个空格，所以返回-1
+			console.log(tString_2.lastIndexOf("line"));//23
+			console.log(tString_2.lastIndexOf("    "));//-1  因为检测不到四个空格，所以返回-1
+			console.log(tString_2.lastIndexOf("     "));//-1  因为检测不到五个空格，所以返回-1
+			console.log(tString_2.lastIndexOf("	"));//16  因为能够检测到一个tab缩进，所以返回检索到的下标
+			console.log(tString_2.lastIndexOf("		"));//15  因为能够检测到两个tab缩进，所以返回检索到的下标
+
+			console.log(tString_3);//Fifteen is 12 and \n  not 16. 
+			console.log(tString_3.lastIndexOf(" "));//21  因为能够检测到一个空格，所以返回检索到的下标
+			console.log(tString_3.lastIndexOf("Fifteen"));//0
+			
+			console.log(tString_4);//大吉大利今晚吃西瓜!		
+			console.log(tString_4.lastIndexOf("sss"));//-1 因为检测不到sss，所以返回-1
+			console.log(tString_4.lastIndexOf("吃西瓜",tString_4.length));//6 因为string中从下标1到tString_4.length是开始的内容是 大吉大利今晚吃西瓜!	 ，所以返回检索到的下标
+
+			//先试一下第一个参数的检索正确性，比如对几个特殊字符的检查正确性
+			console.log("-------------------测试");
+			console.log("true".lastIndexOf(true));//0  进行匹配的时候不一定他要添加双引号
+			console.log("false".lastIndexOf(false));//0			
+			console.log("null".lastIndexOf(null));//0	
+			console.log("undefined".lastIndexOf(undefined));//0	
+			console.log("NaN".lastIndexOf(NaN));//0
+
+			console.log("-------------------测试");			
+			console.log("true".lastIndexOf("true"));//0  进行匹配的时候，只要原始值是定义好的，加没加双引号都可以被正常检测出来
+			console.log("false".lastIndexOf("false"));//0			
+			console.log("null".lastIndexOf("null"));//0	
+			console.log("undefined".lastIndexOf("undefined"));//0	
+			console.log("NaN".lastIndexOf("NaN"));//0
+			
+			console.log("-------------------测试");			
+			console.log(oString.lastIndexOf(true));//-1
+			console.log(oString.lastIndexOf(false));//-1		
+			console.log(oString.lastIndexOf(null));//-1	
+			console.log(oString.lastIndexOf(undefined));//-1
+			console.log(oString.lastIndexOf(NaN));//-1
+
+			console.log("-------------------测试");						
+			console.log(oString.lastIndexOf(""));//11 
+			console.log(oString.lastIndexOf(oString));//0 自己是绝对以自己结束的
+
+			//先试一下第二个参数的检索正确性，对于负数，非整数，或者非数值的
+			console.log("-------------------测试");
+			console.log(oString.lastIndexOf("hell",1));//0
+			console.log(oString.lastIndexOf("hell",1.1));//0
+			console.log(oString.lastIndexOf("hell",1.5));//0
+			console.log(oString.lastIndexOf("hell",1.8));//0
+			console.log(oString.lastIndexOf("hell",-1));//0
+
+			console.log("-------------------测试");
+
+			console.log(oString.lastIndexOf("hell",0.0));//0
+			console.log(oString.lastIndexOf("hell",0.1));//0
+			console.log(oString.lastIndexOf("hell",0.5));//0
+			console.log(oString.lastIndexOf("hell",0.8));//0
+			console.log(oString.lastIndexOf("hell",-0));//0	
+			
+			
+			console.log("-------------------测试");
+
+			console.log(oString.lastIndexOf("hell",true));//0
+			console.log(oString.lastIndexOf("hell",false));//0
+			console.log(oString.lastIndexOf("hell","true"));//0
+			console.log(oString.lastIndexOf("hell","false"));//0		
+			console.log(oString.lastIndexOf("hell",oo));//0
+			console.log(oString.lastIndexOf("hell",oBool));//0
+			console.log(oString.lastIndexOf("hell",oArray));//0
+			console.log(oString.lastIndexOf("hell",oDate));//0 						
+			console.log(oString.lastIndexOf("hell",oString.length));//0 						
+				 
+			console.log("-------------------测试");
+
+			console.log(oString.lastIndexOf("hell",Number.MAX_VALUE));//0 
+			console.log(oString.lastIndexOf("hell",Number.MIN_VALUE));//0
+			console.log(oString.lastIndexOf("hell",Number.NaN));//0
+			console.log(oString.lastIndexOf("hell",Number.NEGATIVE_INFINITY));//0		
+			console.log(oString.lastIndexOf("hell",Number.POSITIVE_INFINITY));//0
+		}	
+
+		function lIndexCountStrChar(str,char){
+			var count = 0;
+			var pos = str.lastIndexOf(char);
+			
+			while (pos !== -1) {
+				count++;
+				pos = str.lastIndexOf(char, pos - 1);
+			}
+			
+			return count;
 		}
 
 		function learnStringSIncludes(){
-			console.log("\n 打印includes()函数的用法---------------------------------------------------------------------------------------------------------------------1"); 
+			console.log("\n 打印includes()函数的用法---------------------------------------------------------------------------------------------------------------------3"); 
 			//@para searchString 要在此字符串中搜索的字符串。
 			//@para position 可选。从当前字符串的哪个索引位置开始搜寻子字符串；默认值为0。
 			//在进行内容匹配的时候，这个方法是区分大小写的。 
@@ -1176,7 +1409,6 @@ function showInitData(){
 
 			console.log(tString_3);//Fifteen is 12 and \n  not 16. 
 			console.log(tString_3.includes(" "));//true  因为能够检测到一个空格，所以返回true
-			console.log(tString_3.includes(""));//true  不清楚这个检测的是什么 
 			console.log(tString_3.includes("Fifteen"));//true
 			
 			console.log(tString_4);//大吉大利今晚吃西瓜!		
@@ -1207,6 +1439,7 @@ function showInitData(){
 			console.log("true".includes(oBool));//true 布尔值字符串可以判断是否包含布尔值对象
 			console.log(strString.includes(strString));//true 自己判断是否包含自己是可以正常检测的 
 			// console.log(oo.includes(oo));//oo.includes is not a function
+			console.log(oString.includes(""));//传入空字符串，默认true
 			console.log(oString.includes(oString));//true自己判断是否包含自己是可以正常检测的 	
 
 			// console.log("true".contains(true));//已经废弃
@@ -1273,96 +1506,8 @@ function showInitData(){
 			}
 		}
 
-		function initEndsWith(){
-			/*! http://mths.be/endswith v0.2.0 by @mathias */
-			if (!String.prototype.endsWith) {
-				(function() {
-					'use strict'; // needed to support `apply`/`call` with `undefined`/`null`
-					var defineProperty = (function() {
-						// IE 8 only supports `Object.defineProperty` on DOM elements
-						try {
-							var object = {};
-							var $defineProperty = Object.defineProperty;
-							var result = $defineProperty(object, object, object) && $defineProperty;
-						} catch(error) {}
-						return result;
-					}());
-					var toString = {}.toString;
-					var endsWith = function(search) {
-						if (this == null) {
-							throw TypeError();
-						}
-						var string = String(this);
-						if (search && toString.call(search) == '[object RegExp]') {
-							throw TypeError();
-						}
-						var stringLength = string.length;
-						var searchString = String(search);
-						var searchLength = searchString.length;
-						var pos = stringLength;
-						if (arguments.length > 1) {
-							var position = arguments[1];
-							if (position !== undefined) {
-								// `ToInteger`
-								pos = position ? Number(position) : 0;
-								if (pos != pos) { // better `isNaN`
-									pos = 0;
-								}
-							}
-						}
-						var end = Math.min(Math.max(pos, 0), stringLength);
-						var start = end - searchLength;
-						if (start < 0) {
-							return false;
-						}
-						var index = -1;
-						while (++index < searchLength) {
-							if (string.charCodeAt(start + index) != searchString.charCodeAt(index)) {
-								return false;
-							}
-						}
-						return true;
-					};
-					if (defineProperty) {
-						defineProperty(String.prototype, 'endsWith', {
-							'value': endsWith,
-							'configurable': true,
-							'writable': true
-						});
-					} else {
-						String.prototype.endsWith = endsWith;
-					}
-				}());
-			}			
-		}
-
-		function learnStringSIndexOf(){
-			console.log("\n 打印indexOf()函数的用法---------------------------------------------------------------------------------------------------------------------3"); 
-			// console.log("true".indexOf(true));//0
-			// console.log("null".indexOf(null));//0
-			// console.log("undefined".indexOf(undefined));//0
-			// console.log("NaN".indexOf(NaN));//0
-
-			console.log(strString.indexOf());//<big>hello watermelon</big>
-			console.log(oString.indexOf());//<big>hello world</big>
-			console.log(tString_1.indexOf());//<big>hello Template</big>
-			console.log(tString_2.indexOf());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.indexOf());//<big>Fifteen is 12 and \n  not 16.</big>
-			console.log(tString_4.indexOf());//<big>大吉大利今晚吃西瓜!</big>
-		}
-		
-		function learnStringSLastIndexOf(){
-			console.log("\n 打印lastIndexOf()函数的用法---------------------------------------------------------------------------------------------------------------------4"); 
-			console.log(strString.lastIndexOf());//<big>hello watermelon</big>
-			console.log(oString.lastIndexOf());//<big>hello world</big>
-			console.log(tString_1.lastIndexOf());//<big>hello Template</big>
-			console.log(tString_2.lastIndexOf());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.lastIndexOf());//<big>Fifteen is 12 and \n  not 16.</big>
-			console.log(tString_4.lastIndexOf());//<big>大吉大利今晚吃西瓜!</big>
-		}	
-		
 		function learnStringSStartsWith(){
-			console.log("\n 打印startsWith()函数的用法---------------------------------------------------------------------------------------------------------------------5"); 
+			console.log("\n 打印startsWith()函数的用法---------------------------------------------------------------------------------------------------------------------4"); 
 			console.log(strString);//hello watermelon
 			console.log(strString.startsWith("hello"));//true
 			console.log(strString.startsWith("el",1));//true
@@ -1508,7 +1653,7 @@ function showInitData(){
 		}
 
 		function learnStringSEndsWith(){
-			console.log("\n 打印endsWith()函数的用法---------------------------------------------------------------------------------------------------------------------2"); 
+			console.log("\n 打印endsWith()函数的用法---------------------------------------------------------------------------------------------------------------------5"); 
 			console.log(strString);//hello watermelon
 			console.log(strString.endsWith("melon"));//true
 			console.log(strString.endsWith("melo",strString.length-1));//true
@@ -1658,6 +1803,219 @@ function showInitData(){
 				}());
 			}
 		}	
+
+		function learnStringSSearch(){
+			console.log("\n 打印search()函数的用法---------------------------------------------------------------------------------------------------------------------6"); 
+			//用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串。   
+			//regexp	 该参数可以是需要在 stringObject 中检索的子串，也可以是需要检索的 RegExp 对象。
+			//---------------注释：要执行忽略大小写的检索，请追加标志 i。
+			//返回值 stringObject 中第一个与 regexp 相匹配的子串的起始位置。
+			//---------------注释：如果没有找到任何匹配的子串，则返回 -1。
+			//search() 方法不执行全局匹配，它将忽略标志 g。
+
+			//---------------它同时忽略 regexp 的 lastIndex 属性，并且总是从字符串的开始进行检索，这意味着它总是返回 stringObject 的第一个匹配的位置。
+
+			//尝试正常的情况检测
+			console.log(strString);//hello watermelon
+			console.log(strString.search(" "));//5
+			console.log(strString.search("llo"));//2
+			console.log(strString.search("lLo"));//-1 因为search区分大小写，所以返回-1
+			console.log(strString.search("llo",3));//2 因为search只处理第一个参数，所以返回2
+			console.log(strString.search(/llo/));//2 
+			console.log(strString.search(/lLo/i));//2 
+			//如果传入一个非正则表达式对象，search则会使用 `new RegExp(obj)` 隐式地将其转换为正则表达式对象，再进行处理。	
+			//其实传入"llo"和/lLo/i与/llo/的效果是一样的	
+
+			console.log(oString)//[String: 'hello world']
+			console.log(oString.search(" "));//5
+			console.log(oString.search("llo"));//2
+			console.log(oString.search("lLo"));//-1 因为区分大小写，所以返回-1
+			console.log(oString.search("llo",3));//2 因为search只处理第一个参数，所以返回2
+			
+			console.log(oString_1);//A 你 Z   中间不在BMP中的字符，会显示乱码
+			console.log(oString_1.search("A"));//0
+			console.log(oString_1.search("\uD87E\uDC04"));//2 因为内容检测会从原有内容进行完全匹配，所以返回检索到的下标
+			console.log(oString_1.search("你"));//-1  因为内容检测不会检测转译之后的内容，所以返回-1
+			
+			console.log(tString_1);//hello Template
+			console.log(tString_1.search("Tem"));//6
+			console.log(tString_1.search("Tem",7));//6 因为search只处理第一个参数，所以返回2
+			
+			console.log(tString_2);//hello line 1 \n \t hello line 2  
+			console.log(tString_2.search("  "));//-1  因为检测不到两个空格，所以返回-1
+			console.log(tString_2.search(/\s/));//5   第一次检测到空格的位置，
+			console.log(tString_2.search("line"));//6
+			console.log(tString_2.search("    "));//-1  因为检测不到四个空格，所以返回-1
+			console.log(tString_2.search("     "));//-1  因为检测不到五个空格，所以返回-1
+			console.log(tString_2.search("	"));//13  因为能够检测到一个tab缩进，所以返回检索到的下标
+			console.log(tString_2.search("		"));//13  因为能够检测到两个tab缩进，所以返回检索到的下标
+			console.log(tString_2.search(/\t/));//13  因为能够检测到两个tab缩进，所以返回检索到的下标
+			console.log(tString_2.search(/\n/));//12  因为能够检测到换行，所以返回检索到的下标
+
+			console.log(tString_3);//Fifteen is 12 and \n  not 16. 
+			console.log(tString_3.search(" "));//7  因为能够检测到一个空格，所以返回检索到的下标
+			console.log(tString_3.search("Fifteen"));//0
+			
+			console.log(tString_4);//大吉大利今晚吃西瓜!		
+			console.log(tString_4.search("sss"));//-1 因为检测不到sss，所以返回-1
+			console.log(tString_4.search("吃西瓜",tString_4.length));//6 因为search只处理第一个参数，所以返回检索到的下标
+
+			//先试一下第一个参数的检索正确性，比如对几个特殊字符的检查正确性
+			console.log("-------------------测试");
+			console.log("true".search(true));//0  进行匹配的时候不一定他要添加双引号
+			console.log("false".search(false));//0			
+			console.log("null".search(null));//0	
+			console.log("undefined".search(undefined));//0	
+			console.log("NaN".search(NaN));//0
+
+			console.log("-------------------测试");			
+			console.log("true".search("true"));//0  进行匹配的时候，只要原始值是定义好的，加没加双引号都可以被正常检测出来
+			console.log("false".search("false"));//0			
+			console.log("null".search("null"));//0	
+			console.log("undefined".search("undefined"));//0	
+			console.log("NaN".search("NaN"));//0
+			
+			console.log("-------------------测试");			
+			console.log(oString.search(true));//-1
+			console.log(oString.search(false));//-1		
+			console.log(oString.search(null));//-1	
+			console.log(oString.search(undefined));//0
+			console.log(oString.search(NaN));//-1
+
+			console.log("-------------------测试");						
+			console.log(oString.search(""));//0 
+			console.log(oString.search(oString));//0 自己是绝对包含自己
+
+			console.log("-------------------测试num");
+			console.log(oString.search(1));//-1
+			console.log(oString.search(1.1));//-1
+			console.log(oString.search(1.5));//-1
+			console.log(oString.search(1.8));//-1
+			console.log(oString.search(-1));//-1
+
+			console.log("-------------------测试undefined");
+			console.log("true".search(undefined));//0
+			console.log("false".search(undefined));//0			
+			console.log("null".search(undefined));//0	
+			console.log("undefined".search(undefined));//0	
+			console.log("NaN".search(undefined));//0
+			console.log(strString.search(undefined));//0
+			console.log(oString.search(undefined));//0
+			console.log(oString_1.search(undefined));//0
+			console.log(tString_1.search(undefined));//0
+			console.log(tString_2.search(undefined));//0
+			console.log(tString_3.search(undefined));//0
+			console.log(tString_4.search(undefined));//0
+
+			console.log("-------------------测试true");
+
+			console.log(strString.search(true));//-1
+			console.log(oString.search(true));//-1
+			console.log(oString_1.search(true));//-1
+			console.log(tString_1.search(true));//-1
+			console.log(tString_2.search(true));//-1
+			console.log(tString_3.search(true));//-1
+			console.log(tString_4.search(true));//-1
+			
+			console.log("-------------------测试false");
+
+			console.log(strString.search(false));//-1
+			console.log(oString.search(false));//-1
+			console.log(oString_1.search(false));//-1
+			console.log(tString_1.search(false));//-1
+			console.log(tString_2.search(false));//-1
+			console.log(tString_3.search(false));//-1
+			console.log(tString_4.search(false));//-1
+			
+			console.log("-------------------测试null");
+
+			console.log(strString.search(null));//-1
+			console.log(oString.search(null));//-1
+			console.log(oString_1.search(null));//-1
+			console.log(tString_1.search(null));//-1
+			console.log(tString_2.search(null));//-1
+			console.log(tString_3.search(null));//-1
+			console.log(tString_4.search(null));//-1
+			
+			console.log("-------------------测试NaN");
+
+			console.log(strString.search(NaN));//-1
+			console.log(oString.search(NaN));//-1
+			console.log(oString_1.search(NaN));//-1
+			console.log(tString_1.search(NaN));//-1
+			console.log(tString_2.search(NaN));//-1
+			console.log(tString_3.search(NaN));//-1
+			console.log(tString_4.search(NaN));//-1
+
+			console.log("-------------------测试oo");
+
+			console.log(strString.search(oo));//1
+			console.log(oString.search(oo));//1
+			console.log(oString_1.search(oo));//1
+			console.log(tString_1.search(oo));//1
+			console.log(tString_2.search(oo));//1
+			console.log(tString_3.search(oo));//3
+			console.log(tString_4.search(oo));//-1
+
+			console.log("-------------------测试oo.name");			
+			oo.name = "Wu Eva";
+			console.log(oo);//{ name: 'Wu Eva' }
+			console.log(strString.search(oo));//1
+			console.log(strString.search(oo));//1
+			console.log(oString.search(oo));//1
+			console.log(oString_1.search(oo));//1
+			console.log(tString_1.search(oo));//1
+			console.log(tString_2.search(oo));//1
+			console.log(tString_3.search(oo));//3
+			console.log(tString_4.search(oo));//-1
+
+			console.log("-------------------测试oBool");
+
+			console.log(strString.search(oBool));//-1
+			console.log(oString.search(oBool));//-1
+			console.log(oString_1.search(oBool));//-1
+			console.log(tString_1.search(oBool));//-1
+			console.log(tString_2.search(oBool));//-1
+			console.log(tString_3.search(oBool));//-1
+			console.log(tString_4.search(oBool));//-1
+			
+			console.log("-------------------测试oArray");
+
+			console.log(strString.search(oArray));//-1
+			console.log(oString.search(oArray));//-1
+			console.log(oString_1.search(oArray));//-1
+			console.log(tString_1.search(oArray));//-1
+			console.log(tString_2.search(oArray));//-1
+			console.log(tString_3.search(oArray));//-1
+			console.log(tString_4.search(oArray));//-1
+						
+			console.log("-------------------测试oDate");
+
+			console.log(strString.search(oDate));//-1
+			console.log(oString.search(oDate));//-1
+			console.log(oString_1.search(oDate));//-1
+			console.log(tString_1.search(oDate));//-1
+			console.log(tString_2.search(oDate));//-1
+			console.log(tString_3.search(oDate));//-1               
+			console.log(tString_4.search(oDate));//-1
+
+			console.log("-------------------测试");
+
+			console.log(oString.search(true));//-1
+			console.log(oString.search(false));//-1
+			console.log(oString.search("true"));//-1
+			console.log(oString.search("false"));//-1					
+				 
+			console.log("-------------------测试");
+
+			console.log(oString.search(Number.MAX_VALUE));//-1 
+			console.log(oString.search(Number.MIN_VALUE));//-1
+			console.log(oString.search(Number.NaN));//-1
+			console.log(oString.search(Number.NEGATIVE_INFINITY));//-1	
+			console.log(oString.search(Number.POSITIVE_INFINITY));//-1
+
+		}
+		
 	//Soft-打印检索方法-----------------------------------------------------END
 
 	//Soft-打印比较方法-----------------------------------------------------START
@@ -1882,7 +2240,6 @@ function showInitData(){
 	//Tough-打印替换方法-----------------------------------------------------START
 		function LearnStringTReplacement(){
 			learnStringTReplace();
-			learnStringTSearch();
 		}
 
 		function learnStringTReplace(){
@@ -1893,16 +2250,6 @@ function showInitData(){
 			console.log(tString_2.replaceg());//<big>hello line 1 \n \t hello line 2</big>
 			console.log(tString_3.replace());//<big>Fifteen is 12 and \n  not 16.</big>
 			console.log(tString_4.replace());//<big>大吉大利今晚吃西瓜!</big>
-		}
-
-		function learnStringTSearch(){
-			console.log("\n 打印search()函数的用法---------------------------------------------------------------------------------------------------------------------2"); 
-			console.log(strString.search());//<big>hello watermelon</big>
-			console.log(oString.search());//<big>hello world</big>
-			console.log(tString_1.search());//<big>hello Template</big>
-			console.log(tString_2.search());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.search());//<big>Fifteen is 12 and \n  not 16.</big>
-			console.log(tString_4.search());//<big>大吉大利今晚吃西瓜!</big>
 		}
 	
 	//Tough-打印替换方法-----------------------------------------------------END
