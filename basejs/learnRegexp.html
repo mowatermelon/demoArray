@@ -21,64 +21,64 @@ function changeA(){
   var show_sel =document.querySelector("h3.demo01");
   var txt_sel = document.getElementById("a");
   var pattern=/water(melon)/ig;
-  // getReplaceData(show_sel,txt_sel,pattern);
-  getMatchData(show_sel,txt_sel,pattern);  
+  getReplaceData(show_sel,txt_sel,pattern);
+  // getMatchData(show_sel,txt_sel,pattern);  
 }
 
 function changeB(){
   var show_sel =document.querySelector("h3.demo02");
   var txt_sel = document.getElementById("b");
   var pattern=/water(?:melon)/ig;
-  // getReplaceData(show_sel,txt_sel,pattern);
-  getMatchData(show_sel,txt_sel,pattern);  
+  getReplaceData(show_sel,txt_sel,pattern);
+  // getMatchData(show_sel,txt_sel,pattern);  
 }
 
 function changeC(){
   var show_sel =document.querySelector("h3.demo03");
   var txt_sel = document.getElementById("c");
   var pattern=/water(?=melon)/ig;
-  // getReplaceData(show_sel,txt_sel,pattern);
-  getMatchData(show_sel,txt_sel,pattern);  
+  getReplaceData(show_sel,txt_sel,pattern);
+  // getMatchData(show_sel,txt_sel,pattern);  
 }
 
 function changeD(){
   var show_sel =document.querySelector("h3.demo04");
   var txt_sel = document.getElementById("d");
   var pattern=/water(?!melon)/ig;
-  // getReplaceData(show_sel,txt_sel,pattern);
-  getMatchData(show_sel,txt_sel,pattern);  
+  getReplaceData(show_sel,txt_sel,pattern);
+  // getMatchData(show_sel,txt_sel,pattern);  
 }
 
 function changeE(){
   var show_sel =document.querySelector("h3.demo05");
   var txt_sel = document.getElementById("e");
   var pattern=/water(?<=melon)/ig;
-  // getReplaceData(show_sel,txt_sel,pattern);
-  getMatchData(show_sel,txt_sel,pattern);  
+  getReplaceData(show_sel,txt_sel,pattern);
+  // getMatchData(show_sel,txt_sel,pattern);  
 }
 
 function changeF(){
   var show_sel =document.querySelector("h3.demo06");
   var txt_sel = document.getElementById("f");
   var pattern=/(?<=melon)water/ig;
-  // getReplaceData(show_sel,txt_sel,pattern);
-  getMatchData(show_sel,txt_sel,pattern);  
+  getReplaceData(show_sel,txt_sel,pattern);
+  // getMatchData(show_sel,txt_sel,pattern);  
 }
 
 function changeG(){
   var show_sel =document.querySelector("h3.demo07");
   var txt_sel = document.getElementById("g");
   var pattern=/water(?<!melon)/ig;
-  // getReplaceData(show_sel,txt_sel,pattern);
-  getMatchData(show_sel,txt_sel,pattern);  
+  getReplaceData(show_sel,txt_sel,pattern);
+  // getMatchData(show_sel,txt_sel,pattern);  
 }
 
 function changeH(){
   var show_sel =document.querySelector("h3.demo08");
   var txt_sel = document.getElementById("h");
   var pattern=/(?<!melon)water/ig;
-  // getReplaceData(show_sel,txt_sel,pattern);
-  getMatchData(show_sel,txt_sel,pattern);  
+  getReplaceData(show_sel,txt_sel,pattern);
+  // getMatchData(show_sel,txt_sel,pattern);  
 }
 
 function getReplaceData(show,txt,pattern){
@@ -118,7 +118,7 @@ function getMatchData(show,txt,pattern){
     </ol>  
   </h3>
 
-  <h2>在以下文本域中都分别输入<span class="text-info">watermelon</span>，<span class="text-info">watermeln</span>，<span class="text-info">water</span>，<span class="text-info">melonwater</span>和<span class="text-info">melnwater</span>试试,或者其他测试案例多试试，应该就会明白这几个的区别。</h2>
+  <h2>在以下文本域中都分别输入<span class="text-info">watermelon</span>，<span class="text-info">melonwatermelon</span>，<span class="text-info">watermeln</span>，<span class="text-info">melnwatermeln</span>，<span class="text-info">water</span>，<span class="text-info">melonwater</span>和<span class="text-info">melnwater</span>试试,或者其他测试关于<span class="text-info">water</span>与<span class="text-info">melon</span>的组合案例多试试，应该就会明白这几个的区别。</h2>
 
   <p>
     <h2>1.<span class="text-info">(pattern)</span>就是把<span class="text-info">pattern</span>当作一个整体匹配</h2>
