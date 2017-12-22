@@ -21,64 +21,64 @@ function changeA(){
   var show_sel =document.querySelector("h3.demo01");
   var txt_sel = document.getElementById("a");
   var pattern=/water(melon)/ig;
-  getReplaceData(show_sel,txt_sel,pattern);
-  // getMatchData(show_sel,txt_sel,pattern);  
+  // getReplaceData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);  
 }
 
 function changeB(){
   var show_sel =document.querySelector("h3.demo02");
   var txt_sel = document.getElementById("b");
   var pattern=/water(?:melon)/ig;
-  getReplaceData(show_sel,txt_sel,pattern);
-  // getMatchData(show_sel,txt_sel,pattern);  
+  // getReplaceData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);  
 }
 
 function changeC(){
   var show_sel =document.querySelector("h3.demo03");
   var txt_sel = document.getElementById("c");
   var pattern=/water(?=melon)/ig;
-  getReplaceData(show_sel,txt_sel,pattern);
-  // getMatchData(show_sel,txt_sel,pattern);  
+  // getReplaceData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);  
 }
 
 function changeD(){
   var show_sel =document.querySelector("h3.demo04");
   var txt_sel = document.getElementById("d");
   var pattern=/water(?!melon)/ig;
-  getReplaceData(show_sel,txt_sel,pattern);
-  // getMatchData(show_sel,txt_sel,pattern);  
+  // getReplaceData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);  
 }
 
 function changeE(){
   var show_sel =document.querySelector("h3.demo05");
   var txt_sel = document.getElementById("e");
   var pattern=/water(?<=melon)/ig;
-  getReplaceData(show_sel,txt_sel,pattern);
-  // getMatchData(show_sel,txt_sel,pattern);  
+  // getReplaceData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);  
 }
 
 function changeF(){
   var show_sel =document.querySelector("h3.demo06");
   var txt_sel = document.getElementById("f");
   var pattern=/(?<=melon)water/ig;
-  getReplaceData(show_sel,txt_sel,pattern);
-  // getMatchData(show_sel,txt_sel,pattern);  
+  // getReplaceData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);  
 }
 
 function changeG(){
   var show_sel =document.querySelector("h3.demo07");
   var txt_sel = document.getElementById("g");
   var pattern=/water(?<!melon)/ig;
-  getReplaceData(show_sel,txt_sel,pattern);
-  // getMatchData(show_sel,txt_sel,pattern);  
+  // getReplaceData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);  
 }
 
 function changeH(){
   var show_sel =document.querySelector("h3.demo08");
   var txt_sel = document.getElementById("h");
   var pattern=/(?<!melon)water/ig;
-  getReplaceData(show_sel,txt_sel,pattern);
-  // getMatchData(show_sel,txt_sel,pattern);  
+  // getReplaceData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);  
 }
 
 function getReplaceData(show,txt,pattern){
