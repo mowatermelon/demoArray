@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>测试正则</title>
+<style type="text/css">
+  body {
+    font-size: 12px;
+    line-height: 180%;
+  }
+  h1,h2,h3,h4,h5,h6{
+    line-height: 2;
+  }
+  .text-info{
+    color:#1ab3b3;
+  }
+</style>
+</head>
+<script>
+function changeA(){
+  var show_sel =document.querySelector("h3.demo01");
+  var txt_sel = document.getElementById("a");
+  var pattern=/water(melon)/ig;
+  // getReplaceData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);  
+}
+
+function changeB(){
+  var show_sel =document.querySelector("h3.demo02");
+  var txt_sel = document.getElementById("b");
+  var pattern=/water(?:melon)/ig;
+  // getReplaceData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);  
+}
+
+function changeC(){
+  var show_sel =document.querySelector("h3.demo03");
+  var txt_sel = document.getElementById("c");
+  var pattern=/water(?=melon)/ig;
+  // getReplaceData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);  
+}
+
+function changeD(){
+  var show_sel =document.querySelector("h3.demo04");
+  var txt_sel = document.getElementById("d");
+  var pattern=/water(?!melon)/ig;
+  // getReplaceData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);  
+}
+
+function changeE(){
+  var show_sel =document.querySelector("h3.demo05");
+  var txt_sel = document.getElementById("e");
+  var pattern=/water(?<=melon)/ig;
+  // getReplaceData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);  
+}
+
+function changeF(){
+  var show_sel =document.querySelector("h3.demo06");
+  var txt_sel = document.getElementById("f");
+  var pattern=/water(?<!melon)/ig;
+  // getReplaceData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);  
+}
+
+
+function getReplaceData(show,txt,pattern){
+  var text=txt.value;
+  show.innerHTML += ' <span class="text-info">' + text+'</span>'+"replace转换成";  
+  // text=text.replace(pattern,"$1");//$1就是对([^"]*)里的内容的引用,整个代码的功能就是把双引号里的内容取出来,
+  text=text.replace(pattern,"lalala");//$1就是对([^"]*)里的内容的引用,整个代码的功能就是把双引号里的内容取出来,  
+  show.innerHTML += ' <span class="text-info">' + text+'</span><br/>';    
+  txt.value='';
+}
+function getMatchData(show,txt,pattern){
+  var text=txt.value;
+  show.innerHTML += ' <span class="text-info">' + text+'</span>'+"match转换成";
+  text=text.match(pattern);//
+  show.innerHTML += ' <span class="text-info">' + text+'</span><br/>';   
+  txt.value='';
+}
+</script>
+  <h3>
+    原始规定
+    <ol>
+      <li>(pattern)匹配<span class="text-info">pattern</span>并获取这一匹配。所获取的匹配可以从产生的<span class="text-info">Matches</span>集合得到，在<span class="text-info">VBScript</span>中使用<span class="text-info">SubMatches</span>集合，在<span class="text-info">JScript</span>中则使用<span class="text-info">$0…$9</span>属性。要匹配圆括号字符，请使用<span class="text-info">\(</span>或<span class="text-info">\)</span>。</li>
+      <li>(?:pattern)匹配<span class="text-info">pattern</span>但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。</li>
+      <li>(?=pattern)正向肯定预查，在任何匹配<span class="text-info">pattern</span>的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。</li>
+      <li>(?!pattern)正向否定预查，在任何不匹配<span class="text-info">pattern</span>的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。</li>
+      <li><span>(?<=pattern)</span>反向肯定预查，与正向肯定预查类拟，只是方向相反。</li>
+      <li>反向否定预查，与正向否定预查类拟，只是方向相反。</li>      
+    </ol>  
+    解读
+    <ol>
+      <li>(pattern)匹配这个格式就可以了</li>
+      <li>(?:pattern)和一差不多，匹配这个<span class="text-info">pattern</span>格式</li>
+      <li>(?=pattern)继续向正向找，如果这个后面跟着这个<span class="text-info">pattern</span>格式，怎么把前面的那个字符拿出来，<span class="text-info">pattern</span>中的内容不算匹配到的字符</li>
+      <li>(?!pattern)和3相反，后面不跟着这个<span class="text-info">pattern</span>格式，把前面的字符拿出来</li>
+      <li><span>(?<=pattern)</span>反向肯定预查，与正向肯定预查类拟，只是方向相反。</li>
+      <li>反向否定预查，与正向否定预查类拟，只是方向相反。</li>          
+    </ol>  
+  </h3>
+
+  <h2>在以下文本域中都分别输入<span class="text-info">watermelon</span>，<span class="text-info">watermeln</span>，<span class="text-info">water</span>，<span class="text-info">melonwater</span>和<span class="text-info">melnwater</span>试试,或者其他测试案例多试试，应该就会明白这几个的区别。</h2>
+
+  <p>
+    <h2>1.<span class="text-info">(pattern)</span>就是把<span class="text-info">pattern</span>当作一个整体匹配</h2>
+    <h3 class="demo01">/water(melon)/ig  测试案例<br/></h3>
+      <input type="text" id="a"/>
+      <input type="button" value="替换" onClick="changeA()" />
+      
+      <br />
+      <br />  
+      <br />  
+  </p>
+
+  <p>
+    <h2>2.<span class="text-info">(?:pattern)</span>就是把<span class="text-info">pattern</span>当作一个整体匹配，但是不把其存储，<span class="text-info">$1</span>(在代码中有这个引用)的功能就没了,但是能省资源</h2>
+    <h3 class="demo02">/water(?:melon)/ig  测试案例<br/></h3>
+      <input type="text" id="b"/>
+      <input type="button" value="替换" onClick="changeB()" />
+      
+      <br />
+      <br />  
+      <br />  
+  </p>
+
+  <p>
+    <h2>3.<span class="text-info">(?=pattern)</span>的示例,就是必须出现<span class="text-info">pattern</span>匹配时,整个匹配才会发生</h2>
+    <h3 class="demo03">/water(?=melon)/ig  测试案例<br/></h3>
+    <input type="text" id="c"/>
+    <input type="button" value="替换" onClick="changeC()" />
+    
+    <br />
+    <br />  
+    <br />
+  </p>
+
+  <p>
+    <h2>4.<span class="text-info">(?!pattern)</span>正好与上例相反,要不出现<span class="text-info">pattern</span>时,整个匹配才会发生,这两个都叫预查,<span class="text-info">(?!pattern)</span>算是<span class="text-info">[^]</span>的扩展(因为<span class="text-info">[^pattern]</span>是p,a,t,t,e,r,n都不能出现)</h2>
+    <h3 class="demo04">/water(?!melon)/ig 测试案例<br/></h3>
+    <input type="text" id="d"/>
+    <input type="button" value="替换" onclick="changeD()" />
+    <br />
+    <br />
+    <br />
+  </p>
+
+
+  <p>
+    <h2>5.<span class="text-info">(?<=pattern)</span>的示例,反向肯定预查，与正向肯定预查类拟，只是方向相反。</h2>
+    <h3 class="demo05">/water(?<=melon)/ig 测试案例<br/></h3>
+    <input type="text" id="e"/>
+    <input type="button" value="替换" onClick="changeE()" />
+    
+    <br />
+    <br />  
+    <br />
+  </p>
+
+  <p>
+    <h2>6.把上例的<span class="text-info">等号</span>换成<span class="text-info">左尖角括号</span>正好与上例相反,反向否定预查，与正向否定预查类拟，只是方向相反。</h2>
+    <h3 class="demo06">测试案例<br/></h3>
+    <input type="text" id="f"/>
+    <input type="button" value="替换" onclick="changeF()" />
+    <br />
+    <br />
+    <br />
+  </p>
+</body>
+</html>
