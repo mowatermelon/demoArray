@@ -60,11 +60,26 @@ function changeE(){
 function changeF(){
   var show_sel =document.querySelector("h3.demo06");
   var txt_sel = document.getElementById("f");
+  var pattern=/(?<=melon)water/ig;
+  // getReplaceData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);  
+}
+
+function changeG(){
+  var show_sel =document.querySelector("h3.demo07");
+  var txt_sel = document.getElementById("g");
   var pattern=/water(?<!melon)/ig;
   // getReplaceData(show_sel,txt_sel,pattern);
   getMatchData(show_sel,txt_sel,pattern);  
 }
 
+function changeH(){
+  var show_sel =document.querySelector("h3.demo08");
+  var txt_sel = document.getElementById("h");
+  var pattern=/(?<!melon)water/ig;
+  // getReplaceData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);  
+}
 
 function getReplaceData(show,txt,pattern){
   var text=txt.value;
@@ -117,7 +132,7 @@ function getMatchData(show,txt,pattern){
   </p>
 
   <p>
-    <h2>2.<span class="text-info">(?:pattern)</span>就是把<span class="text-info">pattern</span>当作一个整体匹配，但是不把其存储，<span class="text-info">$1</span>(在代码中有这个引用)的功能就没了,但是能省资源</h2>
+    <h2>2.<span class="text-info">(?:pattern)</span>就是把<span class="text-info">pattern</span>当作一个整体匹配。</h2>
     <h3 class="demo02">/water(?:melon)/ig  测试案例<br/></h3>
       <input type="text" id="b"/>
       <input type="button" value="替换" onClick="changeB()" />
@@ -128,7 +143,7 @@ function getMatchData(show,txt,pattern){
   </p>
 
   <p>
-    <h2>3.<span class="text-info">(?=pattern)</span>的示例,就是必须出现<span class="text-info">pattern</span>匹配时,整个匹配才会发生</h2>
+    <h2>3.<span class="text-info">(?=pattern)</span>的示例,就是必须出现<span class="text-info">pattern</span>匹配时，整个匹配才会发生，但是不把其存储。</h2>
     <h3 class="demo03">/water(?=melon)/ig  测试案例<br/></h3>
     <input type="text" id="c"/>
     <input type="button" value="替换" onClick="changeC()" />
@@ -151,23 +166,29 @@ function getMatchData(show,txt,pattern){
 
   <p>
     <h2>5.<span class="text-info">(?<=pattern)</span>的示例,反向肯定预查，与正向肯定预查类拟，只是方向相反。</h2>
-    <h3 class="demo05">/water(?<=melon)/ig 测试案例<br/></h3>
+    <h3 class="demo05">5.1. /water(?<=melon)/ig 测试案例<br/></h3>
     <input type="text" id="e"/>
     <input type="button" value="替换" onClick="changeE()" />
     
     <br />
     <br />  
     <br />
+    <h3 class="demo06">5.2. /(?<=melon)water/ig 测试案例<br/></h3>
+    <input type="text" id="f"/>
+    <input type="button" value="替换" onClick="changeF()" />
   </p>
 
   <p>
     <h2>6.把上例的<span class="text-info">等号</span>换成<span class="text-info">左尖角括号</span>正好与上例相反,反向否定预查，与正向否定预查类拟，只是方向相反。</h2>
-    <h3 class="demo06">测试案例<br/></h3>
-    <input type="text" id="f"/>
-    <input type="button" value="替换" onclick="changeF()" />
+    <h3 class="demo07">6.1. 测试案例<br/></h3>
+    <input type="text" id="g"/>
+    <input type="button" value="替换" onclick="changeG()" />
     <br />
     <br />
     <br />
+    <h3 class="demo08">6.2. 测试案例<br/></h3>
+    <input type="text" id="h"/>
+    <input type="button" value="替换" onclick="changeH()" />    
   </p>
 </body>
 </html>
