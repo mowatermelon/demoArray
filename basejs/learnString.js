@@ -654,6 +654,69 @@ function showInitData(){
 			console.log(tString_4.normalize("NFKC"))//大吉大利今晚吃西瓜!
 			console.log(tString_4.normalize("NFKD"))//大吉大利今晚吃西瓜!
 
+			// ANGSTORM SIGN and LATIN CAPITAL A WITH RING ABOVE is canonically equivalent
+			//ANGSTORM SIGN和LATIN CAPITAL A WITH RING ABOVE是正常的
+			console.log("\u212b".normalize("NFC") === "\u00c5");//true
+
+			// Normalization Form C will combine the result back into the precombined character
+			//NFC将结果返回到预先组合的字符
+			console.log("\u0041\u030a".normalize("NFC") === "\u00c5");//true
+
+			// Decomposed, ANGSTOM SIGN is LATIN CAPITAL A followed by COMBINING RING ABOVE
+			//NFD会将可拆分的字符进行拆分之后进行返回，和刚好NFC相反
+			console.log("\u212b".normalize("NFD") === "\u0041\u030a");//true
+
+			
+			//NFC 会将  没有组合的内容  进行组合之后 返回     组合之后的内容   
+			// NFD 会将  组合的内容   进行拆分之后返回  没有组合的内容
+			var demo ="\uD87E\uDC04";//没有组合的字符集
+			var demo_1 = demo.normalize("NFC");//组合的字符集
+			console.log(demo);//你
+			console.log(demo_1);//你
+			console.log(demo_1===demo.normalize());//你			
+			console.log(demo_1.normalize("NFD"));//你			
+			console.log(demo_1===demo.normalize("NFD"));//true
+			console.log(demo_1.normalize("NFD")===demo);//false	
+
+			console.log(demo_1.normalize("NFC"));//你
+			console.log(demo_1.normalize("NFC")===demo_1);//true									
+			console.log(demo_1.normalize("NFC")===demo_1);//true			
+
+			// |参数缩写|参数全称|参数中文含义|
+			// |:---|:---|:---|
+			// |NFC|Normalization Form Canonical Composition|规范化形式规范组合|
+			// |NFD|Normalization Form Canonical Decomposition|规范化形式规范分解|
+			// |NFKC|Normalization Form Compatibility Composition|规范化形式兼容性组合|
+			// |NFKD|Normalization Form Compatibility Decomposition|规范化形式兼容性分解|
+
+			var demo ="\u0041\u030a";
+			var demo_1 = demo.normalize("NFC");//  \u00c5
+			console.log(demo==="\u0041\u030a");//true
+			console.log(demo_1==="\u00c5");//true
+			console.log(demo_1.normalize("NFC")==="\u212b");//false
+			console.log("\u212b".normalize("NFD")===demo);//true
+			console.log("\u212b".normalize("NFC")===demo_1);//true
+
+			console.log("-------测试");	
+			
+			console.log("\u212b".normalize("NFKD")===demo);//true
+			console.log("\u212b".normalize("NFKC")===demo);//false
+				
+			console.log("\u212b".normalize("NFKD")===demo_1);//false
+			console.log("\u212b".normalize("NFKC")===demo_1);//true
+
+			// LATIN SMALL LIGATURE FI is compatibility equivalent with LATIN SMALL LETTER F followed by
+			// LATIN SMALL LETTER I.
+			//拉丁小写字母FI与LATIN小写字母F的相容性相当拉丁小写字母I.
+			console.log("\ufb01".normalize("NFKD") === "fi");//true
+
+			// Same mapping in NFKC
+			//在NFKC中同样的映射
+			console.log("\ufb01".normalize("NFKC") === "fi");//true
+
+			// NFKC will not recombine compatibility characters.
+			//NFKC不会重新组合兼容性字符。
+			console.log("fi".normalize("NFKC") === "fi");//true
 		}
 		
 		function learnDomNormalize(){
