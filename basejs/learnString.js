@@ -49,11 +49,11 @@ function showInitData(){
 	console.log(oString_1);//A 你 Z   中间不在BMP中的字符，会显示乱码
 	console.log(tString_1);//hello Template
 	//打印出来会保留原格式 比如原有的换行和缩进
-	console.log(tString_2);//hello line 1 \n \t hello line 2  
+	console.log(tString_2);//hello line 1\n\t\t\t\thello line 2  
 	// tag(tString_1);//h e l l undefined undefined undefined
 	// tag(tString_2);//h e l l undefined undefined undefined
 	// tag(tString_3);//F i f t undefined undefined undefined
-	console.log(tString_3);//Fifteen is 12 and \n  not 16.  
+	console.log(tString_3);//Fifteen is 12 and\nnot 16.  
 
 	//在没有调用console之前，不会打印 大吉大利今晚吃西瓜!  
 	//tString_4的值其实就是tag函数的返回值   大吉大利今晚吃西瓜!  
@@ -254,8 +254,8 @@ function showInitData(){
 			console.log(oString.big())//<big>hello world</big>
 			console.log(oString_1.big())//<big>A 你 Z</big>
 			console.log(tString_1.big())//<big>hello Template</big>
-			console.log(tString_2.big())//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.big())//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.big())//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.big())//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.big())//<big>大吉大利今晚吃西瓜!</big>
 		}
 
@@ -265,8 +265,8 @@ function showInitData(){
 			console.log(oString.small())//<small>hello world</small>
 			console.log(oString_1.small())//<small>A 你 Z</small>			
 			console.log(tString_1.small())//<small>hello Template</small>
-			console.log(tString_2.small())//<small>hello line 1 \n \t hello line 2</small>
-			console.log(tString_3.small())//<small>Fifteen is 12 and \n  not 16.</small>
+			console.log(tString_2.small())//<small>hello line 1\n\t\t\t\thello line 2</small>
+			console.log(tString_3.small())//<small>Fifteen is 12 and\nnot 16.</small>
 			console.log(tString_4.small())//<small>大吉大利今晚吃西瓜!</small>	
 		}
 
@@ -276,8 +276,8 @@ function showInitData(){
 			console.log(oString.blink())//<blink>hello world</blink>
 			console.log(oString_1.blink())//<blink>A 你 Z</blink>			
 			console.log(tString_1.blink())//<blink>hello Template</blink>
-			console.log(tString_2.blink())//<blink>hello line 1 \n \t hello line 2</blink>
-			console.log(tString_3.blink())//<blink>Fifteen is 12 and \n  not 16.</blink>
+			console.log(tString_2.blink())//<blink>hello line 1\n\t\t\t\thello line 2</blink>
+			console.log(tString_3.blink())//<blink>Fifteen is 12 and\nnot 16.</blink>
 			console.log(tString_4.blink())//<blink>大吉大利今晚吃西瓜!</blink>	
 		}
 
@@ -287,8 +287,8 @@ function showInitData(){
 			console.log(oString.bold())//<b>hello world</b>
 			console.log(oString_1.bold())//<b>A 你 Z</b>
 			console.log(tString_1.bold())//<b>hello Template</b>
-			console.log(tString_2.bold())//<b>hello line 1 \n \t hello line 2</b>
-			console.log(tString_3.bold())//<b>Fifteen is 12 and \n  not 16.</b>
+			console.log(tString_2.bold())//<b>hello line 1\n\t\t\t\thello line 2</b>
+			console.log(tString_3.bold())//<b>Fifteen is 12 and\nnot 16.</b>
 			console.log(tString_4.bold())//	<b>大吉大利今晚吃西瓜!</b>
 		}
 
@@ -298,8 +298,8 @@ function showInitData(){
 			console.log(oString.italics())//<i>hello world</i>
 			console.log(oString_1.italics())//<i>A 你 Z</i>
 			console.log(tString_1.italics())//<i>hello Template</i>
-			console.log(tString_2.italics())//<i>hello line 1 \n \t hello line 2</i>
-			console.log(tString_3.italics())//<i>Fifteen is 12 and \n  not 16.</i>
+			console.log(tString_2.italics())//<i>hello line 1\n\t\t\t\thello line 2</i>
+			console.log(tString_3.italics())//<i>Fifteen is 12 and\nnot 16.</i>
 			console.log(tString_4.italics())//<i>大吉大利今晚吃西瓜!</i>	
 		}
 
@@ -309,8 +309,8 @@ function showInitData(){
 			console.log(oString.strike())//<strike>hello world</strike>
 			console.log(oString_1.strike())//<i>A 你 Z</i>
 			console.log(tString_1.strike())//<strike>hello Template</strike>
-			console.log(tString_2.strike())//<strike>hello line 1 \n \t hello line 2</strike>
-			console.log(tString_3.strike())//<strike>Fifteen is 12 and \n  not 16.</strike>
+			console.log(tString_2.strike())//<strike>hello line 1\n\t\t\t\thello line 2</strike>
+			console.log(tString_3.strike())//<strike>Fifteen is 12 and\nnot 16.</strike>
 			console.log(tString_4.strike())//	<strike>大吉大利今晚吃西瓜!</strike>
 		}
 
@@ -320,8 +320,8 @@ function showInitData(){
 			console.log(oString.fixed())//<tt>hello world</tt>
 			console.log(oString_1.fixed())//<i>A 你 Z</i>
 			console.log(tString_1.fixed())//<tt>hello Template</tt>
-			console.log(tString_2.fixed())//<tt>hello line 1 \n \t hello line 2</tt>
-			console.log(tString_3.fixed())//<tt>Fifteen is 12 and \n  not 16.</tt>
+			console.log(tString_2.fixed())//<tt>hello line 1\n\t\t\t\thello line 2</tt>
+			console.log(tString_3.fixed())//<tt>Fifteen is 12 and\nnot 16.</tt>
 			console.log(tString_4.fixed())//<tt>大吉大利今晚吃西瓜!</tt>
 		}
 
@@ -331,8 +331,8 @@ function showInitData(){
 			console.log(oString.sub())//<sub>hello world</sub>
 			console.log(oString_1.sub())//<i>A 你 Z</i>
 			console.log(tString_1.sub())//<sub>hello Template</sub>
-			console.log(tString_2.sub())//<sub>hello line 1 \n \t hello line 2</sub>
-			console.log(tString_3.sub())//<sub>Fifteen is 12 and \n  not 16.</sub>
+			console.log(tString_2.sub())//<sub>hello line 1\n\t\t\t\thello line 2</sub>
+			console.log(tString_3.sub())//<sub>Fifteen is 12 and\nnot 16.</sub>
 			console.log(tString_4.sub())//<sub>大吉大利今晚吃西瓜!</sub>
 		}
 
@@ -342,8 +342,8 @@ function showInitData(){
 			console.log(oString.sup())//<sup>hello world</sup>
 			console.log(oString_1.sup())//<sup>A 你 Z</sup>
 			console.log(tString_1.sup())//<sup>hello Template</sup>
-			console.log(tString_2.sup())//<sup>hello line 1 \n \t hello line 2</sup>
-			console.log(tString_3.sup())//<sup>Fifteen is 12 and \n  not 16.</sup>
+			console.log(tString_2.sup())//<sup>hello line 1\n\t\t\t\thello line 2</sup>
+			console.log(tString_3.sup())//<sup>Fifteen is 12 and\nnot 16.</sup>
 			console.log(tString_4.sup())//<sup>大吉大利今晚吃西瓜!</sup>	
 		}
 
@@ -353,8 +353,8 @@ function showInitData(){
 			console.log(oString.anchor("watermelon"))//<a name="watermelon">hello world</a>
 			console.log(oString_1.anchor("watermelon"))//<a name="watermelon">A 你 Z</a>
 			console.log(tString_1.anchor("watermelon"))//<a name="watermelon">hello Template</a>
-			console.log(tString_2.anchor("watermelon"))//<a name="watermelon">hello line 1 \n \t hello line 2</a>
-			console.log(tString_3.anchor("watermelon"))//<a name="watermelon">Fifteen is 12 and \n  not 16.</a>
+			console.log(tString_2.anchor("watermelon"))//<a name="watermelon">hello line 1\n\t\t\t\thello line 2</a>
+			console.log(tString_3.anchor("watermelon"))//<a name="watermelon">Fifteen is 12 and\nnot 16.</a>
 			console.log(tString_4.anchor("watermelon"))//<a name="watermelon">大吉大利今晚吃西瓜!</a>
 		}
 
@@ -364,8 +364,8 @@ function showInitData(){
 			console.log(oString.link("https://mowatermelon.github.io/"))//<a href="https://mowatermelon.github.io/">hello world</a>
 			console.log(oString_1.link("https://mowatermelon.github.io/"))//<a href="https://mowatermelon.github.io/">A 你 Z</a>
 			console.log(tString_1.link("https://mowatermelon.github.io/"))//<a href="https://mowatermelon.github.io/">hello Template</a>
-			console.log(tString_2.link("https://mowatermelon.github.io/"))//<a href="https://mowatermelon.github.io/">hello line 1 \n \t hello line 2</a>
-			console.log(tString_3.link("https://mowatermelon.github.io/"))//<a href="https://mowatermelon.github.io/">Fifteen is 12 and \n  not 16.</a>
+			console.log(tString_2.link("https://mowatermelon.github.io/"))//<a href="https://mowatermelon.github.io/">hello line 1\n\t\t\t\thello line 2</a>
+			console.log(tString_3.link("https://mowatermelon.github.io/"))//<a href="https://mowatermelon.github.io/">Fifteen is 12 and\nnot 16.</a>
 			console.log(tString_4.link("https://mowatermelon.github.io/"))//<a href="https://mowatermelon.github.io/">大吉大利今晚吃西瓜!</a>
 		}
 
@@ -375,8 +375,8 @@ function showInitData(){
 			console.log(oString.fontcolor("#e9e9e9"))//<font color="#e9e9e9">hello world</font>
 			console.log(oString_1.fontcolor("#e9e9e9"))//<font color="#e9e9e9">A 你 Z</font>
 			console.log(tString_1.fontcolor("#e9e9e9"))//<font color="#e9e9e9">hello Template</font>
-			console.log(tString_2.fontcolor("#e9e9e9"))//<font color="#e9e9e9">hello line 1 \n \t hello line 2</font>
-			console.log(tString_3.fontcolor("#e9e9e9"))//<font color="#e9e9e9">Fifteen is 12 and \n  not 16.</font>
+			console.log(tString_2.fontcolor("#e9e9e9"))//<font color="#e9e9e9">hello line 1\n\t\t\t\thello line 2</font>
+			console.log(tString_3.fontcolor("#e9e9e9"))//<font color="#e9e9e9">Fifteen is 12 and\nnot 16.</font>
 			console.log(tString_4.fontcolor("#e9e9e9"))//<font color="#e9e9e9">大吉大利今晚吃西瓜!</font>
 		}
 
@@ -386,8 +386,8 @@ function showInitData(){
 			console.log(oString.fontsize(4))//<font size="4">hello world</font>
 			console.log(oString_1.fontsize(4))//<font size="4">A 你 Z</font>
 			console.log(tString_1.fontsize(4))//<font size="4">hello Template</font>
-			console.log(tString_2.fontsize(4))//<font size="4">hello line 1 \n \t hello line 2</font>
-			console.log(tString_3.fontsize(4))//<font size="4">Fifteen is 12 and \n  not 16.</font>
+			console.log(tString_2.fontsize(4))//<font size="4">hello line 1\n\t\t\t\thello line 2</font>
+			console.log(tString_3.fontsize(4))//<font size="4">Fifteen is 12 and\nnot 16.</font>
 			console.log(tString_4.fontsize(4))//<font size="4">大吉大利今晚吃西瓜!</font>
 		}   
 
@@ -636,17 +636,17 @@ function showInitData(){
 			console.log(tString_1.normalize("NFKC"))//hello Template
 			console.log(tString_1.normalize("NFKD"))//hello Template
 			
-			console.log(tString_2.normalize())//hello line 1 \n \t hello line 2  
-			console.log(tString_2.normalize("NFC"))//hello line 1 \n \t hello line 2  	
-			console.log(tString_2.normalize("NFD"))//hello line 1 \n \t hello line 2  		
-			console.log(tString_2.normalize("NFKC"))//hello line 1 \n \t hello line 2  			
-			console.log(tString_2.normalize("NFKD"))//hello line 1 \n \t hello line 2  			
+			console.log(tString_2.normalize())//hello line 1\n\t\t\t\thello line 2  
+			console.log(tString_2.normalize("NFC"))//hello line 1\n\t\t\t\thello line 2  	
+			console.log(tString_2.normalize("NFD"))//hello line 1\n\t\t\t\thello line 2  		
+			console.log(tString_2.normalize("NFKC"))//hello line 1\n\t\t\t\thello line 2  			
+			console.log(tString_2.normalize("NFKD"))//hello line 1\n\t\t\t\thello line 2  			
 
-			console.log(tString_3.normalize())//Fifteen is 12 and \n  not 16.
-			console.log(tString_3.normalize("NFC"))//Fifteen is 12 and \n  not 16.			
-			console.log(tString_3.normalize("NFD"))//Fifteen is 12 and \n  not 16.
-			console.log(tString_3.normalize("NFKC"))//Fifteen is 12 and \n  not 16.
-			console.log(tString_3.normalize("NFKD"))//Fifteen is 12 and \n  not 16.
+			console.log(tString_3.normalize())//Fifteen is 12 and\nnot 16.
+			console.log(tString_3.normalize("NFC"))//Fifteen is 12 and\nnot 16.			
+			console.log(tString_3.normalize("NFD"))//Fifteen is 12 and\nnot 16.
+			console.log(tString_3.normalize("NFKC"))//Fifteen is 12 and\nnot 16.
+			console.log(tString_3.normalize("NFKD"))//Fifteen is 12 and\nnot 16.
 			
 			console.log(tString_4.normalize())//大吉大利今晚吃西瓜!
 			console.log(tString_4.normalize("NFC"))//大吉大利今晚吃西瓜!		
@@ -1226,7 +1226,7 @@ function showInitData(){
 			console.log(tString_1.indexOf("Tem"));//6
 			console.log(tString_1.indexOf("Tem",7));//-1 因为string中从下标3开始的内容是 emplate ，检测不到Tem，所以返回-1
 			
-			console.log(tString_2);//hello line 1 \n \t hello line 2  
+			console.log(tString_2);//hello line 1\n\t\t\t\thello line 2  
 			console.log(tString_2.indexOf("  "));//-1  因为检测不到两个空格，所以返回-1
 			console.log(tString_2.indexOf("line"));//6
 			console.log(tString_2.indexOf("    "));//-1  因为检测不到四个空格，所以返回-1
@@ -1234,7 +1234,7 @@ function showInitData(){
 			console.log(tString_2.indexOf("	"));//13  因为能够检测到一个tab缩进，所以返回检索到的下标
 			console.log(tString_2.indexOf("		"));//13  因为能够检测到两个tab缩进，所以返回检索到的下标
 
-			console.log(tString_3);//Fifteen is 12 and \n  not 16. 
+			console.log(tString_3);//Fifteen is 12 and\nnot 16. 
 			console.log(tString_3.indexOf(" "));//7  因为能够检测到一个空格，所以返回检索到的下标
 			console.log(tString_3.indexOf("Fifteen"));//0
 			
@@ -1342,7 +1342,7 @@ function showInitData(){
 			console.log(tString_1.lastIndexOf("Tem"));//6
 			console.log(tString_1.lastIndexOf("Tem",7));//6 因为string中从下标3开始的内容是 emplate ，所以返回检索到的下标
 			
-			console.log(tString_2);//hello line 1 \n \t hello line 2  
+			console.log(tString_2);//hello line 1\n\t\t\t\thello line 2  
 			console.log(tString_2.lastIndexOf("  "));//-1  因为检测不到两个空格，所以返回-1
 			console.log(tString_2.lastIndexOf("line"));//23
 			console.log(tString_2.lastIndexOf("    "));//-1  因为检测不到四个空格，所以返回-1
@@ -1350,7 +1350,7 @@ function showInitData(){
 			console.log(tString_2.lastIndexOf("	"));//16  因为能够检测到一个tab缩进，所以返回检索到的下标
 			console.log(tString_2.lastIndexOf("		"));//15  因为能够检测到两个tab缩进，所以返回检索到的下标
 
-			console.log(tString_3);//Fifteen is 12 and \n  not 16. 
+			console.log(tString_3);//Fifteen is 12 and\nnot 16. 
 			console.log(tString_3.lastIndexOf(" "));//21  因为能够检测到一个空格，所以返回检索到的下标
 			console.log(tString_3.lastIndexOf("Fifteen"));//0
 			
@@ -1463,7 +1463,7 @@ function showInitData(){
 			console.log(tString_1.includes("Tem"));//true
 			console.log(tString_1.includes("Tem",7));//false 因为string中从下标3开始的内容是 emplate ，检测不到Tem，所以返回false
 			
-			console.log(tString_2);//hello line 1 \n \t hello line 2  
+			console.log(tString_2);//hello line 1\n\t\t\t\thello line 2  
 			console.log(tString_2.includes("  "));//false  因为检测不到两个空格，所以返回false
 			console.log(tString_2.includes("line"));//true
 			console.log(tString_2.includes("    "));//false  因为检测不到四个空格，所以返回false
@@ -1471,7 +1471,7 @@ function showInitData(){
 			console.log(tString_2.includes("	"));//true  因为能够检测到一个tab缩进，所以返回true
 			console.log(tString_2.includes("		"));//true  因为能够检测到两个tab缩进，所以返回true	
 
-			console.log(tString_3);//Fifteen is 12 and \n  not 16. 
+			console.log(tString_3);//Fifteen is 12 and\nnot 16. 
 			console.log(tString_3.includes(" "));//true  因为能够检测到一个空格，所以返回true
 			console.log(tString_3.includes("Fifteen"));//true
 			
@@ -1586,10 +1586,10 @@ function showInitData(){
 			console.log(tString_1.startsWith("hell"));//true
 			
 			//打印出来会保留原格式 比如原有的换行和缩进
-			console.log(tString_2);//hello line 1 \n \t hello line 2
+			console.log(tString_2);//hello line 1\n\t\t\t\thello line 2
 			console.log(tString_2.startsWith("hell"));//true
 			  
-			console.log(tString_3);//Fifteen is 12 and \n  not 16.  
+			console.log(tString_3);//Fifteen is 12 and\nnot 16.  
 			console.log(tString_3.startsWith("Fift"));//true
 
 			console.log(tString_4);//大吉大利今晚吃西瓜!			
@@ -1732,10 +1732,10 @@ function showInitData(){
 			console.log(tString_1.endsWith("late"));//true
 			
 			//打印出来会保留原格式 比如原有的换行和缩进
-			console.log(tString_2);//hello line 1 \n \t hello line 2
+			console.log(tString_2);//hello line 1\n\t\t\t\thello line 2
 			console.log(tString_2.endsWith(2));//true
 			  
-			console.log(tString_3);//Fifteen is 12 and \n  not 16.  
+			console.log(tString_3);//Fifteen is 12 and\nnot 16.  
 			console.log(tString_3.endsWith("16."));//true
 
 			console.log(tString_4);//大吉大利今晚吃西瓜!			
@@ -1905,7 +1905,7 @@ function showInitData(){
 			console.log(tString_1.search("Tem"));//6
 			console.log(tString_1.search("Tem",7));//6 因为search只处理第一个参数，所以返回2
 			
-			console.log(tString_2);//hello line 1 \n \t hello line 2  
+			console.log(tString_2);//hello line 1\n\t\t\t\thello line 2  
 			console.log(tString_2.search("  "));//-1  因为检测不到两个空格，所以返回-1
 			console.log(tString_2.search(/\s/));//5   第一次检测到空格的位置，
 			console.log(tString_2.search("line"));//6
@@ -1916,7 +1916,7 @@ function showInitData(){
 			console.log(tString_2.search(/\t/));//13  因为能够检测到两个tab缩进，所以返回检索到的下标
 			console.log(tString_2.search(/\n/));//12  因为能够检测到换行，所以返回检索到的下标
 
-			console.log(tString_3);//Fifteen is 12 and \n  not 16. 
+			console.log(tString_3);//Fifteen is 12 and\nnot 16. 
 			console.log(tString_3.search(" "));//7  因为能够检测到一个空格，所以返回检索到的下标
 			console.log(tString_3.search("Fifteen"));//0
 			
@@ -2091,7 +2091,7 @@ function showInitData(){
 			console.log(new RegExp(null));// /null/
 			
 			console.log(new RegExp(NaN));// /NaN/
-			
+
 			console.log(new RegExp(oo));//  /[object Object]/
 			//中括号的意思是    匹配中括号的任意一个字符
 			// 所以对应正则的意思是只要字符串中存在object这几个字母和空格都会被匹配
@@ -2110,12 +2110,215 @@ function showInitData(){
 
 		function learnStringSMatch(){
 			console.log("\n 打印match()函数的用法---------------------------------------------------------------------------------------------------------------------2"); 
-			console.log(strString.match());//<big>hello watermelon</big>
-			console.log(oString.match());//<big>hello world</big>
-			console.log(tString_1.match());//<big>hello Template</big>
-			console.log(tString_2.match());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.match());//<big>Fifteen is 12 and \n  not 16.</big>
-			console.log(tString_4.match());//<big>大吉大利今晚吃西瓜!</big>
+
+			//尝试正常的情况检测
+			console.log(strString);//hello watermelon
+			console.log(strString.match(" "));//[ ' ', index: 5, input: 'hello watermelon' ]
+			console.log(strString.match("llo"));//[ 'llo', index: 2, input: 'hello watermelon' ]
+			console.log(strString.match("lLo"));//null
+			console.log(strString.match("llo",3));//[ 'llo', index: 2, input: 'hello watermelon' ] 因为match只处理第一个参数，所以返回正常结果
+			console.log(strString.match(/llo/));//[ 'llo', index: 2, input: 'hello watermelon' ] 
+			console.log(strString.match(/lLo/i));//[ 'llo', index: 2, input: 'hello watermelon' ] 
+			//如果传入一个非正则表达式对象，match则会使用 `new RegExp(obj)` 隐式地将其转换为正则表达式对象，再进行处理。	
+			//其实传入"llo"和/lLo/i与/llo/的效果是一样的	
+
+			console.log(oString)//[String: 'hello world']
+			console.log(oString.match(" "));//[ ' ', index: 5, input: 'hello world' ]
+			console.log(oString.match("llo"));//[ 'llo', index: 2, input: 'hello world' ]
+			console.log(oString.match("lLo"));//null
+			console.log(oString.match("llo",3));//[ 'llo', index: 2, input: 'hello world' ] 因为match只处理第一个参数，所以返回2
+			
+			console.log(oString_1);//A 你 Z
+			console.log(oString_1.match("A"));//[ 'A', index: 0, input: 'A 你 Z' ]
+			console.log(oString_1.match("\uD87E\uDC04"));//[ '你', index: 2, input: 'A 你 Z' ] 因为内容检测会从原有内容进行完全匹配，所以返回正常结果
+			console.log(oString_1.match("你"));//null  因为内容检测不会检测转译之后的内容，所以返回null
+			
+			console.log(tString_1);//hello Template
+			console.log(tString_1.match("Tem"));//[ 'Tem', index: 6, input: 'hello Template' ]
+			console.log(tString_1.match("Tem",7));//[ 'Tem', index: 6, input: 'hello Template' ]
+			
+			console.log(tString_2);//hello line 1\n\t\t\t\thello line 2  
+			console.log(tString_2.match("  "));//null  因为检测不到两个空格，所以返回null
+			console.log(tString_2.match(/\s/));//[ ' ', index: 5, input: 'hello line 1\n\t\t\t\thello line 2' ]   第一次检测到空格的位置，
+			console.log(tString_2.match("line"));//[ 'line', index: 6, input: 'hello line 1\n\t\t\t\thello line 2' ]
+			console.log(tString_2.match("    "));//null  因为检测不到四个空格，所以返回null
+			console.log(tString_2.match("     "));//null  因为检测不到五个空格，所以返回null
+			console.log(tString_2.match("	"));//[ '\t', index: 13, input: 'hello line 1\n\t\t\t\thello line 2' ]因为能够检测到一个tab缩进，所以返回正常结果
+			console.log(tString_2.match("		"));//[ '\t\t',index: 13,input: 'hello line 1\n\t\t\t\thello line 2' ] 因为能够检测到两个tab缩进，所以返回正常结果
+			console.log(tString_2.match(/\t/));//[ '\t', index: 13, input: 'hello line 1\n\t\t\t\thello line 2' ]  因为能够检测到两个tab缩进，所以返回正常结果
+			console.log(tString_2.match(/\n/));//[ '\n', index: 12, input: 'hello line 1\n\t\t\t\thello line 2' ]  因为能够检测到换行，所以返回正常结果
+
+			console.log(tString_3);//Fifteen is 12 and\nnot 16. 
+			console.log(tString_3.match(" "));//[ ' ', index: 7, input: 'Fifteen is 12 and\nnot 16.' ]  因为能够检测到一个空格，所以返回正常结果
+			console.log(tString_3.match("Fifteen"));//[ 'Fifteen', index: 0, input: 'Fifteen is 12 and\nnot 16.' ]
+			
+			console.log(tString_4);//大吉大利今晚吃西瓜!		
+			console.log(tString_4.match("sss"));//null 因为检测不到sss，所以返回null
+			console.log(tString_4.match("吃西瓜",tString_4.length));//[ '吃西瓜', index: 6, input: '大吉大利今晚吃西瓜!' ] 因为match只处理第一个参数，所以返回正常结果
+
+			//先试一下第一个参数的检索正确性，比如对几个特殊字符的检查正确性
+			console.log("-------------------测试");
+			console.log("true".match(true));//[ 'true', index: 0, input: 'true' ]  进行匹配的时候不一定他要添加双引号
+			console.log("false".match(false));//[ 'false', index: 0, input: 'false' ]			
+			console.log("null".match(null));//[ 'null', index: 0, input: 'null' ]	
+			console.log("undefined".match(undefined));//[ '', index: 0, input: 'undefined' ]	
+			console.log("NaN".match(NaN));//[ 'NaN', index: 0, input: 'NaN' ]
+
+			console.log("-------------------测试");			
+			console.log("true".match("true"));//[ 'true', index: 0, input: 'true' ]  进行匹配的时候，只要原始值是定义好的，加没加双引号都可以被正常检测出来
+			console.log("false".match("false"));//[ 'false', index: 0, input: 'false' ]			
+			console.log("null".match("null"));//[ 'null', index: 0, input: 'null' ]	
+			console.log("undefined".match("undefined"));//[ 'undefined', index: 0, input: 'undefined' ]	
+			console.log("NaN".match("NaN"));//[ 'NaN', index: 0, input: 'NaN' ]
+			
+			console.log("-------------------测试");			
+			console.log(oString.match(true));//null
+			console.log(oString.match(false));//null		
+			console.log(oString.match(null));//null	
+			console.log(oString.match(undefined));//[ '', index: 0, input: 'hello world' ]
+			console.log(oString.match(NaN));//null
+
+			console.log("-------------------测试");						
+			console.log(oString.match(""));//[ '', index: 0, input: 'hello world' ] 
+			console.log(oString.match(oString));//[ 'hello world', index: 0, input: 'hello world' ] 自己是绝对包含自己
+
+			console.log("-------------------测试num");
+			console.log(oString.match(1));//null
+			console.log(oString.match(1.1));//null
+			console.log(oString.match(1.5));//null
+			console.log(oString.match(1.8));//null
+			console.log(oString.match(-1));//null
+
+			console.log("-------------------测试undefined");
+			console.log("true".match(undefined));//[ '', index: 0, input: 'true' ]
+			console.log("false".match(undefined));//[ '', index: 0, input: 'false' ]			
+			console.log("null".match(undefined));//[ '', index: 0, input: 'null' ]	
+			console.log("undefined".match(undefined));//[ '', index: 0, input: 'undefined' ]	
+			console.log("NaN".match(undefined));//[ '', index: 0, input: 'NaN' ]
+			console.log(strString.match(undefined));//[ '', index: 0, input: 'hello watermelon' ]
+			console.log(oString.match(undefined));//[ '', index: 0, input: 'hello world' ]
+			console.log(oString_1.match(undefined));//[ '', index: 0, input: 'A 你 Z' ]
+			console.log(tString_1.match(undefined));//[ '', index: 0, input: 'hello Template' ]
+			console.log(tString_2.match(undefined));//[ '', index: 0, input: 'hello line 1\n\t\t\t\thello line 2' ]
+			console.log(tString_3.match(undefined));//[ '', index: 0, input: 'Fifteen is 12 and\nnot 16.' ]
+			console.log(tString_4.match(undefined));//[ '', index: 0, input: '大吉大利今晚吃西瓜!' ]
+
+			console.log("-------------------测试true");
+
+			console.log(strString.match(true));//null
+			console.log(oString.match(true));//null
+			console.log(oString_1.match(true));//null
+			console.log(tString_1.match(true));//null
+			console.log(tString_2.match(true));//null
+			console.log(tString_3.match(true));//null
+			console.log(tString_4.match(true));//null
+			
+			console.log("-------------------测试false");
+
+			console.log(strString.match(false));//null
+			console.log(oString.match(false));//null
+			console.log(oString_1.match(false));//null
+			console.log(tString_1.match(false));//null
+			console.log(tString_2.match(false));//null
+			console.log(tString_3.match(false));//null
+			console.log(tString_4.match(false));//null
+			
+			console.log("-------------------测试null");
+
+			console.log(strString.match(null));//null
+			console.log(oString.match(null));//null
+			console.log(oString_1.match(null));//null
+			console.log(tString_1.match(null));//null
+			console.log(tString_2.match(null));//null
+			console.log(tString_3.match(null));//null
+			console.log(tString_4.match(null));//null
+			
+			console.log("-------------------测试NaN");
+
+			console.log(strString.match(NaN));//null
+			console.log(oString.match(NaN));//null
+			console.log(oString_1.match(NaN));//null
+			console.log(tString_1.match(NaN));//null
+			console.log(tString_2.match(NaN));//null
+			console.log(tString_3.match(NaN));//null
+			console.log(tString_4.match(NaN));//null
+
+			console.log("-------------------测试oo");
+
+			console.log(strString.match(oo));//[ 'e', index: 1, input: 'hello watermelon' ]
+			console.log(oString.match(oo));//[ 'e', index: 1, input: 'hello world' ]
+			console.log(oString_1.match(oo));//[ ' ', index: 1, input: 'A 你 Z' ]
+			console.log(tString_1.match(oo));//[ 'e', index: 1, input: 'hello Template' ]
+			console.log(tString_2.match(oo));//[ 'e', index: 1, input: 'hello line 1\n\t\t\t\thello line 2' ]
+			console.log(tString_3.match(oo));//[ 't', index: 3, input: 'Fifteen is 12 and\nnot 16.' ]
+			console.log(tString_4.match(oo));//null
+
+			console.log("-------------------测试oo.name");			
+			oo.name = "Wu Eva";
+			console.log(oo);//{ name: 'Wu Eva' }
+			console.log(strString.match(oo));//[ 'e', index: 1, input: 'hello watermelon' ]
+			console.log(oString.match(oo));//[ 'e', index: 1, input: 'hello world' ]
+			console.log(oString_1.match(oo));//[ ' ', index: 1, input: 'A 你 Z' ]
+			console.log(tString_1.match(oo));//[ 'e', index: 1, input: 'hello Template' ]
+			console.log(tString_2.match(oo));//[ 'e', index: 1, input: 'hello line 1\n\t\t\t\thello line 2' ]
+			console.log(tString_3.match(oo));//[ 't', index: 3, input: 'Fifteen is 12 and\nnot 16.' ]
+			console.log(tString_4.match(oo));//null
+
+			console.log("-------------------测试oBool");
+
+			console.log(strString.match(oBool));//null
+			console.log(oString.match(oBool));//null
+			console.log(oString_1.match(oBool));//null
+			console.log(tString_1.match(oBool));//null
+			console.log(tString_2.match(oBool));//null
+			console.log(tString_3.match(oBool));//null
+			console.log(tString_4.match(oBool));//null
+			
+			console.log("-------------------测试oArray");
+
+			console.log(strString.match(oArray));//null
+			console.log(oString.match(oArray));//null
+			console.log(oString_1.match(oArray));//null
+			console.log(tString_1.match(oArray));//null
+			console.log(tString_2.match(oArray));//null
+			console.log(tString_3.match(oArray));//null
+			console.log(tString_4.match(oArray));//null
+						
+			console.log("-------------------测试oDate");
+
+			console.log(strString.match(oDate));//null
+			console.log(oString.match(oDate));//null
+			console.log(oString_1.match(oDate));//null
+			console.log(tString_1.match(oDate));//null
+			console.log(tString_2.match(oDate));//null
+			console.log(tString_3.match(oDate));//null               
+			console.log(tString_4.match(oDate));//null
+
+			console.log("-------------------测试");
+
+			console.log(oString.match(true));//null
+			console.log(oString.match(false));//null
+			console.log(oString.match("true"));//null
+			console.log(oString.match("false"));//null					
+				 
+			console.log("-------------------测试");
+
+			console.log(oString.match(Number.MAX_VALUE));//null
+			console.log(oString.match(Number.MIN_VALUE));//null
+			console.log(oString.match(Number.NaN));//null
+			console.log(oString.match(Number.NEGATIVE_INFINITY));//null
+			console.log(oString.match(Number.POSITIVE_INFINITY));//null
+
+
+			console.log(new RegExp(Number.MAX_VALUE));//  /1.7976931348623157e+308/
+
+			console.log(new RegExp(Number.MIN_VALUE));// /5e-324/
+			
+			console.log(new RegExp(Number.NaN));// /NaN/
+			
+			console.log(new RegExp(Number.NEGATIVE_INFINITY));// /-Infinity/
+			
+			console.log(new RegExp(Number.POSITIVE_INFINITY));// /Infinity/	
 		}
 		
 	//Soft-打印检索方法-----------------------------------------------------END
@@ -2130,8 +2333,8 @@ function showInitData(){
 			console.log(strString.localeCompare());//<big>hello watermelon</big>
 			console.log(oString.localeCompare());//<big>hello world</big>
 			console.log(tString_1.localeCompare());//<big>hello Template</big>
-			console.log(tString_2.localeCompare());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.localeCompare());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.localeCompare());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.localeCompare());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.localeCompare());//<big>大吉大利今晚吃西瓜!</big>
 		}
 
@@ -2151,8 +2354,8 @@ function showInitData(){
 			console.log(strString.concat());//<big>hello watermelon</big>
 			console.log(oString.concat());//<big>hello world</big>
 			console.log(tString_1.concat());//<big>hello Template</big>
-			console.log(tString_2.concat());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.concat());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.concat());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.concat());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.concat());//<big>大吉大利今晚吃西瓜!</big>
 		}
 
@@ -2161,8 +2364,8 @@ function showInitData(){
 			console.log(strString.padEnd());//<big>hello watermelon</big>
 			console.log(oString.padEnd());//<big>hello world</big>
 			console.log(tString_1.padEnd());//<big>hello Template</big>
-			console.log(tString_2.padEnd());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.padEnd());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.padEnd());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.padEnd());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.padEnd());//<big>大吉大利今晚吃西瓜!</big>
 		}
 
@@ -2171,8 +2374,8 @@ function showInitData(){
 			console.log(strString.padStart());//<big>hello watermelon</big>
 			console.log(oString.padStart());//<big>hello world</big>
 			console.log(tString_1.padStart());//<big>hello Template</big>
-			console.log(tString_2.padStart());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.padStart());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.padStart());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.padStart());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.padStart());//<big>大吉大利今晚吃西瓜!</big>
 		}
 		
@@ -2181,8 +2384,8 @@ function showInitData(){
 			console.log(strString.repeat());//<big>hello watermelon</big>
 			console.log(oString.repeat());//<big>hello world</big>
 			console.log(tString_1.repeat());//<big>hello Template</big>
-			console.log(tString_2.repeat());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.repeat());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.repeat());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.repeat());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.repeat());//<big>大吉大利今晚吃西瓜!</big>
 		}	
 
@@ -2191,8 +2394,8 @@ function showInitData(){
 			console.log(strString.quote());//<big>hello watermelon</big>
 			console.log(oString.quote());//<big>hello world</big>
 			console.log(tString_1.quote());//<big>hello Template</big>
-			console.log(tString_2.quote());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.quote());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.quote());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.quote());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.quote());//<big>大吉大利今晚吃西瓜!</big>
 		}	
 
@@ -2212,8 +2415,8 @@ function showInitData(){
 			console.log(strString.toLowerCase());//<big>hello watermelon</big>
 			console.log(oString.toLowerCase());//<big>hello world</big>
 			console.log(tString_1.toLowerCase());//<big>hello Template</big>
-			console.log(tString_2.toLowerCase());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.toLowerCase());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.toLowerCase());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.toLowerCase());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.toLowerCase());//<big>大吉大利今晚吃西瓜!</big>
 		}
 
@@ -2222,8 +2425,8 @@ function showInitData(){
 			console.log(strString.toLocaleLowerCase());//<big>hello watermelon</big>
 			console.log(oString.toLocaleLowerCase());//<big>hello world</big>
 			console.log(tString_1.toLocaleLowerCase());//<big>hello Template</big>
-			console.log(tString_2.toLocaleLowerCase());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.toLocaleLowerCase());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.toLocaleLowerCase());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.toLocaleLowerCase());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.toLocaleLowerCase());//<big>大吉大利今晚吃西瓜!</big>
 		}
 
@@ -2232,8 +2435,8 @@ function showInitData(){
 			console.log(strString.toUpperCase());//<big>hello watermelon</big>
 			console.log(oString.toUpperCase());//<big>hello world</big>
 			console.log(tString_1.toUpperCase());//<big>hello Template</big>
-			console.log(tString_2.toUpperCase());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.toUpperCase());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.toUpperCase());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.toUpperCase());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.toUpperCase());//<big>大吉大利今晚吃西瓜!</big>
 		}
 		
@@ -2242,8 +2445,8 @@ function showInitData(){
 			console.log(strString.toLocaleUpperCase());//<big>hello watermelon</big>
 			console.log(oString.toLocaleUpperCase());//<big>hello world</big>
 			console.log(tString_1.toLocaleUpperCase());//<big>hello Template</big>
-			console.log(tString_2.toLocaleUpperCase());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.toLocaleUpperCase());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.toLocaleUpperCase());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.toLocaleUpperCase());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.toLocaleUpperCase());//<big>大吉大利今晚吃西瓜!</big>
 		}		
 	//Soft-打印大小写转换方法-----------------------------------------------------END
@@ -2338,8 +2541,8 @@ function showInitData(){
 			console.log(strString.replace());//<big>hello watermelon</big>
 			console.log(oString.replace());//<big>hello world</big>
 			console.log(tString_1.replace());//<big>hello Template</big>
-			console.log(tString_2.replaceg());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.replace());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.replaceg());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.replace());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.replace());//<big>大吉大利今晚吃西瓜!</big>
 		}
 	
@@ -2358,8 +2561,8 @@ function showInitData(){
 			console.log(strString.slice());//<big>hello watermelon</big>
 			console.log(oString.slice());//<big>hello world</big>
 			console.log(tString_1.slice());//<big>hello Template</big>
-			console.log(tString_2.slice());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.slice());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.slice());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.slice());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.slice());//<big>大吉大利今晚吃西瓜!</big>
 		}
 
@@ -2368,8 +2571,8 @@ function showInitData(){
 			console.log(strString.split());//<big>hello watermelon</big>
 			console.log(oString.split());//<big>hello world</big>
 			console.log(tString_1.split());//<big>hello Template</big>
-			console.log(tString_2.split());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.split());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.split());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.split());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.split());//<big>大吉大利今晚吃西瓜!</big>
 		}
 
@@ -2378,8 +2581,8 @@ function showInitData(){
 			console.log(strString.substr());//<big>hello watermelon</big>
 			console.log(oString.substr());//<big>hello world</big>
 			console.log(tString_1.substr());//<big>hello Template</big>
-			console.log(tString_2.substr());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.substr());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.substr());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.substr());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.substr());//<big>大吉大利今晚吃西瓜!</big>
 		}
 		
@@ -2388,8 +2591,8 @@ function showInitData(){
 			console.log(strString.substring());//<big>hello watermelon</big>
 			console.log(oString.substring());//<big>hello world</big>
 			console.log(tString_1.substring());//<big>hello Template</big>
-			console.log(tString_2.substring());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.substring());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.substring());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.substring());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.substring());//<big>大吉大利今晚吃西瓜!</big>
 		}		
 	//Tough-打印分割方法-----------------------------------------------------END
@@ -2406,8 +2609,8 @@ function showInitData(){
 			console.log(strString.trim());//<big>hello watermelon</big>
 			console.log(oString.trim());//<big>hello world</big>
 			console.log(tString_1.trim());//<big>hello Template</big>
-			console.log(tString_2.trim());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.trim());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.trim());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.trim());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.trim());//<big>大吉大利今晚吃西瓜!</big>
 		}
 
@@ -2416,8 +2619,8 @@ function showInitData(){
 			console.log(strString.trimLeft());//<big>hello watermelon</big>
 			console.log(oString.trimLeft());//<big>hello world</big>
 			console.log(tString_1.trimLeft());//<big>hello Template</big>
-			console.log(tString_2.trimLeft());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.trimLeft());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.trimLeft());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.trimLeft());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.trimLeft());//<big>大吉大利今晚吃西瓜!</big>
 		}
 
@@ -2426,8 +2629,8 @@ function showInitData(){
 			console.log(strString.trimRight());//<big>hello watermelon</big>
 			console.log(oString.trimRight());//<big>hello world</big>
 			console.log(tString_1.trimRight());//<big>hello Template</big>
-			console.log(tString_2.trimRight());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.trimRight());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.trimRight());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.trimRight());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.trimRight());//<big>大吉大利今晚吃西瓜!</big>
 		}
 
@@ -2453,8 +2656,8 @@ function showInitData(){
 			console.log(strString.toString());//<big>hello watermelon</big>
 			console.log(oString.toString());//<big>hello world</big>
 			console.log(tString_1.toString());//<big>hello Template</big>
-			console.log(tString_2.toString());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.toString());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.toString());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.toString());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.toString());//<big>大吉大利今晚吃西瓜!</big>
 		}
 
@@ -2463,8 +2666,8 @@ function showInitData(){
 			console.log(strString.toLocaleString());//<big>hello watermelon</big>
 			console.log(oString.toLocaleString());//<big>hello world</big>
 			console.log(tString_1.toLocaleString());//<big>hello Template</big>
-			console.log(tString_2.toLocaleString());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.toLocaleString());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.toLocaleString());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.toLocaleString());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.toLocaleString());//<big>大吉大利今晚吃西瓜!</big>
 		}
 
@@ -2473,8 +2676,8 @@ function showInitData(){
 			console.log(strString.valueOf());//<big>hello watermelon</big>
 			console.log(oString.valueOf());//<big>hello world</big>
 			console.log(tString_1.valueOf());//<big>hello Template</big>
-			console.log(tString_2.valueOf());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.valueOf());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.valueOf());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.valueOf());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.valueOf());//<big>大吉大利今晚吃西瓜!</big>
 		}
 
@@ -2483,8 +2686,8 @@ function showInitData(){
 			console.log(strString[0]);//<big>hello watermelon</big>
 			console.log(oString[0]);//<big>hello world</big>
 			console.log(tString_1[0]);//<big>hello Template</big>
-			console.log(tString_2[0]);//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3[0]);//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2[0]);//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3[0]);//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4[0]);//<big>大吉大利今晚吃西瓜!</big>
 		}
 		
@@ -2493,8 +2696,8 @@ function showInitData(){
 			console.log(strString.toSource());//<big>hello watermelon</big>
 			console.log(oString.toSource());//<big>hello world</big>
 			console.log(tString_1.toSource());//<big>hello Template</big>
-			console.log(tString_2.toSource());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.toSource());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.toSource());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.toSource());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.toSource());//<big>大吉大利今晚吃西瓜!</big>
 		}		
 
@@ -2503,8 +2706,8 @@ function showInitData(){
 			console.log(strString.hasOwnProperty());//<big>hello watermelon</big>
 			console.log(oString.hasOwnProperty());//<big>hello world</big>
 			console.log(tString_1.hasOwnProperty());//<big>hello Template</big>
-			console.log(tString_2.hasOwnProperty());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.hasOwnProperty());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.hasOwnProperty());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.hasOwnProperty());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.hasOwnProperty());//<big>大吉大利今晚吃西瓜!</big>
 		}
 
@@ -2513,8 +2716,8 @@ function showInitData(){
 			console.log(strString.isPrototypeOf());//<big>hello watermelon</big>
 			console.log(oString.isPrototypeOf());//<big>hello world</big>
 			console.log(tString_1.isPrototypeOf());//<big>hello Template</big>
-			console.log(tString_2.isPrototypeOf());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.isPrototypeOf());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.isPrototypeOf());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.isPrototypeOf());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.isPrototypeOf());//<big>大吉大利今晚吃西瓜!</big>
 		}
 
@@ -2523,8 +2726,8 @@ function showInitData(){
 			console.log(strString.setPrototypeOf());//<big>hello watermelon</big>
 			console.log(oString.setPrototypeOf());//<big>hello world</big>
 			console.log(tString_1.setPrototypeOf());//<big>hello Template</big>
-			console.log(tString_2.setPrototypeOf());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.setPrototypeOf());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.setPrototypeOf());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.setPrototypeOf());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.setPrototypeOf());//<big>大吉大利今晚吃西瓜!</big>
 		}
 
@@ -2533,8 +2736,8 @@ function showInitData(){
 			console.log(strString.unwatch());//<big>hello watermelon</big>
 			console.log(oString.unwatch());//<big>hello world</big>
 			console.log(tString_1.unwatch());//<big>hello Template</big>
-			console.log(tString_2.unwatch());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.unwatch());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.unwatch());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.unwatch());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.unwatch());//<big>大吉大利今晚吃西瓜!</big>
 		}
 		
@@ -2543,8 +2746,8 @@ function showInitData(){
 			console.log(strString.watch());//<big>hello watermelon</big>
 			console.log(oString.watch());//<big>hello world</big>
 			console.log(tString_1.watch());//<big>hello Template</big>
-			console.log(tString_2.watch());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.watch());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.watch());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.watch());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.watch());//<big>大吉大利今晚吃西瓜!</big>
 		}	
 
@@ -2553,8 +2756,8 @@ function showInitData(){
 			console.log(strString.propertyIsEnumerable());//<big>hello watermelon</big>
 			console.log(oString.propertyIsEnumerable());//<big>hello world</big>
 			console.log(tString_1.propertyIsEnumerable());//<big>hello Template</big>
-			console.log(tString_2.propertyIsEnumerable());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.propertyIsEnumerable());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_2.propertyIsEnumerable());//<big>hello line 1\n\t\t\t\thello line 2</big>
+			console.log(tString_3.propertyIsEnumerable());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.propertyIsEnumerable());//<big>大吉大利今晚吃西瓜!</big>
 		}			
 
