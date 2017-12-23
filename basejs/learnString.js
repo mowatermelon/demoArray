@@ -2123,11 +2123,14 @@ function showInitData(){
 			//其实传入"llo"和/lLo/i与/llo/的效果是一样的	
 
 			console.log(oString)//[String: 'hello world']
+			console.log(oString.match());//[ '', index: 0, input: 'hello world' ]
 			console.log(oString.match(" "));//[ ' ', index: 5, input: 'hello world' ]
 			console.log(oString.match("llo"));//[ 'llo', index: 2, input: 'hello world' ]
 			console.log(oString.match("lLo"));//null
 			console.log(oString.match("llo",3));//[ 'llo', index: 2, input: 'hello world' ] 因为match只处理第一个参数，所以返回2
-			
+			console.log(oString.match(/o/));//[ 'o', index: 4, input: 'hello world' ]
+			console.log(oString.match(/o/g));//[ 'o', 'o' ]
+
 			console.log(oString_1);//A 你 Z
 			console.log(oString_1.match("A"));//[ 'A', index: 0, input: 'A 你 Z' ]
 			console.log(oString_1.match("\uD87E\uDC04"));//[ '你', index: 2, input: 'A 你 Z' ] 因为内容检测会从原有内容进行完全匹配，所以返回正常结果
@@ -2320,7 +2323,13 @@ function showInitData(){
 			
 			console.log(new RegExp(Number.POSITIVE_INFINITY));// /Infinity/	
 		}
-		
+
+		function MatchCountStrChar(str,char){
+			var reg =new RegExp(char,'g');
+			var count = str.match(reg).length;
+			return count;
+		}		
+
 	//Soft-打印检索方法-----------------------------------------------------END
 
 	//Soft-打印比较方法-----------------------------------------------------START
