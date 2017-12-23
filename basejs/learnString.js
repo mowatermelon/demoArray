@@ -1198,7 +1198,8 @@ function showInitData(){
 			// learnStringSIncludes();			
 			// learnStringSStartsWith();
 			// learnStringSEndsWith();
-			learnStringSSearch();			
+			// learnStringSSearch();
+			learnStringSMatch();			
 		}
 
 		function learnStringSIndexOf(){
@@ -2077,24 +2078,34 @@ function showInitData(){
 			console.log(oString.search(Number.NEGATIVE_INFINITY));//-1	
 			console.log(oString.search(Number.POSITIVE_INFINITY));//-1
 
-		}
-		
-	//Soft-打印检索方法-----------------------------------------------------END
 
-	//Soft-打印比较方法-----------------------------------------------------START
-		function LearnStringSCompare(){
-			learnStringSLocaleCompare();
-			learnStringSMatch();
-		}
+			console.log(new RegExp(true));//  /true/
 
-		function learnStringSLocaleCompare(){
-			console.log("\n 打印localeCompare()函数的用法---------------------------------------------------------------------------------------------------------------------1"); 
-			console.log(strString.localeCompare());//<big>hello watermelon</big>
-			console.log(oString.localeCompare());//<big>hello world</big>
-			console.log(tString_1.localeCompare());//<big>hello Template</big>
-			console.log(tString_2.localeCompare());//<big>hello line 1 \n \t hello line 2</big>
-			console.log(tString_3.localeCompare());//<big>Fifteen is 12 and \n  not 16.</big>
-			console.log(tString_4.localeCompare());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(new RegExp(false));// /false/
+			
+			console.log(new RegExp(undefined));// /(?:)/
+			//原意
+			//(?:pattern) 匹配`pattern`但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。
+			//因为上面的pattern值为空，所以上面正则的意思是匹配所有
+			
+			console.log(new RegExp(null));// /null/
+			
+			console.log(new RegExp(NaN));// /NaN/
+			
+			console.log(new RegExp(oo));//  /[object Object]/
+			//中括号的意思是    匹配中括号的任意一个字符
+			// 所以对应正则的意思是只要字符串中存在object这几个字母和空格都会被匹配
+			
+			console.log(new RegExp(oString));// /hello world/
+			
+			console.log(new RegExp(oBool));// /true/
+			
+			console.log(new RegExp(oNum));// /68/
+			
+			console.log(new RegExp(oArray));// /demo,melon,water/
+			
+			console.log(new RegExp(oDate));// /Thu Dec 21 2017 19:39:40 GMT+0800 (中国标准时间)/
+
 		}
 
 		function learnStringSMatch(){
@@ -2105,6 +2116,23 @@ function showInitData(){
 			console.log(tString_2.match());//<big>hello line 1 \n \t hello line 2</big>
 			console.log(tString_3.match());//<big>Fifteen is 12 and \n  not 16.</big>
 			console.log(tString_4.match());//<big>大吉大利今晚吃西瓜!</big>
+		}
+		
+	//Soft-打印检索方法-----------------------------------------------------END
+
+	//Soft-打印比较方法-----------------------------------------------------START
+		function LearnStringSCompare(){
+			learnStringSLocaleCompare();
+		}
+
+		function learnStringSLocaleCompare(){
+			console.log("\n 打印localeCompare()函数的用法---------------------------------------------------------------------------------------------------------------------1"); 
+			console.log(strString.localeCompare());//<big>hello watermelon</big>
+			console.log(oString.localeCompare());//<big>hello world</big>
+			console.log(tString_1.localeCompare());//<big>hello Template</big>
+			console.log(tString_2.localeCompare());//<big>hello line 1 \n \t hello line 2</big>
+			console.log(tString_3.localeCompare());//<big>Fifteen is 12 and \n  not 16.</big>
+			console.log(tString_4.localeCompare());//<big>大吉大利今晚吃西瓜!</big>
 		}
 
 	//Soft-打印比较方法-----------------------------------------------------END
