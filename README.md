@@ -42,7 +42,7 @@ absolute的破坏性太大，有些情况可以使用margin代码会更简洁，
 
 > 5 [learnRegexp](https://mowatermelon.github.io/demoArray/basejs/learnRegexp.html)
 
-学习和使用js中正则在`match`和`replace`中的使用。
+学习和使用js中正则在`match`，`search`和`replace`中的使用。
 
 ## 三 learnframe
 
