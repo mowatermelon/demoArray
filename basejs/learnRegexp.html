@@ -22,6 +22,7 @@ function changeA(){
   var txt_sel = document.getElementById("a");
   var pattern=/water(melon)/ig;
   // getReplaceData(show_sel,txt_sel,pattern);
+  // getSearchData(show_sel,txt_sel,pattern);
   getMatchData(show_sel,txt_sel,pattern);  
 }
 
@@ -30,7 +31,8 @@ function changeB(){
   var txt_sel = document.getElementById("b");
   var pattern=/water(?:melon)/ig;
   // getReplaceData(show_sel,txt_sel,pattern);
-  getMatchData(show_sel,txt_sel,pattern);  
+  // getSearchData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);   
 }
 
 function changeC(){
@@ -38,6 +40,7 @@ function changeC(){
   var txt_sel = document.getElementById("c");
   var pattern=/water(?=melon)/ig;
   // getReplaceData(show_sel,txt_sel,pattern);
+  // getSearchData(show_sel,txt_sel,pattern);
   getMatchData(show_sel,txt_sel,pattern);  
 }
 
@@ -46,7 +49,8 @@ function changeD(){
   var txt_sel = document.getElementById("d");
   var pattern=/water(?!melon)/ig;
   // getReplaceData(show_sel,txt_sel,pattern);
-  getMatchData(show_sel,txt_sel,pattern);  
+  // getSearchData(show_sel,txt_sel,pattern);
+  getMatchData(show_sel,txt_sel,pattern);    
 }
 
 function changeE(){
@@ -54,6 +58,7 @@ function changeE(){
   var txt_sel = document.getElementById("e");
   var pattern=/water(?<=melon)/ig;
   // getReplaceData(show_sel,txt_sel,pattern);
+  // getSearchData(show_sel,txt_sel,pattern);
   getMatchData(show_sel,txt_sel,pattern);  
 }
 
@@ -62,6 +67,7 @@ function changeF(){
   var txt_sel = document.getElementById("f");
   var pattern=/(?<=melon)water/ig;
   // getReplaceData(show_sel,txt_sel,pattern);
+  // getSearchData(show_sel,txt_sel,pattern);
   getMatchData(show_sel,txt_sel,pattern);  
 }
 
@@ -70,6 +76,7 @@ function changeG(){
   var txt_sel = document.getElementById("g");
   var pattern=/water(?<!melon)/ig;
   // getReplaceData(show_sel,txt_sel,pattern);
+  // getSearchData(show_sel,txt_sel,pattern);
   getMatchData(show_sel,txt_sel,pattern);  
 }
 
@@ -78,17 +85,27 @@ function changeH(){
   var txt_sel = document.getElementById("h");
   var pattern=/(?<!melon)water/ig;
   // getReplaceData(show_sel,txt_sel,pattern);
+  // getSearchData(show_sel,txt_sel,pattern);
   getMatchData(show_sel,txt_sel,pattern);  
 }
 
 function getReplaceData(show,txt,pattern){
   var text=txt.value;
   show.innerHTML += ' <span class="text-info">' + text+'</span>'+"replace转换成";  
-  // text=text.replace(pattern,"$1");//$1就是对([^"]*)里的内容的引用,整个代码的功能就是把双引号里的内容取出来,
-  text=text.replace(pattern,"lalala");//$1就是对([^"]*)里的内容的引用,整个代码的功能就是把双引号里的内容取出来,  
+  // text=text.replace(pattern,"$1");//$1就是对括号里的内容的引用,整个代码的功能就是把双引号里的内容取出来,
+  text=text.replace(pattern,"lalala");//  
   show.innerHTML += ' <span class="text-info">' + text+'</span><br/>';    
   txt.value='';
 }
+
+function getSearchData(show,txt,pattern){
+  var text=txt.value;
+  show.innerHTML += ' <span class="text-info">' + text+'</span>'+"search转换成";
+  text=text.search(pattern);//
+  show.innerHTML += ' <span class="text-info">' + text+'</span><br/>';   
+  txt.value='';
+}
+
 function getMatchData(show,txt,pattern){
   var text=txt.value;
   show.innerHTML += ' <span class="text-info">' + text+'</span>'+"match转换成";
