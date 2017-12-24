@@ -210,8 +210,8 @@ function showInitData(){
 		console.log("\n 不会改变字符串原始值的柔和方法------------------------------------------------------------------------------------------------------------------------------------------"); 
 		//learnStringHtmlFun();
 		// LearnStringSTranCoding();
-		LearnStringSRetrieval();
-		// LearnStringSCompare();
+		// LearnStringSRetrieval();
+		LearnStringSCompare();
 		// LearnStringSSplicing();
 		// LearnStringSToggleCase();
 	}
@@ -725,8 +725,7 @@ function showInitData(){
 			document.write(tempText);
 		}
 
-		function addTextNode()
-		{
+		function addTextNode(){
 			var y=document.createTextNode("请再次点击。");
 			var x=document.getElementsByClassName("demo")[0];
 			x.appendChild(y);
@@ -734,8 +733,7 @@ function showInitData(){
 			z.innerHTML=x.childNodes.length;
 		}
 		
-		function normPara()
-		{
+		function normPara(){
 			var x=document.getElementsByClassName("demo")[0];
 			//想要调用append，normalize等等方法都要用唯一标识，才可以用，不能直接用getElementsByClassName("demo")后面一定要加个[0]
 			//通过getElementsByClassName()实例的对象，拥有的贼少，自己就一个方法，其他的全是继承的
@@ -1193,12 +1191,12 @@ function showInitData(){
 
 	//Soft-打印检索方法-----------------------------------------------------START
 		function LearnStringSRetrieval(){
-			// learnStringSIndexOf();
-			// learnStringSLastIndexOf();
-			// learnStringSIncludes();			
-			// learnStringSStartsWith();
-			// learnStringSEndsWith();
-			// learnStringSSearch();
+			learnStringSIndexOf();
+			learnStringSLastIndexOf();
+			learnStringSIncludes();			
+			learnStringSStartsWith();
+			learnStringSEndsWith();
+			learnStringSSearch();
 			learnStringSMatch();			
 		}
 
@@ -1220,8 +1218,10 @@ function showInitData(){
 			console.log(oString_1);//A 你 Z   中间不在BMP中的字符，会显示乱码
 			console.log(oString_1.indexOf("A"));//0
 			console.log(oString_1.indexOf("\uD87E\uDC04"));//2 因为内容检测会从原有内容进行完全匹配，所以返回检索到的下标
-			console.log(oString_1.indexOf("你"));//-1  因为内容检测不会检测转译之后的内容，所以返回-1
-			
+			console.log(oString_1.indexOf("你"));//-1  因为字符串中包含的 你 不是这个编码，所以返回-1
+			console.log(oString_1.indexOf("你"));//2		
+			console.log(oString_1.normalize().indexOf("你"));//2 使用normalize进行合并转码之后，字符串中就包含了是正常编码的你
+
 			console.log(tString_1);//hello Template
 			console.log(tString_1.indexOf("Tem"));//6
 			console.log(tString_1.indexOf("Tem",7));//-1 因为string中从下标3开始的内容是 emplate ，检测不到Tem，所以返回-1
@@ -1336,8 +1336,10 @@ function showInitData(){
 			console.log(oString_1);//A 你 Z   中间不在BMP中的字符，会显示乱码
 			console.log(oString_1.lastIndexOf("A"));//0
 			console.log(oString_1.lastIndexOf("\uD87E\uDC04"));//2 因为内容检测会从原有内容进行完全匹配，所以返回检索到的下标
-			console.log(oString_1.lastIndexOf("你"));//-1  因为内容检测不会检测转译之后的内容，所以返回-1
-			
+			console.log(oString_1.lastIndexOf("你"));//-1  因为字符串中包含的 你 不是这个编码，所以返回-1
+			console.log(oString_1.lastIndexOf("你"));//	2 
+			console.log(oString_1.normalize().lastIndexOf("你"));//2 使用normalize进行合并转码之后，字符串中就包含了是正常编码的你
+
 			console.log(tString_1);//hello Template
 			console.log(tString_1.lastIndexOf("Tem"));//6
 			console.log(tString_1.lastIndexOf("Tem",7));//6 因为string中从下标3开始的内容是 emplate ，所以返回检索到的下标
@@ -1457,8 +1459,10 @@ function showInitData(){
 			console.log(oString_1.includes("A"));//true
 			// console.log(oString_1.includes(A));//A is not defined
 			console.log(oString_1.includes("\uD87E\uDC04"));//true 因为内容检测会从原有内容进行完全匹配，所以返回true
-			console.log(oString_1.includes("你"));//false  因为内容检测不会检测转译之后的内容，所以返回false
-			
+			console.log(oString_1.includes("你"));//false  因为字符串中包含的 你 不是这个编码，所以返回false
+			console.log(oString_1.includes("你"));//true 
+			console.log(oString_1.normalize().includes("你"));//true 使用normalize进行合并转码之后，字符串中就包含了是正常编码的你
+
 			console.log(tString_1);//hello Template
 			console.log(tString_1.includes("Tem"));//true
 			console.log(tString_1.includes("Tem",7));//false 因为string中从下标3开始的内容是 emplate ，检测不到Tem，所以返回false
@@ -1899,8 +1903,10 @@ function showInitData(){
 			console.log(oString_1);//A 你 Z   中间不在BMP中的字符，会显示乱码
 			console.log(oString_1.search("A"));//0
 			console.log(oString_1.search("\uD87E\uDC04"));//2 因为内容检测会从原有内容进行完全匹配，所以返回检索到的下标
-			console.log(oString_1.search("你"));//-1  因为内容检测不会检测转译之后的内容，所以返回-1
-			
+			console.log(oString_1.search("你"));//-1    因为字符串中包含的 你 不是这个编码，所以返回-1
+			console.log(oString_1.search("你"));//2			
+			console.log(oString_1.normalize().search("你"));//2 使用normalize进行合并转码之后，字符串中就包含了是正常编码的你
+
 			console.log(tString_1);//hello Template
 			console.log(tString_1.search("Tem"));//6
 			console.log(tString_1.search("Tem",7));//6 因为search只处理第一个参数，所以返回2
@@ -2148,7 +2154,9 @@ function showInitData(){
 			console.log(oString_1);//A 你 Z
 			console.log(oString_1.match("A"));//[ 'A', index: 0, input: 'A 你 Z' ]
 			console.log(oString_1.match("\uD87E\uDC04"));//[ '你', index: 2, input: 'A 你 Z' ] 因为内容检测会从原有内容进行完全匹配，所以返回正常结果
-			console.log(oString_1.match("你"));//null  因为内容检测不会检测转译之后的内容，所以返回null
+			console.log(oString_1.match("你"));//null  因为字符串中包含的 你 不是这个编码，所以返回null
+			console.log(oString_1.match("你"));//[ '你', index: 2, input: 'A 你 Z' ]			
+			console.log(oString_1.normalize().match("你"));//[ '你', index: 2, input: 'A 你 Z' ] 使用normalize进行合并转码之后，字符串中就包含了是正常编码的你
 			
 			console.log(tString_1);//hello Template
 			console.log(tString_1.match("Tem"));//[ 'Tem', index: 6, input: 'hello Template' ]
@@ -2380,12 +2388,263 @@ function showInitData(){
 
 		function learnStringSLocaleCompare(){
 			console.log("\n 打印localeCompare()函数的用法---------------------------------------------------------------------------------------------------------------------1"); 
-			console.log(strString.localeCompare());//<big>hello watermelon</big>
-			console.log(oString.localeCompare());//<big>hello world</big>
-			console.log(tString_1.localeCompare());//<big>hello Template</big>
-			console.log(tString_2.localeCompare());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.localeCompare());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.localeCompare());//<big>大吉大利今晚吃西瓜!</big>
+
+			//尝试正常的情况检测
+			console.log(strString);//hello watermelon
+			console.log(strString.localeCompare(" "));//1
+			console.log(strString.localeCompare("llo"));//-1
+			console.log(strString.localeCompare("lLo"));//-1
+			console.log(strString.localeCompare("llo",3));//-1 
+			console.log(strString.localeCompare(/llo/));//1
+			console.log(strString.localeCompare(/lLo/i));//1
+			console.log(strString.localeCompare("hello watermelon1"));//-1
+
+			console.log(oString)//[String: 'hello world']
+			console.log(oString.localeCompare());//-1
+			console.log(oString.localeCompare(" "));//1
+			console.log(oString.localeCompare("llo"));//-1
+			console.log(oString.localeCompare("lLo"));//-1
+			console.log(oString.localeCompare("llo",3));//-1 因为localeCompare只处理第一个参数，所以返回2
+			console.log(oString.localeCompare(/o/));//1
+			console.log(oString.localeCompare(/o/g));//1
+
+			console.log(oString_1);//A 你 Z
+			console.log(oString_1.localeCompare("A"));//1
+			console.log(oString_1.localeCompare("\uD87E\uDC04"));//-1
+			console.log(oString_1.localeCompare("你"));//-1 
+			console.log(oString_1.normalize().localeCompare("你"));//-1  
+			console.log(oString_1.localeCompare("你"));//-1  
+
+			console.log(tString_1);//hello Template
+			console.log(tString_1.localeCompare("Tem"));//-1
+			console.log(tString_1.localeCompare("Tem",7));//-1
+			
+			console.log(tString_2);//hello line 1\n\t\t\t\thello line 2  
+			console.log(tString_2.localeCompare("  "));//1
+			console.log(tString_2.localeCompare(/\s/));//1   第一次检测到空格的位置，
+			console.log(tString_2.localeCompare("line"));//-1
+			console.log(tString_2.localeCompare("    "));//1
+			console.log(tString_2.localeCompare("     "));//1
+			console.log(tString_2.localeCompare("	"));//1
+			console.log(tString_2.localeCompare("		"));//1
+			console.log(tString_2.localeCompare(/\t/));//1
+			console.log(tString_2.localeCompare(/\n/));//1
+
+			console.log(tString_3);//Fifteen is 12 and\nnot 16. 
+			console.log(tString_3.localeCompare(" "));//1
+			console.log(tString_3.localeCompare("Fifteen"));//1
+			
+			console.log(tString_4);//大吉大利今晚吃西瓜!		
+			console.log(tString_4.localeCompare("sss"));//1
+			console.log(tString_4.localeCompare("吃西瓜",tString_4.length));//1
+			console.log(tString_4.localeCompare("吃西瓜"));//1
+			console.log(tString_4.localeCompare("大吉大利今晚吃西瓜"));//1			
+			
+			//先试一下第一个参数的检索正确性，比如对几个特殊字符的检查正确性
+			console.log("-------------------测试");
+			console.log("true".localeCompare(true));//0  进行匹配的时候不一定他要添加双引号
+			console.log("false".localeCompare(false));//0		
+			console.log("null".localeCompare(null));//0
+			console.log("undefined".localeCompare(undefined));//0
+			console.log("NaN".localeCompare(NaN));//0
+
+			console.log("-------------------测试");			
+			console.log("true".localeCompare("true"));//0  进行匹配的时候，只要原始值是定义好的，加没加双引号都可以被正常检测出来
+			console.log("false".localeCompare("false"));//0
+			console.log("false".localeCompare("true"));//0							
+			console.log("null".localeCompare("null"));//0
+			console.log("undefined".localeCompare("undefined"));//0
+			console.log("NaN".localeCompare("NaN"));//0
+			
+			console.log("-------------------测试");			
+			console.log(oString.localeCompare(true));//-1
+			console.log(oString.localeCompare(false));//1		
+			console.log(oString.localeCompare(null));//-1
+			console.log(oString.localeCompare(undefined));//-1
+			console.log(oString.localeCompare(NaN));//-1
+
+			console.log("-------------------测试");						
+			console.log(oString.localeCompare(""));//1
+			console.log(oString.localeCompare(oString));//0 自己是绝对和自己相等的
+
+			console.log("-------------------测试num");
+			console.log(oString.localeCompare(1));//1
+			console.log(oString.localeCompare(1.1));//1
+			console.log(oString.localeCompare(1.5));//1
+			console.log(oString.localeCompare(1.8));//1
+			console.log(oString.localeCompare(-1));//1
+
+			console.log("-------------------测试undefined");
+			console.log("true".localeCompare(undefined));//-1
+			console.log("false".localeCompare(undefined));//-1			
+			console.log("null".localeCompare(undefined));//-1	
+			console.log("undefined".localeCompare(undefined));//0	
+			console.log("NaN".localeCompare(undefined));//-1
+			console.log(strString.localeCompare(undefined));//-1
+			console.log(oString.localeCompare(undefined));//-1
+			console.log(oString_1.localeCompare(undefined));//-1
+			console.log(tString_1.localeCompare(undefined));//-1
+			console.log(tString_2.localeCompare(undefined));//-1
+			console.log(tString_3.localeCompare(undefined));//-1
+			console.log(tString_4.localeCompare(undefined));//-1
+			
+			console.log("-------------------测试/\s/");
+
+			console.log(strString.localeCompare(/\s/));//1
+			console.log(oString.localeCompare(/\s/));//1
+			console.log(oString_1.localeCompare(/\s/));//1
+			console.log(tString_1.localeCompare(/\s/));//1
+			console.log(tString_2.localeCompare(/\s/));//1
+			console.log(tString_3.localeCompare(/\s/));//1
+			console.log(tString_4.localeCompare(/\s/));//1
+			
+			console.log("-------------------测试/\o/");
+
+			console.log(strString.localeCompare(/\o/));//1
+			console.log(oString.localeCompare(/\o/));//1
+			console.log(oString_1.localeCompare(/\o/));//1
+			console.log(tString_1.localeCompare(/\o/));//1
+			console.log(tString_2.localeCompare(/\o/));//1
+			console.log(tString_3.localeCompare(/\o/));//1
+			console.log(tString_4.localeCompare(/\o/));//1
+			
+			console.log("-------------------测试/\n/");
+
+			console.log(strString.localeCompare(/\n/));//1
+			console.log(oString.localeCompare(/\n/));//1
+			console.log(oString_1.localeCompare(/\n/));//1
+			console.log(tString_1.localeCompare(/\n/));//1
+			console.log(tString_2.localeCompare(/\n/));//1
+			console.log(tString_3.localeCompare(/\n/));//1
+			console.log(tString_4.localeCompare(/\n/));//1
+			console.log(tString_4.localeCompare(/\o/));//1
+			
+			console.log("-------------------测试/helllo world/");
+
+			console.log(strString.localeCompare(/helllo world/));//1
+			console.log(oString.localeCompare(/helllo world/));//1
+			console.log(oString_1.localeCompare(/helllo world/));//1
+			console.log(tString_1.localeCompare(/helllo world/));//1
+			console.log(tString_2.localeCompare(/helllo world/));//1
+			console.log(tString_3.localeCompare(/helllo world/));//1
+			console.log(tString_4.localeCompare(/helllo world/));//1
+			console.log(tString_4.localeCompare(/helllo world/));//1
+			
+			console.log("-------------------测试/大吉大利/");
+			console.log(/大吉大利/);
+			console.log(strString.localeCompare(/大吉大利/ig));//1
+			console.log(oString.localeCompare(/大吉大利/ig));//1
+			console.log(oString_1.localeCompare(/大吉大利/ig));//1
+			console.log(tString_1.localeCompare(/大吉大利/ig));//1
+			console.log(tString_2.localeCompare(/大吉大利/ig));//1
+			console.log(tString_3.localeCompare(/大吉大利/ig));//1
+			console.log(tString_4.localeCompare(/大吉大利/ig));//1	
+
+			console.log("-------------------测试true");
+
+			console.log(strString.localeCompare(true));//-1
+			console.log(oString.localeCompare(true));//-1
+			console.log(oString_1.localeCompare(true));//-1
+			console.log(tString_1.localeCompare(true));//-1
+			console.log(tString_2.localeCompare(true));//-1
+			console.log(tString_3.localeCompare(true));//-1
+			console.log(tString_4.localeCompare(true));//1
+			
+			console.log("-------------------测试false");
+
+			console.log(strString.localeCompare(false));//1
+			console.log(oString.localeCompare(false));//1
+			console.log(oString_1.localeCompare(false));//-1
+			console.log(tString_1.localeCompare(false));//1
+			console.log(tString_2.localeCompare(false));//1
+			console.log(tString_3.localeCompare(false));//1
+			console.log(tString_4.localeCompare(false));//1
+			
+			console.log("-------------------测试null");
+
+			console.log(strString.localeCompare(null));//-1
+			console.log(oString.localeCompare(null));//-1
+			console.log(oString_1.localeCompare(null));//-1
+			console.log(tString_1.localeCompare(null));//-1
+			console.log(tString_2.localeCompare(null));//-1
+			console.log(tString_3.localeCompare(null));//-1
+			console.log(tString_4.localeCompare(null));//1
+			
+			console.log("-------------------测试NaN");
+
+			console.log(strString.localeCompare(NaN));//-1
+			console.log(oString.localeCompare(NaN));//-1
+			console.log(oString_1.localeCompare(NaN));//-1
+			console.log(tString_1.localeCompare(NaN));//-1
+			console.log(tString_2.localeCompare(NaN));//-1
+			console.log(tString_3.localeCompare(NaN));//-1
+			console.log(tString_4.localeCompare(NaN));//1
+
+			console.log("-------------------测试oo");
+
+			console.log(strString.localeCompare(oo));//1
+			console.log(oString.localeCompare(oo));//1
+			console.log(oString_1.localeCompare(oo));//1
+			console.log(tString_1.localeCompare(oo));//1
+			console.log(tString_2.localeCompare(oo));//1
+			console.log(tString_3.localeCompare(oo));//1
+			console.log(tString_4.localeCompare(oo));//1
+
+			console.log("-------------------测试oo.name");			
+			oo.name = "Wu Eva";
+			console.log(oo);//{ name: 'Wu Eva' }
+			console.log(strString.localeCompare(oo));//1
+			console.log(oString.localeCompare(oo));//1
+			console.log(oString_1.localeCompare(oo));//1
+			console.log(tString_1.localeCompare(oo));//1
+			console.log(tString_2.localeCompare(oo));//1
+			console.log(tString_3.localeCompare(oo));//1
+			console.log(tString_4.localeCompare(oo));//1
+
+			console.log("-------------------测试oBool");
+
+			console.log(strString.localeCompare(oBool));//-1
+			console.log(oString.localeCompare(oBool));//-1
+			console.log(oString_1.localeCompare(oBool));//-1
+			console.log(tString_1.localeCompare(oBool));//-1
+			console.log(tString_2.localeCompare(oBool));//-1
+			console.log(tString_3.localeCompare(oBool));//-1
+			console.log(tString_4.localeCompare(oBool));//1
+			
+			console.log("-------------------测试oArray");
+
+			console.log(strString.localeCompare(oArray));//1
+			console.log(oString.localeCompare(oArray));//1
+			console.log(oString_1.localeCompare(oArray));//-1
+			console.log(tString_1.localeCompare(oArray));//1
+			console.log(tString_2.localeCompare(oArray));//1
+			console.log(tString_3.localeCompare(oArray));//1
+			console.log(tString_4.localeCompare(oArray));//1
+						
+			console.log("-------------------测试oDate");
+
+			console.log(strString.localeCompare(oDate));//-1
+			console.log(oString.localeCompare(oDate));//-1
+			console.log(oString_1.localeCompare(oDate));//-1
+			console.log(tString_1.localeCompare(oDate));//-1
+			console.log(tString_2.localeCompare(oDate));//-1
+			console.log(tString_3.localeCompare(oDate));//-1             
+			console.log(tString_4.localeCompare(oDate));//1
+
+			console.log("-------------------测试");
+
+			console.log(oString.localeCompare(true));//-1
+			console.log(oString.localeCompare(false));//1
+			console.log(oString.localeCompare("true"));//-1
+			console.log(oString.localeCompare("false"));//1					
+				 
+			console.log("-------------------测试");
+
+			console.log(oString.localeCompare(Number.MAX_VALUE));//1
+			console.log(oString.localeCompare(Number.MIN_VALUE));//1
+			console.log(oString.localeCompare(Number.NaN));//-1
+			console.log(oString.localeCompare(Number.NEGATIVE_INFINITY));//1
+			console.log(oString.localeCompare(Number.POSITIVE_INFINITY));//-1
 		}
 
 	//Soft-打印比较方法-----------------------------------------------------END
