@@ -2106,6 +2106,20 @@ function showInitData(){
 			
 			console.log(new RegExp(oDate));// /Thu Dec 21 2017 19:39:40 GMT+0800 (中国标准时间)/
 
+			console.log("-------------------测试与test的关系");
+			var charReg1 = /\s/;//验证是否包含空格
+			var charReg2 = /\t/;//验证是否包含制表符
+			var charReg3 = /\n/;//验证是否包含换行符
+			console.log(tString_2);//hello line 1\n\t\t\t\thello line 2  
+			console.log(tString_2.search(charReg1));//5  因为能够检测到空格，所以返回检索到的下标
+			console.log(tString_2.search(charReg2));//13  因为能够检测到两个tab缩进，所以返回检索到的下标
+			console.log(tString_2.search(charReg3));//12  因为能够检测到换行，所以返回检索到的下标
+			console.log(charReg1.test(tString_2));//true
+			console.log(charReg2.test(tString_2));//true
+			console.log(charReg3.test(tString_2));//true
+			
+			//字符串中search正则内容，会返回对应的检索到的下标，返回值为int数值。
+			//用正则去test字符串内容，会返回是否匹配成功，返回值为布尔值。
 		}
 
 		function learnStringSMatch(){
@@ -2321,7 +2335,34 @@ function showInitData(){
 			
 			console.log(new RegExp(Number.NEGATIVE_INFINITY));// /-Infinity/
 			
-			console.log(new RegExp(Number.POSITIVE_INFINITY));// /Infinity/	
+			console.log(new RegExp(Number.POSITIVE_INFINITY));// /Infinity/
+			
+
+			console.log("-------------------测试与exec的关系");
+			var charReg1 = /\s/g;//验证是否包含空格
+			var charReg2 = /\t/g;//验证是否包含制表符
+			var charReg3 = /\n/g;//验证是否包含换行符
+
+			var charReg4 = /\s/;//验证是否包含空格
+			var charReg5 = /\t/;//验证是否包含制表符
+			var charReg6 = /\n/;//验证是否包含换行符
+
+			console.log(tString_2);//hello line 1\n\t\t\t\thello line 2  
+			console.log(tString_2.match(charReg1));//[ ' ', ' ', '\n', '\t', '\t', '\t', '\t', ' ', ' ' ]
+			console.log(tString_2.match(charReg2));//[ '\t', '\t', '\t', '\t' ]
+			console.log(tString_2.match(charReg3));//[ '\n' ]    
+			console.log(tString_2.match(charReg4));//[ ' ', index: 5, input: 'hello line 1\n\t\t\t\thello line 2' ]
+			console.log(tString_2.match(charReg5));//[ '\t', index: 13, input: 'hello line 1\n\t\t\t\thello line 2' ]
+			console.log(tString_2.match(charReg6));//[ '\n', index: 12, input: 'hello line 1\n\t\t\t\thello line 2' ]
+			console.log(charReg1.exec(tString_2));//[ ' ', index: 5, input: 'hello line 1\n\t\t\t\thello line 2' ]
+			console.log(charReg2.exec(tString_2));//[ '\t', index: 13, input: 'hello line 1\n\t\t\t\thello line 2' ]
+			console.log(charReg3.exec(tString_2));//[ '\n', index: 12, input: 'hello line 1\n\t\t\t\thello line 2' ]		
+			console.log(charReg4.exec(tString_2));//[ ' ', index: 5, input: 'hello line 1\n\t\t\t\thello line 2' ]
+			console.log(charReg5.exec(tString_2));//[ '\t', index: 13, input: 'hello line 1\n\t\t\t\thello line 2' ]
+			console.log(charReg6.exec(tString_2));//[ '\n', index: 12, input: 'hello line 1\n\t\t\t\thello line 2' ]				
+						
+			//字符串中match正则内容，如果正则中不包含全局检测标志，返回的结果和正则中exec字符串结果一样。
+			//正则中exec字符串会忽略全局匹配的标志，只返回找到的第一个匹配内容，索引和原始字符串值。
 		}
 
 		function MatchCountStrChar(str,char){
