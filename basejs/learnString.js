@@ -722,7 +722,7 @@ function showInitData(){
 		function learnDomNormalize(){
 			var tempText ="上面的段落有<span  class='count'>1</span>个子节点";
 			tempText +="<p class='demo'>你好啊，你好啊</p>";
-			document.write(tempText);
+			console.log(tempText);
 		}
 
 		function addTextNode(){
@@ -2383,7 +2383,8 @@ function showInitData(){
 
 	//Soft-打印比较方法-----------------------------------------------------START
 		function LearnStringSCompare(){
-			learnStringSLocaleCompare();
+			// learnStringSLocaleCompare();
+			learnIntlCollator();
 		}
 
 		function learnStringSLocaleCompare(){
@@ -2404,7 +2405,7 @@ function showInitData(){
 			console.log(oString.localeCompare(" "));//1
 			console.log(oString.localeCompare("llo"));//-1
 			console.log(oString.localeCompare("lLo"));//-1
-			console.log(oString.localeCompare("llo",3));//-1 因为localeCompare只处理第一个参数，所以返回2
+			console.log(oString.localeCompare("llo",3));//-1
 			console.log(oString.localeCompare(/o/));//1
 			console.log(oString.localeCompare(/o/g));//1
 
@@ -2645,8 +2646,50 @@ function showInitData(){
 			console.log(oString.localeCompare(Number.NaN));//-1
 			console.log(oString.localeCompare(Number.NEGATIVE_INFINITY));//1
 			console.log(oString.localeCompare(Number.POSITIVE_INFINITY));//-1
+			
 		}
 
+		function learnIntlCollator(){
+			console.log("\n 打印Intl.Collator的用法---------------------------------------------------------------------------------------------------------------------2"); 
+
+			console.log("学习locales在用法");
+			console.log(oString)//[String: 'hello world']
+			console.log(oString.localeCompare());//-1
+			console.log(oString.localeCompare(" ", "de-DE"));//1
+			console.log(oString.localeCompare("llo", "de-DE"));//-1
+			console.log(oString.localeCompare("lLo", "de-DE"));//-1
+			console.log(oString.localeCompare("llo",3));//-1 
+			console.log(oString.localeCompare("llo", "de-DE"));//-1 
+			console.log(oString.localeCompare(/o/, "de-DE"));//1
+			console.log(oString.localeCompare(/o/g, "de-DE"));//1
+
+			console.log(oString_1);//A 你 Z
+			console.log(oString_1.localeCompare("A", "de-DE"));//1
+			console.log(oString_1.localeCompare("\uD87E\uDC04", "de-DE"));//-1
+			console.log(oString_1.localeCompare("你", "de-DE"));//-1 
+			console.log(oString_1.normalize().localeCompare("你", "de-DE"));//-1  
+			console.log(oString_1.localeCompare("你", "de-DE"));//-1  
+
+			var str1 = "a";
+			var str2 = "b";
+			
+			console.log(str1.localeCompare(str2, "de-DE"));//-1
+			
+			// Output
+			// - 1
+			console.log("下面的示例显示如何使用具有德语（德国）区域设置和指定德语电话簿排序顺序的区域设置特定扩展的 localeCompare。此示例演示了特定于区域设置的差异。");
+			
+			var arr = ["ä", "ad", "af", "a"];
+			
+			console.log(arr[0].localeCompare(arr[1], "de-DE-u-co-phonebk"));  // -1
+			console.log(arr[0].localeCompare(arr[2], "de-DE-u-co-phonebk"));  // -1
+			console.log(arr[0].localeCompare(arr[3], "de-DE-u-co-phonebk"));  // 1
+			
+			console.log(arr[0].localeCompare(arr[1], "de-DE"));  // -1
+			console.log(arr[0].localeCompare(arr[2], "de-DE"));  // -1
+			console.log(arr[0].localeCompare(arr[3], "de-DE"));  // 1
+
+		}
 	//Soft-打印比较方法-----------------------------------------------------END
 
 	//Soft-打印拼接方法-----------------------------------------------------START
