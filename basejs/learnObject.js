@@ -889,6 +889,31 @@ function learnArray(){
     //因为target 大于 start 将两个数据对调
     //所以将原数组中索引0的内容(mmmmmelon) 从 原索引为1(mmmmmelon)开始覆盖原数组内容 
 
+    var co1 = new Intl.Collator(["de-DE-u-co-phonebk"]);
+    var co2 = new Intl.Collator(["de-DE"]);
+    var co3 = new Intl.Collator(["en-US"]);
+    
+    var arr = ["ä", "ad", "af", "a"];
+    
+    if (console && console.log) {
+        console.log(arr.sort(co1.compare));  // Returns a,ad,ä,af
+        console.log(arr.sort(co2.compare));  // Returns a,ä,ad,af
+        console.log(arr.sort(co3.compare));  // Returns a,ä,ad,af
+    }
+
+    // String to search
+    var arr = ["ä", "ad", "af", "a"];
+    // String searched for
+    var s = "af";
+
+    var co = new Intl.Collator("de-DE", { usage: "search" });
+    var matches = arr.filter(function (i) {
+        return co.compare(i, s) === 0;
+    });
+
+    if (console && console.log) {
+        console.log(matches);  // Returns af
+    }   
   
 }
 
