@@ -2652,7 +2652,7 @@ function showInitData(){
 		function learnIntlCollator(){
 			console.log("\n 打印Intl.Collator的用法---------------------------------------------------------------------------------------------------------------------2"); 
 
-			console.log("学习locales在用法");
+			console.log("学习locales在localeCompare中用法");
 			console.log(oString)//[String: 'hello world']
 			console.log(oString.localeCompare());//-1
 			console.log(oString.localeCompare(" ", "de-DE"));//1
@@ -2689,6 +2689,39 @@ function showInitData(){
 			console.log(arr[0].localeCompare(arr[2], "de-DE"));  // -1
 			console.log(arr[0].localeCompare(arr[3], "de-DE"));  // 1
 
+			console.log("学习option在localeCompare中用法");
+			var demoNumber_1="16";
+			var demoNumber_2="2";
+			var demoNumber_3="36";
+			var demoNumber_4="1";
+			var demoNumber_5="46";
+			var demoNumber="16,2,36,146";			
+			console.log(demoNumber)//16,2,36,146
+			console.log(demoNumber_1.localeCompare(demoNumber_4));//1   16 >1   true
+			console.log(demoNumber_1.localeCompare(demoNumber_2));//-1   16 >2   false
+			// console.log(demoNumber_1.localeCompare(demoNumber_4,"language-region-u-kn-true"));//1 ===>16 >1   true				
+			// console.log(demoNumber_1.localeCompare(demoNumber_2,"language-region-u-kn-true"));//-1 ===>16 <2   false
+			// console.log(demoNumber_1.localeCompare(demoNumber_4,{numeric:"true"}));//1	   16 >1   true				
+			// console.log(demoNumber_1.localeCompare(demoNumber_2,{numeric:"true"}));
+			console.log(demoNumber_1.localeCompare(demoNumber_4,"kn",{numeric:"true"}));//1 ===>16 >1   true				
+			console.log(demoNumber_1.localeCompare(demoNumber_2,"kn",{numeric:"true"}));//1 ===>16 >2   true		
+			// console.log(demoNumber_1.localeCompare(demoNumber_4,"language-region-u-kn-true",{numeric:"true"}));//1 ===>16 >1   true				
+			// console.log(demoNumber_1.localeCompare(demoNumber_2,"language-region-u-kn-true",{numeric:"true"}));//1 ===>16 >2   true							
+			console.log(demoNumber.localeCompare("llo", "de-DE"));//-1
+			// console.log(oString.localeCompare("lLo", "de-DE"));//-1
+			// console.log(oString.localeCompare("llo",3));//-1 
+			// console.log(oString.localeCompare("llo", "de-DE"));//-1 
+			// console.log(oString.localeCompare(/o/, "de-DE"));//1
+			// console.log(oString.localeCompare(/o/g, "de-DE"));//1
+
+			// console.log(oString_1);//A 你 Z
+			// console.log(oString_1.localeCompare("A", "de-DE"));//1
+			// console.log(oString_1.localeCompare("\uD87E\uDC04", "de-DE"));//-1
+			// console.log(oString_1.localeCompare("你", "de-DE"));//-1 
+			// console.log(oString_1.normalize().localeCompare("你", "de-DE"));//-1  
+			// console.log(oString_1.localeCompare("你", "de-DE"));//-1 
+
+			{ usage: "search" }
 		}
 	//Soft-打印比较方法-----------------------------------------------------END
 
