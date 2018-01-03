@@ -211,8 +211,8 @@ function showInitData(){
 		//learnStringHtmlFun();
 		// LearnStringSTranCoding();
 		// LearnStringSRetrieval();
-		LearnStringSCompare();
-		// LearnStringSSplicing();
+		// LearnStringSCompare();
+		LearnStringSSplicing();
 		// LearnStringSToggleCase();
 	}
 
@@ -2383,7 +2383,7 @@ function showInitData(){
 
 	//Soft-打印比较方法-----------------------------------------------------START
 		function LearnStringSCompare(){
-			// learnStringSLocaleCompare();
+			learnStringSLocaleCompare();
 			learnIntlCollator();
 		}
 
@@ -2697,41 +2697,207 @@ function showInitData(){
 			var demoNumber_5="46";
 			var demoNumber="16,2,36,146";			
 			console.log(demoNumber)//16,2,36,146
-			console.log(demoNumber_1.localeCompare(demoNumber_4));//1   16 >1   true
-			console.log(demoNumber_1.localeCompare(demoNumber_2));//-1   16 >2   false
-			// console.log(demoNumber_1.localeCompare(demoNumber_4,"language-region-u-kn-true"));//1 ===>16 >1   true				
-			// console.log(demoNumber_1.localeCompare(demoNumber_2,"language-region-u-kn-true"));//-1 ===>16 <2   false
-			// console.log(demoNumber_1.localeCompare(demoNumber_4,{numeric:"true"}));//1	   16 >1   true				
-			// console.log(demoNumber_1.localeCompare(demoNumber_2,{numeric:"true"}));
+			console.log(demoNumber_1.localeCompare(demoNumber_4));//1 ===>16 >1   true
+			console.log(demoNumber_1.localeCompare(demoNumber_2));//-1 ===>16 <2   false
+
+			console.log("--------\t\t\t\t\t\t\t numeric 错误尝试");
+			console.log(demoNumber_1.localeCompare(demoNumber_4,"language-region-u-kn-true"));//1 ===>16 >1   true				
+			console.log(demoNumber_1.localeCompare(demoNumber_2,"language-region-u-kn-true"));//-1 ===>16 <2   false
+			console.log(demoNumber_1.localeCompare(demoNumber_4,{numeric:"true"}));//1 ===>16 >1   true				
+			console.log(demoNumber_1.localeCompare(demoNumber_2,{numeric:"true"}));//-1 ===>16 <2   false
+
+			console.log("--------\t\t\t\t\t\t\t numeric 正常测试");
+			
 			console.log(demoNumber_1.localeCompare(demoNumber_4,"kn",{numeric:"true"}));//1 ===>16 >1   true				
 			console.log(demoNumber_1.localeCompare(demoNumber_2,"kn",{numeric:"true"}));//1 ===>16 >2   true		
-			// console.log(demoNumber_1.localeCompare(demoNumber_4,"language-region-u-kn-true",{numeric:"true"}));//1 ===>16 >1   true				
-			// console.log(demoNumber_1.localeCompare(demoNumber_2,"language-region-u-kn-true",{numeric:"true"}));//1 ===>16 >2   true							
-			console.log(demoNumber.localeCompare("llo", "de-DE"));//-1
-			// console.log(oString.localeCompare("lLo", "de-DE"));//-1
-			// console.log(oString.localeCompare("llo",3));//-1 
-			// console.log(oString.localeCompare("llo", "de-DE"));//-1 
-			// console.log(oString.localeCompare(/o/, "de-DE"));//1
-			// console.log(oString.localeCompare(/o/g, "de-DE"));//1
+			console.log(demoNumber_1.localeCompare(demoNumber_4,"language-region-u-kn-true",{numeric:"true"}));//1 ===>16 >1   true				
+			console.log(demoNumber_1.localeCompare(demoNumber_2,"language-region-u-kn-true",{numeric:"true"}));//1 ===>16 >2   true							
 
-			// console.log(oString_1);//A 你 Z
-			// console.log(oString_1.localeCompare("A", "de-DE"));//1
-			// console.log(oString_1.localeCompare("\uD87E\uDC04", "de-DE"));//-1
-			// console.log(oString_1.localeCompare("你", "de-DE"));//-1 
-			// console.log(oString_1.normalize().localeCompare("你", "de-DE"));//-1  
-			// console.log(oString_1.localeCompare("你", "de-DE"));//-1 
+			// {localeMatcher:"lookup"}
+			// {localeMatcher:"best fit"} //默认
+			console.log("--------\t\t\t\t\t\t\t localeMatcher 错误尝试");
+			console.log(demoNumber_1.localeCompare(demoNumber_4));//1 ===>16 >1   true				
+			console.log(demoNumber_1.localeCompare(demoNumber_2));//-1 ===>16 <2   false
+			console.log(demoNumber_1.localeCompare(demoNumber_4,{localeMatcher:"lookup"}));//1 ===>16 >1   true				
+			console.log(demoNumber_1.localeCompare(demoNumber_2,{localeMatcher:"lookup"}));//-1 ===>16 <2   false
 
-			{ usage: "search" }
+			console.log("--------\t\t\t\t\t\t\t localeMatcher 正常测试");
+			console.log("没有发现");
+			
+			// { usage: "search" }
+			// { usage: "sort" } //默认
+			console.log("--------\t\t\t\t\t\t\t usage 错误尝试");
+			console.log(demoNumber_1.localeCompare(demoNumber_4));//1 ===>16 >1   true				
+			console.log(demoNumber_1.localeCompare(demoNumber_2));//-1 ===>16 <2   false
+			console.log(demoNumber_1.localeCompare(demoNumber_4,{ usage: "search" }));//1 ===>16 >1   true				
+			console.log(demoNumber_1.localeCompare(demoNumber_2,{ usage: "search" }));//-1 ===>16 <2   false
+
+			console.log("--------\t\t\t\t\t\t\t usage 正常测试");
+			console.log("没有发现");
+
+			// {sensitivity:"base"} //只有字母不同的字母比较不相等。例子: a ≠ b, a = á, a = A。
+			// {sensitivity:"accent"}//只有不同的基本字母或重音符号和其他变音符号的字符串比较为不相等。 例如: a ≠ b, a ≠ á, a = A。
+			// {sensitivity:"case"}//只有不同的基本字母或大小写的字符串比较不相等。 Examples: a ≠ b, a = á, a ≠ A。
+			// {sensitivity:"variant"}//字符串的字母，口音和其他变音符号、或不同大小写比较不相等。 也可以考虑其他差异。例如： a ≠ b, a ≠ á, a ≠ A.
+			// {sensitivity:"sort"}//它的 `locale` 依赖于使用 `search`. 母鸡  这个是什么意思
+
+			console.log("--------\t\t\t\t\t\t\t sensitivity 错误尝试");
+			console.log("a".localeCompare("b"));//-1 ===>a ≠ b				
+			console.log("a".localeCompare("á"));//-1 ===>a ≠ á
+			console.log("a".localeCompare("A"));//-1 ===>a ≠ A				
+
+			console.log("a".localeCompare("b",{sensitivity:"base"}));//-1 ===>a ≠ b				
+			console.log("a".localeCompare("á",{sensitivity:"base"}));//-1 ===>a ≠ á				
+			console.log("a".localeCompare("A",{sensitivity:"base"}));//-1 ===>a ≠ A		
+
+			console.log("a".localeCompare("b",{sensitivity:"accent"}));//-1 ===>a ≠ b				
+			console.log("a".localeCompare("á",{sensitivity:"accent"}));//-1 ===>a ≠ á				
+			console.log("a".localeCompare("A",{sensitivity:"accent"}));//-1 ===>a ≠ A					
+
+			console.log("a".localeCompare("b",{sensitivity:"case"}));//	-1 ===>a ≠ b			
+			console.log("a".localeCompare("á",{sensitivity:"case"}));//-1 ===>a ≠ á				
+			console.log("a".localeCompare("A",{sensitivity:"case"}));//-1 ===>a ≠ A		
+
+			console.log("a".localeCompare("b",{sensitivity:"variant"}));//-1 ===>a ≠ b				
+			console.log("a".localeCompare("á",{sensitivity:"variant"}));//-1 ===>a ≠ á				
+			console.log("a".localeCompare("A",{sensitivity:"variant"}));//-1 ===>a ≠ A					
+
+			console.log("a".localeCompare("b",{sensitivity:"sort"}));//	-1 ===>a ≠ b			
+			console.log("a".localeCompare("á",{sensitivity:"sort"}));//	-1 ===>a ≠ á			
+			console.log("a".localeCompare("A",{sensitivity:"sort"}));//-1 ===>a ≠ A		
+
+			console.log("--------\t\t\t\t\t\t\t sensitivity 正常测试");
+
+			console.log("a".localeCompare("b"));//-1 ===>a ≠ b				
+			console.log("a".localeCompare("á"));//-1 ===>a ≠ á
+			console.log("a".localeCompare("A"));//-1 ===>a ≠ A				
+
+			console.log("a".localeCompare("b","language-region-u-search",{sensitivity:"base"}));//-1 ===>a ≠ b				
+			console.log("a".localeCompare("á","language-region-u-search",{sensitivity:"base"}));//0 ===>a = á				
+			console.log("a".localeCompare("A","language-region-u-search",{sensitivity:"base"}));//0 ===>a = A		
+
+			console.log("a".localeCompare("b","language-region-u-search",{sensitivity:"accent"}));//-1 ===>a ≠ b				
+			console.log("a".localeCompare("á","language-region-u-search",{sensitivity:"accent"}));//-1 ===>a ≠ á				
+			console.log("a".localeCompare("A","language-region-u-search",{sensitivity:"accent"}));//0 ===>a = A					
+
+			console.log("a".localeCompare("b","language-region-u-search",{sensitivity:"case"}));//	-1 ===>a ≠ b			
+			console.log("a".localeCompare("á","language-region-u-search",{sensitivity:"case"}));//0 ===>a = á				
+			console.log("a".localeCompare("A","language-region-u-search",{sensitivity:"case"}));//-1 ===>a ≠ A		
+
+			console.log("a".localeCompare("b","language-region-u-search",{sensitivity:"variant"}));//-1 ===>a ≠ b				
+			console.log("a".localeCompare("á","language-region-u-search",{sensitivity:"variant"}));//-1 ===>a ≠ á				
+			console.log("a".localeCompare("A","language-region-u-search",{sensitivity:"variant"}));//-1 ===>a ≠ A					
+
+			// 当设置了 locale的时候，方法才会去检测option值的正确性，例如之前单独传入{sensitivity:"sort"}是不会报错的
+			//但是设置了locale之后，报错说{sensitivity:"sort"} sort不是正确的属性
+			// console.log("a".localeCompare("á","language-region-u-search",{sensitivity:"sort"}));//	报错
+			// console.log("a".localeCompare("A","language-region-u-search",{sensitivity:"sort"}));//	报错
+			
+			// {ignore­Punctua­tion:true}
+			
+			// {ignorePunctuation:false}//默认
+
+			
+			console.log("--------\t\t\t\t\t\t\t ignore­Punctua­tion 错误尝试");
+			console.log(tString_4.localeCompare("大吉大利今晚吃西瓜 "));//1
+			console.log(tString_4.localeCompare("大吉大利今晚吃西瓜."));//-1
+
+			console.log(tString_4.localeCompare("大吉大利今晚吃西瓜 ",{ignorePunctuation:true}));//1 ===>16 >1   true				
+			console.log(tString_4.localeCompare("大吉大利今晚吃西瓜.",{ignorePunctuation:true}));//-1 ===>16 <2   false
+
+			console.log("--------\t\t\t\t\t\t\t ignore­Punctua­tion 正常测试");
+			
+			console.log("没有发现");
+
+			// kf {caseFirst:"upper"}
+			// kf {caseFirst:"lower"}
+			// kf {caseFirst:"false"}
+
+			console.log("--------\t\t\t\t\t\t\t caseFirst 错误尝试");
+
+			console.log("a".localeCompare("A","language-region-u-kf-upper"));//-1 ===>a < A				
+			console.log("a".localeCompare("A","language-region-u-kf-lower"));//-1 ===>a < A					
+			console.log("a".localeCompare("A","language-region-u-kf-false"));//-1 ===>a < A	
+			console.log("\n");
+			console.log("a".localeCompare("b",{caseFirst:"upper"}));//-1 ===>a ≠ b				
+			console.log("a".localeCompare("á",{caseFirst:"upper"}));//-1 ===>a ≠ á				
+			console.log("a".localeCompare("A",{caseFirst:"upper"}));//-1 ===>a ≠ A		
+			console.log("\n");
+			console.log("a".localeCompare("b",{caseFirst:"lower"}));//-1 ===>a ≠ b				
+			console.log("a".localeCompare("á",{caseFirst:"lower"}));//-1 ===>a ≠ á				
+			console.log("a".localeCompare("A",{caseFirst:"lower"}));//-1 ===>a ≠ A					
+			console.log("\n");
+			console.log("a".localeCompare("b",{caseFirst:"false"}));//-1 ===>a ≠ b			
+			console.log("a".localeCompare("á",{caseFirst:"false"}));//-1 ===>a ≠ á				
+			console.log("a".localeCompare("A",{caseFirst:"false"}));//-1 ===>a ≠ A		
+
+			console.log("--------\t\t\t\t\t\t\t caseFirst 正常测试");
+			
+			console.log("a".localeCompare("b"));//-1 ===>a ≠ b				
+			console.log("a".localeCompare("á"));//-1 ===>a ≠ á
+			console.log("a".localeCompare("A"));//-1 ===>a ≠ A	
+
+			console.log("--------\t\t upper 正常测试");
+			console.log("a".localeCompare("b","kf",{caseFirst:"upper"}));//-1 ===>a < b				
+			console.log("a".localeCompare("á","kf",{caseFirst:"upper"}));//-1 ===>a < á				
+			console.log("a".localeCompare("A","kf",{caseFirst:"upper"}));//1 ===>a > A				
+			console.log("\n");
+			console.log("a".localeCompare("b","language-region-u-kf-upper",{caseFirst:"upper"}));//-1 ===>a < b			
+			console.log("a".localeCompare("á","language-region-u-kf-upper",{caseFirst:"upper"}));//-1 ===>a < á					
+			console.log("a".localeCompare("A","language-region-u-kf-upper",{caseFirst:"upper"}));//1 ===>a > A		
+			console.log("\n");
+			console.log("a".localeCompare("b","language-region-u-kf-lower",{caseFirst:"upper"}));//-1 ===>a < b				
+			console.log("a".localeCompare("á","language-region-u-kf-lower",{caseFirst:"upper"}));//-1 ===>a < á				
+			console.log("a".localeCompare("A","language-region-u-kf-lower",{caseFirst:"upper"}));//1 ===>a > A		
+			console.log("\n");
+			console.log("a".localeCompare("b","language-region-u-kf-false",{caseFirst:"upper"}));//-1 ===>a < b					
+			console.log("a".localeCompare("á","language-region-u-kf-false",{caseFirst:"upper"}));//-1 ===>a < á					
+			console.log("a".localeCompare("A","language-region-u-kf-false",{caseFirst:"upper"}));//1 ===>a > A				
+			
+			console.log("--------\t\t lower 正常测试");
+
+			console.log("a".localeCompare("b","kf",{caseFirst:"lower"}));//-1 ===>a < b			
+			console.log("a".localeCompare("á","kf",{caseFirst:"lower"}));//-1 ===>a < á				
+			console.log("a".localeCompare("A","kf",{caseFirst:"lower"}));//-1 ===>a < A					
+			console.log("\n");
+			console.log("a".localeCompare("b","language-region-u-kf-upper",{caseFirst:"lower"}));//-1 ===>a < b			
+			console.log("a".localeCompare("á","language-region-u-kf-upper",{caseFirst:"lower"}));//-1 ===>a < á				
+			console.log("a".localeCompare("A","language-region-u-kf-upper",{caseFirst:"lower"}));//-1 ===>a < A			
+			console.log("\n");
+			console.log("a".localeCompare("b","language-region-u-kf-lower",{caseFirst:"lower"}));//-1 ===>a < b			
+			console.log("a".localeCompare("á","language-region-u-kf-lower",{caseFirst:"lower"}));//-1 ===>a < á				
+			console.log("a".localeCompare("A","language-region-u-kf-lower",{caseFirst:"lower"}));//-1 ===>a < A			
+			console.log("\n");
+			console.log("a".localeCompare("b","language-region-u-kf-false",{caseFirst:"lower"}));//-1 ===>a < b			
+			console.log("a".localeCompare("á","language-region-u-kf-false",{caseFirst:"lower"}));//-1 ===>a < á				
+			console.log("a".localeCompare("A","language-region-u-kf-false",{caseFirst:"lower"}));//-1 ===>a < A	
+
+			console.log("--------\t\t false 正常测试");
+			console.log("a".localeCompare("b","kf",{caseFirst:"false"}));//-1 ===>a < b				
+			console.log("a".localeCompare("á","kf",{caseFirst:"false"}));//-1 ===>a < á				
+			console.log("a".localeCompare("A","kf",{caseFirst:"false"}));//-1 ===>a < A						
+			console.log("\n");
+			console.log("a".localeCompare("b","language-region-u-kf-upper",{caseFirst:"false"}));//-1 ===>a < b				
+			console.log("a".localeCompare("á","language-region-u-kf-upper",{caseFirst:"false"}));//-1 ===>a < á				
+			console.log("a".localeCompare("A","language-region-u-kf-upper",{caseFirst:"false"}));//-1 ===>a < A			
+			console.log("\n");
+			console.log("a".localeCompare("b","language-region-u-kf-lower",{caseFirst:"false"}));//-1 ===>a < b			
+			console.log("a".localeCompare("á","language-region-u-kf-lower",{caseFirst:"false"}));//-1 ===>a < á				
+			console.log("a".localeCompare("A","language-region-u-kf-lower",{caseFirst:"false"}));//-1 ===>a < A			
+			console.log("\n");
+			console.log("a".localeCompare("b","language-region-u-kf-false",{caseFirst:"false"}));//-1 ===>a < b			
+			console.log("a".localeCompare("á","language-region-u-kf-false",{caseFirst:"false"}));//-1 ===>a < á				
+			console.log("a".localeCompare("A","language-region-u-kf-false",{caseFirst:"false"}));//-1 ===>a < A			
 		}
 	//Soft-打印比较方法-----------------------------------------------------END
 
 	//Soft-打印拼接方法-----------------------------------------------------START
 		function LearnStringSSplicing(){
 			learnStringSConcat();
-			learnStringSPadEnd();
-			learnStringSpadStart();
-			learnStringSRepeat();
-			learnStringSQuote();
+			// learnStringSPadEnd();
+			// learnStringSpadStart();
+			// learnStringSRepeat();
+			// learnStringSQuote();
 		}
 
 		function learnStringSConcat(){
