@@ -32,7 +32,7 @@ function tag(strings, ...values) {
 learnString();
 function learnString(){
 	//打印默认相关参数值
-	//showInitData();	
+	// showInitData();	
 	//学习string的属性
 	//learnStringProp();
 	//学习string的方法
@@ -66,6 +66,7 @@ function showInitData(){
 	console.log(tString_2 instanceof(String))//false
 	console.log(tString_3 instanceof(String))//false
 	console.log(tString_4 instanceof(String))//false
+	
 }
 
 //学习string的属性-----------------------------------------------------------------------------------------------------------------------------------------------------------------------START
@@ -162,6 +163,7 @@ function showInitData(){
 			console.log(String.__parent__);//undefined
 			console.log(String.__proto__);//[Function]
 			console.log(String.constructor);//[Function: Function]
+
 	}
 
 	function learnStringCommonProp(){
@@ -183,6 +185,30 @@ function showInitData(){
 			console.log(tString_2.__proto__);//[String: '']
 			console.log(tString_3.__proto__);//[String: '']
 			console.log(tString_4.__proto__);//[String: '']
+
+			console.log("test getProtoTypeof");
+
+			console.log("Object.getPrototypeOf(varName)===varName.__proto__");
+			console.log(Object.getPrototypeOf(strString))//[String: '']
+			console.log(Object.getPrototypeOf(strString)===strString.__proto__)//true
+			
+			console.log(Object.getPrototypeOf(oString))//[String: '']
+			console.log(Object.getPrototypeOf(oString)===oString.__proto__)//true
+			
+			console.log(Object.getPrototypeOf(oString_1))//[String: '']
+			console.log(Object.getPrototypeOf(oString_1)===oString_1.__proto__)//true
+			
+			console.log(Object.getPrototypeOf(tString_1))//[String: '']
+			console.log(Object.getPrototypeOf(tString_1)===tString_1.__proto__)//true
+		
+			console.log(Object.getPrototypeOf(tString_2))//[String: '']
+			console.log(Object.getPrototypeOf(tString_2)===tString_2.__proto__)//true
+		
+			console.log(Object.getPrototypeOf(tString_3))//[String: '']
+			console.log(Object.getPrototypeOf(tString_3)===tString_3.__proto__)//true
+		
+			console.log(Object.getPrototypeOf(tString_4))//[String: '']
+			console.log(Object.getPrototypeOf(tString_4)===tString_4.__proto__)//true
 
 		console.log("\n 打印本身length属性------------------------------------------------------------------------------------------------------------------------------------------");
 			console.log(strString.length);//16 15个字母加一个空格
@@ -2902,12 +2928,76 @@ function showInitData(){
 
 		function learnStringSConcat(){
 			console.log("\n 打印concat()函数的用法---------------------------------------------------------------------------------------------------------------------1"); 
-			console.log(strString.concat());//<big>hello watermelon</big>
-			console.log(oString.concat());//<big>hello world</big>
-			console.log(tString_1.concat());//<big>hello Template</big>
-			console.log(tString_2.concat());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.concat());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.concat());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.concat());//hello watermelon
+			console.log(oString.concat());//hello world
+			console.log(tString_1.concat());//hello Template
+			console.log(tString_2.concat());//
+			console.log(tString_3.concat());//
+			console.log(tString_4.concat());//
+		
+
+			//先试一下第一个参数的检索正确性，比如对几个特殊字符的检查正确性
+			console.log("-------------------测试");
+			console.log("true".concat(true));//0  进行匹配的时候不一定他要添加双引号
+			console.log("false".concat(false));//0			
+			console.log("null".concat(null));//0	
+			console.log("undefined".concat(undefined));//0	
+			console.log("NaN".concat(NaN));//0
+
+			console.log("-------------------测试");			
+			console.log("true".concat("true"));//0  进行匹配的时候，只要原始值是定义好的，加没加双引号都可以被正常检测出来
+			console.log("false".concat("false"));//0			
+			console.log("null".concat("null"));//0	
+			console.log("undefined".concat("undefined"));//0	
+			console.log("NaN".concat("NaN"));//0
+			
+			console.log("-------------------测试");			
+			console.log(oString.concat(true));//-1
+			console.log(oString.concat(false));//-1		
+			console.log(oString.concat(null));//-1	
+			console.log(oString.concat(undefined));//-1
+			console.log(oString.concat(NaN));//-1
+
+			console.log("-------------------测试");						
+			console.log(oString.concat(""));//0 
+			console.log(oString.concat(oString));//0 自己是绝对以自己开始的
+
+			//先试一下第二个参数的检索正确性，对于负数，非整数，或者非数值的
+			console.log("-------------------测试");
+			console.log(oString.concat("hell",1));//-1
+			console.log(oString.concat("hell",1.1));//-1
+			console.log(oString.concat("hell",1.5));//-1
+			console.log(oString.concat("hell",1.8));//-1
+			console.log(oString.concat("hell",-1));//0
+
+			console.log("-------------------测试");
+
+			console.log(oString.concat("hell",0.0));//0
+			console.log(oString.concat("hell",0.1));//0
+			console.log(oString.concat("hell",0.5));//0
+			console.log(oString.concat("hell",0.8));//0
+			console.log(oString.concat("hell",-0));//0	
+			console.log(oString.concat("hell",-2));//0	
+			console.log(oString.concat("hell",-3));//0	
+
+			console.log("-------------------测试");
+
+			console.log(oString.concat("hell",true));//-1
+			console.log(oString.concat("hell",false));//0
+			console.log(oString.concat("hell","true"));//0
+			console.log(oString.concat("hell","false"));//0		
+			console.log(oString.concat("hell",oo));//0
+			console.log(oString.concat("hell",oBool));//-1
+			console.log(oString.concat("hell",oArray));//0
+			console.log(oString.concat("hell",oDate));//-1 						
+				 
+			console.log("-------------------测试");
+
+			console.log(oString.concat("hell",Number.MAX_VALUE));//-1 
+			console.log(oString.concat("hell",Number.MIN_VALUE));//0
+			console.log(oString.concat("hell",Number.NaN));//0
+			console.log(oString.concat("hell",Number.NEGATIVE_INFINITY));//0		
+			console.log(oString.concat("hell",Number.POSITIVE_INFINITY));//-1		
 		}
 
 		function learnStringSPadEnd(){
@@ -3046,6 +3136,13 @@ function showInitData(){
 			console.log(new String().__proto__);//[String: '']
 			console.log(new Array().__proto__);//[]
 			console.log(new Date().__proto__);//Date {}
+
+			console.log(Object.getPrototypeOf(new Object()));//{}
+			console.log(Object.getPrototypeOf(new Boolean()));//[Boolean: false]
+			console.log(Object.getPrototypeOf(new Number()));//[Number: 0]
+			console.log(Object.getPrototypeOf(new String()));//[String: '']
+			console.log(Object.getPrototypeOf(new Array()));//[]
+			console.log(Object.getPrototypeOf(new Date()));//Date {}
 
 			console.log("检测其他类对象转化成string类型或者其本身的原型链上是否存在 String.prototype");
 			console.log(String(new Object()) instanceof(String));//false
@@ -3260,6 +3357,17 @@ function showInitData(){
 			console.log(tString_2.hasOwnProperty());//<big>hello line 1\n\t\t\t\thello line 2</big>
 			console.log(tString_3.hasOwnProperty());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.hasOwnProperty());//<big>大吉大利今晚吃西瓜!</big>
+
+
+			console.log("test hasOwnProperty");
+			console.log(strString.hasOwnProperty(String))//false
+			console.log(oString.hasOwnProperty(String))//true
+			console.log(oString_1.hasOwnProperty(String));//false
+			console.log(tString_1.hasOwnProperty(String))//false
+			console.log(tString_2.hasOwnProperty(String))//false
+			console.log(tString_3.hasOwnProperty(String))//false
+			console.log(tString_4.hasOwnProperty(String))//false
+
 		}
 
 		function learnStringTIsPrototypeOf(){
@@ -3270,6 +3378,24 @@ function showInitData(){
 			console.log(tString_2.isPrototypeOf());//<big>hello line 1\n\t\t\t\thello line 2</big>
 			console.log(tString_3.isPrototypeOf());//<big>Fifteen is 12 and\nnot 16.</big>
 			console.log(tString_4.isPrototypeOf());//<big>大吉大利今晚吃西瓜!</big>
+			
+			console.log("test var isPrototypeOf String");
+			console.log(strString.isPrototypeOf(String))//false
+			console.log(oString.isPrototypeOf(String))//true
+			console.log(oString_1.isPrototypeOf(String));//false
+			console.log(tString_1.isPrototypeOf(String))//false
+			console.log(tString_2.isPrototypeOf(String))//false
+			console.log(tString_3.isPrototypeOf(String))//false
+			console.log(tString_4.isPrototypeOf(String))//false	
+			
+			console.log("test String getProtoTypeof var");
+			console.log(String.isPrototypeOf(strString))//false
+			console.log(String.isPrototypeOf(oString))//false
+			console.log(String.isPrototypeOf(oString_1))//false
+			console.log(String.isPrototypeOf(tString_1))//false
+			console.log(String.isPrototypeOf(tString_2))//false
+			console.log(String.isPrototypeOf(tString_3))//false
+			console.log(String.isPrototypeOf(tString_4))//false			
 		}
 
 		function learnStringTSetPrototypeOf(){
@@ -3312,6 +3438,383 @@ function showInitData(){
 			console.log(tString_4.propertyIsEnumerable());//<big>大吉大利今晚吃西瓜!</big>
 		}			
 
+		function studyPrototype(){
+			console.log("\n 打印原型链属性和构造体相关的用法---------------------------------------------------------------------------------------------------------------------11"); 
+			
+			console.log("\n 打印几大class原型链原始属性和构造体相关的用法-------------------------------------------------------------------"); 			
+			//几种基础对象类型（Class）的prototype 指向的是类型的默认值
+			console.log(Object.prototype);//{}
+			console.log(Boolean.prototype);//[Boolean: false]
+			console.log(Number.prototype);//[Number: 0]
+			console.log(String.prototype);//[String: '']
+			console.log(Array.prototype);//[]
+			console.log(Date.prototype);//Date {}
+			//function的默认值指向的是Function构造体，
+			//注意function对象在全局中的class名称首字母需要大写 即Function
+			console.log(Function.prototype);//[Function]
+
+			console.log(Object.prototype==Function);//false
+			console.log(Boolean.prototype==Function);//false
+			console.log(Number.prototype==Function);//false
+			console.log(String.prototype==Function);//false
+			console.log(Array.prototype==Function);//false
+			console.log(Date.prototype==Function);//false
+			//function的默认值指向的是Function构造体，
+			//注意function对象在全局中的class名称首字母需要大写 即Function
+			console.log(Function.prototype==Function);//false
+			
+			console.log(Object.prototype.__proto__ );//null
+			console.log(Boolean.prototype.__proto__ );//{}
+			console.log(Number.prototype.__proto__ );//{}
+			console.log(String.prototype.__proto__ );//{}
+			console.log(Array.prototype.__proto__ );//{}
+			console.log(Date.prototype.__proto__ );//{}
+			//function的默认值指向的是Function构造体，
+			//注意function对象在全局中的class名称首字母需要大写 即Function
+			console.log(Function.prototype.__proto__ );//[Function]			
+
+			console.log(Object.__proto__.prototype);//undefined
+			console.log(Boolean.__proto__.prototype);//undefined
+			console.log(Number.__proto__.prototype);//undefined
+			console.log(String.__proto__.prototype);//undefined
+			console.log(Array.__proto__.prototype);//undefined
+			console.log(Date.__proto__.prototype);//undefined
+			//function的默认值指向的是Function构造体，
+			//注意function对象在全局中的class名称首字母需要大写 即Function
+			console.log(Function.__proto__.prototype);//undefined
+
+			//几种对象类型（Class）的__proto__ 指向的是function构造体	
+			//但是构造体的__proto__ 的原型链上不包含 Function这个对象的原型链		
+			console.log(Object.__proto__);//[Function]
+			console.log(Boolean.__proto__);//[Function]
+			console.log(Number.__proto__);//[Function]
+			console.log(String.__proto__);//[Function]
+			console.log(Array.__proto__);//[Function]
+			console.log(Date.__proto__);//[Function]
+			console.log(Function.__proto__);//[Function]
+
+			console.log(Object.__proto__ == Object.prototype);//false
+			console.log(Boolean.__proto__ == Boolean.prototype);//false
+			console.log(Number.__proto__ == Number.prototype);//false
+			console.log(String.__proto__ == String.prototype);//false
+			console.log(Array.__proto__ == Array.prototype);//false
+			console.log(Date.__proto__ == Date.prototype);//false
+			console.log(Function.__proto__ == Function.prototype);//true
+
+			console.log(Object.__proto__ instanceof Function );//false
+			console.log(Boolean.__proto__ instanceof Function );//false
+			console.log(Number.__proto__ instanceof Function );//false
+			console.log(String.__proto__ instanceof Function );//false
+			console.log(Array.__proto__ instanceof Function );//false
+			console.log(Date.__proto__ instanceof Function );//false
+			console.log(Function.__proto__ instanceof Function );//false
+
+			//ES5中有了对于这个内置属性标准的Get方法Object.getPrototypeOf().                     
+			console.log(Object.getPrototypeOf(Object) instanceof Function );//false
+			console.log(Object.getPrototypeOf(Boolean) instanceof Function );//false
+			console.log(Object.getPrototypeOf(Number) instanceof Function );//false
+			console.log(Object.getPrototypeOf(String) instanceof Function );//false
+			console.log(Object.getPrototypeOf(Array) instanceof Function );//false
+			console.log(Object.getPrototypeOf(Date) instanceof Function );//false
+			console.log(Object.getPrototypeOf(Function) instanceof Function );//false
+
+			console.log(Object instanceof Function );//true
+			console.log(Boolean instanceof Function );//true
+			console.log(Number instanceof Function );//true
+			console.log(String instanceof Function );//true
+			console.log(Array instanceof Function );//true
+			console.log(Date instanceof Function );//true
+			console.log(Function instanceof Function );//true
+
+			console.log(Function.bind.__proto__);//[Function]
+
+			console.log(Function.bind.prototype);//undefined
+
+			//几个构造体检测自己的原型链，却不一定都能检测到
+			//  var instanceof constructor
+			//因为Object，Boolean，Number，String，Array，Date，Function的原型链指向的Function
+			//而在Function的原型链上是检测不到Boolean，Number，String，Array和Date这几个构造体的原型链的
+			//而在Function的原型链上是肯定可以检测Function这个构造体的原型链的
+			//而js万物皆对象，所以，在Function的原型链上是可以检测Object这个构造体的原型链的	
+
+			console.log(Object instanceof Object );//true
+			console.log(Boolean instanceof Boolean );//false
+			console.log(Number instanceof Number );//false
+			console.log(String instanceof String );//false
+			console.log(Array instanceof Array );//false
+			console.log(Date instanceof Date );//false
+			console.log(Function instanceof Function );//true
+
+			//但是可以肯定的是，每个构造体的实例化对象的原型链上是可以检测到构造体的的原型链的。
+			console.log(oo instanceof Object );//true
+			console.log(oBool instanceof Boolean );//true
+			console.log(oNum instanceof Number );//true
+			console.log(oString instanceof String );//true
+			console.log(oArray instanceof Array );//true
+			console.log(oDate instanceof Date );//true
+
+			//几种基础对象类型（Class）的__proto__构造体 指向的是Function 名称			
+			console.log(Object.__proto__.constructor);//[Function: Function]
+			console.log(Boolean.__proto__.constructor);//[Function: Function]
+			console.log(Number.__proto__.constructor);//[Function: Function]
+			console.log(String.__proto__.constructor);//[Function: Function]
+			console.log(Array.__proto__.constructor);//[Function: Function]
+			console.log(Date.__proto__.constructor);//[Function: Function]
+			console.log(Function.__proto__.constructor);//[Function: Function]
+			
+			console.log(Object.__proto__.constructor===Function);//true
+			console.log(Boolean.__proto__.constructor===Function);//true
+			console.log(Number.__proto__.constructor===Function);//true
+			console.log(String.__proto__.constructor===Function);//true
+			console.log(Array.__proto__.constructor===Function);//true
+			console.log(Date.__proto__.constructor===Function);//true
+			console.log(Function.__proto__.constructor===Function);//true
+
+			//instanceof 操作符的内部实现机制和隐式原型、显式原型有直接的关系。
+			//instanceof的左值一般是一个对象，右值一般是一个构造函数，用来判断左值是否是右值的实例。
+			//它的内部实现原理是这样的： 
+			//设 L instanceof R 
+			//通过判断
+			//  L.__proto__.__proto__ ..... === R.prototype ？
+ 			//最终返回true or false
+			// 也就是沿着L的__proto__一直寻找到原型链末端，直到等于R.prototype为止。
+
+			console.log(Object.__proto__.constructor instanceof Function);//true
+			console.log(Boolean.__proto__.constructor instanceof Function);//true
+			console.log(Number.__proto__.constructor instanceof Function);//true
+			console.log(String.__proto__.constructor instanceof Function);//true
+			console.log(Array.__proto__.constructor instanceof Function);//true
+			console.log(Date.__proto__.constructor instanceof Function);//true
+			console.log(Function.__proto__.constructor instanceof Function);//true
+			
+
+			//几种基础对象类型（Class）的__proto__构造体 指向的是Function 名称			
+			console.log(Object.constructor);//[Function: Function]
+			console.log(Boolean.constructor);//[Function: Function]
+			console.log(Number.constructor);//[Function: Function]
+			console.log(String.constructor);//[Function: Function]
+			console.log(Array.constructor);//[Function: Function]
+			console.log(Date.constructor);//[Function: Function]
+			console.log(Function.constructor);//[Function: Function]
+
+			//而对象（Object，Boolean，Number，String，Array，Date，Function）及普通对象
+			//通过指针指向的内存中的地址来做比较。
+			//因为对象类型的构造体指向的地址和对象类型原型的构造体指向的地址是同一个所以判断返回的都是true			
+			console.log(Object.constructor===Object.__proto__.constructor);//true
+			console.log(Boolean.constructor===Boolean.__proto__.constructor);//true
+			console.log(Number.constructor===Number.__proto__.constructor);//true
+			console.log(String.constructor===String.__proto__.constructor);//true
+			console.log(Array.constructor===Array.__proto__.constructor);//true
+			console.log(Date.constructor===Date.__proto__.constructor);//true
+			console.log(Function.constructor===Function.__proto__.constructor);//true
+
+			//因为对象类型的构造体指向的地址和对象类型原型指向的地址不是同一个所以判断返回的都是false		
+			console.log(Object.__proto__===Object.__proto__.constructor);//false
+			console.log(Boolean.__proto__===Boolean.__proto__.constructor);//false
+			console.log(Number.__proto__===Number.__proto__.constructor);//false
+			console.log(String.__proto__===String.__proto__.constructor);//false
+			console.log(Array.__proto__===Array.__proto__.constructor);//false
+			console.log(Date.__proto__===Date.__proto__.constructor);//false
+			console.log(Function.__proto__===Function.__proto__.constructor);//false
+
+			console.log("\n 打印几大class实例化之后原型链属性和构造体相关的用法-------------------------------------------------------------------"); 			
+			//请注意实例化对象类型一定要添加括号，要不然会直接报错，这样直接写是不符合规范的。
+			//举个栗子 new Object，new Boolean，new Number，new String，new Array，new Date，new Function
+
+			var temp_O = new Object;
+			var temp_B = new Boolean;
+			var temp_N = new Number;
+			var temp_S = new String;
+			var temp_A = new Array;
+			var temp_D = new Date;
+			var temp_F = new Function;
+
+			console.log(temp_O);//{}
+			console.log(temp_B);//[Boolean: false]
+			console.log(temp_N);//[Number: 0]
+			console.log(temp_S);//[String: '']
+			console.log(temp_A);//[]
+			console.log(temp_D);//2018-01-07T09:11:45.720Z
+			console.log(temp_F);//[Function: anonymous]
+
+			console.log(new Object());//{}
+			console.log(new Boolean());//[Boolean: false]
+			console.log(new Number());//[Number: 0]
+			console.log(new String());//[String: '']
+			console.log(new Array());//[]
+			console.log(new Date());//2018-01-07T09:26:55.136Z
+			console.log(new Function());//[Function: anonymous]	
+
+
+			//而且没有写括号的时候是不能直接调用属性的 会报错  XXXX.__proto__ is not a constructor
+			// console.log(new Object.__proto__);//
+			// console.log(new Boolean.__proto__);//
+			// console.log(new Number.__proto__);//
+			// console.log(new String.__proto__);//
+			// console.log(new Array.__proto__);//
+			// console.log(new Date.__proto__);//
+			// console.log(new Function.__proto__);//
+
+			//基本类型是通过值来比较，
+			//而对象（Object，Boolean，Number，String，Array，Date，Function）及普通对象
+			//通过指针指向的内存中的地址来做比较。
+
+			//因为每个参数实例化对象的时候，都是重新分配了地址的，所以每个参数指向的地址不是同一个地址
+			//所以返回的都是false
+			console.log((new Object())===temp_O);//false
+			console.log((new Boolean())===temp_B);//false
+			console.log((new Number())===temp_N);//false
+			console.log((new String())===temp_S);//false
+			console.log((new Array())===temp_A);//false
+			console.log((new Date())===temp_D);//false
+			console.log((new Function())===temp_F);//false
+
+			console.log((new Object())===(new Object()));//false
+			console.log((new Boolean())===(new Boolean()));//false
+			console.log((new Number())===(new Number()));//false
+			console.log((new String())===(new String()));//false
+			console.log((new Array())===(new Array()));//false
+			console.log((new Date())===(new Date()));//false
+			console.log((new Function())===(new Function()));//false
+
+			console.log("__proto__");
+			console.log(temp_O.__proto__);//{}
+			console.log(temp_B.__proto__);//[Boolean: false]
+			console.log(temp_N.__proto__);//[Number: 0]
+			console.log(temp_S.__proto__);//[String: '']
+			console.log(temp_A.__proto__);//[]
+			console.log(temp_D.__proto__);//Date {}
+			console.log(temp_F.__proto__);//[Function]
+
+			console.log(Object.getPrototypeOf(temp_O));//{}
+			console.log(Object.getPrototypeOf(temp_B));//[Boolean: false]
+			console.log(Object.getPrototypeOf(temp_N));//[Number: 0]
+			console.log(Object.getPrototypeOf(temp_S));//[String: '']
+			console.log(Object.getPrototypeOf(temp_A));//[]
+			console.log(Object.getPrototypeOf(temp_D));//Date {}
+			console.log(Object.getPrototypeOf(temp_F));//[Function]
+
+			//因为变量指向的地址和变量原型指向的地址不是同一个所以判断返回的都是false					
+			console.log(temp_O===temp_O.__proto__);//false
+			console.log(temp_B===temp_B.__proto__);//false
+			console.log(temp_N===temp_N.__proto__);//false
+			console.log(temp_S===temp_S.__proto__);//false
+			console.log(temp_A===temp_A.__proto__);//false
+			console.log(temp_D===temp_D.__proto__);//false
+			console.log(temp_F===temp_F.__proto__);//false
+
+			console.log(new Object().__proto__===temp_O.__proto__);//true
+			console.log(new Boolean().__proto__===temp_B.__proto__);//true
+			console.log(new Number().__proto__===temp_N.__proto__);//true
+			console.log(new String().__proto__===temp_S.__proto__);//true
+			console.log(new Array().__proto__===temp_A.__proto__);//true
+			console.log(new Date().__proto__===temp_D.__proto__);//true
+			console.log(new Function().__proto__===temp_F.__proto__);//true	
+
+			console.log("prototype");
+			console.log(temp_O.prototype);//undefined
+			console.log(temp_B.prototype);//undefined
+			console.log(temp_N.prototype);//undefined
+			console.log(temp_S.prototype);//undefined
+			console.log(temp_A.prototype);//undefined
+			console.log(temp_D.prototype);//undefined
+			console.log(temp_F.prototype);//[Function: anonymous]
+
+			// console.log(temp_O.prototype.__proto__);//Cannot read property '__proto__' of undefined
+			// console.log(temp_B.prototype.__proto__);//Cannot read property '__proto__' of undefined
+			// console.log(temp_N.prototype.__proto__);//Cannot read property '__proto__' of undefined
+			// console.log(temp_S.prototype.__proto__);//Cannot read property '__proto__' of undefined
+			// console.log(temp_A.prototype.__proto__);//Cannot read property '__proto__' of undefined
+			// console.log(temp_D.prototype.__proto__);//Cannot read property '__proto__' of undefined
+			console.log(temp_F.prototype.__proto__);//{}		
+			
+			console.log(temp_O.__proto__.prototype);//undefined
+			console.log(temp_B.__proto__.prototype);//undefined
+			console.log(temp_N.__proto__.prototype);//undefined
+			console.log(temp_S.__proto__.prototype);//undefined
+			console.log(temp_A.__proto__.prototype);//undefined
+			console.log(temp_D.__proto__.prototype);//undefined
+			console.log(temp_F.__proto__.prototype);//undefined
+
+			console.log("constructor");
+
+			var temp_O = new Object;
+			var temp_B = new Boolean;
+			var temp_N = new Number;
+			var temp_S = new String;
+			var temp_A = new Array;
+			var temp_D = new Date;
+			var temp_F = new Function;
+
+			//几种基础对象类型（Class）实例化之后的__proto__构造体 指向的是Function 名称			
+			console.log(temp_O.__proto__.constructor);//[Function: Object]
+			console.log(temp_B.__proto__.constructor);//[Function: Boolean]
+			console.log(temp_N.__proto__.constructor);//[Function: Number]
+			console.log(temp_S.__proto__.constructor);//[Function: String]
+			console.log(temp_A.__proto__.constructor);//[Function: Array]
+			console.log(temp_D.__proto__.constructor);//[Function: Date]
+			console.log(temp_F.__proto__.constructor);//[Function: Function]		
+
+			console.log(temp_O.__proto__.constructor===(temp_O.__proto__).constructor);//true
+			console.log(temp_B.__proto__.constructor===(temp_B.__proto__).constructor);//true
+			console.log(temp_N.__proto__.constructor===(temp_N.__proto__).constructor);//true
+			console.log(temp_S.__proto__.constructor===(temp_S.__proto__).constructor);//true
+			console.log(temp_A.__proto__.constructor===(temp_A.__proto__).constructor);//true
+			console.log(temp_D.__proto__.constructor===(temp_D.__proto__).constructor);//true
+			console.log(temp_F.__proto__.constructor===(temp_F.__proto__).constructor);//true
+
+			console.log(temp_O.__proto__.constructor===Function);//false
+			console.log(temp_B.__proto__.constructor===Function);//false
+			console.log(temp_N.__proto__.constructor===Function);//false
+			console.log(temp_S.__proto__.constructor===Function);//false
+			console.log(temp_A.__proto__.constructor===Function);//false
+			console.log(temp_D.__proto__.constructor===Function);//false
+			console.log(temp_F.__proto__.constructor===Function);//true			
+
+			//实例化前  几个构造体的prototype 和 __proto__指向都是Function
+			//实例化后  除了实例化Function对象的变量的prototype是[Function: anonymous]，其他的变量的prototype都是undefined
+			//实例化后  除了实例化Function对象的变量，其他的变量的prototype都是undefined
+
+			//实例化前  几个构造体的constructor指向都是[Function: Function]
+			//实例化后  每个变量的constructor都是指向各自的构造体
+
+			//实例化前  几个构造体除了Object和Function的显式声明的隐式声明(.prototype.__proto__) 指向都是{}
+			//Object.prototype.__proto__ //null
+			//Function.prototype.__proto__ //[Function]
+			//几个构造体的隐式声明的显式声明(.__proto__.prototype) 指向都是undefined
+
+			//实例化后  变量中除了Function的实例对象的显式声明的隐式声明(.prototype.__proto__)都是不能执行的
+			//Cannot read property '__proto__' of undefined
+			//temp_F.prototype.__proto__ //{}	
+			//变量的隐式声明的显式声明(.__proto__.prototype) 指向都是undefined
+
+			//几种基础对象类型（Class）实例化之后的__proto__构造体 指向的是各自的构造体	
+			console.log(temp_O.constructor);//[Function: Object]
+			console.log(temp_B.constructor);//[Function: Boolean]
+			console.log(temp_N.constructor);//[Function: Number]
+			console.log(temp_S.constructor);//[Function: String]
+			console.log(temp_A.constructor);//[Function: Array]
+			console.log(temp_D.constructor);//[Function: Date]
+			console.log(temp_F.constructor);//[Function: Function]
+
+			console.log(temp_O.constructor===temp_O.__proto__.constructor);//true
+			console.log(temp_B.constructor===temp_B.__proto__.constructor);//true
+			console.log(temp_N.constructor===temp_N.__proto__.constructor);//true
+			console.log(temp_S.constructor===temp_S.__proto__.constructor);//true
+			console.log(temp_A.constructor===temp_A.__proto__.constructor);//true
+			console.log(temp_D.constructor===temp_D.__proto__.constructor);//true
+			console.log(temp_F.constructor===temp_F.__proto__.constructor);//true	
+			
+			var ss =Object.create(Boolean.prototype)
+
+			console.log(typeof ss);//object
+			console.log(ss.prototype);//undefined
+			// console.log(ss.prototype.__proto__);//Cannot read property '__proto__' of undefined
+			console.log(ss.__proto__);//[Boolean: false]
+			console.log(ss.__proto__.prototype);//undefined
+			console.log(ss.constructor);//[Function: Boolean]
+			
+		}
 	//Tough-打印对象通用方法方法-----------------------------------------------------END
 
 //学习string-会改变字符串原始值的强硬方法--------------------------------------------------------------------------------------------------END
