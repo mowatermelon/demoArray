@@ -3597,6 +3597,54 @@ function showInitData(){
 			console.log(Date.constructor);//[Function: Function]
 			console.log(Function.constructor);//[Function: Function]
 
+			console.log(Object.constructor.prototype);//[Function]
+			console.log(Boolean.constructor.prototype);//[Function]
+			console.log(Number.constructor.prototype);//[Function]
+			console.log(String.constructor.prototype);//[Function]
+			console.log(Array.constructor.prototype);//[Function]
+			console.log(Date.constructor.prototype);//[Function]
+			console.log(Function.constructor.prototype);//[Function]			
+
+			console.log(Object.constructor.__proto__);//[Function]
+			console.log(Boolean.constructor.__proto__);//[Function]
+			console.log(Number.constructor.__proto__);//[Function]
+			console.log(String.constructor.__proto__);//[Function]
+			console.log(Array.constructor.__proto__);//[Function]
+			console.log(Date.constructor.__proto__);//[Function]
+			console.log(Function.constructor.__proto__);//[Function]
+
+			console.log(Object.constructor.prototype===Function);//false
+			console.log(Boolean.constructor.prototype===Function);//false
+			console.log(Number.constructor.prototype===Function);//false
+			console.log(String.constructor.prototype===Function);//false
+			console.log(Array.constructor.prototype===Function);//false
+			console.log(Date.constructor.prototype===Function);//false
+			console.log(Function.constructor.prototype===Function);//false
+
+			console.log(Object.constructor.__proto__===Function);//false
+			console.log(Boolean.constructor.__proto__===Function);//false
+			console.log(Number.constructor.__proto__===Function);//false
+			console.log(String.constructor.__proto__===Function);//false
+			console.log(Array.constructor.__proto__===Function);//false
+			console.log(Date.constructor.__proto__===Function);//false
+			console.log(Function.constructor.__proto__===Function);//false		
+
+			console.log(Object.constructor.prototype===Object.prototype.constructor);//false
+			console.log(Boolean.constructor.prototype===Boolean.prototype.constructor);//false
+			console.log(Number.constructor.prototype===Number.prototype.constructor);//false
+			console.log(String.constructor.prototype===String.prototype.constructor);//false
+			console.log(Array.constructor.prototype===Array.prototype.constructor);//false
+			console.log(Date.constructor.prototype===Date.prototype.constructor);//false
+			console.log(Function.constructor.prototype===Function.prototype.constructor);//false
+
+			console.log(Object.constructor.__proto__===Object.__proto__.constructor);//false
+			console.log(Boolean.constructor.__proto__===Boolean.__proto__.constructor);//false
+			console.log(Number.constructor.__proto__===Number.__proto__.constructor);//false
+			console.log(String.constructor.__proto__===String.__proto__.constructor);//false
+			console.log(Array.constructor.__proto__===Array.__proto__.constructor);//false
+			console.log(Date.constructor.__proto__===Date.__proto__.constructor);//false
+			console.log(Function.constructor.__proto__===Function.__proto__.constructor);//false	
+
 			//而对象（Object，Boolean，Number，String，Array，Date，Function）及普通对象
 			//通过指针指向的内存中的地址来做比较。
 			//因为对象类型的构造体指向的地址和对象类型原型的构造体指向的地址是同一个所以判断返回的都是true			
