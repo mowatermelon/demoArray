@@ -964,10 +964,43 @@ function learnArray(){
         return res;
       }
 
+      Array.prototype.unique = function () {
+        //this.sort会直接改变this的内容
+        //所以在调用sort之前用concat深度复制一下数组内容
+        //保证数组中首字符等等重复概率比较高的元素 在一块
+        var _a = this.concat(); //先排序
+        var res = [_a[0]];
+        for (var i = 1; i < _a.length; i++) {
+          var pattenR= new RegExp(_a[i],"g");
+          if (!pattenR.test(res)) {
+            res.push(_a[i]);
+          }
+        }
+        return res;
+      }
+
+      var t_arr =["sss","sss","dfef","sss","sss","fefef","sssrr"];
+      console.log(t_arr);//[ 'sss', 'sss', 'dfef', 'sss', 'sss', 'fefef', 'sssrr' ]
+      console.log("手动分割线//");
+      console.log(t_arr.unique());//[ 'sss', 'dfef', 'fefef', 'sssrr' ]
+      console.log(t_arr);//[ 'sss', 'sss', 'dfef', 'sss', 'sss', 'fefef', 'sssrr' ]
+
+      Array.prototype.unique = function () {
+        var _a = this,
+            _b = [_a[0]];
+        _a.sort(function(a,b){
+            var pattenR= new RegExp(b);
+            if (!pattenR.test(_b)) {
+                _b.push(b);
+              }
+        });
+        return _b;
+      }      
+
     var t_arr =["sss","sss","dfef","sss","sss","fefef","sssrr"];
     console.log(t_arr);//[ 'sss', 'sss', 'dfef', 'sss', 'sss', 'fefef', 'sssrr' ]
     console.log("手动分割线//");
-    console.log(t_arr.unique());//[ 'dfef', 'fefef', 'sss', 'sssrr' ]
+    console.log(t_arr.unique());//[ 'sss', 'dfef', 'fefef', 'sssrr' ]
     console.log(t_arr);//[ 'sss', 'sss', 'dfef', 'sss', 'sss', 'fefef', 'sssrr' ]
       
       
