@@ -915,29 +915,62 @@ function learnArray(){
         console.log(matches);  // Returns af
     }   
   
-}
+    Array.prototype.distinct = function(){
+        var _self = this.concat();
+        var _a = this.concat().sort();
+        _a.sort(function(a,b){
+            if(a == b){
+                var n = _self.lastIndexOf(a);
+                _self.splice(n,1);
+            }
+        });
+        return _self;  
+    };  
+    var t_arr =["sss","sss","dfef","fefef"];
+    console.log(t_arr);//[ 'sss', 'sss', 'dfef', 'fefef' ]
+    console.log("手动分割线//");
+    console.log(t_arr.distinct());//[ 'sss', 'dfef', 'fefef' ]
+    console.log(t_arr);//[ 'sss', 'dfef', 'fefef' ]
 
-
-Date.prototype.format = function(format) {
-    var date = {
-           "M+": this.getMonth() + 1,
-           "d+": this.getDate(),
-           "h+": this.getHours(),
-           "m+": this.getMinutes(),
-           "s+": this.getSeconds(),
-           "q+": Math.floor((this.getMonth() + 3) / 3),
-           "S+": this.getMilliseconds()
+    Array.prototype.distinct = function(){
+        var _a = this,
+            _b = [_a[0]];
+        _a.sort(function(a,b){
+            if (_b.indexOf(b)===-1) {
+                _b.push(b);
+              }
+        });
+        return _b;
     };
-    if (/(y+)/i.test(format)) {
-           format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
-    }
-    for (var k in date) {
-           if (new RegExp("(" + k + ")").test(format)) {
-                  format = format.replace(RegExp.$1, RegExp.$1.length == 1
-                         ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
-           }
-    }
-    return format;
+
+    var t_arr =["sss","sss","dfef","sss","fefef","sssrr"];
+    console.log(t_arr);//[ 'sss', 'sss', 'dfef', 'sss', 'fefef', 'sssrr' ]
+    console.log("手动分割线//");
+    console.log(t_arr.distinct());//[ 'sss', 'dfef', 'fefef', 'sssrr' ]
+    console.log(t_arr);//[ 'sss', 'sss', 'dfef', 'sss', 'fefef', 'sssrr' ]
+
+    Array.prototype.unique = function () {
+        //this.sort会直接改变this的内容
+        //所以在调用sort之前用concat深度复制一下数组内容
+        //保证数组中首字符等等重复概率比较高的元素 在一块
+        var _a = this.concat().sort(); //先排序
+        console.log(_a);//[ 'dfef', 'fefef', 'sss', 'sss', 'sss', 'sss', 'sssrr' ]
+        var res = [_a[0]];
+        for (var i = 1; i < _a.length; i++) {
+          if (_a[i] !== res[res.length - 1]) {
+            res.push(_a[i]);
+          }
+        }
+        return res;
+      }
+
+    var t_arr =["sss","sss","dfef","sss","sss","fefef","sssrr"];
+    console.log(t_arr);//[ 'sss', 'sss', 'dfef', 'sss', 'sss', 'fefef', 'sssrr' ]
+    console.log("手动分割线//");
+    console.log(t_arr.unique());//[ 'dfef', 'fefef', 'sss', 'sssrr' ]
+    console.log(t_arr);//[ 'sss', 'sss', 'dfef', 'sss', 'sss', 'fefef', 'sssrr' ]
+      
+      
 }
 
 
@@ -1003,5 +1036,27 @@ function learnDate(){
     console.log(oDate.toTimeString());//00:31:12 GMT+0800 (CST)
     console.log("\n");
     console.log(oDate.toUTCString());//Sat, 18 Nov 2017 16:31:12 GMT
+
+    Date.prototype.format = function(format) {
+        var date = {
+               "M+": this.getMonth() + 1,
+               "d+": this.getDate(),
+               "h+": this.getHours(),
+               "m+": this.getMinutes(),
+               "s+": this.getSeconds(),
+               "q+": Math.floor((this.getMonth() + 3) / 3),
+               "S+": this.getMilliseconds()
+        };
+        if (/(y+)/i.test(format)) {
+               format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
+        }
+        for (var k in date) {
+               if (new RegExp("(" + k + ")").test(format)) {
+                      format = format.replace(RegExp.$1, RegExp.$1.length == 1
+                             ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
+               }
+        }
+        return format;
+    }    
 }
 
