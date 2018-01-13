@@ -2930,74 +2930,77 @@ function showInitData(){
 			console.log("\n 打印concat()函数的用法---------------------------------------------------------------------------------------------------------------------1"); 
 			console.log(strString.concat());//hello watermelon
 			console.log(oString.concat());//hello world
-			console.log(tString_1.concat());//hello Template
-			console.log(tString_2.concat());//
-			console.log(tString_3.concat());//
-			console.log(tString_4.concat());//
-		
+			console.log(tString_1.concat());//hello line 1\n\t\t\t\thello line 2 
+			console.log(tString_2.concat());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.concat());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.concat());//大吉大利今晚吃西瓜!
 
-			//先试一下第一个参数的检索正确性，比如对几个特殊字符的检查正确性
+			//先试一下第一个参数的检索正确性，比如对几个特殊字符的连接是否会做转化，
+			//对于特殊字符直接转换成字符串再做拼接，所以在传入的时候加不加引号都可以。
+
 			console.log("-------------------测试");
-			console.log("true".concat(true));//0  进行匹配的时候不一定他要添加双引号
-			console.log("false".concat(false));//0			
-			console.log("null".concat(null));//0	
-			console.log("undefined".concat(undefined));//0	
-			console.log("NaN".concat(NaN));//0
+			console.log("true".concat(true));//truetrue
+			console.log("false".concat(false));//falsefalse			
+			console.log("null".concat(null));//nullnull	
+			console.log("undefined".concat(undefined));//undefinedundefined	
+			console.log("NaN".concat(NaN));//NaNNaN
 
 			console.log("-------------------测试");			
-			console.log("true".concat("true"));//0  进行匹配的时候，只要原始值是定义好的，加没加双引号都可以被正常检测出来
-			console.log("false".concat("false"));//0			
-			console.log("null".concat("null"));//0	
-			console.log("undefined".concat("undefined"));//0	
-			console.log("NaN".concat("NaN"));//0
+			console.log("true".concat("true"));//truetrue
+			console.log("false".concat("false"));//falsefalse					
+			console.log("null".concat("null"));//nullnull		
+			console.log("undefined".concat("undefined"));//undefinedundefined
+			console.log("NaN".concat("NaN"));//NaNNaN
 			
 			console.log("-------------------测试");			
-			console.log(oString.concat(true));//-1
-			console.log(oString.concat(false));//-1		
-			console.log(oString.concat(null));//-1	
-			console.log(oString.concat(undefined));//-1
-			console.log(oString.concat(NaN));//-1
+			console.log(oString.concat(true));//hello worldtrue
+			console.log(oString.concat(false));//hello worldfalse	
+			console.log(oString.concat(null));//hello worldnull
+			console.log(oString.concat(undefined));//hello worldundefined
+			console.log(oString.concat(NaN));//hello worldNaN
 
 			console.log("-------------------测试");						
-			console.log(oString.concat(""));//0 
-			console.log(oString.concat(oString));//0 自己是绝对以自己开始的
+			console.log(oString.concat(""));//hello world
+			console.log(oString.concat(oString));//hello worldhello world
 
 			//先试一下第二个参数的检索正确性，对于负数，非整数，或者非数值的
 			console.log("-------------------测试");
-			console.log(oString.concat("hell",1));//-1
-			console.log(oString.concat("hell",1.1));//-1
-			console.log(oString.concat("hell",1.5));//-1
-			console.log(oString.concat("hell",1.8));//-1
-			console.log(oString.concat("hell",-1));//0
+			console.log(oString.concat("hell",1));//hello worldhell1
+			console.log(oString.concat("hell",1.1));//hello worldhell1.1
+			console.log(oString.concat("hell",1.5));//hello worldhell1.5
+			console.log(oString.concat("hell",1.8));//hello worldhell1.8
+			console.log(oString.concat("hell",-1));//hello worldhell-1
 
 			console.log("-------------------测试");
-
-			console.log(oString.concat("hell",0.0));//0
-			console.log(oString.concat("hell",0.1));//0
-			console.log(oString.concat("hell",0.5));//0
-			console.log(oString.concat("hell",0.8));//0
-			console.log(oString.concat("hell",-0));//0	
-			console.log(oString.concat("hell",-2));//0	
-			console.log(oString.concat("hell",-3));//0	
+			//貌似会把0进行转换，转换为无小数位的
+			console.log(oString.concat("hell",0.0));//hello worldhell0
+			console.log(oString.concat("hell",0.1));//hello worldhell0.1
+			console.log(oString.concat("hell",0.5));//hello worldhell0.5
+			console.log(oString.concat("hell",0.8));//hello worldhell0.8
+			console.log(oString.concat("hell",-0));//hello worldhell0
+			console.log(oString.concat("hell",-2));//hello worldhell-2	
+			console.log(oString.concat("hell",-3));//hello worldhell-3
 
 			console.log("-------------------测试");
-
-			console.log(oString.concat("hell",true));//-1
-			console.log(oString.concat("hell",false));//0
-			console.log(oString.concat("hell","true"));//0
-			console.log(oString.concat("hell","false"));//0		
-			console.log(oString.concat("hell",oo));//0
-			console.log(oString.concat("hell",oBool));//-1
-			console.log(oString.concat("hell",oArray));//0
-			console.log(oString.concat("hell",oDate));//-1 						
+			//几大类型中
+			//object转换成string，会完全不同，
+			//数组转换成string，会将所有子集的内容以逗号形式连接起来，注意这个转换会去掉每个子集的单引号。
+			console.log(oString.concat("hell",true));//hello worldhelltrue
+			console.log(oString.concat("hell",false));//hello worldhellfalse
+			console.log(oString.concat("hell","true"));//hello worldhelltrue
+			console.log(oString.concat("hell","false"));//hello worldhellfalse		
+			console.log(oString.concat("hell",oo));//hello worldhell[object Object]
+			console.log(oString.concat("hell",oBool));//hello worldhelltrue
+			console.log(oString.concat("hell",oArray));//hello worldhelldemo,melon,water
+			console.log(oString.concat("hell",oDate));//hello worldhellThu Jan 11 2018 21:39:49 GMT+0800 (中国标准时间) 						
 				 
 			console.log("-------------------测试");
-
-			console.log(oString.concat("hell",Number.MAX_VALUE));//-1 
-			console.log(oString.concat("hell",Number.MIN_VALUE));//0
-			console.log(oString.concat("hell",Number.NaN));//0
-			console.log(oString.concat("hell",Number.NEGATIVE_INFINITY));//0		
-			console.log(oString.concat("hell",Number.POSITIVE_INFINITY));//-1		
+			//对于Number对象的几个特殊值也能进行正常转换
+			console.log(oString.concat("hell",Number.MAX_VALUE));//hello worldhell1.7976931348623157e+308 
+			console.log(oString.concat("hell",Number.MIN_VALUE));//hello worldhell5e-324
+			console.log(oString.concat("hell",Number.NaN));//hello worldhellNaN
+			console.log(oString.concat("hell",Number.NEGATIVE_INFINITY));//hello worldhell-Infinity		
+			console.log(oString.concat("hell",Number.POSITIVE_INFINITY));//hello worldhellInfinity	
 		}
 
 		function learnStringSPadEnd(){
