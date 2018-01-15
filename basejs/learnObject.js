@@ -161,12 +161,15 @@ function learnNumber(){
     //字符串值和object对象不能转换成数字
     //但是true和false有对应的数值转义，分别为1和0
     //null值有对应的数值，但是undefined没有对应的数值
-    console.log(Number(false))	//0
-    console.log(Number(true))	//1
-    console.log(Number(undefined))	//NaN
-    console.log(Number(null))	//0
-    console.log(Number("1.2.3"))	//NaN
-    console.log(Number(new Object()))	//NaN
+    console.log(Number(false));	//0
+    console.log(Number(true));	//1
+    console.log(Number(undefined));	//NaN
+    console.log(Number(null));	//0
+    console.log(Number("1.2.3"));	//NaN
+    console.log(Number(new Object()));	//NaN
+    console.log(Number("\t\r\n"));	//0
+    console.log(Number("  "));	//0    
+    console.log(Number(/\t/));	//NaN    
 
     //----------------------------------------------------属性
     //对创建对象的函数的引用（指针）。对于 Number 对象，该指针指向原始的 Number() 函数。
