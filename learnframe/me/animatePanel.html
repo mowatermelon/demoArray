@@ -36,90 +36,311 @@
 			.col-xs-12 {width: 98%;}
 			@media (min-width: 768px) {.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9{float:left}.col-sm-6 {width: 48.25%;}.col-sm-4 {width: 31.65%;}}   
 			.form-control[disabled],.form-control[readonly],fieldset[disabled] .form-control{background-color:#eee;cursor:not-allowed}
+			.change_btn{cursor: pointer;}
 	</style>
 </head>
 <body>
-	<div class="panel-group">
-			<div class="panel">
-					<div class="panel-head">
-							<h5>面板01</h5><icon>一</icon>
-					</div>
-					<div class="panel-body">
-							<div class="input-group col-xs-12 col-sm-6">
-									<label for="txtTXT1" class="input-group-addon"><b class='text-danger'>*</b>文本框一</label>
-									<input type="text" class="form-control" id="txtTXT1" />
-							</div>
-							<div class="input-group col-xs-12 col-sm-6">
-									<label for="txtTXT2"  class="input-group-addon"><b class='text-danger'>*</b>文本框二</label>
-									<input type="text" class="form-control" id="txtTXT2" />
-							</div>
-							<div class="input-group col-xs-12 col-sm-6">
-									<label for="txtTXT3"  class="input-group-addon"><b class='text-danger'>*</b>文本框三</label>
-									<input type="text" class="form-control" id="txtTXT3"/>
-							</div>
-							<div class="input-group col-xs-12 col-sm-6">
-									<label for="txtTXT4"  class="input-group-addon"><b class='text-danger'>*</b>文本框四</label>
-									<input type="text" class="form-control" id="txtTXT4" />
-							</div>
-					</div>
-			</div> 
-			<div class="panel">
-					<div class="panel-head">
-							<h5>面板02</h5><icon>一</icon>
-					</div>
-					<div class="panel-body">
-							<div class="input-group col-xs-12 col-sm-6">
-									<label for="txtTXT21" class="input-group-addon"><b class='text-danger'>*</b>文本框一</label>
-									<input type="text" class="form-control" id="txtTXT21" />
-							</div>
-							<div class="input-group col-xs-12 col-sm-6">
-									<label for="txtTXT22"  class="input-group-addon"><b class='text-danger'>*</b>文本框二</label>
-									<input type="text" class="form-control" id="txtTXT22" />
-							</div>
-							<div class="input-group col-xs-12 col-sm-6">
-									<label for="txtTXT23"  class="input-group-addon"><b class='text-danger'>*</b>文本框三</label>
-									<input type="text" class="form-control" id="txtTXT23"/>
-							</div>
-							<div class="input-group col-xs-12 col-sm-6">
-									<label for="txtTXT24"  class="input-group-addon"><b class='text-danger'>*</b>文本框四</label>
-									<input type="text" class="form-control" id="txtTXT24" />
-							</div>
-					</div>
-			</div> 
-			<div class="panel">
-					<div class="panel-head">
-							<h5>面板03</h5><icon>一</icon>
-					</div>
-					<div class="panel-body">
-							<div class="input-group col-xs-12 col-sm-6">
-									<label for="txtTXT31" class="input-group-addon"><b class='text-danger'>*</b>文本框一</label>
-									<input type="text" class="form-control" id="txtTXT31" />
-							</div>
-							<div class="input-group col-xs-12 col-sm-6">
-									<label for="txtTXT32"  class="input-group-addon"><b class='text-danger'>*</b>文本框二</label>
-									<input type="text" class="form-control" id="txtTXT32" />
-							</div>
-							<div class="input-group col-xs-12 col-sm-6">
-									<label for="txtTXT33"  class="input-group-addon"><b class='text-danger'>*</b>文本框三</label>
-									<input type="text" class="form-control" id="txtTXT33"/>
-							</div>
-							<div class="input-group col-xs-12 col-sm-6">
-									<label for="txtTXT34"  class="input-group-addon"><b class='text-danger'>*</b>文本框四</label>
-									<input type="text" class="form-control" id="txtTXT34" />
-							</div>
-					</div>
-			</div> 						
-	</div>
+	<div class="panelMain"></div>
  
 </body>
 <script type="text/javascript" src="../../js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript">
     $(function () {
-        LoadPanel();
+				var mainObj = $(".panelMain"); 
+				mainObj.html(LoadPanel());							
+				LoadAction();
     });
 
+		//面板默认数据
+		function initPanelData(){
+			this.text =[
+									{
+										title:'开心',
+										content:[
+											{
+											"title":"数据来源",
+											"alias":"sjy",
+											"type":"select",
+											"cls":"input-group col-xs-12 col-sm-6",
+											"isMust":true,
+											"option":[
+												"吃瓜群众","吃惊群众"
+											]
+											},
+											{
+												"title":"计算方式",
+												"alias":"jsfs",
+												"type":"select",
+												"cls":"input-group col-xs-12 col-sm-6",
+												"isMust":true,
+												"option":[
+													"西瓜面积","瓜子面积","苹果面积"
+												]
+											}, 
+											{
+												"title":"扣除模式",
+												"alias":"kcms",
+												"type":"select",
+												"cls":"input-group col-xs-12 col-sm-6",
+												"isMust":true,
+												"option":[
+													"开心就好模式","吃瓜就好模式"
+												]
+											},
+											{
+												"title":"输出单位",
+												"alias":"scdw",
+												"type":"select",
+												"cls":"input-group col-xs-12 col-sm-6",
+												"isMust":true,
+												"option":[
+													"小心","小气","小资"
+												]
+											}, 
+											{
+												"title":"小数单位",
+												"alias":"xsw",
+												"type":"change",
+												"cls":"input-group col-xs-12 col-sm-6",
+												"isMust":true,
+												"option":2,
+												"min":0,
+												"max":10,
+												"count":1,
+                        "fix":0
+											},  
+											{
+												"title":"吃鸡距离",
+												"alias":"cjjl",
+												"type":"text",
+												"cls":"input-group col-xs-12 col-sm-6",
+												"isMust":true,
+												"option":2,
+												"unit":"千米"
+											}
+										]
+									},
+									{
+										title:'伤心',
+										content:[
+											{
+											"title":"数据来源",
+											"alias":"sjy",
+											"type":"select",
+											"cls":"input-group col-xs-12 col-sm-6",
+											"isMust":true,
+											"option":[
+												"吃瓜群众","吃惊群众"
+											]
+											},
+											{
+												"title":"计算方式",
+												"alias":"jsfs",
+												"type":"select",
+												"cls":"input-group col-xs-12 col-sm-6",
+												"isMust":true,
+												"option":[
+													"西瓜面积","瓜子面积","苹果面积"
+												]
+											}, 
+											{
+												"title":"扣除模式",
+												"alias":"kcms",
+												"type":"select",
+												"cls":"input-group col-xs-12 col-sm-6",
+												"isMust":true,
+												"option":[
+													"开心就好模式","吃瓜就好模式"
+												]
+											},
+											{
+												"title":"输出单位",
+												"alias":"scdw",
+												"type":"select",
+												"cls":"input-group col-xs-12 col-sm-6",
+												"isMust":true,
+												"option":[
+													"小心","小气","小资"
+												]
+											}, 
+											{
+												"title":"吃鸡距离",
+												"alias":"cjjl",
+												"type":"text",
+												"cls":"input-group col-xs-12 col-sm-6",
+												"isMust":true,
+												"option":2,
+												"unit":"千米"
+											}, 
+											{
+												"title":"吃惊比例",
+												"alias":"cjbl",
+												"type":"change",
+												"cls":"input-group col-xs-12 col-sm-6",
+												"isMust":true,
+												"option":0.9,
+												"min":0,
+												"max":1,
+												"count":0.1,
+												"fix":1
+											}
+										]
+									},
+									{
+										title:'生气',
+										content:[
+											{
+											"title":"数据来源",
+											"alias":"sjy",
+											"type":"select",
+											"cls":"input-group col-xs-12 col-sm-6",
+											"isMust":true,
+											"option":[
+												"吃瓜群众","吃惊群众"
+											]
+											},
+											{
+												"title":"计算方式",
+												"alias":"jsfs",
+												"type":"select",
+												"cls":"input-group col-xs-12 col-sm-6",
+												"isMust":true,
+												"option":[
+													"西瓜面积","瓜子面积","苹果面积"
+												]
+											}, 
+											{
+												"title":"扣除模式",
+												"alias":"kcms",
+												"type":"select",
+												"cls":"input-group col-xs-12 col-sm-6",
+												"isMust":true,
+												"option":[
+													"开心就好模式","吃瓜就好模式"
+												]
+											},
+											{
+												"title":"输出单位",
+												"alias":"scdw",
+												"type":"select",
+												"cls":"input-group col-xs-12 col-sm-6",
+												"isMust":true,
+												"option":[
+													"小心","小气","小资"
+												]
+											}, 
+											{
+												"title":"吃瓜距离",
+												"alias":"cgjl",
+												"type":"change",
+												"cls":"input-group col-xs-12 col-sm-6",
+												"isMust":false,
+												"option":20,
+												"min":10,
+												"max":100,
+												"count":10,
+                        "fix":0
+											},  
+											{
+												"title":"吃鸡距离",
+												"alias":"cjjl",
+												"type":"text",
+												"cls":"input-group col-xs-12 col-sm-6",
+												"isMust":true,
+												"option":2,
+												"unit":"千米"
+											}
+										]
+									}
+								];
+		}
+
+		//加载面板数据
+		function LoadPanel(){
+			var initData = new initPanelData().text;
+			var tempTxt=''; 
+			tempTxt += '         <div class="panel-group">\n';
+			for(var i=0;i<initData.length;i++){
+				tempTxt += '         <div class="panel">\n';				
+				tempTxt += '         		<div class="panel-head">\n';
+				tempTxt += '         				<h5>'+initData[i].title+'面板</h5><icon>一</icon>\n';
+				tempTxt += '         		</div>\n';
+				tempTxt += '         		<div class="panel-body">\n';
+				tempTxt += loadForm(initData[i].content); 
+				tempTxt += '         		</div>\n';
+				tempTxt += '         </div>\n'; 								
+			}
+			tempTxt += '         </div>\n'; 
+			
+			return tempTxt;			
+		}				
+
+		function loadForm(data){
+			var tempTxt='';
+			for(var i=0;i<data.length;i++){       
+				tempTxt += "      <div class='"+data[i].cls+"'>\n";
+				tempTxt += "          <label class='input-group-addon' for='"+data[i].type+data[i].alias+"' class='label_"+data[i].alias+"' alt='"+data[i].title+"'>"+data[i].title;
+				if(data[i].isMust){
+					tempTxt += "<b class='text-danger'>*</b>";
+				}
+				tempTxt += "</label>\n";    
+				switch(data[i].type){
+					case "select":
+						tempTxt += loadSelect(data[i]);
+						break;
+					case "text":
+						tempTxt += loadInput(data[i]);
+						break;
+					case "change":
+						tempTxt += loadChange(data[i]);
+						break;                  
+				}
+				tempTxt += "      </div>\n";
+			}
+			return tempTxt;
+		}
+
+		function loadSelect(data){
+			var tempTxt=''; 
+			tempTxt += "          <select class='form-control' >\n"; 
+			for(var i=0;i<data.option.length;i++){
+				tempTxt += "              <option index='"+i+"' name='"+data.option[i]+"'>"+data.option[i]+"</option>\n";           
+			}         
+			tempTxt += "          </select>\n"; 
+			return tempTxt;
+		}
+
+		function loadInput(data){
+			var tempTxt=''; 
+			tempTxt += "          <input class='form-control' type='text' id='text"+data.alias+"' value='"+data.option+"'/>\n"; 
+			tempTxt += "          <label class='input-group-addon'>"+data.unit+"</label>\n"; 
+			return tempTxt;
+		}
+
+		function loadChange(data){
+			var tempTxt=''; 
+			tempTxt += "          <label class='change_btn input-group-addon' onclick='reduceNum(\""+data.alias+"\",\""+data.min+"\",\""+data.count+"\",\""+data.fix+"\")'>-</label>\n";     			
+			tempTxt += "          <input type='text' class='form-control' id='change"+data.alias+"'  value='"+data.option+"'/>\n"; 
+			tempTxt += "          <label class='change_btn input-group-addon' onclick='addNum(\""+data.alias+"\",\""+data.max+"\",\""+data.count+"\",\""+data.fix+"\")'>+</label>\n"; 
+			return tempTxt;
+		}
+
+		function addNum(id,max,count,fix){
+			var obj = $("#change"+id);
+			if(Number(obj.val())<Number(max)){
+				obj.val((Number(obj.val()) + Number(count)).toFixed(Number(fix)));
+			}
+		}
+
+		function reduceNum(id,min,count,fix){
+			var obj = $("#change"+id);
+			if(Number(obj.val())>Number(min)){
+				obj.val((Number(obj.val())-  Number(count)).toFixed(Number(fix)));
+			}
+		}
+
     //加载面板动画
-    function LoadPanel() {
+    function LoadAction() {
         $(".panel-head").click(function () {
             var _this = $(this);
             if (_this.siblings(".panel-body").hasClass('hide')) {
