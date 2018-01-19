@@ -16,7 +16,7 @@
 			.tabMain, .tabMain:before, .tabMain:after,.tab-head, .tab-head:before, .tab-head:after ,.tab-body, .tab-body:before, .tab-body:after  {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
 			.tab-head{padding: 10px 15px;width:100%; cursor:pointer;border-bottom:1px solid #3a87ad;}
 			.tab-body{padding: 15px;width: 100%;overflow: auto;}
-			.tab-head>ul>li{display: table-cell;list-style:none;text-align: center;background-color: #FFF;padding: 0 0.3em;}
+			.tab-head>ul>li{display: table-cell;list-style:none;text-align: center;background-color: #FFF;}
 			.tab-title{width:160px;min-width:0;max-width:160px;padding: 0.5em 1em;border:1px solid #3a87ad;color:#3a87ad;border-radius:4px 4px 0 0;margin-bottom:0;}
 			.tab-head>ul>li.active .tab-title{color:#fff;font-weight: bolder;background-color: #3a87ad;}
 
@@ -64,7 +64,7 @@
 		function LoadTabHead(len){
 			var tempTxt = '<ul>';
 			for(var i=0;i<len;i++){
-				tempTxt += '<li><a class="tab-title">表'+String.fromCharCode(i+65)+'</a></li>';
+				tempTxt += '<li><a class="tab-title">分析表'+(i+1)+'</a></li>';
 			}
 			tempTxt += '</ul>';
 			return tempTxt;			
@@ -110,7 +110,6 @@
 		}
     //加载面板动画
     function LoadAction() {
-				var initData = new initPanelData().text;
         $(".tab-title").click(function () {
 						var _this = $(this);
 						var _index = _this.parent("li").index();
