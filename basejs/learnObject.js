@@ -1102,7 +1102,7 @@ function learnES6(){
         this.name ="test";
     }
     let obj = new CreatObj();
-    let obj1= Object.create(obj)
+    let obj1= Object.create(obj);
     let obj2 = Object.assign({},obj);
     let obj3 = Object.assign({},obj1);
     console.log(obj.name);//test
