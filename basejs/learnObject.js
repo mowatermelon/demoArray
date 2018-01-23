@@ -1096,3 +1096,18 @@ function learnDate(){
     }    
 }
 
+
+function learnES6(){
+    function CreatObj(){
+        this.name ="test";
+    }
+    let obj = new CreatObj();
+    let obj1= Object.create(obj)
+    let obj2 = Object.assign({},obj);
+    let obj3 = Object.assign({},obj1);
+    console.log(obj.name);//test
+    console.log(obj1.name);//test
+    console.log(obj2.name);//test
+    console.log(obj3.name);//undefined
+}
+learnES6();
