@@ -78,10 +78,7 @@
 
 		function tranTable(str){
 			var searchStr = '</table>';
-			var searchHead = {
-				begin:"<caption ",
-				end:"</caption>"
-			};			
+			var searchHead = /<caption(.*?)>(.+)<\/caption>/g;			
 			var strRes = indexCountStrChar(str,searchStr,searchHead,searchStr.length);			
 			return strRes;
 		}
@@ -105,13 +102,10 @@
 			return res;
 		}
 
-		function cutStrChar(str,char){
+		function cutStrChar(str,regExp){
 			var res =null;
-			var posBegin = str.indexOf(char.begin);
-			var posEnd = str.indexOf(char.end);
-			var gapLength = char.end.length;
-			if (posBegin !== -1&&posEnd !== -1) {
-				res = {head:str.substring(posBegin,(posEnd+gapLength)),text:str.replace(str.substring(posBegin,(posEnd+gapLength)),"")};
+			if (!!regExp) {
+				res = {head:str.match(regExp)[0],text:str.replace(regExp,"")};
 			}
 			return res;
 		}
