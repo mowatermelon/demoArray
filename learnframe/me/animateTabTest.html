@@ -41,6 +41,7 @@
 </body>
 <script type="text/javascript" src="../../js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="../../js/getData.js"></script>
+<script src="../../js/moTool.js"></script>
 <script type="text/javascript">
 		var initRes;	
     $(function () {
@@ -78,13 +79,14 @@
 
 		function tranTable(str){
 			var searchStr = '</table>';
-			var searchHead = /<caption(.*?)>(.+)<\/caption>/g;			
+			var searchHead = "caption";			
 			var strRes = indexCountStrChar(str,searchStr,searchHead,searchStr.length);			
 			return strRes;
 		}
 		function indexCountStrChar(str,char,headChar,gapLength){
 			var res =[];
 			var resHead =null;
+			var resHeads = moTool.splitTagStr(str,"table",1);
 			var count = 0;
 			var resText = null;
 			var pos = str.indexOf(char);
@@ -95,17 +97,18 @@
 					resText = str.substring((res[count-1].pos+gapLength),(pos+gapLength));
 				}
 				resHead = cutStrChar(resText,headChar);
-				res.push({index:count,pos:pos,head:resHead.head,text:resHead.text});
+				res.push({index:count,pos:pos,head:resHead.tag,text:resHead.text});
 				count++;
 				pos = str.indexOf(char, pos + 1);
 			}
 			return res;
 		}
 
-		function cutStrChar(str,regExp){
+		function cutStrChar(str,tagStr){	
 			var res =null;
-			if (!!regExp) {
-				res = {head:str.match(regExp)[0],text:str.replace(regExp,"")};
+			if (!!tagStr) {
+				//res = {head:str.match(regExp)[0],text:str.replace(regExp,"")};
+				res = moTool.cutTagStr(str,tagStr,2);
 			}
 			return res;
 		}
