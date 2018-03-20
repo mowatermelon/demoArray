@@ -3005,12 +3005,75 @@ function showInitData(){
 
 		function learnStringSPadEnd(){
 			console.log("\n 打印padEnd()函数的用法---------------------------------------------------------------------------------------------------------------------2"); 
-			console.log(strString);//hello watermelon
-			console.log(oString);//hello world
-			console.log(oString_1);//A 你 Z   中间不在BMP中的字符，会显示乱码
-			console.log(tString_1);//hello Template
-			console.log(tString_2);//hello line 1\n\t\t\t\thello line 2  
-			console.log(tString_3);//Fifteen is 12 and\nnot 16.  
+			console.log(strString.padEnd());//hello watermelon
+			console.log(oString.padEnd());//hello world
+			console.log(oString_1.padEnd());//A 你 Z   中间不在BMP中的字符，会显示乱码
+			console.log(tString_1.padEnd());//hello Template
+			console.log(tString_2.padEnd());//hello line 1\n\t\t\t\thello line 2  
+			console.log(tString_3.padEnd());//Fifteen is 12 and\nnot 16.  
+
+			//先试一下第一个参数的检索正确性，比如对几个特殊字符的连接是否会做转化，
+			//对于特殊字符直接转换成字符串再做拼接，所以在传入的时候加不加引号都可以。
+
+			console.log("-------------------测试");
+			console.log("true".padEnd(true));//true
+			console.log("false".padEnd(false));//false		
+			console.log("null".padEnd(null));//null
+			console.log("undefined".padEnd(undefined));//undefined
+			console.log("NaN".padEnd(NaN));//NaN
+
+			console.log("-------------------测试");			
+			console.log("true".padEnd("true"));//true
+			console.log("false".padEnd("false"));//false					
+			console.log("null".padEnd("null"));//null		
+			console.log("undefined".padEnd("undefined"));//undefined
+			console.log("NaN".padEnd("NaN"));//NaN
+			
+			console.log("-------------------测试");			
+			console.log(oString.padEnd(true));//hello world
+			console.log(oString.padEnd(false));//hello world
+			console.log(oString.padEnd(null));//hello world
+			console.log(oString.padEnd(undefined));//hello world
+			console.log(oString.padEnd(NaN));//hello world
+
+			console.log("-------------------测试");						
+			console.log(oString.padEnd(""));//hello world
+			console.log(oString.padEnd(oString));//hello world
+
+			console.log("-------------------测试");
+			//几大类型中
+			//object转换成string，会完全不同，
+			//数组转换成string，会将所有子集的内容以逗号形式连接起来，注意这个转换会去掉每个子集的单引号。	
+			console.log(oString.padEnd(oo));//hello world
+			console.log(oString.padEnd(oBool));//hello world
+			console.log(oString.padEnd(oArray));//hello world
+			// console.log(oString.padEnd(oDate));//RangeError: Invalid string length 						
+				 
+			console.log("-------------------测试");
+			//对于Number对象的几个特殊值也能进行正常转换
+			// console.log(oString.padEnd(Number.MAX_VALUE));//RangeError: Invalid string length
+			console.log(oString.padEnd(Number.MIN_VALUE));//hello world
+			console.log(oString.padEnd(Number.NaN));//hello world
+			console.log(oString.padEnd(Number.NEGATIVE_INFINITY));//hello world		
+			// console.log(oString.padEnd(Number.POSITIVE_INFINITY));//RangeError: Invalid string length
+		
+
+			//再看看 第一个参数对于数字是否进行了相关转换
+			console.log("-------------------测试");
+			console.log(oString.padEnd(12,"hell"));//hello worldh 
+			console.log(oString.padEnd(12.1,"hell"));//hello worldh 
+			console.log(oString.padEnd(12.5,"hell"));//hello worldh
+			console.log(oString.padEnd(12.8,"hell"));//hello worldh 
+			console.log(oString.padEnd(-12,"hell"));//hello world 
+
+			console.log("-------------------测试");
+			console.log(oString.padEnd(11.0,"hell"));//hello world 
+			console.log(oString.padEnd(11.1,"hell"));//hello world 
+			console.log(oString.padEnd(11.5,"hell"));//hello world 
+			console.log(oString.padEnd(11.8,"hell"));//hello world 
+			console.log(oString.padEnd(-0,"hell"));//hello world
+			console.log(oString.padEnd(-2,"hell"));//hello world
+			console.log(oString.padEnd(-3,"hell"));//hello world		
 		}
 
 		function polyfillPadEnd(){
