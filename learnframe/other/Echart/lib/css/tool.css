@@ -1,0 +1,61 @@
+/*
+* 文字相关帮助类
+*/
+.text-left{
+    text-align: left;
+}
+.text-center{
+    text-align: center;
+}
+.text-right{
+    text-align: right;
+}
+p {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+/*
+* 渲染相关帮助类
+*/
+.round{
+    border-radius: 50%/25%;
+}
+.inline{
+    display: inline;
+}
+.inline-block{
+    display: inline-block;
+}
+.show{
+    display: block;
+}
+.hide{
+    display: none;
+}
+.help-left{
+    float: left;
+}
+.help-right{
+    float: right;
+}
+
+/*
+* 按钮相关帮助类
+*/
+.btn{
+    padding: 5px 15px;
+    line-height: 15px;
+    cursor: pointer;
+}
+.btn-hollow{
+    border:1px solid #3a87ad;
+    border-radius: 15px;
+    background-color:transparent;
+    color:#3a87ad;
+}
+.btn-hollow:hover,.btn-hollow.active{
+    background-color:rgb(255, 168, 17);
+    border-color:rgb(255, 168, 17);
+    color:#fff;    
+}

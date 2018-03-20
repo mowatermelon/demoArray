@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>map && bar</title>
+</head>
+<link rel="stylesheet" href="lib/css/main.css">
+<body>
+  <div class="main">
+    <div class="left-bar">
+      <div id="bmap" class="map-box">地图</div>
+    </div>
+    <div class="right-bar">
+      <div class="panel-group">
+        <div class="panel panel-info">
+          <div class="panel-head">
+            <p class="inline-block text-left">
+              <span>
+                数据汇交
+              </span>
+            </p>
+            <p class="inline-block help-right">
+                <span class="btn btn-hollow">热力图</span>
+                <span class="btn btn-hollow active">分布图</span>    
+            </p>
+          </div>
+          <div class="panel-body">
+            <ul class="list" id="listGroup">
+            </ul>
+          </div>
+        </div>
+        <div class="panel panel-info">
+          <div class="panel-head">
+              <p class="inline-block text-left">
+                <span>
+                  汇交情况
+                </span>
+              </p>
+              <p class="inline-block help-right">
+                  <span>（单位：件）</span>  
+              </p>    
+          </div>
+          <div class="panel-body">
+            <div id="joinBar" class="bar-box"></div>
+          </div>
+        </div>
+        <div class="panel panel-info">
+          <div class="panel-head">
+              <p class="inline-block text-left">
+                <span>
+                  上报情况
+                </span>
+              </p>
+              <p class="inline-block help-right">
+                  <span>（单位：件）</span>  
+              </p>    
+          </div>
+          <div class="panel-body">
+            <div id="upBar" class="bar-box"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="lib/js/echarts.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+<script src="lib/js/ajssdk.min.js"></script>
+<script src="lib/js/bmap.min.js"></script>
+<!-- 加载默认图表相关数据 -->
+<script src="lib/js/dataChart.js"></script>
+<!-- 加载echart的地图 -->
+<script src="lib/js/dataChartMap.js"></script>
+<!-- 加载百度的地图 -->
+<!-- <script src="lib/js/dataBmap.js"></script> -->
+<script src="lib/js/draw.js"></script>
+
+<script>
+  window.onload =function(){
+    // drawChart("bmap",0,"bmap");//加载百度的地图，只能加载一种地图
+    drawChart("bmap",0,"geo");//加载echart的地图，只能加载一种地图
+    drawList("listGroup");
+    drawChart("joinBar",1);
+    drawChart("upBar",2);
+  }
+</script>
+</html>
