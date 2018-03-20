@@ -41,8 +41,9 @@
 </body>
 <script type="text/javascript" src="../../js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="../../js/getData.js"></script>
+<script src="../../js/moTool.js"></script>
 <script type="text/javascript">
-		var initData;
+		var initRes;	
     $(function () {
 				var mainObj = $(".tabMain"); 
 				var headObj = $(".tab-head");	
@@ -53,18 +54,18 @@
 		});
 
 		function loadTab(headObj,bodyObj){
-			initData = new initTableData().text;
-			var tempTxt = tranTable(initData);	
-			headObj.html(LoadTabHead(tempTxt.length));		
+			var initData = new initTableData().text;
+			initRes = tranTable(initData);	
+			headObj.html(LoadTabHead(initRes));		
 			headObj.find("ul li").eq(0).addClass("active");
 			bodyObj.html(LoadTabBody(0));
 		}
 
 		//加载面板数据
-		function LoadTabHead(len){
+		function LoadTabHead(str){
 			var tempTxt = '<ul>';
-			for(var i=0;i<len;i++){
-				tempTxt += '<li><a class="tab-title">分析表'+(i+1)+'</a></li>';
+			for(var i=0;i<str.length;i++){
+				tempTxt += '<li><a class="tab-title">'+str[i].head+'</a></li>';
 			}
 			tempTxt += '</ul>';
 			return tempTxt;			
@@ -72,30 +73,46 @@
 
 		//加载面板数据
 		function LoadTabBody(index){
-			var tempTxt = tranTable(initData)[index].text;	
+			var tempTxt = initRes[index].text;	
 			return tempTxt;			
 		}		
 
 		function tranTable(str){
 			var searchStr = '</table>';
-			var strRes = indexCountStrChar(str,searchStr,searchStr.length);			
+			var searchHead = "caption";			
+			var strRes = indexCountStrChar(str,searchStr,searchHead,searchStr.length);			
 			return strRes;
 		}
-		function indexCountStrChar(str,char,gapLength){
+		function indexCountStrChar(str,char,headChar,gapLength){
 			var res =[];
+			var resHead =null;
+			var resHeads = moTool.splitTagStr(str,"table",1);
 			var count = 0;
+			var resText = null;
 			var pos = str.indexOf(char);
 			while (pos !== -1) {
 				if(res.length==0){
-					res.push({index:count,pos:pos,text:str.substring(0,(pos+gapLength))});
+					resText = str.substring(0,(pos+gapLength));
 				}else{
-					res.push({index:count,pos:pos,text:str.substring((res[count-1].pos+gapLength),(pos+gapLength))});
+					resText = str.substring((res[count-1].pos+gapLength),(pos+gapLength));
 				}
+				resHead = cutStrChar(resText,headChar);
+				res.push({index:count,pos:pos,head:resHead.tag,text:resHead.text});
 				count++;
 				pos = str.indexOf(char, pos + 1);
 			}
 			return res;
 		}
+
+		function cutStrChar(str,tagStr){	
+			var res =null;
+			if (!!tagStr) {
+				//res = {head:str.match(regExp)[0],text:str.replace(regExp,"")};
+				res = moTool.cutTagStr(str,tagStr,2);
+			}
+			return res;
+		}
+
 
 		function splitTable(str,arr){
 			var strRes =[];
