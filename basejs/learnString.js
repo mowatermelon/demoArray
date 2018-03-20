@@ -2919,8 +2919,8 @@ function showInitData(){
 
 	//Soft-打印拼接方法-----------------------------------------------------START
 		function LearnStringSSplicing(){
-			learnStringSConcat();
-			// learnStringSPadEnd();
+			// learnStringSConcat();
+			learnStringSPadEnd();
 			// learnStringSpadStart();
 			// learnStringSRepeat();
 			// learnStringSQuote();
@@ -3005,42 +3005,63 @@ function showInitData(){
 
 		function learnStringSPadEnd(){
 			console.log("\n 打印padEnd()函数的用法---------------------------------------------------------------------------------------------------------------------2"); 
-			console.log(strString.padEnd());//<big>hello watermelon</big>
-			console.log(oString.padEnd());//<big>hello world</big>
-			console.log(tString_1.padEnd());//<big>hello Template</big>
-			console.log(tString_2.padEnd());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.padEnd());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.padEnd());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString);//hello watermelon
+			console.log(oString);//hello world
+			console.log(oString_1);//A 你 Z   中间不在BMP中的字符，会显示乱码
+			console.log(tString_1);//hello Template
+			console.log(tString_2);//hello line 1\n\t\t\t\thello line 2  
+			console.log(tString_3);//Fifteen is 12 and\nnot 16.  
+		}
+
+		function polyfillPadEnd(){
+			// https://github.com/uxitten/polyfill/blob/master/string.polyfill.js
+			// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padEnd
+			if (!String.prototype.padEnd) {
+				String.prototype.padEnd = function padEnd(targetLength,padString) {
+					targetLength = targetLength>>0; //floor if number or convert non-number to 0;
+					padString = String(padString || ' ');
+					if (this.length > targetLength) {
+						return String(this);
+					}
+					else {
+						targetLength = targetLength-this.length;
+						if (targetLength > padString.length) {
+							padString += padString.repeat(targetLength/padString.length); //append to original to ensure we are longer than needed
+						}
+						return String(this) + padString.slice(0,targetLength);
+					}
+				};
+			}
 		}
 
 		function learnStringSpadStart(){
 			console.log("\n 打印padStart()函数的用法---------------------------------------------------------------------------------------------------------------------3"); 
-			console.log(strString.padStart());//<big>hello watermelon</big>
-			console.log(oString.padStart());//<big>hello world</big>
-			console.log(tString_1.padStart());//<big>hello Template</big>
-			console.log(tString_2.padStart());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.padStart());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.padStart());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.padStart());//hello watermelon
+			console.log(oString.padStart());//hello world
+			console.log(tString_1.padStart());//hello Template
+			console.log(tString_2.padStart());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.padStart());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.padStart());//大吉大利今晚吃西瓜!
 		}
 		
 		function learnStringSRepeat(){
 			console.log("\n 打印repeat()函数的用法---------------------------------------------------------------------------------------------------------------------4"); 
-			console.log(strString.repeat());//<big>hello watermelon</big>
-			console.log(oString.repeat());//<big>hello world</big>
-			console.log(tString_1.repeat());//<big>hello Template</big>
-			console.log(tString_2.repeat());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.repeat());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.repeat());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.repeat());//hello watermelon
+			console.log(oString.repeat());//hello world
+			console.log(tString_1.repeat());//hello Template
+			console.log(tString_2.repeat());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.repeat());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.repeat());//大吉大利今晚吃西瓜!
 		}	
 
 		function learnStringSQuote(){
 			console.log("\n 打印quote()函数的用法---------------------------------------------------------------------------------------------------------------------5"); 
-			console.log(strString.quote());//<big>hello watermelon</big>
-			console.log(oString.quote());//<big>hello world</big>
-			console.log(tString_1.quote());//<big>hello Template</big>
-			console.log(tString_2.quote());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.quote());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.quote());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.quote());//hello watermelon
+			console.log(oString.quote());//hello world
+			console.log(tString_1.quote());//hello Template
+			console.log(tString_2.quote());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.quote());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.quote());//大吉大利今晚吃西瓜!
 		}	
 
 
@@ -3056,42 +3077,42 @@ function showInitData(){
 
 		function learnStringSToLowerCase(){
 			console.log("\n 打印toLowerCase()函数的用法---------------------------------------------------------------------------------------------------------------------1"); 
-			console.log(strString.toLowerCase());//<big>hello watermelon</big>
-			console.log(oString.toLowerCase());//<big>hello world</big>
-			console.log(tString_1.toLowerCase());//<big>hello Template</big>
-			console.log(tString_2.toLowerCase());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.toLowerCase());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.toLowerCase());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.toLowerCase());//hello watermelon
+			console.log(oString.toLowerCase());//hello world
+			console.log(tString_1.toLowerCase());//hello Template
+			console.log(tString_2.toLowerCase());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.toLowerCase());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.toLowerCase());//大吉大利今晚吃西瓜!
 		}
 
 		function learnStringSToLocaleLowerCase(){
 			console.log("\n 打印toLocaleLowerCase()函数的用法---------------------------------------------------------------------------------------------------------------------2"); 
-			console.log(strString.toLocaleLowerCase());//<big>hello watermelon</big>
-			console.log(oString.toLocaleLowerCase());//<big>hello world</big>
-			console.log(tString_1.toLocaleLowerCase());//<big>hello Template</big>
-			console.log(tString_2.toLocaleLowerCase());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.toLocaleLowerCase());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.toLocaleLowerCase());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.toLocaleLowerCase());//hello watermelon
+			console.log(oString.toLocaleLowerCase());//hello world
+			console.log(tString_1.toLocaleLowerCase());//hello Template
+			console.log(tString_2.toLocaleLowerCase());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.toLocaleLowerCase());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.toLocaleLowerCase());//大吉大利今晚吃西瓜!
 		}
 
 		function learnStringSToUpperCase(){
 			console.log("\n 打印toUpperCase()函数的用法---------------------------------------------------------------------------------------------------------------------3"); 
-			console.log(strString.toUpperCase());//<big>hello watermelon</big>
-			console.log(oString.toUpperCase());//<big>hello world</big>
-			console.log(tString_1.toUpperCase());//<big>hello Template</big>
-			console.log(tString_2.toUpperCase());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.toUpperCase());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.toUpperCase());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.toUpperCase());//hello watermelon
+			console.log(oString.toUpperCase());//hello world
+			console.log(tString_1.toUpperCase());//hello Template
+			console.log(tString_2.toUpperCase());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.toUpperCase());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.toUpperCase());//大吉大利今晚吃西瓜!
 		}
 		
 		function learnStringStoLocaleUpperCase(){
 			console.log("\n 打印toLocaleUpperCase()函数的用法---------------------------------------------------------------------------------------------------------------------4"); 
-			console.log(strString.toLocaleUpperCase());//<big>hello watermelon</big>
-			console.log(oString.toLocaleUpperCase());//<big>hello world</big>
-			console.log(tString_1.toLocaleUpperCase());//<big>hello Template</big>
-			console.log(tString_2.toLocaleUpperCase());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.toLocaleUpperCase());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.toLocaleUpperCase());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.toLocaleUpperCase());//hello watermelon
+			console.log(oString.toLocaleUpperCase());//hello world
+			console.log(tString_1.toLocaleUpperCase());//hello Template
+			console.log(tString_2.toLocaleUpperCase());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.toLocaleUpperCase());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.toLocaleUpperCase());//大吉大利今晚吃西瓜!
 		}		
 	//Soft-打印大小写转换方法-----------------------------------------------------END
 
@@ -3189,12 +3210,12 @@ function showInitData(){
 
 		function learnStringTReplace(){
 			console.log("\n 打印replace()函数的用法---------------------------------------------------------------------------------------------------------------------1"); 
-			console.log(strString.replace());//<big>hello watermelon</big>
-			console.log(oString.replace());//<big>hello world</big>
-			console.log(tString_1.replace());//<big>hello Template</big>
-			console.log(tString_2.replaceg());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.replace());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.replace());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.replace());//hello watermelon
+			console.log(oString.replace());//hello world
+			console.log(tString_1.replace());//hello Template
+			console.log(tString_2.replaceg());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.replace());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.replace());//大吉大利今晚吃西瓜!
 		}
 	
 	//Tough-打印替换方法-----------------------------------------------------END
@@ -3209,42 +3230,42 @@ function showInitData(){
 
 		function learnStringTSlice(){
 			console.log("\n 打印slice()函数的用法---------------------------------------------------------------------------------------------------------------------1"); 
-			console.log(strString.slice());//<big>hello watermelon</big>
-			console.log(oString.slice());//<big>hello world</big>
-			console.log(tString_1.slice());//<big>hello Template</big>
-			console.log(tString_2.slice());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.slice());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.slice());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.slice());//hello watermelon
+			console.log(oString.slice());//hello world
+			console.log(tString_1.slice());//hello Template
+			console.log(tString_2.slice());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.slice());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.slice());//大吉大利今晚吃西瓜!
 		}
 
 		function learnStringTSplit(){
 			console.log("\n 打印split()函数的用法---------------------------------------------------------------------------------------------------------------------2"); 
-			console.log(strString.split());//<big>hello watermelon</big>
-			console.log(oString.split());//<big>hello world</big>
-			console.log(tString_1.split());//<big>hello Template</big>
-			console.log(tString_2.split());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.split());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.split());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.split());//hello watermelon
+			console.log(oString.split());//hello world
+			console.log(tString_1.split());//hello Template
+			console.log(tString_2.split());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.split());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.split());//大吉大利今晚吃西瓜!
 		}
 
 		function learnStringTSubstr(){
 			console.log("\n 打印substrt()函数的用法---------------------------------------------------------------------------------------------------------------------3"); 
-			console.log(strString.substr());//<big>hello watermelon</big>
-			console.log(oString.substr());//<big>hello world</big>
-			console.log(tString_1.substr());//<big>hello Template</big>
-			console.log(tString_2.substr());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.substr());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.substr());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.substr());//hello watermelon
+			console.log(oString.substr());//hello world
+			console.log(tString_1.substr());//hello Template
+			console.log(tString_2.substr());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.substr());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.substr());//大吉大利今晚吃西瓜!
 		}
 		
 		function learnStringTSubstring(){
 			console.log("\n 打印substring()函数的用法---------------------------------------------------------------------------------------------------------------------4"); 
-			console.log(strString.substring());//<big>hello watermelon</big>
-			console.log(oString.substring());//<big>hello world</big>
-			console.log(tString_1.substring());//<big>hello Template</big>
-			console.log(tString_2.substring());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.substring());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.substring());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.substring());//hello watermelon
+			console.log(oString.substring());//hello world
+			console.log(tString_1.substring());//hello Template
+			console.log(tString_2.substring());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.substring());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.substring());//大吉大利今晚吃西瓜!
 		}		
 	//Tough-打印分割方法-----------------------------------------------------END
 
@@ -3257,32 +3278,32 @@ function showInitData(){
 
 		function learnStringTTrim(){
 			console.log("\n 打印trim()函数的用法---------------------------------------------------------------------------------------------------------------------1"); 
-			console.log(strString.trim());//<big>hello watermelon</big>
-			console.log(oString.trim());//<big>hello world</big>
-			console.log(tString_1.trim());//<big>hello Template</big>
-			console.log(tString_2.trim());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.trim());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.trim());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.trim());//hello watermelon
+			console.log(oString.trim());//hello world
+			console.log(tString_1.trim());//hello Template
+			console.log(tString_2.trim());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.trim());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.trim());//大吉大利今晚吃西瓜!
 		}
 
 		function learnStringTTrimLeft(){
 			console.log("\n 打印trimLeft()函数的用法---------------------------------------------------------------------------------------------------------------------2"); 
-			console.log(strString.trimLeft());//<big>hello watermelon</big>
-			console.log(oString.trimLeft());//<big>hello world</big>
-			console.log(tString_1.trimLeft());//<big>hello Template</big>
-			console.log(tString_2.trimLeft());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.trimLeft());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.trimLeft());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.trimLeft());//hello watermelon
+			console.log(oString.trimLeft());//hello world
+			console.log(tString_1.trimLeft());//hello Template
+			console.log(tString_2.trimLeft());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.trimLeft());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.trimLeft());//大吉大利今晚吃西瓜!
 		}
 
 		function learnStringTTrimRight(){
 			console.log("\n 打印trimRight()函数的用法---------------------------------------------------------------------------------------------------------------------3"); 
-			console.log(strString.trimRight());//<big>hello watermelon</big>
-			console.log(oString.trimRight());//<big>hello world</big>
-			console.log(tString_1.trimRight());//<big>hello Template</big>
-			console.log(tString_2.trimRight());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.trimRight());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.trimRight());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.trimRight());//hello watermelon
+			console.log(oString.trimRight());//hello world
+			console.log(tString_1.trimRight());//hello Template
+			console.log(tString_2.trimRight());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.trimRight());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.trimRight());//大吉大利今晚吃西瓜!
 		}
 
 	//Tough-打印格式转化方法-----------------------------------------------------END
@@ -3304,62 +3325,62 @@ function showInitData(){
 
 		function learnStringTToString(){
 			console.log("\n 打印toString()函数的用法---------------------------------------------------------------------------------------------------------------------1"); 
-			console.log(strString.toString());//<big>hello watermelon</big>
-			console.log(oString.toString());//<big>hello world</big>
-			console.log(tString_1.toString());//<big>hello Template</big>
-			console.log(tString_2.toString());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.toString());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.toString());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.toString());//hello watermelon
+			console.log(oString.toString());//hello world
+			console.log(tString_1.toString());//hello Template
+			console.log(tString_2.toString());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.toString());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.toString());//大吉大利今晚吃西瓜!
 		}
 
 		function learnStringTToLocaleString(){
 			console.log("\n 打印toLocaleString()函数的用法---------------------------------------------------------------------------------------------------------------------2"); 
-			console.log(strString.toLocaleString());//<big>hello watermelon</big>
-			console.log(oString.toLocaleString());//<big>hello world</big>
-			console.log(tString_1.toLocaleString());//<big>hello Template</big>
-			console.log(tString_2.toLocaleString());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.toLocaleString());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.toLocaleString());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.toLocaleString());//hello watermelon
+			console.log(oString.toLocaleString());//hello world
+			console.log(tString_1.toLocaleString());//hello Template
+			console.log(tString_2.toLocaleString());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.toLocaleString());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.toLocaleString());//大吉大利今晚吃西瓜!
 		}
 
 		function learnStringTValueOf(){
 			console.log("\n 打印valueOf()函数的用法---------------------------------------------------------------------------------------------------------------------3"); 
-			console.log(strString.valueOf());//<big>hello watermelon</big>
-			console.log(oString.valueOf());//<big>hello world</big>
-			console.log(tString_1.valueOf());//<big>hello Template</big>
-			console.log(tString_2.valueOf());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.valueOf());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.valueOf());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.valueOf());//hello watermelon
+			console.log(oString.valueOf());//hello world
+			console.log(tString_1.valueOf());//hello Template
+			console.log(tString_2.valueOf());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.valueOf());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.valueOf());//大吉大利今晚吃西瓜!
 		}
 
 		function learnStringTBracket(){
 			console.log("\n 打印bracket()函数的用法---------------------------------------------------------------------------------------------------------------------4"); 
-			console.log(strString[0]);//<big>hello watermelon</big>
-			console.log(oString[0]);//<big>hello world</big>
-			console.log(tString_1[0]);//<big>hello Template</big>
-			console.log(tString_2[0]);//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3[0]);//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4[0]);//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString[0]);//hello watermelon
+			console.log(oString[0]);//hello world
+			console.log(tString_1[0]);//hello Template
+			console.log(tString_2[0]);//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3[0]);//Fifteen is 12 and\nnot 16.
+			console.log(tString_4[0]);//大吉大利今晚吃西瓜!
 		}
 		
 		function learnStringTToSource(){
 			console.log("\n 打印toSource()函数的用法---------------------------------------------------------------------------------------------------------------------5"); 
-			console.log(strString.toSource());//<big>hello watermelon</big>
-			console.log(oString.toSource());//<big>hello world</big>
-			console.log(tString_1.toSource());//<big>hello Template</big>
-			console.log(tString_2.toSource());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.toSource());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.toSource());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.toSource());//hello watermelon
+			console.log(oString.toSource());//hello world
+			console.log(tString_1.toSource());//hello Template
+			console.log(tString_2.toSource());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.toSource());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.toSource());//大吉大利今晚吃西瓜!
 		}		
 
 		function learnStringTHasOwnProperty(){
 			console.log("\n 打印hasOwnProperty()函数的用法---------------------------------------------------------------------------------------------------------------------6"); 
-			console.log(strString.hasOwnProperty());//<big>hello watermelon</big>
-			console.log(oString.hasOwnProperty());//<big>hello world</big>
-			console.log(tString_1.hasOwnProperty());//<big>hello Template</big>
-			console.log(tString_2.hasOwnProperty());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.hasOwnProperty());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.hasOwnProperty());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.hasOwnProperty());//hello watermelon
+			console.log(oString.hasOwnProperty());//hello world
+			console.log(tString_1.hasOwnProperty());//hello Template
+			console.log(tString_2.hasOwnProperty());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.hasOwnProperty());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.hasOwnProperty());//大吉大利今晚吃西瓜!
 
 
 			console.log("test hasOwnProperty");
@@ -3375,12 +3396,12 @@ function showInitData(){
 
 		function learnStringTIsPrototypeOf(){
 			console.log("\n 打印isPrototypeOf()函数的用法---------------------------------------------------------------------------------------------------------------------7"); 
-			console.log(strString.isPrototypeOf());//<big>hello watermelon</big>
-			console.log(oString.isPrototypeOf());//<big>hello world</big>
-			console.log(tString_1.isPrototypeOf());//<big>hello Template</big>
-			console.log(tString_2.isPrototypeOf());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.isPrototypeOf());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.isPrototypeOf());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.isPrototypeOf());//hello watermelon
+			console.log(oString.isPrototypeOf());//hello world
+			console.log(tString_1.isPrototypeOf());//hello Template
+			console.log(tString_2.isPrototypeOf());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.isPrototypeOf());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.isPrototypeOf());//大吉大利今晚吃西瓜!
 			
 			console.log("test var isPrototypeOf String");
 			console.log(strString.isPrototypeOf(String))//false
@@ -3403,42 +3424,42 @@ function showInitData(){
 
 		function learnStringTSetPrototypeOf(){
 			console.log("\n 打印setPrototypeOf()函数的用法---------------------------------------------------------------------------------------------------------------------8"); 
-			console.log(strString.setPrototypeOf());//<big>hello watermelon</big>
-			console.log(oString.setPrototypeOf());//<big>hello world</big>
-			console.log(tString_1.setPrototypeOf());//<big>hello Template</big>
-			console.log(tString_2.setPrototypeOf());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.setPrototypeOf());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.setPrototypeOf());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.setPrototypeOf());//hello watermelon
+			console.log(oString.setPrototypeOf());//hello world
+			console.log(tString_1.setPrototypeOf());//hello Template
+			console.log(tString_2.setPrototypeOf());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.setPrototypeOf());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.setPrototypeOf());//大吉大利今晚吃西瓜!
 		}
 
 		function learnStringTUnwatch(){
 			console.log("\n 打印unwatch()函数的用法---------------------------------------------------------------------------------------------------------------------9"); 
-			console.log(strString.unwatch());//<big>hello watermelon</big>
-			console.log(oString.unwatch());//<big>hello world</big>
-			console.log(tString_1.unwatch());//<big>hello Template</big>
-			console.log(tString_2.unwatch());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.unwatch());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.unwatch());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.unwatch());//hello watermelon
+			console.log(oString.unwatch());//hello world
+			console.log(tString_1.unwatch());//hello Template
+			console.log(tString_2.unwatch());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.unwatch());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.unwatch());//大吉大利今晚吃西瓜!
 		}
 		
 		function learnStringTWatch(){
 			console.log("\n 打印watch()函数的用法---------------------------------------------------------------------------------------------------------------------10"); 
-			console.log(strString.watch());//<big>hello watermelon</big>
-			console.log(oString.watch());//<big>hello world</big>
-			console.log(tString_1.watch());//<big>hello Template</big>
-			console.log(tString_2.watch());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.watch());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.watch());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.watch());//hello watermelon
+			console.log(oString.watch());//hello world
+			console.log(tString_1.watch());//hello Template
+			console.log(tString_2.watch());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.watch());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.watch());//大吉大利今晚吃西瓜!
 		}	
 
 		function learnStringTPropertyIsEnumerable(){
 			console.log("\n 打印propertyIsEnumerable()函数的用法---------------------------------------------------------------------------------------------------------------------11"); 
-			console.log(strString.propertyIsEnumerable());//<big>hello watermelon</big>
-			console.log(oString.propertyIsEnumerable());//<big>hello world</big>
-			console.log(tString_1.propertyIsEnumerable());//<big>hello Template</big>
-			console.log(tString_2.propertyIsEnumerable());//<big>hello line 1\n\t\t\t\thello line 2</big>
-			console.log(tString_3.propertyIsEnumerable());//<big>Fifteen is 12 and\nnot 16.</big>
-			console.log(tString_4.propertyIsEnumerable());//<big>大吉大利今晚吃西瓜!</big>
+			console.log(strString.propertyIsEnumerable());//hello watermelon
+			console.log(oString.propertyIsEnumerable());//hello world
+			console.log(tString_1.propertyIsEnumerable());//hello Template
+			console.log(tString_2.propertyIsEnumerable());//hello line 1\n\t\t\t\thello line 2
+			console.log(tString_3.propertyIsEnumerable());//Fifteen is 12 and\nnot 16.
+			console.log(tString_4.propertyIsEnumerable());//大吉大利今晚吃西瓜!
 		}			
 
 		function studyPrototype(){
