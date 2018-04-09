@@ -1,0 +1,10 @@
+F:\documentbak\4_9\bak\aspnetcoreapp\bin\Debug\netcoreapp1.1\aspnetcoreapp.deps.json
+F:\documentbak\4_9\bak\aspnetcoreapp\bin\Debug\netcoreapp1.1\aspnetcoreapp.runtimeconfig.json
+F:\documentbak\4_9\bak\aspnetcoreapp\bin\Debug\netcoreapp1.1\aspnetcoreapp.runtimeconfig.dev.json
+F:\documentbak\4_9\bak\aspnetcoreapp\bin\Debug\netcoreapp1.1\aspnetcoreapp.dll
+F:\documentbak\4_9\bak\aspnetcoreapp\bin\Debug\netcoreapp1.1\aspnetcoreapp.pdb
+F:\documentbak\4_9\bak\aspnetcoreapp\obj\Debug\netcoreapp1.1\aspnetcoreapp.csproj.CoreCompileInputs.cache
+F:\documentbak\4_9\bak\aspnetcoreapp\obj\Debug\netcoreapp1.1\aspnetcoreapp.AssemblyInfoInputs.cache
+F:\documentbak\4_9\bak\aspnetcoreapp\obj\Debug\netcoreapp1.1\aspnetcoreapp.AssemblyInfo.cs
+F:\documentbak\4_9\bak\aspnetcoreapp\obj\Debug\netcoreapp1.1\aspnetcoreapp.dll
+F:\documentbak\4_9\bak\aspnetcoreapp\obj\Debug\netcoreapp1.1\aspnetcoreapp.pdb
