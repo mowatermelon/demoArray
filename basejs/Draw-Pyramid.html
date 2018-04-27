@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Draw Pyramid</title>
+</head>
+<body>
+</body>
+<script>
+
+window.onload = function(){
+  let DrawEnd = 10;
+  let BoxDom = CreatDom('div');
+  BoxDom.innerHTML = DrawPyramid(DrawEnd);
+  document.body.append(BoxDom);
+}
+
+/**
+  * 实际绘制金字塔过程
+  * @param num {Number} 金字塔最大值
+*/
+function DrawPyramid(num){
+  let res = '';
+  if(!!num&&num>1){
+    let tempData = getPyramidData(num);
+    let pDom = CreatDom('p');
+    pDom.style.textAlign = 'center';
+    for(let i=0;i<tempData.length;i++){
+      let spanDom = CreatDom('span');
+      if(tempData[i]!=='br'){
+        spanDom.innerHTML = tempData[i];
+        setPyramidStyle(spanDom);
+      }else{
+        spanDom.innerHTML ='<br/>';
+      }
+      pDom.append(spanDom);
+    }
+    res = pDom.outerHTML;
+  }
+  return res;
+}
+
+/**
+  * 创造相关类型dom结果
+  * @param type {String} 需要创建的dom类型
+*/
+function CreatDom(type){
+  let res = null;
+  if(!!type){
+    res = document.createElement(type);
+  }
+  return res;
+}
+
+/**
+  * 通过id获取元素
+  * @param id {String} 唯一标识的id
+*/
+function ById(id){
+  let res = null;
+  if(!!id){
+    res = document.getElementById(id);
+  }
+  return res;
+}
+
+/**
+  * 实际绘制金字塔过程
+  * @param num {Number} 金字塔最大值
+*/
+function getPyramidData(num){
+  let res = [];
+  if(!!num&&num>1){
+    for(let i=1;i<num;i++){
+      for(let j=1;j<=i;j++){
+        let temp = i+'*'+j+'='+(i*j);
+        if(j!==i){
+          res.push(temp);
+        }else{
+          res.push(temp);
+          res.push('br');
+        }
+        
+      }
+    }
+  }
+  return res;
+}
+
+/**
+  * 设置金字塔砖块样式
+  * @param num {Number} 金字塔最大值
+*/
+function setPyramidStyle(dom){
+  let res = false;
+  if(!!dom){
+    let selfStyle = dom.style;
+    selfStyle.width = '150px';
+    selfStyle.lineHeight = selfStyle.height = '40px';
+    selfStyle.textAlign = 'center';
+    selfStyle.display = 'inline-block';
+    selfStyle.border = '1px solid #e9e9e9';
+    selfStyle.marginTop = selfStyle.marginLeft = '-1px';
+    res = true;
+  }
+  return res;
+}
+</script>
+</html>
