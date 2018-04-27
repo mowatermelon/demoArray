@@ -12,9 +12,7 @@
 
 window.onload = function(){
   let DrawEnd = 10;
-  let BoxDom = CreatDom('div');
-  BoxDom.innerHTML = DrawPyramid(DrawEnd);
-  document.body.append(BoxDom);
+  document.body.innerHTML = DrawPyramid(DrawEnd);
 }
 
 /**
@@ -64,13 +62,10 @@ function getPyramidData(num){
     for(let i=1;i<num;i++){
       for(let j=1;j<=i;j++){
         let temp = i+'*'+j+'='+(i*j);
-        if(j!==i){
-          res.push(temp);
-        }else{
-          res.push(temp);
+        res.push(temp);
+        if(j===i){
           res.push('br');
         }
-        
       }
     }
   }
