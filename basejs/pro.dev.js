@@ -6,7 +6,7 @@ let child_process = require('child_process');
 
 let arguments = process.argv;//在终端中输入的所有指令的集合
 let PORT = arguments[2]||4040; // 默认第三个参数是端口值
-
+let part=1,count = 0;
 //添加MIME类型
 // link css的时候，不能忘了 rel="stylesheet"
 let MIME_TYPE = {
@@ -37,11 +37,17 @@ let server = http.createServer(serverStatic);
 function serverStatic(req,res){
     let filePath;
     if(req.url==="/"){
-        filePath =  "iFormDesigner.html";
+        filePath =  "index.html";
     } else{
         filePath = "./" + url.parse(req.url).pathname;
     }
-    console.log('请求资源：',filePath);
+    if(filePath.endsWith('.html')){
+      part = 1;
+      count++;
+      console.log('\n\n');
+    }
+    console.log('第',count,'次请求之第', part++, '个资源：', filePath);
+    
     fs.exists(filePath,function(err){
         if(!err){
           send404(res);
@@ -59,7 +65,6 @@ function serverStatic(req,res){
             });//fs.readfile
         }
     })//path.exists
-
 }
 
 function send500(res){
@@ -70,19 +75,20 @@ function send404(res){
   res.end("<h1>404</h1><p>页面没找到，可长点心吧，偷笑.jpg</p>")
 }
 
-function openUrl(url){
-  url = 'http://localhost:' + PORT+'/' + url;
+function openUrl(){
+  let  url = 'http://localhost:' + PORT;
   let cmd;
 
   if (process.platform == 'win32') {
-    //cmd = 'start "%Program Files%\\Internet Explorer\\iexplore.exe"';
-    cmd = 'start "%Program Files (x86)%\\Google\\Chrome\\Application\\chrome.exe"';
+    // cmd = 'start "%Program Files (x86)%\\Google\\Chrome\\Application\\chrome.exe"';
+    cmd = 'start';
+    
   } else if (process.platform == 'linux') {
     cmd = 'xdg-open';
   } else if (process.platform == 'darwin') {
     cmd = 'open';
   }
-  console.log(cmd,url);
+  //console.log(cmd,url);
   child_process.exec(`${cmd} ${url}`);
 }
 
@@ -90,7 +96,10 @@ server.listen(PORT, () => {
   // 终端打印如下信息
   console.log('> Starting build server...');
 
-  console.log('> Listening at ' + PORT +'\n');
+  console.log('> Listening at ' + PORT );
   //默认打开的地址
-  openUrl('index.html');
+  openUrl();
 });
+
+
+
