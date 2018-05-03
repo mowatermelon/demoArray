@@ -51,7 +51,7 @@ function serverStatic(req,res){
             let contentType = MIME_TYPE[ext] || "text/plain";
             fs.readFile(filePath,function(err,data){
                 if(err){
-                    res.end("<h1>500</h1>服务器内部错误！");
+                  send500(res);
                 }else{
                     res.writeHead(200,{'content-type':contentType});
                     res.end(data);
@@ -62,8 +62,12 @@ function serverStatic(req,res){
 
 }
 
+function send500(res){
+  res.end("<h1>500</h1><p>服务器内部错误，有人要扣奖金了，伤心.jpg</p>")
+}
+
 function send404(res){
-  res.end("<h1>404</h1><p>file not found</p>")
+  res.end("<h1>404</h1><p>页面没找到，可长点心吧，偷笑.jpg</p>")
 }
 
 function openUrl(url){
@@ -87,8 +91,6 @@ server.listen(PORT, () => {
   console.log('> Starting build server...');
 
   console.log('> Listening at ' + PORT +'\n');
+  //默认打开的地址
   openUrl('index.html');
 });
-
-
-
