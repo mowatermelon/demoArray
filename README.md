@@ -28,7 +28,7 @@ absolute的破坏性太大，有些情况可以使用margin代码会更简洁，
 
 仿造A4的动态页面效果，默认是有两页，在两页中textarea填写超过内容之后，页面会自动新增页，并将超出页面内容的文本复制到新页的textarea中
 
-> 2 [learnString](https://mowatermelon.github.io/demoArray/basejs/learnString.js)
+> 2 [learnString](https://github.com/mowatermelon/demoArray/blob/master/basejs/learnString.js)
 
 学习和使用js中字符串对象的属性和方法，使用方法`clone`到本地，在命令行中输入`node learnString.js`就可以看到相关对象属性和对象的使用结果。
 
@@ -36,7 +36,7 @@ absolute的破坏性太大，有些情况可以使用margin代码会更简洁，
 
 学习和使用js中Promt的使用
 
-> 4 [learnInstanceof](https://mowatermelon.github.io/demoArray/basejs/learnInstanceof.js)
+> 4 [learnInstanceof](https://github.com/mowatermelon/demoArray/blob/master/basejs/learnInstanceof.js)
 
 学习和使用js中`强制类型转换`和`instanceof`的用法
 
@@ -44,12 +44,12 @@ absolute的破坏性太大，有些情况可以使用margin代码会更简洁，
 
 学习和使用js中正则在`match`，`search`和`replace`中的使用。
 
-> 6 [learnNodeServer](https://mowatermelon.github.io/demoArray/basejs/pro.dev.js)
+> 6 [learnNodeServer](https://github.com/mowatermelon/demoArray/blob/master/basejs/pro.dev.js)
 
 - 全部用的是node的内置模块，启动方式`node pro.dev.js`。
 - 将文件放在项目的根文件下，支持css,gif,html,ico,jpeg,jpg,js,json,pdf,png,svg,swf,tiff,txt,wav,wma,wmv,xml,woff,woff2文件的加载，默认启动之后就通过谷歌浏览器打开当前项目的`index.html`。
-- 如果想要修改默认打开文件，可以修改代码90行的`openUrl('index.html');`，将这个`index.html`，改成你想要默认打开的页面。
-- 如果是win用户，电脑没有装`chrome`就注释掉代码75行，并将代码74行的注释放开，通过电脑的`ie`浏览器打开地址。
+- 如果想要修改默认打开文件，可以修改代码95行的`openUrl('index.html');`，将这个`index.html`，改成你想要默认打开的页面。
+- 如果是win用户，电脑没有装`chrome`就注释掉代码79行，并将代码78行的注释放开，通过电脑的`ie`浏览器打开地址。
 
 ## 三 learnframe
 
