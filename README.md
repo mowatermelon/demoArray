@@ -48,8 +48,7 @@ absolute的破坏性太大，有些情况可以使用margin代码会更简洁，
 
 - 全部用的是node的内置模块，启动方式`node pro.dev.js`。
 - 将文件放在项目的根文件下，支持css,gif,html,ico,jpeg,jpg,js,json,pdf,png,svg,swf,tiff,txt,wav,wma,wmv,xml,woff,woff2文件的加载，默认启动之后就通过谷歌浏览器打开当前项目的`index.html`。
-- 如果想要修改默认打开文件，可以修改代码95行的`openUrl('index.html');`，将这个`index.html`，改成你想要默认打开的页面。
-- 如果是win用户，电脑没有装`chrome`就注释掉代码79行，并将代码78行的注释放开，通过电脑的`ie`浏览器打开地址。
+- 如果想要修改默认打开文件，可以修改代码40行的`filePath =  "index.html";`，将这个`index.html`，改成你想要默认打开的页面。
 
 ## 三 learnframe
 
