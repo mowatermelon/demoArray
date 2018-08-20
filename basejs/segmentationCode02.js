@@ -379,13 +379,9 @@ function analysisFuncStr(script) {
     let tempScript = oldScript.substring(funBeginIndex, funEndIndex).replace('\n\t\s', '');
     let arguArrs = fun.param.split(',');
     let rightName = fun.name.replace(/(function\s)|(?:\().*\w{0,}(?:\)).*/g, '');
-    console.log(index, tempScript);
     if (!!tempScript) {
-      currFunctionObj[rightName] = function () {
-        window.eval('(' + tempScript + ')');
-      }.bind(null, ...arguArrs);
+      currFunctionObj[rightName] = window.eval('(function (' + [].slice.call(arguArrs) + ') { ' + tempScript + '})');
     }
-
   })
   return currFunctionObj;
 }
