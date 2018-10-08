@@ -346,51 +346,93 @@ function getDemoScript(){
 
 }
 /**
+ * 打印正常日志的方法
+ * @param {Any} variable  需要打印的变量值，必选
+ */
+function log(variable) {
+    console.log(...variable);
+}
+/**
+ * 打印消息日志的方法
+ * @param {Any} variable  需要打印的变量值，必选
+ */
+function info(variable) {
+    console.info(...variable);
+}
+/**
+ * 打印错误日志的方法
+ * @param {Any} variable  需要打印的变量值，必选
+ */
+function err(variable) {
+    console.error(...variable);
+}
+/**
  * 将包含多个方法体的代码字符串，分割成可以执行的方法体对象
  * @param {String} script 需要进行分割的包含多个方法体的代码字符串
  */
 function analysisFuncStr(script) {
-  let currFunctionObj = {};
-  let oldScript = script;
-  //第一步，删除多余的注释代码
-  let clearCommentReg = /("([^\\\"]*(\\.)?)*")|('([^\\\']*(\\.)?)*')|(\/{2,}.*?(\r|\n|$))|(\/\*(\n|.)*?\*\/)/g;
-  let clearCommentReg = /(\/\/.*$)|(\/\*(.|\s)*?\*\/)|\"use strict\"\;/g;
-  oldScript = oldScript.replace(clearCommentReg, function (word) {
-    // 去除注释后的文本 
-    return /^\/{2,}/.test(word) || /^\/\*/.test(word) ? "" : word;
-  });
+    let currFunctionObj = {};
+    let oldScript = script;
+    // 第一步，删除多余的注释代码
+    let clearCommentReg = /(\/\/.*$)|(\/\*(.|\s)*?\*\/)|\"use strict\"\;/g;
+    oldScript = oldScript.replace(clearCommentReg, '');
 
-  //第二步，分割方法名和方法体
-  let tempScriptArrs = [];
-  let functionArrs = oldScript.replace(/(?:function\s).*?\(([^)]*)\)/g, function (full, key, value) {
-    let tempObj = {
-      name: full,
-      param: key,
-      fIndex: value
+    // 第二步，分割方法名和方法体
+    let tempScriptArrs = [];
+    oldScript.replace(/(?:function\s).*?\(([^)]*)\)/g, function (full, key, value) {
+        if (full) {
+            let tempObj = {
+                name: full,
+                param: key,
+                fIndex: value
+            };
+            tempScriptArrs.push(tempObj);
+        }
+        return full;
+    });
+
+    // 第三步，拼接方法对象
+    let checkFunName = [];
+    let replaceFunctionReg = /(function\s)|(?:\().*\w{0,}(?:\)).*/g; // 去除代码方法名的funciton 和参数，只保留方法名
+
+    let getCheckFunName = function (funName, index, arr) {
+        let tempName = '\(' + funName.replace(replaceFunctionReg, '') + '\(\\().*\w{0,}(?:\)).*\\)';
+        checkFunName.push(tempName);
     };
-    console.log(full, key, value);
-    tempScriptArrs.push(tempObj);
-    return full;
-  });
-
-  //第三步，拼接方法对象
-  tempScriptArrs.forEach(function (fun, index, arr) {
-    let funBeginIndex = fun.name.length + fun.fIndex + 2;
-    let checkIndex = index !== arr.length - 1 ? arr[index + 1].fIndex : oldScript.length;
-    let funEndIndex = oldScript.substring(0, checkIndex).lastIndexOf('}');
-    let tempScript = oldScript.substring(funBeginIndex, funEndIndex).replace('\n\t\s', '');
-    let arguArrs = fun.param.split(',');
-    let rightName = fun.name.replace(/(function\s)|(?:\().*\w{0,}(?:\)).*/g, '');
-    console.log(index, tempScript);
-    currFunctionObj[rightName] = new Function();
-    if (!!tempScript) {
-      currFunctionObj[rightName] = function () {
-        window.eval('(' + tempScript + ')');
-      }.bind(null, ...arguArrs);
-    }
-
-  })
-  return currFunctionObj;
+    let allFunName = splitArguData(tempScriptArrs, 'name'); // 取到代码块中所有方法体
+    allFunName.forEach(getCheckFunName);
+    checkFunName = distinctArrFrom(checkFunName).join('|');
+    let checkAllFunctionReg = new RegExp(checkFunName, 'mg');
+    tempScriptArrs.forEach(function (fun, index, arr) {
+        let funBeginIndex = fun.name.length + fun.fIndex + 2;
+        let checkIndex = index !== arr.length - 1 ? arr[index + 1].fIndex : oldScript.length;
+        let funEndIndex = oldScript.substring(0, checkIndex).lastIndexOf('}');
+        let tempScript = oldScript.substring(funBeginIndex, funEndIndex).replace('\n\t\s', '');
+        let arguArrs = fun.param.split(',');
+        let rightName = fun.name.replace(replaceFunctionReg, '');
+        if (tempScript) {
+            try {
+                tempScript = tempScript.replace(checkAllFunctionReg, function (full, key, value) {
+                    let res = full;
+                    if (full) {
+                        let leftParenthesesIdx = full.indexOf('(');
+                        let checkName = full.substr(0, leftParenthesesIdx);
+                        if (checkName) {
+                            let tempParam = full.substring(leftParenthesesIdx + 1, full.length - 1);
+                            let tempArguArrs = tempParam.split(',');
+                            //所有事件方法都挂载在window.scriptObj下，保证当前方法之间的相互调用
+                            res = full.replace(full, 'scriptObj["' + checkName + '"].call(currForm,' + ...tempArguArrs + ')');
+                        }
+                    }
+                    return res;
+                });
+                currFunctionObj[rightName] = window.eval('(function (' + ...arguArrs + ') { let currForm = this; ' + tempScript + '})');
+            } catch (error) {
+                err('[脚本执行错误] 错误来源：' + rightName + ',错误描述：' + error);
+            }
+        }
+    });
+    return currFunctionObj;
 }
 
 console.log(analysisFuncStr(getDemoScript()));
