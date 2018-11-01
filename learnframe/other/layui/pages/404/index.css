@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+.not-find-box {
+    text-align: center;
+    padding: 11% 0;
+}
+
+.not-find-box .img {
+    line-height: 20rem;
+    font-size: 20rem;
+    color: #393D50;
+}
+
+.not-find-box .content {
+    font-size: 20px;
+    font-weight: 300;
+    color: #999;
+}
