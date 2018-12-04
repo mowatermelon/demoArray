@@ -1,16 +1,16 @@
 {
   "name": "melon",
   "version": "1.0.0",
-  "description": "",
-  "main": "gulpfile.js",
+  "description": "It's a simple hot reload demo",
+  "main": "index.js",
   "scripts": {
-    "start": "gulp",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "melon"
   ],
-  "author": "",
+  "author": "mowatermelon",
   "license": "ISC",
   "dependencies": {
     "babel-eslint": "^10.0.1",
@@ -19,3 +19,4 @@
     "eslint-config-alloy": "^1.4.2"
   }
 }
+
