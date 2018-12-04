@@ -1,0 +1,21 @@
+{
+  "name": "melon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "melon"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-eslint": "^10.0.1",
+    "browser-sync": "^2.26.3",
+    "eslint": "^5.9.0",
+    "eslint-config-alloy": "^1.4.2"
+  }
+}
