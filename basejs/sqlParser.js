@@ -49,7 +49,8 @@ const getFormatField = fieldData => {
  * @param {String} data 需要转化的数据集字段
  */
 const splitSetField = data => {
-    const errStr = '字段别名不允许重复,字段名与别名之间只能通过大写的AS进行分割';
+    const checkBracketsReg = /\(([^)]*)\)/g;
+    const errStr = '语句错误，字段名使用方法时必须要存在别名，别名不允许重复,字段名与别名之间只能通过大写的AS进行分割';
     let paramsArr = getFormatField(data);
     let paramsObj = {};
     let resErr = false;
@@ -78,8 +79,13 @@ const splitSetField = data => {
                 _name = _name.trim();
                 _value = _value.trim();
             } else { // 如果又没有找到as又没有找到三个空格，则代表没有写别名
-                _name = nameValue.trimAll();
-                _value = nameValue.trimAll();
+                if (nameValue.search(checkBracketsReg) === -1) {
+                    _name = nameValue.trimAll();
+                    _value = nameValue.trimAll();
+                } else {
+                    resErr = true;
+                    break;
+                }
             }
 
         }
@@ -128,6 +134,6 @@ const assertSqlParser = (testStrSql, assertLength) => {
     assertSqlParser(rightStr03, 5);// 输出转译之后的字段对象，
     assertSqlParser(rightStr04, 5);// 正常应该解析到有六个字段，这边故意设置成5个方便错误断言输出。
 
-    assertSqlParser(errStr01);// 字段别名不允许重复,字段名与别名之间只能通过大写的AS进行分割
-    assertSqlParser(errStr02);// 字段别名不允许重复,字段名与别名之间只能通过大写的AS进行分割
+    assertSqlParser(errStr01);// 语句错误，字段名使用方法时必须要存在别名，别名不允许重复,字段名与别名之间只能通过大写的AS进行分割
+    assertSqlParser(errStr02);// 语句错误，字段名使用方法时必须要存在别名，别名不允许重复,字段名与别名之间只能通过大写的AS进行分割
 })();
