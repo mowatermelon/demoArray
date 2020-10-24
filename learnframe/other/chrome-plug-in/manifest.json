@@ -1,0 +1,42 @@
+{
+  "manifest_version": 2,
+  "version": "1.0",
+  "name": "Check Window Focus",
+  "description": "Check Window Focus",
+  "icons": {
+    "128": "./icons/icon-128x128.png",
+    "192": "./icons/icon-192x192.png",
+    "512": "./icons/icon-512x512.png"
+  },
+  "browser_action": {
+    "default_title": "check",
+    "default_popup": "index.html",
+    "default_icon": {
+      "128": "./icons/icon-128x128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.baidu.com/"
+      ],
+      "js": [
+        "./js/content_scripts.js"
+      ]
+    }
+  ],
+  "options_page": "options.html",
+  "permissions": [
+    "*://*/*",
+    "tabs",
+    "activeTab",
+    "notifications",
+    "storage"
+  ],
+  "background": {
+    "scripts": [
+      "./js/background.js"
+    ],
+    "popup": "background.html"
+  }
+}
