@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Draw Pascal</title>
+</head>
+
+<body>
+</body>
+<script>
+
+  window.onload = function () {
+    let DrawEnd = 10;
+    document.body.innerHTML = DrawPascal(DrawEnd);
+  }
+
+  /**
+    * 实际绘制杨辉三角过程
+    * @param num {Number} 杨辉三角最大值
+  */
+  function DrawPascal(num) {
+    let res = '';
+    if (!!num && num > 1) {
+      let tempData = getPascalData(num);
+      let pDom = CreatDom('p');
+      pDom.style.textAlign = 'center';
+      for (let i = 0; i < tempData.length; i++) {
+        let spanDom = CreatDom('span');
+        if (tempData[i] !== 'br') {
+          spanDom.innerHTML = tempData[i];
+          setPascalStyle(spanDom);
+        } else {
+          spanDom.innerHTML = '<br/>';
+        }
+        pDom.append(spanDom);
+      }
+      res = pDom.outerHTML;
+    }
+    return res;
+  }
+
+  /**
+    * 创造相关类型dom结果
+    * @param type {String} 需要创建的dom类型
+  */
+  function CreatDom(type) {
+    let res = null;
+    if (!!type) {
+      res = document.createElement(type);
+    }
+    return res;
+  }
+
+  //   #include <cmath>
+  // #include <string>
+  // #include <iostream>
+  // #include <iomanip>
+  // double binom(int n, int k) { return 1/((n+1)*std::beta(n-k+1,k+1)); }
+  // int main()
+  // {
+  //     std::cout << "Pascal's triangle:\n";
+  //     for(int n = 1; n < 10; ++n) {
+  //         std::cout << std::string(20-n*2, ' ');
+  //         for(int k = 1; k < n; ++k)
+  //             std::cout << std::setw(3) << binom(n,k) << ' ';
+  //         std::cout << '\n';
+  //     }
+  // }
+
+  /**
+    * 获取杨辉三角相关数据
+    * @param num {Number} 杨辉三角最大值
+  */
+  function getPascalData(num) {
+    let res = [];
+    let beginIndex = 0;
+    if (!num) {
+      return res
+    }
+    const tempRes = []
+    for (let i = 0; i <= num; i++) {
+      beginIndex =  res.length ? res.length - i - 1 : 0
+      for (let j = 0; j < i; j++) {
+        if (j === 0 || j === i - 1) {
+          res.push(1);
+        } else {
+          const nextIndex = beginIndex + j + 1;
+          const temp = res[nextIndex] + res[nextIndex - 1];
+          res.push(temp);
+        }
+        if (j === i - 1) {
+          res.push('br');
+          tempRes[i-1] = beginIndex ? res.slice(beginIndex + j + 2, -1) : [1]
+        }
+      }
+    }
+    return res;
+  }
+
+  function getPascalDataByIndex(num) {
+    let res = [1];
+    if (!num) {
+      return res
+    }
+    for (let i = 1; i <= num; i++) {
+      res.unshift(0)
+      let middleIndex = Math.floor(i / 2)
+      for (let j = 0; j <= i; j++) {
+        if (j > middleIndex) {
+          const tempIndex = middleIndex * 2 - j + i % 2
+          res[j] = res[tempIndex]
+          continue;
+        }
+        res[j] = res[j] + res[j + 1]
+      }
+    }
+    return res;
+  }
+  /**
+    * 设置杨辉三角砖块样式
+    * @param num {Number} 杨辉三角最大值
+  */
+  function setPascalStyle(dom) {
+    let res = false;
+    if (!!dom) {
+      let selfStyle = dom.style;
+      selfStyle.width = '40px';
+      selfStyle.lineHeight = selfStyle.height = '40px';
+      selfStyle.textAlign = 'center';
+      selfStyle.display = 'inline-block';
+      selfStyle.border = '1px solid #e9e9e9';
+      selfStyle.marginTop = selfStyle.marginLeft = '-1px';
+      res = true;
+    }
+    return res;
+  }
+</script>
+
+</html>
